@@ -1,0 +1,33 @@
+{
+  "name": "tyburskidesigns",
+  "version": "1.0.0",
+  "description": "Personal portfolio website of Joseph Tyburski",
+  "main": "index.js",
+  "scripts": {
+    "build:sass": "node-sass --output-style=expanded scss/style.scss ../tyburskidesigns/style.css",
+    "prefix": "npm run build:sass && autoprefixer-cli -o style.css style.css",
+    "start": "onchange \"scss/**/*.scss\" -- npm run prefix"
+  },
+  "author": "Joseph Tyburski j.tyburski@yahoo.com tyburskidesigns.com",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jatyburski/Tyburski-Designs.git"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-pro": "^5.13.0",
+    "bootstrap": "^4.5.0",
+    "jquery": "^3.5.1",
+    "object-fit-images": "^3.2.4",
+    "popper.js": "^1.16.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.8.0",
+    "autoprefixer-cli": "^1.0.0",
+    "node-sass": "^4.14.1",
+    "onchange": "^7.0.2",
+    "postcss": "^7.0.32",
+    "postcss-cli": "^7.1.1",
+    "postcss-object-fit-images": "^1.1.2"
+  }
+}
