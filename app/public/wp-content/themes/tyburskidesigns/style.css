@@ -5860,3 +5860,251 @@ a.text-dark:hover, a.text-dark:focus {
 .invisible {
   visibility: hidden !important;
 }
+
+::-moz-selection {
+  background: #FFC857;
+  color: #FFFFFF;
+}
+
+::selection {
+  background: #FFC857;
+  color: #FFFFFF;
+}
+
+html,
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #140F23;
+  font-variant-numeric: lining-nums;
+  overflow-x: hidden;
+}
+
+.home {
+  min-height: 800px;
+  overflow: hidden;
+}
+
+.front-page--image, .front-page--content {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+  padding: 0;
+}
+
+h1 {
+  font-size: 230px;
+  font-size: 14.375rem;
+  color: #FFFFFF;
+  font-family: "origin-super-condensed", sans-serif;
+  font-weight: 900;
+  letter-spacing: 7px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+h2,
+.front-page--content h1 {
+  font-size: 155px;
+  font-size: 9.6875rem;
+  color: #FFC857;
+  font-family: "origin-super-condensed", sans-serif;
+  font-weight: 900;
+  letter-spacing: 10px;
+  line-height: .875;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-size: 35px;
+  font-size: 2.1875rem;
+  color: #FFFFFF;
+  font-family: "Raleway", sans-serif;
+  letter-spacing: -1px;
+  line-height: 1.25;
+}
+
+h4 {
+  font-size: 12px;
+  font-size: 0.75rem;
+  color: #FFC857;
+  font-family: "Raleway", sans-serif;
+  letter-spacing: 10px;
+  line-height: 1.1;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+p {
+  font-size: 15px;
+  font-size: 0.9375rem;
+  color: #FFFFFF;
+  font-family: "Raleway", sans-serif;
+  line-height: 2;
+  margin: 0;
+}
+
+p + p {
+  margin-top: 20px;
+}
+
+p a {
+  color: #FFC857;
+}
+
+.header {
+  left: 0;
+  padding: 40px 80px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.header--logo {
+  font-size: 55px;
+  font-size: 3.4375rem;
+  color: #FFFFFF;
+  display: inline-block;
+  font-family: "origin-super-condensed", sans-serif;
+  font-weight: 900;
+  letter-spacing: 3px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.header--logo span {
+  font-size: 11px;
+  font-size: 0.6875rem;
+  color: #FFC857;
+  display: block;
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-top: 3px;
+}
+
+.btn {
+  font-size: 11px;
+  font-size: 0.6875rem;
+  background-size: 1px 1em;
+  box-shadow: 0 -0.15em inset;
+  color: #FFC857;
+  display: inline-block;
+  font-family: "Raleway", sans-serif;
+  font-weight: 800;
+  letter-spacing: 3px;
+  line-height: 2.5;
+  margin: 50px 0 0 8.3333vw;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.footer {
+  height: 80px;
+  padding: 0 80px;
+}
+
+.footer p {
+  font-size: 11px;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.footer p * {
+  color: #FFC857;
+}
+
+.footer p i {
+  font-size: 15px;
+  font-size: 0.9375rem;
+  margin: 0 3px;
+}
+
+.footer--social a:not(:last-child) {
+  margin-right: 30px;
+}
+
+.footer--bar {
+  background: #FFC857;
+  bottom: 0;
+  height: 180px;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  width: 8.3333vw;
+}
+
+.footer--bar:before {
+  font-size: 250px;
+  font-size: 15.625rem;
+  color: #FFFFFF;
+  content: '+';
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: translate(-50%, -50%);
+}
+
+.front-page {
+  height: calc(100vh - 80px);
+  padding: 80px 8.3333vw 0;
+  position: relative;
+}
+
+.front-page--image {
+  overflow-x: hidden;
+  position: relative;
+}
+
+.front-page--image img {
+  bottom: 0;
+  height: 110%;
+  mix-blend-mode: exclusion;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  width: auto;
+}
+
+.front-page--content {
+  padding: 60px 0 100px;
+}
+
+.front-page--content h1 {
+  margin-bottom: 50px;
+  padding-right: 4.16665vw;
+}
+
+.front-page--content p {
+  padding: 0 8.3333vw;
+}
+
+.front-page--pattern {
+  font-size: 16px;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.07);
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  height: 50%;
+  left: 50%;
+  letter-spacing: 3px;
+  line-height: 1;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  text-align: justify;
+  top: 0;
+  transform: translate(-50%, -6px);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  width: 8.3333vw;
+}

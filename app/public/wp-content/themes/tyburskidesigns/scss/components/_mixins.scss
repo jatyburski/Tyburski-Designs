@@ -1,0 +1,32 @@
+// -----------------------
+// Object Fit Images
+// -----------------------
+
+@mixin object-fit($fit: fill, $position: null) { // @include object-fit(cover, center);
+    -o-object-fit: $fit;
+    object-fit: $fit;
+    @if $position {
+        -o-object-position: $position;
+        object-position: $position;
+        font-family: 'object-fit: #{$fit}; object-position: #{$position}';
+    } @else {
+        font-family: 'object-fit: #{$fit}';
+    }
+}
+
+// -----------------------
+// Font Size Output
+// -----------------------
+
+@mixin fontSize($size) {
+    font-size: $size;
+    font-size: calculateRem($size);
+}
+
+// -----------------------
+// Font Size Converter
+// -----------------------
+
+@function calculateRem($size) {
+   @return $size * 1rem / 16px;
+}

@@ -11,8 +11,9 @@
 
     <body <?php body_class(); ?>>
 
-        <header>
-            <nav class="navbar navbar-expand-md navbar-light bg-faded">
+        <header class="header">
+            <a class="header--logo" href="/"><?php echo get_bloginfo('name'); ?><span><?php echo get_bloginfo('description'); ?></span></a>
+            <!-- <nav class="navbar navbar-expand-md navbar-light bg-faded">
                 <a class="navbar-brand" href="#">Navbar</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs4navbar" aria-controls="bs4navbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -31,7 +32,7 @@
                         'walker'          => new bs4navwalker()
                     ]);
                 ?>
-            </nav>
+            </nav> -->
         </header>
 
         <main class="container-fluid">

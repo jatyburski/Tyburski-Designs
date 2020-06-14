@@ -1,0 +1,27 @@
+.header {
+    left: 0;
+    padding: 40px 80px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    &--logo {
+        @include fontSize(55px);
+        color: theme-color('white');
+        display: inline-block;
+        font-family: $primary-font;
+        font-weight: 900;
+        letter-spacing: 3px;
+        line-height: 1;
+        text-transform: uppercase;
+        span {
+            @include fontSize(11px);
+            color: theme-color('secondary');
+            display: block;
+            font-family: $secondary-font;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-top: 3px;
+        }
+    }
+}

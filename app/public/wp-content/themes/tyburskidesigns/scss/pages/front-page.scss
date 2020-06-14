@@ -1,0 +1,49 @@
+.front-page {
+    height: calc(100vh - 80px);
+    padding: 80px $column 0;
+    position: relative;
+    &--image {
+        @extend %bg-tint;
+        overflow-x: hidden;
+        position: relative;
+        img {
+            bottom: 0;
+            height: 110%;
+            mix-blend-mode: exclusion;
+            left: 50%;
+            position: absolute;
+            transform: translateX(-50%);
+            width: auto;
+        }
+    }
+    &--content {
+        @extend %bg-tint;
+        padding: 60px 0 100px;
+        h1 {
+            @extend %h2;
+            margin-bottom: 50px;
+            padding-right: $column / 2;
+        }
+        p {
+            padding: 0 $column;
+        }
+    }
+    &--pattern {
+        @include fontSize(16px);
+        color: rgba(theme-color('white'), .07);
+        font-family: $secondary-font;
+        font-weight: 600;
+        height: 50%;
+        left: 50%;
+        letter-spacing: 3px;
+        line-height: 1;
+        overflow: hidden;
+        pointer-events: none;
+        position: absolute;
+        text-align: justify;
+        top: 0;
+        transform: translate(-50%, -6px);
+        user-select: none;
+        width: $column;
+    }
+}

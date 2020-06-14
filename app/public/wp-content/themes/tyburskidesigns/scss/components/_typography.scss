@@ -1,0 +1,65 @@
+// -----------------------
+// Headers
+// -----------------------
+
+h1,
+%h1 {
+    @include fontSize(230px);
+    color: theme-color('white');
+    font-family: $primary-font;
+    font-weight: 900;
+    letter-spacing: 7px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+h2,
+%h2 {
+    @include fontSize(155px);
+    color: theme-color('secondary');
+    font-family: $primary-font;
+    font-weight: 900;
+    letter-spacing: 10px;
+    line-height: .875;
+    text-transform: uppercase;
+}
+
+h3,
+%h3 {
+    @include fontSize(35px);
+    color: theme-color('white');
+    font-family: $secondary-font;
+    letter-spacing: -1px;;
+    line-height: 1.25;
+}
+
+h4,
+%h4 {
+    @include fontSize(12px);
+    color: theme-color('secondary');
+    font-family: $secondary-font;
+    letter-spacing: 10px;
+    line-height: 1.1;
+}
+
+// -----------------------
+// Body
+// -----------------------
+
+a:hover {
+    text-decoration: none;
+}
+
+p {
+    @include fontSize(15px);
+    color: theme-color('white');
+    font-family: $secondary-font;
+    line-height: 2;
+    margin: 0;
+    + p {
+        margin-top: 20px;
+    }
+    a {
+        color: theme-color('secondary');
+    }
+}
