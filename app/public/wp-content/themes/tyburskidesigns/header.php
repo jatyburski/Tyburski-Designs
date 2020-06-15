@@ -11,8 +11,23 @@
 
     <body <?php body_class(); ?>>
 
-        <header class="header">
-            <a class="header--logo" href="/"><?php echo get_bloginfo('name'); ?><span><?php echo get_bloginfo('description'); ?></span></a>
+        <header class="container-fluid navbar d-block">
+            <section class="row no-gutters">
+
+                <nav class="col-lg-6 d-flex align-items-start">
+                    <a class="navbar-brand p-0 m-0" href="/"><?php echo get_bloginfo('name'); ?><span><?php echo get_bloginfo('description'); ?></span></a>
+                    <nav class="d-flex align-items-start navbar--breadcrumbs">
+                        <?php breadcrumbs(); ?>
+                    </nav>
+                </nav>
+
+                <?php if (is_page('hire-me') || is_page('about')) : ?>
+                    <div class="col-lg-6 d-flex justify-content-end">
+                        <a class="btn--icon" href="<?php the_field('resume', 'option'); ?>" target="_blank"><i class="fal fa-long-arrow-right"></i>Download Résumé</a>
+                    </div>
+                <?php endif; ?>
+
+            </section>
             <!-- <nav class="navbar navbar-expand-md navbar-light bg-faded">
                 <a class="navbar-brand" href="#">Navbar</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs4navbar" aria-controls="bs4navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,4 +50,4 @@
             </nav> -->
         </header>
 
-        <main class="container-fluid">
+        <main class="container-fluid p-0">

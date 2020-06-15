@@ -1,7 +1,5 @@
 .front-page {
-    height: calc(100vh - 80px);
-    padding: 80px $column 0;
-    position: relative;
+    @extend %container;
     &--image {
         @extend %bg-tint;
         overflow-x: hidden;
@@ -29,21 +27,10 @@
         }
     }
     &--pattern {
-        @include fontSize(16px);
-        color: rgba(theme-color('white'), .07);
-        font-family: $secondary-font;
-        font-weight: 600;
+        @extend %pattern;
         height: 50%;
         left: 50%;
-        letter-spacing: 3px;
-        line-height: 1;
-        overflow: hidden;
-        pointer-events: none;
-        position: absolute;
-        text-align: justify;
         top: 0;
         transform: translate(-50%, -6px);
-        user-select: none;
-        width: $column;
     }
 }

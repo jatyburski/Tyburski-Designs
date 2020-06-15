@@ -1,25 +1,17 @@
 // -----------------------
-// Colors
+// Globals
 // -----------------------
+
+:root {
+    --primary-font: 'origin-super-condensed', sans-serif;
+    --secondary-font: 'Raleway', sans-serif;
+}
 
 $theme-colors: (
     "primary": #140F23,
     "secondary": #FFC857,
     "white": #FFFFFF,
 );
-
-
-// -----------------------
-// Typefaces
-// -----------------------
-
-$primary-font: 'origin-super-condensed', sans-serif;
-$secondary-font: 'Raleway', sans-serif;
-
-
-// -----------------------
-// Overrides
-// -----------------------
 
 ::selection {
     background: theme-color('secondary');
@@ -33,18 +25,45 @@ body {
     background: theme-color('primary');
     font-variant-numeric: lining-nums;
     overflow-x: hidden;
-    @at-root .home {
+    @at-root .home, .page-id-19 {
         min-height: 800px;
         overflow: hidden;
     }
 }
 
+
+// -----------------------
+// Variables
+// -----------------------
+
+$column: 8.3333vw;
+
+
+// -----------------------
+// Placeholder Selectors
+// -----------------------
+
 %bg-tint {
     background: rgba(theme-color('white'), .03);
 }
 
-.container-fluid {
-    padding: 0;
+%container {
+    height: calc(100vh - 80px);
+    padding: 80px $column 0;
+    position: relative;
 }
 
-$column: 8.3333vw;
+%pattern {
+    @include fontSize(16px);
+    color: rgba(theme-color('white'), .07);
+    font-family: var(--secondary-font);
+    font-weight: 600;
+    letter-spacing: 3px;
+    line-height: 1;
+    overflow: hidden;
+    pointer-events: none;
+    position: absolute;
+    text-align: justify;
+    user-select: none;
+    width: $column;
+}

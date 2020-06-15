@@ -2,7 +2,7 @@
 // Object Fit Images
 // -----------------------
 
-@mixin object-fit($fit: fill, $position: null) { // @include object-fit(cover, center);
+@mixin object-fit($fit: fill, $position: null) {
     -o-object-fit: $fit;
     object-fit: $fit;
     @if $position {
@@ -14,6 +14,7 @@
     }
 }
 
+
 // -----------------------
 // Font Size Output
 // -----------------------
@@ -22,6 +23,7 @@
     font-size: $size;
     font-size: calculateRem($size);
 }
+
 
 // -----------------------
 // Font Size Converter

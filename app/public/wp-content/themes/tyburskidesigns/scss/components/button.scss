@@ -4,11 +4,18 @@
     box-shadow: 0 -0.15em inset;
     color: theme-color('secondary');
     display: inline-block;
-    font-family: $secondary-font;
+    font-family: var(--secondary-font);
     font-weight: 800;
     letter-spacing: 3px;
     line-height: 2.5;
     margin: 50px 0 0 $column;
     position: relative;
     text-transform: uppercase;
+    &--icon {
+        @extend %h3;
+        color: theme-color('secondary');
+        i {
+            margin-right: 30px;
+        }
+    }
 }

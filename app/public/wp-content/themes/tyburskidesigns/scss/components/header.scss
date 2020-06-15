@@ -1,27 +1,41 @@
-.header {
+.navbar {
     left: 0;
-    padding: 40px 80px;
+    padding: 40px 80px 50px;
     position: absolute;
     top: 0;
-    width: 100%;
     z-index: 10;
-    &--logo {
-        @include fontSize(55px);
-        color: theme-color('white');
+    &-brand {
+        @extend %h3;
         display: inline-block;
-        font-family: $primary-font;
-        font-weight: 900;
         letter-spacing: 3px;
-        line-height: 1;
-        text-transform: uppercase;
         span {
             @include fontSize(11px);
             color: theme-color('secondary');
             display: block;
-            font-family: $secondary-font;
+            font-family: var(--secondary-font);
             font-weight: 600;
             letter-spacing: 1px;
             margin-top: 3px;
+        }
+    }
+    .breadcrumb {
+        background: transparent;
+        transform: translateY(10px);
+        &-item {
+            @include fontSize(35px);
+            color: theme-color('white');
+            font-family: var(--primary-font);
+            font-weight: 900;
+            letter-spacing: 3px;
+            line-height: 1;
+            position: relative;
+            text-transform: uppercase;
+            &:before {
+                color: theme-color('secondary');
+                content: '/';
+                display: inline-block;
+                margin: 0 15px;
+            }
         }
     }
 }

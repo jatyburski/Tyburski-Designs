@@ -6,7 +6,7 @@ h1,
 %h1 {
     @include fontSize(230px);
     color: theme-color('white');
-    font-family: $primary-font;
+    font-family: var(--primary-font);
     font-weight: 900;
     letter-spacing: 7px;
     line-height: 1;
@@ -15,9 +15,9 @@ h1,
 
 h2,
 %h2 {
-    @include fontSize(155px);
+    @include fontSize(150px);
     color: theme-color('secondary');
-    font-family: $primary-font;
+    font-family: var(--primary-font);
     font-weight: 900;
     letter-spacing: 10px;
     line-height: .875;
@@ -26,21 +26,34 @@ h2,
 
 h3,
 %h3 {
+    @include fontSize(55px);
+    color: theme-color('white');
+    font-family: var(--primary-font);
+    font-weight: 900;
+    letter-spacing: 5px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+
+h4,
+%h4 {
     @include fontSize(35px);
     color: theme-color('white');
-    font-family: $secondary-font;
+    font-family: var(--secondary-font);
     letter-spacing: -1px;;
     line-height: 1.25;
 }
 
-h4,
-%h4 {
+h5,
+%h5 {
     @include fontSize(12px);
     color: theme-color('secondary');
-    font-family: $secondary-font;
+    font-family: var(--secondary-font);
     letter-spacing: 10px;
     line-height: 1.1;
 }
+
 
 // -----------------------
 // Body
@@ -53,7 +66,7 @@ a:hover {
 p {
     @include fontSize(15px);
     color: theme-color('white');
-    font-family: $secondary-font;
+    font-family: var(--secondary-font);
     line-height: 2;
     margin: 0;
     + p {

@@ -1,0 +1,44 @@
+.hire-me {
+    @extend %container;
+    z-index: 1;
+    &--content {
+        @extend %bg-tint;
+        *:not(.hire-me--image):not(img) {
+            position: relative;
+            z-index: 2;
+        }
+        p {
+            @extend %h3;
+        }
+        a[href^="mailto:"] {
+            @extend %h2;
+            background: theme-color('secondary');
+            color: theme-color('primary');
+            display: inline-block;
+            margin: 0 auto;
+            min-width: $column * 8;
+            padding: 30px;
+            width: auto;
+        }
+    }
+    &--image {
+        bottom: 0;
+        height: 50%;
+        position: absolute;
+        right: 0;
+        width: $column * 5;
+        img {
+            @include object-fit(cover, center);
+            height: 100%;
+            mix-blend-mode: exclusion;
+            width: 100%;
+        }
+    }
+    &--pattern {
+        @extend %pattern;
+        height: 50%;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%, -6px);
+    }
+}

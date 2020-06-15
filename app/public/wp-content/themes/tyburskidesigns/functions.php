@@ -8,6 +8,7 @@ require_once('bs4navwalker.php');
 register_nav_menu('primary', 'Primary Menu');
 register_nav_menu('projects', 'Projects Menu');
 
+
 // -----------------------
 // Custom Post Type
 // -----------------------
@@ -58,6 +59,7 @@ function post_remove () {
 
 add_action('admin_menu', 'post_remove');
 
+
 // -----------------------
 // Featured Image
 // -----------------------
@@ -66,6 +68,7 @@ add_theme_support('post-thumbnails', array(
     'post',
     'page',
 ));
+
 
 // -----------------------
 // Theme Options
@@ -83,6 +86,7 @@ if (function_exists('acf_add_options_page')) {
 
 }
 
+
 // -----------------------
 // Components
 // -----------------------
@@ -91,6 +95,7 @@ function layout_get_component($component) {
     return get_template_part('components/' . $component, '');
 }
 
+
 // -----------------------
 // Modules
 // -----------------------
@@ -98,6 +103,31 @@ function layout_get_component($component) {
 function layout_get_module($module) {
     return get_template_part('modules/' . $module, '');
 }
+
+
+// -----------------------
+// Breadcrumbs
+// -----------------------
+
+function breadcrumbs() {
+    global $wp_query;
+    if (!is_front_page()) {
+        echo '<ol class="breadcrumb p-0 m-0">';
+        if (is_category() || is_single()) {
+            if (is_single()) {
+                echo '<li class="breadcrumb-item">' . get_the_title() . '</a></li>';
+            }
+            else {
+                the_category('<span>/</span>');
+            }
+        } 
+        elseif (is_page()) {
+            echo '<li class="breadcrumb-item">' . get_the_title() . '</a></li>';
+        }
+        echo "</ol>";
+    }
+}
+
 
 // -----------------------
 // Pattern
