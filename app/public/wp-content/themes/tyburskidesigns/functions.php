@@ -1,6 +1,18 @@
 <?php
 
 // -----------------------
+// Scripts
+// -----------------------
+
+function add_theme_scripts() {
+    wp_enqueue_script( 'main', get_template_directory_uri() . '/js/index.js', array ( 'jquery' ), false, true);
+    wp_enqueue_script( 'typetura', 'https://cdn.jsdelivr.net/gh/scottkellum/typetura.js@master/js/typetura.min.js', array ( 'jquery' ), false, true);
+}
+
+add_action( 'wp_enqueue_scripts', 'add_theme_scripts' );
+
+
+// -----------------------
 // Navigation
 // -----------------------
 
@@ -48,6 +60,7 @@ function create_posttype() {
 }
 
 add_action( 'init', 'create_posttype' );
+
 
 // -----------------------
 // Removed Unused Post Type
@@ -97,15 +110,6 @@ function layout_get_component($component) {
 
 
 // -----------------------
-// Modules
-// -----------------------
-
-function layout_get_module($module) {
-    return get_template_part('modules/' . $module, '');
-}
-
-
-// -----------------------
 // Breadcrumbs
 // -----------------------
 
@@ -134,8 +138,6 @@ function breadcrumbs() {
 // -----------------------
 
 function pattern_rectangle($rows, $columns) { 
-    $horizontal;  
-    $vertical; 
     for ($horizontal = 1; $horizontal <= $rows; $horizontal++) { 
         for ($vertical = 1; $vertical <= $columns; $vertical++) { 
             if ($horizontal == 1 || $horizontal == $rows ||  

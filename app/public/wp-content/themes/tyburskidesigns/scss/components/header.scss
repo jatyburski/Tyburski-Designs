@@ -6,6 +6,7 @@
     z-index: 10;
     &-brand {
         @extend %h3;
+        --tt-key: header;
         display: inline-block;
         letter-spacing: 3px;
         span {
@@ -13,7 +14,7 @@
             color: theme-color('secondary');
             display: block;
             font-family: var(--secondary-font);
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 1px;
             margin-top: 3px;
         }
@@ -28,7 +29,6 @@
             font-weight: 900;
             letter-spacing: 3px;
             line-height: 1;
-            position: relative;
             text-transform: uppercase;
             &:before {
                 color: theme-color('secondary');
@@ -37,5 +37,12 @@
                 margin: 0 15px;
             }
         }
+    }
+}
+
+@keyframes header {
+    0%,
+    100% {
+        @include fontSize(55px);
     }
 }

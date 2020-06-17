@@ -8,11 +8,15 @@
     font-weight: 800;
     letter-spacing: 3px;
     line-height: 2.5;
-    margin: 50px 0 0 $column;
+    margin: 50px 0 0 var(--col);
     position: relative;
     text-transform: uppercase;
+    @include media-breakpoint-down(lg) {
+        margin: 40px 0 0 var(--col);
+    }
     &--icon {
         @extend %h3;
+        --tt-key: header;
         color: theme-color('secondary');
         i {
             margin-right: 30px;

@@ -4,7 +4,7 @@
     position: relative;
     z-index: 10;
     p {
-        @include fontSize(11px);
+        --tt-key: footer;
         font-weight: 500;
         line-height: 1;
         * {
@@ -27,7 +27,7 @@
         left: 50%;
         position: absolute;
         transform: translateX(-50%);
-        width: $column;
+        width: var(--col);
         &:before {
             @include fontSize(250px);
             color: theme-color('white');
@@ -39,5 +39,12 @@
             top: 0;
             transform: translate(-50%, -50%);
         }
+    }
+}
+
+@keyframes footer {
+    0%,
+    100% {
+        @include fontSize(11px);
     }
 }

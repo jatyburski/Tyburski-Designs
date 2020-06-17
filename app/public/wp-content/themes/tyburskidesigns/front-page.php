@@ -2,11 +2,11 @@
 
     <section class="row no-gutters front-page">
 
-        <div class="col-lg-6 front-page--image">
+        <div class="col-xl-6 front-page--image">
             <?php the_post_thumbnail( 'full' ); ?>
         </div>
 
-        <div class="col-lg-6 d-flex flex-column align-items-start justify-content-end front-page--content">
+        <div class="col-xl-6 d-flex flex-column align-items-start justify-content-end front-page--content">
             <h1><?php the_field('title'); ?></h1>
             <?php the_field('content'); ?>
             <?php $button = get_field('button'); ?>

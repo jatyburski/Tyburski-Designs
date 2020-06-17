@@ -1,9 +1,9 @@
-.hire-me {
+.contact {
     @extend %container;
     z-index: 1;
     &--content {
         @extend %bg-tint;
-        *:not(.hire-me--image):not(img) {
+        *:not(.contact--image):not(img) {
             position: relative;
             z-index: 2;
         }
@@ -16,7 +16,7 @@
             color: theme-color('primary');
             display: inline-block;
             margin: 0 auto;
-            min-width: $column * 8;
+            min-width: calc(var(--col) * 8);
             padding: 30px;
             width: auto;
         }
@@ -24,9 +24,10 @@
     &--image {
         bottom: 0;
         height: 50%;
+        opacity: .75;
         position: absolute;
         right: 0;
-        width: $column * 5;
+        width: calc(var(--col) * 5);
         img {
             @include object-fit(cover, center);
             height: 100%;
