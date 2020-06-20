@@ -1,9 +1,14 @@
 .navbar {
-    left: 0;
     padding: 40px 80px 50px;
-    position: absolute;
-    top: 0;
     z-index: 10;
+    @at-root .home &, .page-id-19 & {
+        left: 0;
+        position: absolute;
+        top: 0;
+    }
+    @at-root .page-id-23 & {
+        margin-bottom: 105px;
+    }
     &-brand {
         @extend %h3;
         --tt-key: header;

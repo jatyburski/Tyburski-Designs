@@ -5,8 +5,9 @@
 // -----------------------
 
 function add_theme_scripts() {
-    wp_enqueue_script( 'main', get_template_directory_uri() . '/js/index.js', array ( 'jquery' ), false, true);
-    wp_enqueue_script( 'typetura', 'https://cdn.jsdelivr.net/gh/scottkellum/typetura.js@master/js/typetura.min.js', array ( 'jquery' ), false, true);
+    wp_enqueue_script( 'aos', 'https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js', array (), '2.3.4', true);
+    wp_enqueue_script( 'typetura', 'https://cdn.jsdelivr.net/gh/scottkellum/typetura.js@master/js/typetura.min.js', array (), false, true);
+    wp_enqueue_script( 'main', get_template_directory_uri() . '/js/index.js', array (), false, true);
 }
 
 add_action( 'wp_enqueue_scripts', 'add_theme_scripts' );

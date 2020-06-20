@@ -1,0 +1,168 @@
+.resume {
+    margin-top: 100px;
+    &--spacer {
+        margin-bottom: 25px;
+    }
+    &--person {
+        h1 {
+            @extend %h2;
+            color: theme-color('white');
+            line-height: .75;
+        }
+        strong {
+            @extend %h4;
+            color: theme-color('secondary');
+        }
+    }
+    &--contact li {
+        margin-left: 40px;
+        position: relative;
+        &:not(:first-child) {
+            margin-bottom: 8px;
+        }
+        span {
+            @extend %small-caps;
+            color: theme-color('white');
+        }
+        i {
+            @include fontSize(17px);
+            color: theme-color('secondary');
+            left: -40px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 15px;
+        }
+    }
+    &--jobs {
+        @at-root %lists {
+            p {
+                strong {
+                    @extend %h4;
+                    --tt-key: title;
+                    color: theme-color('secondary');
+                }
+                *:not(:first-child):before {
+                    color: theme-color('secondary');
+                    content: '\2022';
+                    display: inline-block;
+                    margin: 0 10px 0 7px;
+                }
+                + p {
+                    margin: 0;
+                }
+            }
+        }
+        @at-root %title-underline {
+            @extend %h5;
+            color: theme-color('white');
+            font-weight: 700;
+            letter-spacing: 3px;
+            position: relative;
+            &:after {
+                background: theme-color('white');
+                bottom: -20px;
+                content: '';
+                height: 1px;
+                left: 0;
+                position: absolute;
+                width: 100%;
+            }
+            &:not(:first-of-type) {
+                margin-top: 125px;
+            }
+        }
+        @extend %lists;
+        > h2 {
+            @extend %title-underline;
+            margin: 100px 0 70px;
+        } 
+        > ul > li {
+            margin-bottom: 60px;
+        }
+        ul {
+            h2 {
+                @extend %h3;
+            }
+            .resume--dashed-list {
+                margin: 30px 0 0;
+                padding: 0 0 0 50px;
+                li {
+                    @extend %p;
+                    color: theme-color('white');
+                    margin-bottom: 30px;
+                    position: relative;
+                    &:before {
+                        background: theme-color('secondary');
+                        content: '';
+                        height: 2px;
+                        left: -50px;
+                        position: absolute;
+                        top: 14px;
+                        width: 25px;
+                    }
+                }
+            }
+        }
+    }
+    &--side {
+        h2 {
+            @extend %title-underline;
+            margin: 10px 0 70px;
+        }
+        h3 {
+            margin-top: 40px;
+        }
+        @extend %lists;
+        strong {
+            display: block;
+        }
+    }
+    &--arrow {
+        left: 50%;
+        position: absolute;
+        top: 100px;
+        transform: translateX(-50%);
+        &-block {
+            background: rgba(theme-color('white'), .03);
+            height: 70px;
+            left: 50%;
+            position: absolute;
+            top: 50px;
+            transform: translateX(-50%);
+            width: 70px;
+        }
+        span {
+            color: theme-color('white');
+            &:last-of-type {
+                color: theme-color('secondary');
+                margin-top: 60px;
+            }
+        }
+    }
+    &--download {
+        @extend %h2;
+        background: rgba(theme-color('white'), .03);
+        height: 350px;
+        margin: 350px 0;
+    }
+    .col-lg-6 {
+        padding: 0 calc(var(--col) / 2);
+    }
+    .col-lg-3 {
+        padding-right: calc(var(--col) / 2);
+    }
+    ul {
+        list-style-type: none;
+    }
+}
+
+@keyframes title {
+    0%,
+    20% {
+        @include fontSize(15px);
+    }
+    100% {
+        @include fontSize(35px);
+    }
+}

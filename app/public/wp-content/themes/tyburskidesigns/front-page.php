@@ -1,16 +1,16 @@
 <?php get_header(); ?>
 
-    <section class="row no-gutters front-page">
+    <section data-aos="fade-in" class="row no-gutters front-page">
 
-        <div class="col-xl-6 front-page--image">
-            <?php the_post_thumbnail( 'full' ); ?>
+        <div class="col-xl-6 h-100 front-page--image">
+            <?php the_post_thumbnail( 'full', array( 'data-aos' => 'zoom-out', 'data-aos-delay' => '800' ) ); ?>
         </div>
 
         <div class="col-xl-6 d-flex flex-column align-items-start justify-content-end front-page--content">
-            <h1><?php the_field('title'); ?></h1>
+            <h1 data-aos="fade-up"><?php the_field('title'); ?></h1>
             <?php the_field('content'); ?>
             <?php $button = get_field('button'); ?>
-            <a class="btn" href="<?php echo $button['url']; ?>"><?php echo $button['title']; ?></a>
+            <a data-aos="fade-up" data-aos-delay="500" class="btn" href="<?php echo $button['url']; ?>"><?php echo $button['title']; ?></a>
         </div>
 
         <div class="front-page--pattern">

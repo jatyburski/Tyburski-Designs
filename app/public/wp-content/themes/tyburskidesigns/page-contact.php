@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-    <section class="row no-gutters contact">
+    <section data-aos="fade-in" class="row no-gutters contact">
 
         <div class="col-12 d-flex flex-column justify-content-center text-center contact--content">
             <div class="contact--image">

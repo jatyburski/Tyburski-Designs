@@ -68,3 +68,13 @@ body {
     user-select: none;
     width: var(--col);
 }
+
+%small-caps {
+    @include fontSize(11px);
+    color: theme-color('secondary');
+    font-family: var(--secondary-font);
+    font-weight: 800;
+    letter-spacing: 3px;
+    line-height: 2.5;
+    text-transform: uppercase;
+}

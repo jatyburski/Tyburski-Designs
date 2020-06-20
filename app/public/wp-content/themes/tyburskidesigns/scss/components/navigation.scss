@@ -1,8 +1,9 @@
 
 .site-container {
     background: theme-color('primary');
+    overflow: hidden;
     position: relative;
-    transition: transform 0.6s cubic-bezier(.91,.01,.6,.99);
+    transition: transform 0.7s cubic-bezier(.91,.01,.6,.99);
     will-change: transform;
     z-index: 2;
     @at-root .nav-is-open & {
@@ -17,7 +18,7 @@
     position: fixed;
     top: 0;
     visibility: hidden;
-    transition: visibility 0.6s;
+    transition: visibility 0.7s;
     width: 100%;
     z-index: 1;
     @at-root .nav-is-open & {
@@ -30,17 +31,22 @@
         height: 100vh;
         overflow-y: auto;
         transform: translateX(-50%);
-        transition: transform 0.6s cubic-bezier(.86,.01,.77,.78);
+        transition: transform 0.7s cubic-bezier(.86,.01,.77,.78);
         -webkit-overflow-scrolling: touch;
         will-change: transform;
         @at-root .nav-is-open & {
             transform: translateX(0);
-            transition: transform 0.4s cubic-bezier(.82,.01,.77,.78);
+            transition: transform 0.5s cubic-bezier(.82,.01,.77,.78);
         }
-        .navbar-brand {
-            color: theme-color('primary');
-            * {
-                color: inherit;
+        .navbar {
+            left: 0;
+            position: absolute;
+            top: 0;
+            &-brand {
+                color: theme-color('primary');
+                * {
+                    color: inherit;
+                }
             }
         }
     }

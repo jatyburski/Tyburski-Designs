@@ -1,3 +1,9 @@
+AOS.init({
+  delay: 400,
+  duration: 500,
+});
+
+
 // Credit: https://codyhouse.co/gem/full-screen-pushing-navigation
 
 (function() {
@@ -19,8 +25,6 @@
 		});
 	}
 }());
-
-
 
 // Utility function
 function Util () {};

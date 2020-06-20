@@ -80,7 +80,7 @@ h4,
     --tt-max: 4000;
     color: theme-color('white');
     font-family: var(--secondary-font);
-    letter-spacing: -1px;;
+    font-weight: 700;
     line-height: 1.25;
 }
 
@@ -90,17 +90,29 @@ h4,
         @include fontSize(20px);
     }
     100% {
-        @include fontSize(35px);
+        @include fontSize(65px);
     }
 }
 
 h5,
 %h5 {
-    @include fontSize(12px);
+    --tt-key: h5;
+    --tt-min: 600;
+    --tt-max: 4000;
     color: theme-color('secondary');
     font-family: var(--secondary-font);
     letter-spacing: 10px;
     line-height: 1.1;
+}
+
+@keyframes h5 {
+    0%,
+    20% {
+        @include fontSize(10px);
+    }
+    100% {
+        @include fontSize(18px);
+    }
 }
 
 
@@ -112,7 +124,8 @@ a:hover {
     text-decoration: none;
 }
 
-p {
+p,
+%p {
     --tt-key: p;
     --tt-min: 1366;
     --tt-max: 1920;

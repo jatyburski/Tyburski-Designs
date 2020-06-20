@@ -2,16 +2,12 @@
     @extend %container;
     &--image {
         @extend %bg-tint;
-        overflow-x: hidden;
+        overflow: hidden;
         position: relative;
         img {
-            bottom: 0;
-            height: 110%;
-            mix-blend-mode: exclusion;
-            left: 50%;
-            position: absolute;
-            transform: translateX(-50%);
-            width: auto;
+            @include object-fit(cover, top right);
+            height: 100%;
+            width: 100%;
         }
     }
     &--content {
