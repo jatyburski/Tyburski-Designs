@@ -2,6 +2,7 @@
     @extend %container;
     &--image {
         @extend %bg-tint;
+        mix-blend-mode: exclusion;
         overflow: hidden;
         position: relative;
         img {
@@ -25,6 +26,9 @@
         }
         p {
             padding: 0 var(--col);
+        }
+        .btn {
+            margin: 50px 0 0 var(--col);
         }
     }
     &--pattern {

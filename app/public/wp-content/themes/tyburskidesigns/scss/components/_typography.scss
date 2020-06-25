@@ -81,7 +81,7 @@ h4,
     color: theme-color('white');
     font-family: var(--secondary-font);
     font-weight: 700;
-    line-height: 1.25;
+    line-height: 1.35;
 }
 
 @keyframes h4 {
@@ -99,13 +99,34 @@ h5,
     --tt-key: h5;
     --tt-min: 600;
     --tt-max: 4000;
-    color: theme-color('secondary');
+    color: theme-color('white');
     font-family: var(--secondary-font);
-    letter-spacing: 10px;
-    line-height: 1.1;
+    font-weight: 700;
+    line-height: 1.25;
 }
 
 @keyframes h5 {
+    0%,
+    20% {
+        @include fontSize(16px);
+    }
+    100% {
+        @include fontSize(40px);
+    }
+}
+
+h6,
+%h6 {
+    --tt-key: h6;
+    --tt-min: 600;
+    --tt-max: 4000;
+    color: theme-color('white');
+    font-family: var(--secondary-font);
+    letter-spacing: 4px;
+    line-height: 1.1;
+}
+
+@keyframes h6 {
     0%,
     20% {
         @include fontSize(10px);

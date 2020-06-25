@@ -3,6 +3,14 @@ AOS.init({
   duration: 500,
 });
 
+// simpleslider.getSlider();
+
+//import PurgeCSS from 'purgecss'
+// const purgeCSSResults = await new Purgecss().purge({
+//   content: ['**/*.html'],
+//   css: ['**/*.css']
+// })
+
 
 // Credit: https://codyhouse.co/gem/full-screen-pushing-navigation
 

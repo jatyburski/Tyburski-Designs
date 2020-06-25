@@ -21,7 +21,10 @@
 
                     <section class="row no-gutters navbar">
                         <nav class="col-lg-6 d-flex align-items-start">
-                            <a class="navbar-brand p-0 m-0" href="/"><?php echo get_bloginfo('name'); ?><span><?php echo get_bloginfo('description'); ?></span></a>
+                            <a class="navbar-brand p-0 m-0" href="/">
+                                <?php bloginfo('name'); ?>
+                                <span><?php bloginfo('description'); ?></span>
+                            </a>
                         </nav>
                     </section>
 
@@ -85,7 +88,10 @@
             <section class="row no-gutters">
 
                 <nav class="col-lg-6 d-flex align-items-start">
-                    <a class="navbar-brand p-0 m-0" href="/"><?php echo get_bloginfo('name'); ?><span><?php echo get_bloginfo('description'); ?></span></a>
+                    <a class="navbar-brand p-0 m-0" href="/">
+                        <?php bloginfo('name'); ?>
+                        <span><?php bloginfo('description'); ?></span>
+                    </a>
                     <nav class="d-flex align-items-start">
                         <?php breadcrumbs(); ?>
                     </nav>
@@ -93,7 +99,7 @@
 
                 <?php if (is_page('contact') || is_page('resume')) : ?>
                     <div data-aos="fade-left" class="col-lg-6 d-flex justify-content-end">
-                        <a class="btn--icon" href="<?php the_field('resume', 'option'); ?>" target="_blank"><i class="fal fa-long-arrow-right"></i>Download Résumé</a>
+                        <a class="btn--icon" href="<?php the_field('resume', 'option'); ?>" target="_blank"><i data-aos="fade-right" data-aos-delay="600" class="fal fa-long-arrow-right"></i>Download Résumé</a>
                     </div>
                 <?php endif; ?>
 

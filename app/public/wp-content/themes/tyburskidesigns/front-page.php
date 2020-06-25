@@ -6,7 +6,7 @@
             <?php the_post_thumbnail( 'full', array( 'data-aos' => 'zoom-out', 'data-aos-delay' => '800' ) ); ?>
         </div>
 
-        <div class="col-xl-6 d-flex flex-column align-items-start justify-content-end front-page--content">
+        <div class="col-xl-6 d-flex flex-column align-items-start justify-content-center justify-content-xl-end front-page--content">
             <h1 data-aos="fade-up"><?php the_field('title'); ?></h1>
             <?php the_field('content'); ?>
             <?php $button = get_field('button'); ?>

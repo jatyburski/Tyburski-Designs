@@ -3,7 +3,7 @@
     background-size: 1px 1em;
     box-shadow: 0 -0.15em inset;
     display: inline-block;
-    margin: 50px 0 0 var(--col);
+    margin-top: 50px;
     position: relative;
     @include media-breakpoint-down(lg) {
         margin: 40px 0 0 var(--col);
@@ -15,6 +15,46 @@
         margin-top: 10px;
         i {
             margin-right: 30px;
+        }
+    }
+    &--large {
+        @extend %h2;
+        background: rgba(theme-color('white'), .03);
+        height: 350px;
+        margin: 300px 0 250px;
+        padding: 50px var(--col);
+        span {
+            @extend %p;
+            font-weight: 400;
+            letter-spacing: 0;
+            text-transform: none;
+        }
+        i {
+            @include fontSize(90px);
+            line-height: 0;
+            right: var(--col);
+        }
+    }
+    &--arrow {
+        color: theme-color('white');
+        left: 50%;
+        position: absolute;
+        top: 50px;
+        transform: translateX(-50%);
+        span:last-of-type {
+            color: theme-color('secondary');
+            margin-top: 60px;
+            position: relative;
+            &:before {
+                background: rgba(theme-color('white'), .03);
+                content: '';
+                height: 70px;
+                left: 50%;
+                position: absolute;
+                top: -83px;
+                transform: translateX(-50%);
+                width: 70px;
+            }
         }
     }
 }

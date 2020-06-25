@@ -139,8 +139,14 @@
     width: 70px;
     z-index: 100;
     &:hover #{$i}-icon {
-        &:before,
+        &:before {
+            transform: translateY(-8px);
+            @at-root .nav-is-open & {
+                top: 0;
+            }
+        }
         &:after {
+            transform: translateY(8px);
             @at-root .nav-is-open & {
                 top: 0;
             }
@@ -154,6 +160,9 @@
         top: calc(50% - 1px);
         transition: transform 0.3s;
         width: 24px;
+        @at-root .nav-is-open & {
+            transform: rotate(180deg);
+        }
         @at-root %menu-lines {
             background: inherit;
             backface-visibility: hidden;
@@ -162,19 +171,17 @@
             position: absolute;
             right: 0;
             top: 0;
-            transition: transform 0.5s, width 0.5s, top .3s;
+            transition: transform 0.2s, width 0.5s, top .3s;
             width: 100%;
             will-change: transform, width, top;
-        }
-        @at-root .nav-is-open & {
-            transform: rotate(180deg);
         }
         &:before {
             @extend %menu-lines;
             transform: translateY(-6px);
             transform-origin: right top;
             @at-root .nav-is-open & {
-                transform: rotate(45deg);
+                transform: rotate(45deg) translateY(0) !important;
+                transition: transform 0.5s, width 0.5s, top .3s;
                 width: 50%;
             }
         }
@@ -183,12 +190,10 @@
             transform: translateY(6px);
             transform-origin: right bottom;
             @at-root .nav-is-open & {
-                transform: rotate(-45deg);
+                transform: rotate(-45deg) translateY(0) !important;
+                transition: transform 0.5s, width 0.5s, top .3s;
                 width: 50%;
             }
-        }
-        @at-root #{$i}:active & {
-            transform: scale(0.9);
         }
     }
 }

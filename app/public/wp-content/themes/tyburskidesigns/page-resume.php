@@ -9,10 +9,23 @@
         <aside class="offset-1 col-lg-3 resume--contact">
             <?php $contact = get_field('contact'); ?>
             <?php if ($contact) : ?>
+
                 <ul class="m-0 p-0">
-                    <li data-aos="fade-up"><span><i class="far fa-map-marker-alt"></i><?php echo $contact['location']; ?></span></li>
-                    <li data-aos="fade-up" data-aos-delay="600"><a class="btn m-0" href="tel:<?php echo $contact['phone']; ?>"><i class="far fa-phone"></i><?php echo $contact['phone']; ?></a></li>
-                    <li data-aos="fade-up" data-aos-delay="700"><a class="btn m-0" href="mailto:<?php echo $contact['email']; ?>"><i class="far fa-envelope-open-text"></i><?php echo $contact['email']; ?></a></li>
+                    <li data-aos="fade-up">
+                        <span><i class="far fa-map-marker-alt"></i><?php echo $contact['location']; ?></span>
+                    </li>
+                    <li data-aos="fade-up" data-aos-delay="600">
+                        <a class="btn m-0" href="tel:<?php echo preg_replace( '/[^0-9 ]/i', '', $contact['phone']); ?>">
+                            <i class="far fa-phone"></i>
+                            <?php echo $contact['phone']; ?>
+                        </a>
+                    </li>
+                    <li data-aos="fade-up" data-aos-delay="700">
+                        <a class="btn m-0" href="mailto:<?php echo $contact['email']; ?>">
+                            <i class="far fa-envelope-open-text"></i>
+                            <?php echo $contact['email']; ?>
+                        </a>
+                    </li>
                     <li data-aos="fade-up" data-aos-delay="800">
                         <?php 
                             $url = home_url();
@@ -21,6 +34,7 @@
                         <a class="btn m-0" href="<?php echo home_url('/', 'https'); ?>"><i class="far fa-link"></i><?php echo $domain; ?></a>
                     </li>
                 </ul>
+
             <?php endif; ?>
         </aside>
     </section>
@@ -37,8 +51,10 @@
 
                             <?php $positions = $job['position']; ?>
                             <?php if ($positions) : ?>
+
                                 <ul class="m-0 p-0 resume--unmarked">
                                     <?php foreach ($positions as $position) : ?>
+
                                         <li data-aos="fade-up" data-aos-delay="700">
                                             <p>
                                                 <strong><?php echo $position['title']; ?></strong>
@@ -46,8 +62,10 @@
                                                 <span><?php echo $position['location']; ?></span>
                                             </p>
                                         </li>
+
                                     <?php endforeach; ?>
                                 </ul> 
+
                             <?php endif; ?>
 
                             <?php echo $job['description']; ?>
@@ -73,6 +91,7 @@
 
                                 <ul class="m-0 p-0">
                                     <?php foreach ($details as $detail) : ?>
+
                                         <li data-aos="fade-up" class="resume--spacer">
                                             <p><strong><?php echo $detail['proficiency']; ?></strong></p>
 
@@ -86,6 +105,7 @@
                                                 <?php endif; ?>
                                             </p>
                                         </li>
+
                                     <?php endforeach; ?>
                                 </ul>
 
@@ -118,7 +138,7 @@
                             <?php endif; ?>
 
                             <p data-aos="fade-up" data-aos-delay="700">
-                                <span><?php echo $edu['year']; ?></span>
+                                <time><?php echo $edu['year']; ?></time>
                                 <span><?php echo $edu['major']; ?></span>
                             </p>
                         </li>
@@ -145,18 +165,17 @@
 
                                             <?php if ($details) : ?>
                                                 <ul class="p-0 resume--spacer">
-                                                <?php foreach ($details as $detail) : ?>
-                                                    <li data-aos="fade-up">
-                                                        <p>
-                                                            <span><?php echo $detail['year']; ?></span>
-                                                            <span><?php echo $detail['category']; ?></span>
-                                                            <span><?php echo $detail['notes']; ?></span>
-                                                        </p>
-                                                    </li>
-                                                <?php endforeach; ?>
+                                                    <?php foreach ($details as $detail) : ?>
+                                                        <li data-aos="fade-up">
+                                                            <p>
+                                                                <time><?php echo $detail['year']; ?></time>
+                                                                <span><?php echo $detail['category']; ?></span>
+                                                                <span><?php echo $detail['notes']; ?></span>
+                                                            </p>
+                                                        </li>
+                                                    <?php endforeach; ?>
                                                 </ul>
                                             <?php endif; ?>
-
                                         </li>
                                     <?php endforeach; ?>
                                 </ul>
@@ -168,15 +187,14 @@
 
         </aside>
     </section>
-
-    <section class="row no-gutters position-relative">
-        <div data-aos="fade-down" class="d-flex flex-column resume--arrow">
-            <?php echo str_repeat('<span>+</span>', 4); ?>
-            <div class="resume--arrow-block"></div>
-        </div>
-        <div class="offset-1 col-10">
-            <a class="d-flex align-items-center justify-content-center resume--download" href="<?php the_field('resume', 'option'); ?>">Download Résumé</a>
-        </div>
-    </section>
+    
+    <?php 
+        $arr = [
+            'url' => get_field('resume', 'option'),
+            'title' => 'Download Resume'
+        ];
+        set_query_var( 'button', $arr );
+        layout_get_component('button-large'); 
+    ?>
 
 <?php get_footer(); ?>

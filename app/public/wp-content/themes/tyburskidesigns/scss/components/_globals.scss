@@ -14,15 +14,6 @@ $theme-colors: (
     "white": #FFFFFF,
 );
 
-$grid-breakpoints: (
-    xs: 0,
-    sm: 576px,
-    md: 768px,
-    lg: 992px,
-    xl: 1200px,
-    xxl: 1920px
-) !default;
-
 ::selection {
     background: theme-color('secondary');
     color: theme-color('white');
@@ -41,17 +32,50 @@ body {
 
 
 // -----------------------
-// Placeholder Selectors
+// Inheritances
 // -----------------------
+
+%bar {
+    background: theme-color('secondary');
+    height: 170px;
+    position: absolute;
+    transform: translateX(-50%);
+    width: var(--col);
+}
 
 %bg-tint {
     background: rgba(theme-color('white'), .03);
+}
+
+%bullet {
+    &:not(:first-child):before {
+        color: theme-color('secondary');
+        content: '\2022';
+        display: inline-block;
+        margin: 0 10px 0 8px;
+    }
 }
 
 %container {
     height: calc(100vh - 80px);
     padding: 80px var(--col) 0;
     position: relative;
+}
+
+%lists {
+    p {
+        strong {
+            @extend %h5;
+            --tt-key: title;
+            color: theme-color('secondary') !important;
+        }
+        * {
+            @extend %bullet;
+        }
+        + p {
+            margin: 0;
+        }
+    }
 }
 
 %pattern {
@@ -77,4 +101,20 @@ body {
     letter-spacing: 3px;
     line-height: 2.5;
     text-transform: uppercase;
+}
+
+%title-underline {
+    position: relative;
+    &:after {
+        background: theme-color('white');
+        bottom: -20px;
+        content: '';
+        height: 1px;
+        left: 0;
+        position: absolute;
+        width: 100%;
+    }
+    &:not(:first-of-type) {
+        margin-top: 125px;
+    }
 }
