@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="<?php echo get_bloginfo('template_directory'); ?>/style.css" rel="stylesheet">
@@ -35,7 +35,7 @@
                                 <ul class="text-center p-0 nav-fullscreen--social">
                                     <?php while (have_rows('social_media', 'option')) : the_row(); ?>
                                         <li>
-                                            <a href="<?php the_sub_field('link'); ?>" target="_blank">
+                                            <a href="<?php the_sub_field('link'); ?>" rel="nofollow noopener" target="_blank">
                                                 <i class="fab fa-<?php the_sub_field('platform'); ?>"></i>
                                             </a>
                                         </li>
@@ -49,10 +49,7 @@
                                 wp_nav_menu([
                                     'menu'            => 'Primary',
                                     'theme_location'  => 'Primary',
-                                    'container'       => 'div',
-                                    'container_id'    => 'bs4navbar',
                                     'container_class' => 'nav-fullscreen--nav',
-                                    'menu_id'         => false,
                                     'menu_class'      => 'navbar-nav',
                                     'depth'           => 1,
                                     'fallback_cb'     => 'bs4navwalker::fallback',
@@ -66,10 +63,7 @@
                                 wp_nav_menu([
                                     'menu'            => 'Projects',
                                     'theme_location'  => 'Projects',
-                                    'container'       => 'div',
-                                    'container_id'    => 'bs4navbar',
                                     'container_class' => 'nav-fullscreen--projects',
-                                    'menu_id'         => false,
                                     'menu_class'      => 'navbar-nav',
                                     'fallback_cb'     => 'bs4navwalker::fallback',
                                     'walker'          => new bs4navwalker()

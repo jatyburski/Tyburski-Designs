@@ -5589,7 +5589,7 @@ body {
   width: var(--col);
 }
 
-.about--hero, .about--image, .about--full-img, .contact--content, .front-page--image, .front-page--content {
+.err--content, .about--hero, .about--image, .about--full-img, .contact--content, .front-page--image, .front-page--content {
   background: rgba(255, 255, 255, 0.03);
 }
 
@@ -5600,7 +5600,7 @@ body {
   margin: 0 10px 0 8px;
 }
 
-.about, .contact, .front-page {
+.err, .about, .contact, .front-page {
   height: calc(100vh - 80px);
   padding: 80px var(--col) 0;
   position: relative;
@@ -5724,6 +5724,7 @@ h3,
 .btn--icon,
 .nav-fullscreen--nav li a,
 .nav-fullscreen--projects > ul > li > a,
+.err--content p,
 .contact--content p,
 .resume--jobs ul h2 {
   --tt-key: h3;
@@ -5874,7 +5875,7 @@ p a,
   z-index: 10;
 }
 
-.home .navbar, .page-id-19 .navbar, .page-id-17 .navbar {
+.home .navbar, .page-id-19 .navbar, .page-id-17 .navbar, .error404 .navbar {
   left: 0;
   position: absolute;
   top: 0;
@@ -6278,6 +6279,10 @@ p a,
     font-size: 11px;
     font-size: 0.6875rem;
   }
+}
+
+.err--content h1 {
+  color: #FFC857;
 }
 
 .about .mouse {

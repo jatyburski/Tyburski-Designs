@@ -1,0 +1,12 @@
+.err {
+    @extend %container;
+    &--content {
+        @extend %bg-tint;
+        h1 {
+            color: theme-color('secondary');
+        }
+        p {
+            @extend %h3;
+        }
+    }
+}

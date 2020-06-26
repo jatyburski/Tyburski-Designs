@@ -8,7 +8,7 @@
                     <?php if (have_rows('social_media', 'option')) : ?>
                         <p>
                             <?php while (have_rows('social_media', 'option')) : the_row(); ?>
-                                <a href="<?php the_sub_field('link'); ?>" target="_blank">
+                                <a href="<?php the_sub_field('link'); ?>" rel="nofollow noopener" target="_blank">
                                     <i class="fab fa-<?php the_sub_field('platform'); ?>"></i>
                                 </a>
                             <?php endwhile; ?>
