@@ -11,20 +11,17 @@
 
     <body <?php body_class(); ?>>
 
-        <div data-aos="fade-right" data-aos-delay="100" id="#nav-fullscreen" class="nav-fullscreen--trigger js-nav-fullscreen--trigger">
-            <span class="nav-fullscreen--trigger-icon" aria-hidden="true"></span>
+        <div data-aos="fade-right" data-aos-delay="100" id="#nav-fullscreen" class="position-fixed nav-fullscreen--trigger js-nav-fullscreen--trigger">
+            <span class="position-absolute nav-fullscreen--trigger__icon" aria-hidden="true"></span>
         </div>
 
-        <div id="nav-fullscreen" class="nav-fullscreen">
-            <div class="nav-fullscreen--content">
+        <div id="nav-fullscreen" class="position-fixed nav-fullscreen">
+            <div class="nav-fullscreen__content">
                 <div class="container-fluid p-0 h-100 d-flex flex-column">
 
-                    <section class="row no-gutters navbar">
+                    <section class="row no-gutters position-absolute navbar">
                         <nav class="col-lg-6 d-flex align-items-start">
-                            <a class="navbar-brand p-0 m-0" href="/">
-                                <?php bloginfo('name'); ?>
-                                <span><?php bloginfo('description'); ?></span>
-                            </a>
+                            <?php layout_get_component('logo'); ?>
                         </nav>
                     </section>
 
@@ -32,7 +29,7 @@
 
                         <div class="col-lg-1">
                             <?php if (have_rows('social_media', 'option')) : ?>
-                                <ul class="text-center p-0 nav-fullscreen--social">
+                                <ul class="text-center p-0 nav-fullscreen__social">
                                     <?php while (have_rows('social_media', 'option')) : the_row(); ?>
                                         <li>
                                             <a href="<?php the_sub_field('link'); ?>" rel="nofollow noopener" target="_blank">
@@ -49,7 +46,7 @@
                                 wp_nav_menu([
                                     'menu'            => 'Primary',
                                     'theme_location'  => 'Primary',
-                                    'container_class' => 'nav-fullscreen--nav',
+                                    'container_class' => 'nav-fullscreen__nav',
                                     'menu_class'      => 'navbar-nav',
                                     'depth'           => 1,
                                     'fallback_cb'     => 'bs4navwalker::fallback',
@@ -63,8 +60,8 @@
                                 wp_nav_menu([
                                     'menu'            => 'Projects',
                                     'theme_location'  => 'Projects',
-                                    'container_class' => 'nav-fullscreen--projects',
-                                    'menu_class'      => 'navbar-nav',
+                                    'container_class' => 'nav-fullscreen__projects',
+                                    'menu_class'      => 'navbar-nav infinite',
                                     'fallback_cb'     => 'bs4navwalker::fallback',
                                     'walker'          => new bs4navwalker()
                                 ]);
@@ -76,16 +73,14 @@
             </div>
         </div>
 
-        <div class="site-container">
+        <div class="position-relative overflow-hidden site-container">
 
         <header class="container-fluid navbar d-block">
             <section class="row no-gutters">
 
                 <nav class="col-lg-6 d-flex align-items-start">
-                    <a class="navbar-brand p-0 m-0" href="/">
-                        <?php bloginfo('name'); ?>
-                        <span><?php bloginfo('description'); ?></span>
-                    </a>
+                    <?php layout_get_component('logo'); ?>
+
                     <nav class="d-flex align-items-start">
                         <?php breadcrumbs(); ?>
                     </nav>
@@ -93,7 +88,7 @@
 
                 <?php if (is_page('contact') || is_page('resume')) : ?>
                     <div data-aos="fade-left" class="col-lg-6 d-flex justify-content-end">
-                        <a class="btn--icon" href="<?php the_field('resume', 'option'); ?>" target="_blank"><i data-aos="fade-right" data-aos-delay="600" class="fal fa-long-arrow-right"></i>Download Résumé</a>
+                        <a class="btn__icon" href="<?php the_field('resume', 'option'); ?>" target="_blank"><i data-aos="fade-right" data-aos-delay="600" class="fal fa-long-arrow-right"></i>Download Résumé</a>
                     </div>
                 <?php endif; ?>
 

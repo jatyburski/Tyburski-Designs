@@ -32,3 +32,13 @@
 @function calculateRem($size) {
    @return $size * 1rem / 16px;
 }
+
+
+// -----------------------
+// Width & Height
+// -----------------------
+
+@mixin width-height($width, $height: $width) {
+    width: $width;
+    height: $height;
+}

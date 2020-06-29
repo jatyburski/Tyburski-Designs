@@ -12,12 +12,10 @@
     &-brand {
         @extend %h3;
         --tt-key: header;
-        display: inline-block;
         letter-spacing: 3px;
         span {
             @include fontSize(11px);
             color: theme-color('secondary');
-            display: block;
             font-family: var(--secondary-font);
             font-weight: 700;
             letter-spacing: 1px;
@@ -34,12 +32,12 @@
             font-weight: 900;
             letter-spacing: 3px;
             line-height: 1;
-            text-transform: uppercase;
             &:before {
                 color: theme-color('secondary');
                 content: '/';
                 display: inline-block;
                 margin: 0 15px;
+                padding: 0;
             }
         }
     }

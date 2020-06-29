@@ -19,15 +19,18 @@
 @import 'components/header';
 @import 'components/button';
 @import 'components/navigation';
+@import 'components/scroll';
 @import 'components/footer';
 
 // Pages
-@import 'pages/err';
+@import 'pages/404';
 @import 'pages/about';
 @import 'pages/contact';
 @import 'pages/front-page';
 @import 'pages/projects';
 @import 'pages/resume';
+
+// Posts
 
 // Animation
 @import 'node_modules/aos/dist/aos';

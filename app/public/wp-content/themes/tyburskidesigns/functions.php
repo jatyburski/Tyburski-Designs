@@ -80,7 +80,7 @@ add_action('admin_menu', 'post_remove');
 // -----------------------
 
 add_theme_support('post-thumbnails', array(
-    'post',
+    'projects',
     'page',
 ));
 
@@ -119,16 +119,19 @@ function breadcrumbs() {
     global $wp_query;
     if (!is_front_page()) {
         echo '<ol class="breadcrumb p-0 m-0">';
-        if (is_category() || is_single()) {
-            if (is_single()) {
-                echo '<li class="breadcrumb-item">' . get_the_title() . '</a></li>';
+        if (is_archive() || is_single()) {
+            if (is_archive()) {
+                echo '<li class="breadcrumb-item text-uppercase p-0">' . get_the_archive_title() . '</li>';
             }
             else {
-                the_category('<span>/</span>');
+                echo '<li class="breadcrumb-item text-uppercase p-0"><a href="' . get_post_type_archive_link('projects') . '">' . get_the_archive_title() . '</a></li><li class="breadcrumb-item">' . get_the_title() . '</li>';
             }
-        } 
+        }
+        if (is_404()) {
+            echo '<li class="breadcrumb-item text-uppercase p-0">404: Page Not Found</li>';
+        }
         elseif (is_page()) {
-            echo '<li class="breadcrumb-item">' . get_the_title() . '</a></li>';
+            echo '<li class="breadcrumb-item text-uppercase p-0">' . get_the_title() . '</a></li>';
         }
         echo "</ol>";
     }
@@ -151,3 +154,25 @@ function pattern_rectangle($rows, $columns) {
         echo("\n"); 
     } 
 } 
+
+
+// -----------------------
+// Remove Default Pre Titles
+// -----------------------
+
+add_filter( 'get_the_archive_title', 'remove_pre_title' );
+
+function remove_pre_title( $title ) {
+	if ( is_category() ) {
+		$title = single_cat_title( '', false );
+	} elseif ( is_tag() ) {
+		$title = single_tag_title( '', false );
+	} elseif ( is_post_type_archive() ) {
+		$title = post_type_archive_title( '', false );
+	} elseif ( is_tax() ) {
+		$title = single_term_title( '', false );
+	} elseif ( is_home() ) {
+		$title = single_post_title( '', false );
+	}
+	return $title;
+}

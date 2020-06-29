@@ -2,7 +2,9 @@
 
 <?php if ( $arr ) : ?>
     <section class="row no-gutters position-relative">
-        <?php layout_get_component('arrow'); ?>
+        <div data-aos="fade-down" class="d-flex flex-column position-absolute btn__arrow">
+            <?php echo str_repeat('<span>+</span>', 4); ?>
+        </div>
 
         <div class="offset-1 col-10">
             <?php 
@@ -13,7 +15,7 @@
                     $align = 'center';
                 } 
             ?>
-            <a class="d-flex flex-column align-items-<?php echo $align; ?> justify-content-center position-relative btn--large" href="<?php echo $arr['url']; ?>">
+            <a class="d-flex flex-column align-items-<?php echo $align; ?> justify-content-center position-relative btn__lg" href="<?php echo $arr['url']; ?>">
                 <?php 
                     if ($arr['kicker']) {
                         echo '<span>' . $arr['kicker'] . '</span>';

@@ -25,7 +25,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     font-variant-numeric: lining-nums;
     overflow-x: hidden;
-    @at-root .home, .page-id-19 {
+    @at-root .home, .page-id-19, .error404 {
         overflow: hidden;
     }
 }
@@ -36,11 +36,10 @@ body {
 // -----------------------
 
 %bar {
+    @include width-height(var(--col), 170px);
     background: theme-color('secondary');
-    height: 170px;
     position: absolute;
     transform: translateX(-50%);
-    width: var(--col);
 }
 
 %bg-tint {
@@ -62,6 +61,21 @@ body {
     position: relative;
 }
 
+%icon-square {
+    @include fontSize(18px);
+    @include width-height(42px, 40px);
+    padding: 10px;
+    text-align: center;
+    transform: translateX(-50%);
+    &:after {
+        content: '';
+        left: 50%;
+        position: absolute;
+        transform: translateX(-50%);
+        width: 1px;
+    }
+}
+
 %lists {
     p {
         strong {
@@ -76,6 +90,18 @@ body {
             margin: 0;
         }
     }
+}
+
+%menu-lines {
+    @include width-height(100%);
+    background: inherit;
+    backface-visibility: hidden;
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: transform 0.2s, width 0.5s, top .3s;
+    will-change: transform, width, top;
 }
 
 %pattern {

@@ -1,8 +1,6 @@
 
 .site-container {
     background: theme-color('primary');
-    overflow: hidden;
-    position: relative;
     transition: transform 0.7s cubic-bezier(.91,.01,.6,.99);
     will-change: transform;
     z-index: 2;
@@ -12,14 +10,12 @@
 }
   
 .nav-fullscreen {
+    @include width-height(100%);
     background: theme-color('secondary');
-    height: 100%;
     left: 0;
-    position: fixed;
     top: 0;
     visibility: hidden;
     transition: visibility 0.7s;
-    width: 100%;
     z-index: 1;
     @at-root .nav-is-open & {
         visibility: visible;
@@ -27,7 +23,7 @@
     a {
         text-decoration: none;
     }
-    &--content {
+    &__content {
         height: 100vh;
         overflow-y: auto;
         transform: translateX(-50%);
@@ -40,7 +36,6 @@
         }
         .navbar {
             left: 0;
-            position: absolute;
             top: 0;
             &-brand {
                 color: theme-color('primary');
@@ -50,8 +45,7 @@
             }
         }
     }
-    &--social {
-        list-style-type: none;
+    &__social {
         margin-bottom: 45px;
         li {
             margin-bottom: 30px;
@@ -59,12 +53,11 @@
                 margin-bottom: 0;
                 position: relative;
                 &:after {
+                    @include width-height(1px, 30px);
                     background: theme-color('primary');
                     content: '';
                     display: block;
-                    height: 30px;
                     margin: 30px auto 0;
-                    width: 1px;
                 }
             }
         }
@@ -72,7 +65,7 @@
             color: theme-color('primary');
         }
     }
-    &--nav {
+    &__nav {
         margin-bottom: 40px;
         li {
             &:not(:last-child) {
@@ -86,7 +79,7 @@
             }
         }
     }
-    &--projects {
+    &__projects {
         > ul > li {
             align-items: flex-start;
             display: flex;
@@ -106,13 +99,12 @@
                 }
             }
             .dropdown-menu {
+                @include width-height(100%, 100vh);
                 align-items: flex-start;
                 display: flex;
                 flex-direction: column;
-                height: 100vh;
                 overflow-y: auto;
                 padding-top: 215px;
-                width: 100%;
                 a {
                     @extend %h1;
                     color: theme-color('primary');
@@ -125,74 +117,57 @@
             }
         }
     }
-}
-  
-.nav-fullscreen--trigger {
-    $i: &;
-    background: theme-color-level('secondary', -2);
-    cursor: pointer;
-    height: 80px;
-    left: 0;
-    mix-blend-mode: difference;
-    position: fixed;
-    top: 140px;
-    width: 70px;
-    z-index: 100;
-    &:hover #{$i}-icon {
-        &:before {
-            transform: translateY(-8px);
-            @at-root .nav-is-open & {
-                top: 0;
+    &--trigger {
+        $i: &;
+        @include width-height(70px, 80px);
+        background: theme-color-level('secondary', -2);
+        cursor: pointer;
+        left: 0;
+        mix-blend-mode: difference;
+        top: 140px;
+        z-index: 100;
+        &:hover #{$i}__icon {
+            &:before {
+                transform: translateY(-8px);
+                @at-root .nav-is-open & {
+                    top: 0;
+                }
+            }
+            &:after {
+                transform: translateY(8px);
+                @at-root .nav-is-open & {
+                    top: 0;
+                }
             }
         }
-        &:after {
-            transform: translateY(8px);
+        &__icon {
+            @include width-height(24px, 2px);
+            background: theme-color('primary');
+            left: calc(50% - 12px);
+            top: calc(50% - 1px);
+            transition: transform 0.3s;
             @at-root .nav-is-open & {
-                top: 0;
+                transform: rotate(180deg);
             }
-        }
-    }
-    &-icon {
-        background: theme-color('primary');
-        height: 2px;
-        left: calc(50% - 12px);
-        position: absolute;
-        top: calc(50% - 1px);
-        transition: transform 0.3s;
-        width: 24px;
-        @at-root .nav-is-open & {
-            transform: rotate(180deg);
-        }
-        @at-root %menu-lines {
-            background: inherit;
-            backface-visibility: hidden;
-            content: '';
-            height: 100%; 
-            position: absolute;
-            right: 0;
-            top: 0;
-            transition: transform 0.2s, width 0.5s, top .3s;
-            width: 100%;
-            will-change: transform, width, top;
-        }
-        &:before {
-            @extend %menu-lines;
-            transform: translateY(-6px);
-            transform-origin: right top;
-            @at-root .nav-is-open & {
-                transform: rotate(45deg) translateY(0) !important;
-                transition: transform 0.5s, width 0.5s, top .3s;
-                width: 50%;
+            &:before {
+                @extend %menu-lines;
+                transform: translateY(-6px);
+                transform-origin: right top;
+                @at-root .nav-is-open & {
+                    transform: rotate(45deg) translateY(0) !important;
+                    transition: transform 0.5s, width 0.5s, top .3s;
+                    width: 50%;
+                }
             }
-        }
-        &:after {
-            @extend %menu-lines;
-            transform: translateY(6px);
-            transform-origin: right bottom;
-            @at-root .nav-is-open & {
-                transform: rotate(-45deg) translateY(0) !important;
-                transition: transform 0.5s, width 0.5s, top .3s;
-                width: 50%;
+            &:after {
+                @extend %menu-lines;
+                transform: translateY(6px);
+                transform-origin: right bottom;
+                @at-root .nav-is-open & {
+                    transform: rotate(-45deg) translateY(0) !important;
+                    transition: transform 0.5s, width 0.5s, top .3s;
+                    width: 50%;
+                }
             }
         }
     }

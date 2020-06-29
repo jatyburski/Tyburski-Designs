@@ -2,13 +2,11 @@
     @extend %small-caps;
     background-size: 1px 1em;
     box-shadow: 0 -0.15em inset;
-    display: inline-block;
     margin-top: 50px;
-    position: relative;
     @include media-breakpoint-down(lg) {
         margin: 40px 0 0 var(--col);
     }
-    &--icon {
+    &__icon {
         @extend %h3;
         --tt-key: header;
         color: theme-color('secondary');
@@ -17,7 +15,7 @@
             margin-right: 30px;
         }
     }
-    &--large {
+    &__lg {
         @extend %h2;
         background: rgba(theme-color('white'), .03);
         height: 350px;
@@ -35,10 +33,9 @@
             right: var(--col);
         }
     }
-    &--arrow {
+    &__arrow {
         color: theme-color('white');
         left: 50%;
-        position: absolute;
         top: 50px;
         transform: translateX(-50%);
         span:last-of-type {
@@ -46,14 +43,13 @@
             margin-top: 60px;
             position: relative;
             &:before {
+                @include width-height(70px);
                 background: rgba(theme-color('white'), .03);
                 content: '';
-                height: 70px;
                 left: 50%;
                 position: absolute;
                 top: -83px;
                 transform: translateX(-50%);
-                width: 70px;
             }
         }
     }

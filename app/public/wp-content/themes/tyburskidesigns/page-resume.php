@@ -1,27 +1,27 @@
 <?php get_header(); ?>
 
     <section class="row no-gutters resume">
-        <div class="offset-1 col-lg-6 resume--person">
+        <div class="offset-1 col-lg-6 resume__person">
             <h1 data-aos="fade-up"><?php bloginfo('name'); ?></h1>
             <p data-aos="fade-up" data-aos-delay="600"><strong><?php the_field('title'); ?></strong></p>
         </div>
 
-        <aside class="offset-1 col-lg-3 resume--contact">
+        <aside class="offset-1 col-lg-3 resume__contact">
             <?php $contact = get_field('contact'); ?>
             <?php if ($contact) : ?>
 
                 <ul class="m-0 p-0">
-                    <li data-aos="fade-up">
+                    <li data-aos="fade-up" class="mb-0">
                         <span><i class="far fa-map-marker-alt"></i><?php echo $contact['location']; ?></span>
                     </li>
                     <li data-aos="fade-up" data-aos-delay="600">
-                        <a class="btn m-0" href="tel:<?php echo preg_replace( '/[^0-9 ]/i', '', $contact['phone']); ?>">
+                        <a class="d-inline-block position-relative btn m-0" href="tel:<?php echo preg_replace( '/[^0-9 ]/i', '', $contact['phone']); ?>">
                             <i class="far fa-phone"></i>
                             <?php echo $contact['phone']; ?>
                         </a>
                     </li>
                     <li data-aos="fade-up" data-aos-delay="700">
-                        <a class="btn m-0" href="mailto:<?php echo $contact['email']; ?>">
+                        <a class="d-inline-block position-relative btn m-0" href="mailto:<?php echo $contact['email']; ?>">
                             <i class="far fa-envelope-open-text"></i>
                             <?php echo $contact['email']; ?>
                         </a>
@@ -31,7 +31,7 @@
                             $url = home_url();
                             $domain = parse_url($url, PHP_URL_HOST);
                         ?>
-                        <a class="btn m-0" href="<?php echo home_url('/', 'https'); ?>"><i class="far fa-link"></i><?php echo $domain; ?></a>
+                        <a class="d-inline-block position-relative btn m-0" href="<?php echo home_url('/', 'https'); ?>"><i class="far fa-link"></i><?php echo $domain; ?></a>
                     </li>
                 </ul>
 
@@ -40,42 +40,40 @@
     </section>
 
     <section class="row no-gutters resume">
-        <div class="offset-1 col-lg-6 resume--jobs">
+        <div class="offset-1 col-lg-6 resume__exp">
             <?php $jobs = get_field('jobs'); ?>
             <?php if ($jobs) : ?>
+                <?php foreach ($jobs as $job) : ?>
 
-                <ul class="m-0 p-0">
-                    <?php foreach ($jobs as $job) : ?>
-                        <li>
-                            <h2 data-aos="fade-up" data-aos-delay="600"><?php echo $job['company']; ?></h2>
+                    <div class="resume__exp__section">
+                        <h2 data-aos="fade-up" data-aos-delay="600"><?php echo $job['company']; ?></h2>
 
-                            <?php $positions = $job['position']; ?>
-                            <?php if ($positions) : ?>
+                        <?php $positions = $job['position']; ?>
+                        <?php if ($positions) : ?>
 
-                                <ul class="m-0 p-0 resume--unmarked">
-                                    <?php foreach ($positions as $position) : ?>
+                            <ul class="m-0 p-0">
+                                <?php foreach ($positions as $position) : ?>
 
-                                        <li data-aos="fade-up" data-aos-delay="700">
-                                            <p>
-                                                <strong><?php echo $position['title']; ?></strong>
-                                                <span><?php echo $position['duration']; ?></span>
-                                                <span><?php echo $position['location']; ?></span>
-                                            </p>
-                                        </li>
+                                    <li data-aos="fade-up" data-aos-delay="700" class="m-0">
+                                        <p>
+                                            <strong><?php echo $position['title']; ?></strong>
+                                            <span><?php echo $position['duration']; ?></span>
+                                            <span><?php echo $position['location']; ?></span>
+                                        </p>
+                                    </li>
 
-                                    <?php endforeach; ?>
-                                </ul> 
+                                <?php endforeach; ?>
+                            </ul> 
 
-                            <?php endif; ?>
+                        <?php endif; ?>
 
-                            <?php echo $job['description']; ?>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
+                        <?php echo $job['description']; ?>
+                    </div>
 
+                <?php endforeach; ?>
             <?php endif; ?>
 
-            <h2 data-aos="fade-in">Skills</h2>
+            <h2 data-aos="fade-in" class="resume__exp__title">Skills</h2>
 
             <?php $skills = get_field('skills'); ?>
             <?php if ($skills) : ?>
@@ -118,7 +116,7 @@
             <?php endif; ?>
         </div>
         
-        <aside class="offset-1 col-lg-3 resume--side">
+        <aside class="offset-1 col-lg-3 resume__side">
             <h2 data-aos="fade-in" data-aos-delay="900">Education</h2>
             <?php $education = get_field('education'); ?>
 
@@ -132,7 +130,7 @@
                             <?php if ($courses) : ?>
                                 <ul class="m-0 p-0">
                                     <?php foreach ($courses as $course) : ?>
-                                        <li data-aos="fade-up" data-aos-delay="700"><p><strong><?php echo $course['course']; ?></strong></p></li>
+                                        <li data-aos="fade-up" data-aos-delay="700" class="m-0"><p><strong><?php echo $course['course']; ?></strong></p></li>
                                     <?php endforeach; ?>
                                 </ul>
                             <?php endif; ?>
@@ -158,15 +156,16 @@
                             <?php $organizations = $award['awards']; ?>
                             <?php if ($organizations) : ?>
                                 <ul class="m-0 p-0">
+
                                     <?php foreach ($organizations as $organization) : ?>
                                         <li>
                                             <p data-aos="fade-up"><strong><?php echo $organization['award']; ?></strong></p>
                                             <?php $details = $organization['details']; ?>
 
                                             <?php if ($details) : ?>
-                                                <ul class="p-0 resume--spacer">
+                                                <ul class="p-0">
                                                     <?php foreach ($details as $detail) : ?>
-                                                        <li data-aos="fade-up">
+                                                        <li data-aos="fade-up" class="m-0">
                                                             <p>
                                                                 <time><?php echo $detail['year']; ?></time>
                                                                 <span><?php echo $detail['category']; ?></span>
@@ -178,8 +177,10 @@
                                             <?php endif; ?>
                                         </li>
                                     <?php endforeach; ?>
+                                    
                                 </ul>
                             <?php endif; ?>
+
                         </li>
                     <?php endforeach; ?>
                 </ul>

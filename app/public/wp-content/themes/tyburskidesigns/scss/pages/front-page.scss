@@ -1,17 +1,14 @@
 .front-page {
     @extend %container;
-    &--image {
+    &__image {
         @extend %bg-tint;
         mix-blend-mode: exclusion;
-        overflow: hidden;
-        position: relative;
         img {
             @include object-fit(cover, top right);
-            height: 100%;
-            width: 100%;
+            @include width-height(100%);
         }
     }
-    &--content {
+    &__content {
         @extend %bg-tint;
         --tt-key: front-page;
         --tt-min: 1366;
@@ -31,7 +28,7 @@
             margin: 50px 0 0 var(--col);
         }
     }
-    &--pattern {
+    &__pattern {
         @extend %pattern;
         height: 50%;
         left: 50%;

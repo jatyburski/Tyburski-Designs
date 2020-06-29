@@ -1,7 +1,7 @@
 .contact {
     @extend %container;
     z-index: 1;
-    &--content {
+    &__content {
         @extend %bg-tint;
         *:not(.contact--image):not(img) {
             position: relative;
@@ -14,28 +14,22 @@
             @extend %h2;
             background: theme-color('secondary');
             color: theme-color('primary');
-            display: inline-block;
-            margin: 0 auto;
             min-width: calc(var(--col) * 8);
             padding: 30px;
-            width: auto;
         }
     }
-    &--image {
+    &__image {
+        @include width-height(calc(var(--col) * 5), 50%);
         bottom: 0;
-        height: 50%;
         opacity: .75;
-        position: absolute;
         right: 0;
-        width: calc(var(--col) * 5);
         img {
             @include object-fit(cover, center);
-            height: 100%;
+            @include width-height(100%);
             mix-blend-mode: exclusion;
-            width: 100%;
         }
     }
-    &--pattern {
+    &__pattern {
         @extend %pattern;
         height: 50%;
         left: 50%;

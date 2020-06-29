@@ -4,11 +4,11 @@
             
             <div class="col-lg-5 d-flex align-items-center justify-content-between">
                 <p>&copy; <?php echo date('Y'); ?> <span><?php bloginfo('name'); ?></span>. All Rights Reserved.</p>
-                <div class="footer--social">
+                <div class="footer__social">
                     <?php if (have_rows('social_media', 'option')) : ?>
                         <p>
                             <?php while (have_rows('social_media', 'option')) : the_row(); ?>
-                                <a href="<?php the_sub_field('link'); ?>" rel="nofollow noopener" target="_blank">
+                                <a href="<?php the_sub_field('link'); ?>" aria-label="<?php the_sub_field('platform'); ?>" rel="nofollow noopener" target="_blank">
                                     <i class="fab fa-<?php the_sub_field('platform'); ?>"></i>
                                 </a>
                             <?php endwhile; ?>
@@ -18,7 +18,7 @@
             </div>
 
             <div class="col-lg-2 position-relative">
-                <div class="footer--bar"></div>
+                <div class="footer__bar"></div>
             </div>
 
             <div class="col-lg-5 d-flex align-items-center justify-content-end">
