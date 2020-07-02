@@ -80,3 +80,104 @@
         }
     }
 }
+
+.project {
+    &__title {
+        margin-bottom: 58px;
+        &:after {
+            @extend %bg-tint;
+            @include width-height(100%, 100px);
+            bottom: -58px;
+            content: '';
+            left: 0;
+            position: absolute;
+        }
+    }
+    &__categories {
+        margin: 100px 0 0px;
+        // &:before {
+        //     @include width-height(20px, 2px);
+        //     background: theme-color('secondary');
+        //     bottom: -10px;
+        //     content: '';
+        //     left: 50%;
+        //     position: absolute;
+        //     transform: translateX(-50%);
+        // }
+        li {
+            @extend %bullet;
+            @extend %p;
+            color: theme-color('secondary');
+            &:not(:first-child):before {
+                color: theme-color('white');
+                margin: 0 20px 0 16px;
+            }
+        }
+    }
+    &__hero {
+        background-attachment: fixed;
+        background-size: 100%;
+    }
+    &__content {
+        margin: var(--col) 0;
+        .col-lg-6 {
+            margin-bottom: 100px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+            h2 ~ p {
+                margin-top: 40px;
+            }
+        }
+        &--lg h2 {
+            @extend %h4;
+            text-transform: none;
+            + h2 {
+                margin-top: 40px;
+            }
+        }
+        &--tint {
+            @extend %bg-tint;
+            padding: var(--col) 0;
+        }
+    }
+    &__appendix {
+        margin-top: 70px;
+        li:not(:first-child) {
+            margin-left: calc(var(--col) / 2);
+        }
+        dt {
+            @extend %h6;
+            color: theme-color('secondary');
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        dd {
+            @extend %p;
+        }
+    }
+    &__img {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: 2fr 2fr;
+        margin-bottom: 50px;
+        li {
+            &:first-child:nth-last-child(odd) {
+                grid-column: auto / span 2;
+            }
+            &:last-child:nth-last-child(even),
+            &:last-child:nth-last-child(even) ~ & {
+                grid-column: auto / span 1;
+            }
+        }
+        img {
+            @include object-fit(cover, center);
+            @include width-height(100%);
+        }
+        &-caption h3 {
+            @extend %h5;
+            letter-spacing: 0;
+            text-transform: none;
+        }
+    }
+}

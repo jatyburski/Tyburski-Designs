@@ -127,26 +127,24 @@
     }
     &__testimonials {
         margin-top: 250px;
-        ul {
-            &:before {
-                @include fontSize(600px);
-                color: theme-color('secondary');
-                content: '"';
-                font-family: var(--primary-font);
-                right: calc(100% + 20px);
-                line-height: 0;
-                position: absolute;
-                top: 175px;
+        ul:before {
+            @include fontSize(600px);
+            color: theme-color('secondary');
+            content: '"';
+            font-family: var(--primary-font);
+            right: calc(100% + 20px);
+            line-height: 0;
+            position: absolute;
+            top: 175px;
+        }
+        blockquote {
+            p {
+                @extend %h4;
             }
-            blockquote {
-                p {
-                    @extend %h4;
-                }
-                cite {
-                    @extend %p;
-                    font-style: normal;
-                    margin-top: 100px;
-                }
+            cite {
+                @extend %p;
+                font-style: normal;
+                margin-top: 100px;
             }
         }
     }

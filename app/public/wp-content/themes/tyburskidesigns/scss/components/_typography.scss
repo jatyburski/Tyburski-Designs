@@ -141,8 +141,8 @@ h6,
 // Body
 // -----------------------
 
-a:hover {
-    text-decoration: none;
+a {
+    text-decoration: none !important;
 }
 
 p,
@@ -161,7 +161,15 @@ p,
         margin-top: 20px;
     }
     a {
+        box-shadow: 0 0 inset;
         color: theme-color('secondary');
+        font-weight: 700;
+        transition: box-shadow 0.2s ease-in, color 0.1s linear;
+        &:hover {
+            box-shadow: 0 -75px inset theme-color('secondary');
+            color: theme-color('primary');
+            transition: box-shadow 0.3s ease-in, color 0s linear;
+        }
     }
 }
 

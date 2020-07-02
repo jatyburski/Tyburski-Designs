@@ -6,7 +6,6 @@
         <link href="<?php echo get_bloginfo('template_directory'); ?>/style.css" rel="stylesheet">
         <?php wp_head(); ?>
         <title><?php wp_title('&raquo;', true, 'right'); ?> <?php bloginfo('name'); ?>, Web Designer in the Greater Baltimore, MD Area</title>
-        <script src="https://kit.fontawesome.com/ce83ebeb69.js" crossorigin="anonymous"></script>
     </head>
 
     <body <?php body_class(); ?>>
@@ -78,7 +77,7 @@
         <header class="container-fluid navbar d-block">
             <section class="row no-gutters">
 
-                <nav class="col-lg-6 d-flex align-items-start">
+                <nav class="col-lg-9 d-flex align-items-start">
                     <?php layout_get_component('logo'); ?>
 
                     <nav class="d-flex align-items-start">
@@ -87,7 +86,7 @@
                 </nav>
 
                 <?php if (is_page('contact') || is_page('resume')) : ?>
-                    <div data-aos="fade-left" class="col-lg-6 d-flex justify-content-end">
+                    <div data-aos="fade-left" class="col-lg-3 d-flex justify-content-end">
                         <a class="btn__icon" href="<?php the_field('resume', 'option'); ?>" target="_blank"><i data-aos="fade-right" data-aos-delay="600" class="fal fa-long-arrow-right"></i>Download Résumé</a>
                     </div>
                 <?php endif; ?>

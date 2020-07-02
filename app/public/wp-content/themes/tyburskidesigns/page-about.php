@@ -126,8 +126,8 @@
             'url' => $button_arr['url'],
             'title' => $button_arr['title']
         ];
-        set_query_var( 'button', $arr );
-        layout_get_component('button-large'); 
+        set_query_var('button', $arr);
+        layout_get_component('button-lg'); 
     ?>
 
 <?php get_footer(); ?>

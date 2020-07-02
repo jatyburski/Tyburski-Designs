@@ -15,27 +15,33 @@
             <ul class="row m-0 align-items-end projects">
                 <?php while ($query->have_posts() && $query->current_post) : $query->the_post(); ?> 
                     <li class="offset-4 col-lg-8">
-                        <?php layout_get_component('project-cta'); ?>
+                        <?php layout_get_component('card'); ?>
                     </li>
                 <?php endwhile; ?>
 
                 <?php while ($query->have_posts() && $query->current_post < 3) : $query->the_post(); ?>
                     <li class="col-lg-4">
-                        <?php layout_get_component('project-cta'); ?>
+                        <?php layout_get_component('card'); ?>
                     </li>
                 <?php endwhile; ?>
                 
                 <?php while ($query->have_posts() && $query->current_post < 4) : $query->the_post(); ?> 
                     <li class="col-lg-8 mr-5">
-                        <?php layout_get_component('project-cta'); ?>
+                        <?php layout_get_component('card'); ?>
                     </li>
                 <?php endwhile; ?>
 
-                <?php while ($query->have_posts() && $query->current_post < 8) : $query->the_post(); ?>
+                <?php while ($query->have_posts() && $query->current_post < 7) : $query->the_post(); ?>
                     <li class="col-lg-4">
-                        <?php layout_get_component('project-cta'); ?>
+                        <?php layout_get_component('card'); ?>
                     </li>
                 <?php endwhile; ?>  
+
+                <?php while ($query->have_posts() && $query->current_post < 8) : $query->the_post(); ?> 
+                    <li class="offset-4 col-lg-8">
+                        <?php layout_get_component('card'); ?>
+                    </li>
+                <?php endwhile; ?>
             </ul>
         </section>
     <?php endif; ?>

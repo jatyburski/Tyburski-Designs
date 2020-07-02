@@ -104,6 +104,21 @@ body {
     will-change: transform, width, top;
 }
 
+%nav-active {
+    &.active {
+        position: relative;
+        &:after {
+             @include width-height(calc(100% + 15px), 10px);
+             background: theme-color('white');
+             bottom: 2px;
+             content: '';
+             left: -10px;
+             position: absolute;
+             z-index: -1;
+        }
+    }
+}
+
 %pattern {
     @include fontSize(16px);
     color: rgba(theme-color('white'), .07);

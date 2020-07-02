@@ -73,7 +73,9 @@
             }
             a {
                 @extend %h3;
+                @extend %nav-active;
                 color: theme-color('primary');
+                display: inline-block;
                 letter-spacing: 3px;
                 padding: 0;
             }
@@ -107,11 +109,17 @@
                 padding-top: 215px;
                 a {
                     @extend %h1;
+                    @extend %nav-active;
                     color: theme-color('primary');
                     display: inline-block;
                     line-height: .75;
                     &:not(:last-child) {
                         margin-bottom: 30px;
+                    }
+                    &:after {
+                        bottom: -8px !important;
+                        height: 30px !important;
+                        width: calc(100% + 4px) !important;
                     }
                 }
             }

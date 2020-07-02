@@ -195,7 +195,7 @@
             'title' => 'Download Resume'
         ];
         set_query_var( 'button', $arr );
-        layout_get_component('button-large'); 
+        layout_get_component('button-lg'); 
     ?>
 
 <?php get_footer(); ?>
