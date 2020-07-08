@@ -17,3 +17,8 @@
 [22-Jun-2020 18:10:17] NOTICE: fpm is running, pid 1355
 [22-Jun-2020 18:10:17] NOTICE: ready to handle connections
 [24-Jun-2020 13:47:10] WARNING: [pool www] child 1363 said into stderr: "sh: gs: command not found"
+[05-Jul-2020 15:47:04] NOTICE: Terminating ...
+[05-Jul-2020 15:47:05] NOTICE: Terminating ...
+[05-Jul-2020 15:47:05] NOTICE: exiting, bye-bye!
+[05-Jul-2020 15:50:10] NOTICE: fpm is running, pid 27285
+[05-Jul-2020 15:50:10] NOTICE: ready to handle connections

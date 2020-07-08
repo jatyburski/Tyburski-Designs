@@ -1,6 +1,6 @@
-<a href="<?php the_permalink(); ?>" class="d-block position-relative projects__tilt">
+<a href="<?php the_permalink(); ?>" class="d-block h-100 position-relative projects__tilt">
     <figure class="d-block m-0 position-relative projects__img">
-        <?php the_post_thumbnail( 'full', array( 'data-aos' => 'zoom-out' ), ['class' => 'd-block m-0'] ); ?>
+        <?php the_post_thumbnail( 'full', ['class' => 'd-block m-0'] ); ?>
 
         <div class="position-absolute overflow-hidden projects__deco projects__deco--shine"></div>
 

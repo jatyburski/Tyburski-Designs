@@ -7,7 +7,7 @@
 function add_theme_scripts() {
     wp_enqueue_script( 'aos', 'https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js', array (), '2.3.4', true);
     wp_enqueue_script( 'typetura', 'https://cdn.jsdelivr.net/gh/scottkellum/typetura.js@master/js/typetura.min.js', array (), false, true);
-    wp_enqueue_script( 'simple-slider', 'https://cdnjs.cloudflare.com/ajax/libs/simple-slider/1.0.0/simpleslider.min.js', array (), '1.0.0', true);
+    wp_enqueue_script( 'parallax', 'https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js', array (), '1.0.0', true);
     wp_enqueue_script( 'font-awesome', 'https://kit.fontawesome.com/ce83ebeb69.js', array (), false, true);
     wp_enqueue_script( 'main', get_template_directory_uri() . '/js/index.js', array (), false, true);
 }
@@ -26,23 +26,6 @@ function add_async_attribute($tag, $handle) {
  }
 
  add_filter('script_loader_tag', 'add_async_attribute', 10, 2);
-
-
-// -----------------------
-// Styles
-// -----------------------
-
- function add_rel_preload($html, $handle, $href, $media) {
-    
-    if (is_admin())
-        return $html;
-
-    $html = <<<EOT
-    <link rel='preload' as='style' onload="this.onload=null;this.rel='stylesheet'" id='$handle' href='$href' type='text/css' media='all' />
-    EOT;
-    return $html;
-}
-add_filter( 'style_loader_tag', 'add_rel_preload', 10, 4 );
 
 
 // -----------------------
@@ -74,9 +57,10 @@ function create_posttype() {
                 'custom-fields',
                 'page-attributes'
             ),
+            'menu_name'         => 'Projects',
             'menu_icon'         => 'dashicons-images-alt2',
             'public'            => true,
-            'has_archive'       => true,
+            'has_archive'       => false,
             'rewrite'           => array('slug' => 'projects'),
             'show_ui'           => true,
             'show_in_menu'      => true,
@@ -150,12 +134,12 @@ function breadcrumbs() {
     global $wp_query;
     if (!is_front_page()) {
         echo '<ol class="breadcrumb p-0 m-0">';
-        if (is_archive() || is_single()) {
-            if (is_archive()) {
-                echo '<li class="breadcrumb-item text-uppercase p-0" aria-current="page">' . get_the_archive_title() . '</li>';
+        if (is_home() || is_single()) {
+            if (is_home()) {
+                echo '<li class="breadcrumb-item text-uppercase p-0" aria-current="page">' . get_the_title(get_option('page_for_posts', true)) . '</li>';
             }
             else {
-                echo '<li class="breadcrumb-item text-uppercase p-0"><a href="' . get_post_type_archive_link('projects') . '">' . get_the_archive_title() . '</a></li><li class="breadcrumb-item text-uppercase p-0" aria-current="page">' . get_the_title() . '</li>';
+                echo '<li class="breadcrumb-item text-uppercase p-0"><a href="' . get_post_type_archive_link('post') . '">' . get_the_title(get_option('page_for_posts', true)) . '</a></li><li class="breadcrumb-item text-uppercase p-0" aria-current="page">' . get_the_title() . '</li>';
             }
         }
         if (is_404()) {

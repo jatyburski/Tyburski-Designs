@@ -1,6 +1,9 @@
 .navbar {
     padding: 40px 80px 50px;
     z-index: 10;
+    @include media-breakpoint-down(lg) {
+        padding: 40px var(--col) 50px;
+    }
     @at-root .home &, .page-id-19 &, .page-id-17 &, .error404 & {
         left: 0;
         position: absolute;
@@ -13,13 +16,16 @@
         @extend %h3;
         --tt-key: header;
         letter-spacing: 3px;
-        span {
+        strong {
             @include fontSize(11px);
             color: theme-color('secondary');
             font-family: var(--secondary-font);
             font-weight: 700;
             letter-spacing: 1px;
             margin-top: 3px;
+            @include media-breakpoint-down(lg) {
+                @include fontSize(10.5px);
+            }
         }
     }
     .breadcrumb {
@@ -32,12 +38,15 @@
             font-weight: 900;
             letter-spacing: 3px;
             line-height: 1;
-            &:before {
+            &::before {
                 color: theme-color('secondary');
                 content: '/';
                 display: inline-block;
                 margin: 0 15px;
                 padding: 0;
+            }
+            a {
+                color: theme-color('white');
             }
         }
     }
@@ -45,6 +54,10 @@
 
 @keyframes header {
     0%,
+    29% {
+        @include fontSize(50px);
+    }
+    30%,
     100% {
         @include fontSize(55px);
     }

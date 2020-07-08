@@ -6,7 +6,7 @@
             <?php echo str_repeat('<span>+</span>', 4); ?>
         </div>
 
-        <div class="offset-1 col-10">
+        <div class="offset-xl-1 col-xl-10">
             <?php 
                 if ($arr['kicker']) {
                     $align = 'start';
@@ -15,7 +15,7 @@
                     $align = 'center';
                 } 
             ?>
-            <a class="d-flex flex-column align-items-<?php echo $align; ?> justify-content-center position-relative btn__lg" href="<?php echo $arr['url']; ?>">
+            <a class="d-flex flex-column align-items-<?php echo $align; ?> justify-content-center position-relative btn--lg" href="<?php echo $arr['url']; ?>">
                 <?php 
                     if ($arr['kicker']) {
                         echo '<span>' . $arr['kicker'] . '</span>';

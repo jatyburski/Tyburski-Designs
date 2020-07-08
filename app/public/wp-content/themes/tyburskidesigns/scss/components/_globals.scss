@@ -27,6 +27,9 @@ body {
     overflow-x: hidden;
     @at-root .home, .page-id-19, .error404 {
         overflow: hidden;
+        @include media-breakpoint-down(sm) {
+            overflow: visible;
+        }
     }
 }
 
@@ -40,6 +43,15 @@ body {
     background: theme-color('secondary');
     position: absolute;
     transform: translateX(-50%);
+    @include media-breakpoint-down(lg) {
+        @include width-height(calc(var(--col) * 1.5), 140px);
+    }
+    @include media-breakpoint-down(md) {
+        @include width-height(calc(var(--col) * 2), 170px);
+    }
+    @include media-breakpoint-down(sm) {
+        display: none;
+    }
 }
 
 %bg-tint {
@@ -47,7 +59,7 @@ body {
 }
 
 %bullet {
-    &:not(:first-child):before {
+    &:not(:first-child)::before {
         color: theme-color('secondary');
         content: '\2022';
         display: inline-block;
@@ -59,6 +71,10 @@ body {
     height: calc(100vh - 80px);
     padding: 80px var(--col) 0;
     position: relative;
+    @include media-breakpoint-down(lg) {
+        height: calc(100vh - 60px);
+        padding: 0;
+    }
 }
 
 %icon-square {
@@ -76,12 +92,26 @@ body {
     }
 }
 
+%link {
+    box-shadow: 0 0 inset;
+    color: theme-color('secondary');
+    font-weight: 700;
+    transition: box-shadow 0.2s ease-in, color 0.1s linear;
+    &:hover {
+        box-shadow: 0 -75px inset theme-color('secondary');
+        color: theme-color('primary');
+        transition: box-shadow 0.3s ease-in, color 0s linear;
+    }
+}
+
 %lists {
     p {
         strong {
             @extend %h5;
             --tt-key: title;
             color: theme-color('secondary') !important;
+            letter-spacing: 0 !important;
+            text-transform: none !important;
         }
         * {
             @extend %bullet;
@@ -105,17 +135,17 @@ body {
 }
 
 %nav-active {
-    &.active {
-        position: relative;
-        &:after {
-             @include width-height(calc(100% + 15px), 10px);
-             background: theme-color('white');
-             bottom: 2px;
-             content: '';
-             left: -10px;
-             position: absolute;
-             z-index: -1;
-        }
+    position: relative;
+    &::after {
+        @include width-height(100%, 10px);
+        background: theme-color('white');
+        bottom: 2px;
+        content: '';
+        left: -2px;
+        position: absolute;
+        transform: scaleX(0);
+        transition: transform 0.2s ease-in; 
+        z-index: -1;
     }
 }
 
@@ -132,6 +162,13 @@ body {
     text-align: justify;
     user-select: none;
     width: var(--col);
+    @include media-breakpoint-down(lg) {
+        width: calc(var(--col) * 1.5);
+    }
+    @include media-breakpoint-down(md) {
+        height: 25% !important;
+        width: calc(var(--col) * 2);
+    }
 }
 
 %small-caps {
@@ -146,7 +183,7 @@ body {
 
 %title-underline {
     position: relative;
-    &:after {
+    &::after {
         background: theme-color('white');
         bottom: -20px;
         content: '';

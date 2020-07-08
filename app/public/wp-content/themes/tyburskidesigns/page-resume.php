@@ -6,7 +6,7 @@
             <p data-aos="fade-up" data-aos-delay="600"><strong><?php the_field('title'); ?></strong></p>
         </div>
 
-        <aside class="offset-1 col-lg-3 resume__contact">
+        <aside class="offset-1 col-10 col-lg-3 resume__contact">
             <?php $contact = get_field('contact'); ?>
             <?php if ($contact) : ?>
 
@@ -31,7 +31,9 @@
                             $url = home_url();
                             $domain = parse_url($url, PHP_URL_HOST);
                         ?>
-                        <a class="d-inline-block position-relative btn m-0" href="<?php echo home_url('/', 'https'); ?>"><i class="far fa-link"></i><?php echo $domain; ?></a>
+                        <a class="d-inline-block position-relative btn m-0" href="<?php echo home_url('/', 'https'); ?>">
+                            <i class="far fa-link"></i><?php echo $domain; ?>
+                        </a>
                     </li>
                 </ul>
 
@@ -40,7 +42,7 @@
     </section>
 
     <section class="row no-gutters resume">
-        <div class="offset-1 col-lg-6 resume__exp">
+        <div class="offset-1 col-10 col-lg-6 resume__exp">
             <?php $jobs = get_field('jobs'); ?>
             <?php if ($jobs) : ?>
                 <?php foreach ($jobs as $job) : ?>
@@ -53,7 +55,6 @@
 
                             <ul class="m-0 p-0">
                                 <?php foreach ($positions as $position) : ?>
-
                                     <li data-aos="fade-up" data-aos-delay="700" class="m-0">
                                         <p>
                                             <strong><?php echo $position['title']; ?></strong>
@@ -61,7 +62,6 @@
                                             <span><?php echo $position['location']; ?></span>
                                         </p>
                                     </li>
-
                                 <?php endforeach; ?>
                             </ul> 
 
@@ -77,8 +77,8 @@
 
             <?php $skills = get_field('skills'); ?>
             <?php if ($skills) : ?>
-
                 <ul class="m-0 p-0 row no-gutters align-items-start justify-content-between">
+
                     <?php foreach ($skills as $skill) : ?>
 
                         <li class="col">
@@ -86,10 +86,9 @@
 
                             <?php $details = $skill['details']; ?>
                             <?php if ($details) : ?>
-
                                 <ul class="m-0 p-0">
-                                    <?php foreach ($details as $detail) : ?>
 
+                                    <?php foreach ($details as $detail) : ?>
                                         <li data-aos="fade-up" class="resume--spacer">
                                             <p><strong><?php echo $detail['proficiency']; ?></strong></p>
 
@@ -103,25 +102,25 @@
                                                 <?php endif; ?>
                                             </p>
                                         </li>
-
                                     <?php endforeach; ?>
+
                                 </ul>
-
                             <?php endif; ?>
+
                         </li>
-
                     <?php endforeach; ?>
-                </ul>
 
+                </ul>
             <?php endif; ?>
         </div>
         
-        <aside class="offset-1 col-lg-3 resume__side">
+        <aside class="offset-1 col-10 col-lg-3 resume__side">
             <h2 data-aos="fade-in" data-aos-delay="900">Education</h2>
-            <?php $education = get_field('education'); ?>
 
+            <?php $education = get_field('education'); ?>
             <?php if ($education) : ?>
                 <ul class="m-0 p-0">
+
                     <?php foreach ($education as $edu) : ?>
                         <li>
                             <h3 data-aos="fade-up" data-aos-delay="600"><?php echo $edu['institute']; ?></h3>
@@ -130,7 +129,9 @@
                             <?php if ($courses) : ?>
                                 <ul class="m-0 p-0">
                                     <?php foreach ($courses as $course) : ?>
-                                        <li data-aos="fade-up" data-aos-delay="700" class="m-0"><p><strong><?php echo $course['course']; ?></strong></p></li>
+                                        <li data-aos="fade-up" data-aos-delay="700" class="m-0">
+                                            <p><strong><?php echo $course['course']; ?></strong></p>
+                                        </li>
                                     <?php endforeach; ?>
                                 </ul>
                             <?php endif; ?>
@@ -141,26 +142,28 @@
                             </p>
                         </li>
                     <?php endforeach; ?>
+
                 </ul>
             <?php endif; ?>
 
             <h2 data-aos="fade-in">Recent Accolades</h2>
-            <?php $accolades = get_field('accolades'); ?>
 
+            <?php $accolades = get_field('accolades'); ?>
             <?php if ($accolades) : ?>
                 <ul class="m-0 p-0">
+
                     <?php foreach ($accolades as $award) : ?>
                         <li>
                             <h3 data-aos="fade-up"><?php echo $award['institute']; ?></h3>
                             
-                            <?php $organizations = $award['awards']; ?>
-                            <?php if ($organizations) : ?>
+                            <?php $acknowlegements = $award['awards']; ?>
+                            <?php if ($acknowlegements) : ?>
                                 <ul class="m-0 p-0">
 
-                                    <?php foreach ($organizations as $organization) : ?>
+                                    <?php foreach ($acknowlegements as $acknowlegement) : ?>
                                         <li>
-                                            <p data-aos="fade-up"><strong><?php echo $organization['award']; ?></strong></p>
-                                            <?php $details = $organization['details']; ?>
+                                            <p data-aos="fade-up"><strong><?php echo $acknowlegement['award']; ?></strong></p>
+                                            <?php $details = $acknowlegement['details']; ?>
 
                                             <?php if ($details) : ?>
                                                 <ul class="p-0">
@@ -173,6 +176,7 @@
                                                             </p>
                                                         </li>
                                                     <?php endforeach; ?>
+
                                                 </ul>
                                             <?php endif; ?>
                                         </li>
@@ -180,9 +184,9 @@
                                     
                                 </ul>
                             <?php endif; ?>
-
                         </li>
                     <?php endforeach; ?>
+                    
                 </ul>
             <?php endif; ?>
 

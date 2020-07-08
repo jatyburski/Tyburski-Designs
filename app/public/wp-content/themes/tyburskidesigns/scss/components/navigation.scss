@@ -52,7 +52,7 @@
             &:last-child {
                 margin-bottom: 0;
                 position: relative;
-                &:after {
+                &::after {
                     @include width-height(1px, 30px);
                     background: theme-color('primary');
                     content: '';
@@ -67,7 +67,14 @@
     }
     &__nav {
         margin-bottom: 40px;
+        @include media-breakpoint-down(lg) {
+            margin-top: 20px;
+        }
+        .navbar-nav {
+            align-items: flex-start;
+        }
         li {
+            display: inline-block;
             &:not(:last-child) {
                 margin-bottom: 20px;
             }
@@ -78,6 +85,15 @@
                 display: inline-block;
                 letter-spacing: 3px;
                 padding: 0;
+                @include media-breakpoint-down(lg) {
+                    --tt-key: nav;
+                }
+                &:hover {
+                    opacity: 1;
+                    &::after {
+                        transform: scaleX(1);
+                    }
+                }
             }
         }
     }
@@ -94,10 +110,20 @@
                 position: relative;
                 white-space: nowrap;
                 width: calc(var(--col) + 15px);
-                &:after {
+                @include media-breakpoint-down(lg) {
+                    --tt-key: nav;
+                    display: inline-block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    width: auto;
+                }
+                &::after {
                     content: '/';
                     display: inline-block;
                     margin-left: 15px;
+                    @include media-breakpoint-down(lg) {
+                        display: none;
+                    }
                 }
             }
             .dropdown-menu {
@@ -107,19 +133,35 @@
                 flex-direction: column;
                 overflow-y: auto;
                 padding-top: 215px;
+                @include media-breakpoint-down(lg) {
+                    display: none;
+                }
+                &:hover > a {
+                    opacity: .25;
+                    &:hover {
+                        @extend %nav-active;
+                        opacity: 1;
+                        &::after {
+                            transform: scaleX(1);
+                        }
+                    }
+                }
                 a {
                     @extend %h1;
                     @extend %nav-active;
                     color: theme-color('primary');
                     display: inline-block;
                     line-height: .75;
+                    transition: all 0.2s ease-in;
                     &:not(:last-child) {
                         margin-bottom: 30px;
                     }
-                    &:after {
+                    &::after {
                         bottom: -8px !important;
                         height: 30px !important;
-                        width: calc(100% + 4px) !important;
+                    }
+                    &.active::after {
+                        @include width-height(calc(100% + 4px), 10px);
                     }
                 }
             }
@@ -134,14 +176,27 @@
         mix-blend-mode: difference;
         top: 140px;
         z-index: 100;
+        @include media-breakpoint-down(lg) {
+            @include width-height(70px, 65px);
+            top: 130px;
+        }
+        @include media-breakpoint-down(md) {
+            @include width-height(var(--col), 70px);
+            top: 140px;
+        }
+        @include media-breakpoint-down(sm) {
+            left: initial;
+            right: 0;
+            top: 40px;
+        }
         &:hover #{$i}__icon {
-            &:before {
+            &::before {
                 transform: translateY(-8px);
                 @at-root .nav-is-open & {
                     top: 0;
                 }
             }
-            &:after {
+            &::after {
                 transform: translateY(8px);
                 @at-root .nav-is-open & {
                     top: 0;
@@ -157,7 +212,7 @@
             @at-root .nav-is-open & {
                 transform: rotate(180deg);
             }
-            &:before {
+            &::before {
                 @extend %menu-lines;
                 transform: translateY(-6px);
                 transform-origin: right top;
@@ -167,7 +222,7 @@
                     width: 50%;
                 }
             }
-            &:after {
+            &::after {
                 @extend %menu-lines;
                 transform: translateY(6px);
                 transform-origin: right bottom;
@@ -178,5 +233,15 @@
                 }
             }
         }
+    }
+}
+
+@keyframes nav {
+    0%,
+    50% {
+        @include fontSize(70px);
+    }
+    75% {
+        @include fontSize(60px);
     }
 }

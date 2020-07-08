@@ -1,6 +1,15 @@
 .resume {
     margin-top: 100px;
+    @include media-breakpoint-down(md) {
+        margin-top: 75px;
+        &:first-child {
+            margin-top: 150px;
+        }
+    }
     &__person {
+        @include media-breakpoint-down(md) {
+            margin-bottom: 30px;
+        }
         h1 {
             @extend %h2;
             color: theme-color('white');
@@ -44,7 +53,7 @@
                 @extend %p;
                 color: theme-color('white');
                 position: relative;
-                &:before {
+                &::before {
                     @include width-height(25px, 2px);
                     background: theme-color('secondary');
                     content: '';
@@ -79,9 +88,18 @@
     }
     .col-lg-6 {
         padding: 0 calc(var(--col) / 2);
+        @include media-breakpoint-down(lg) {
+            padding-left: 0;
+        }
+        @include media-breakpoint-down(md) {
+            padding: 0;
+        }
     }
     .col-lg-3 {
         padding-right: calc(var(--col) / 2);
+        @include media-breakpoint-down(lg) {
+            padding-right: 0;
+        }
     }
     li {
         margin-bottom: 25px;

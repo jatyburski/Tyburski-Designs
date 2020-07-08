@@ -17,11 +17,11 @@ h1,
 @keyframes h1 {
     0%,
     20% {
-        @include fontSize(80px);
-        letter-spacing: 3px;
+        @include fontSize(120px);
+        letter-spacing: 5px;
     }
     100% {
-        @include fontSize(570px);
+        @include fontSize(470px);
         letter-spacing: 24px;
     }
 }
@@ -40,12 +40,12 @@ h2,
 
 @keyframes h2 {
     0%,
-    20% {
-        @include fontSize(80px);
-        letter-spacing: 5px;
+    34% {
+        @include fontSize(110px);
+        letter-spacing: 10px;
     }
     100% {
-        @include fontSize(280px);
+        @include fontSize(285px);
         letter-spacing: 20px;
     }
 }
@@ -66,7 +66,7 @@ h3,
 @keyframes h3 {
     0%,
     20% {
-        @include fontSize(45px);
+        @include fontSize(50px);
     }
     100% {
         @include fontSize(75px);
@@ -87,19 +87,20 @@ h4,
 @keyframes h4 {
     0%,
     20% {
-        @include fontSize(20px);
+        @include fontSize(25px);
     }
     100% {
-        @include fontSize(65px);
+        @include fontSize(54px);
     }
 }
 
 h5,
 %h5 {
+    @extend %small-caps;
     --tt-key: h5;
     --tt-min: 600;
     --tt-max: 4000;
-    color: theme-color('white');
+    color: theme-color('secondary');
     font-family: var(--secondary-font);
     font-weight: 700;
     line-height: 1.25;
@@ -117,10 +118,11 @@ h5,
 
 h6,
 %h6 {
+    @extend %small-caps;
     --tt-key: h6;
     --tt-min: 600;
     --tt-max: 4000;
-    color: theme-color('white');
+    color: theme-color('secondary');
     font-family: var(--secondary-font);
     letter-spacing: 4px;
     line-height: 1.1;
@@ -161,15 +163,7 @@ p,
         margin-top: 20px;
     }
     a {
-        box-shadow: 0 0 inset;
-        color: theme-color('secondary');
-        font-weight: 700;
-        transition: box-shadow 0.2s ease-in, color 0.1s linear;
-        &:hover {
-            box-shadow: 0 -75px inset theme-color('secondary');
-            color: theme-color('primary');
-            transition: box-shadow 0.3s ease-in, color 0s linear;
-        }
+        @extend %link;
     }
 }
 

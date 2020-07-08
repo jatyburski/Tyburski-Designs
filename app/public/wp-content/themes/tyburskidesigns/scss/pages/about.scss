@@ -1,8 +1,22 @@
 .about {
+    $this: &;
     @extend %container; 
     &__hero {
         @extend %bg-tint;
         padding: 0 0 0 var(--col) !important;
+        @include media-breakpoint-down(lg) {
+            + #{$this}__image {
+                background: transparent;
+                display: flex;
+                justify-content: flex-end;
+                opacity: .5;
+                position: absolute;
+                z-index: -1;
+                img {
+                    @include width-height(auto, 100%);
+                }
+            }
+        }
         h1 {
             @extend %h2;
             color: theme-color('white');
@@ -19,15 +33,21 @@
     &__image {
         @extend %bg-tint;
         mix-blend-mode: exclusion;
+        @include media-breakpoint-down(lg) {
+            height: 400px;
+        }
         img {
             @include object-fit(cover, top left);
             @include width-height(100%);
+            @include media-breakpoint-down(lg) {
+                @include width-height(100%);
+            }
         }
         &--full {
             height: 500px;
             margin-bottom: 100px;
             margin-top: 200px;
-            &:before {
+            &::before {
                 @extend %bar;
                 content: '';
                 height: 200px;
@@ -42,7 +62,7 @@
                 color: theme-color('secondary');
                 left: calc(var(--col) * 2);
                 bottom: -300px;
-                &:after {
+                &::after {
                     background: theme-color('secondary');
                     bottom: 100%;
                     height: 150px;
@@ -52,7 +72,7 @@
     }
     &__pattern {
         @extend %pattern;
-        height: 500px;
+        height: 500px !important;
         left: calc(var(--col) * 7.5);
         top: -200px;
         transform: translateX(-50%);
@@ -64,14 +84,23 @@
     }
     &__content {
         margin-bottom: 300px;
-        .col-lg-4 {
+        @include media-breakpoint-down(lg) {
+            margin-bottom: 150px;
+        }
+        .col-xl-4 {
             padding: 100px 0;
+            @include media-breakpoint-between(lg, lg) {
+                padding: 100px 0 50px;
+            }
         }
         h3 {
             @extend %h4;
             letter-spacing: 0;
             margin-bottom: 40px;
             text-transform: unset;
+            a {
+                @extend %link;
+            }
         }
         i {
             @extend %icon-square;
@@ -79,7 +108,10 @@
             color: theme-color('white');
             right: calc(var(--col) * 4);
             top: -200px;
-            &:after {
+            @include media-breakpoint-down(lg) {
+                right: calc(var(--col) * 2);
+            }
+            &::after {
                 background: theme-color('white');
                 height: 200px;
                 top: 100%;
@@ -87,24 +119,43 @@
         }
         &--full {
             margin-top: 300px;
+            @include media-breakpoint-down(lg) {
+                margin-top: 150px;
+            }
             i {
                 border: 1px solid theme-color('secondary');
                 color: theme-color('secondary');
                 left: calc(var(--col) * 2.5);
                 top: -450px;
-                &:after {
+                @include media-breakpoint-down(lg) {
+                    top: -300px;
+                }
+                &::after {
                     background: theme-color('secondary');
                     height: 350px;
+                    @include media-breakpoint-down(lg) {
+                        height: 200px;
+                    }
                 }
             }
         }
     }
     &__goals {
-        h2 {
+        h3 {
+            @extend %h2;
             margin-bottom: 70px;
         }
         ul {
             width: calc(var(--col) * 3);
+            @include media-breakpoint-down(lg) {
+                display: grid;
+                gap: 25px;
+                grid-template-columns: repeat(2, 1fr);
+                width: 100%;
+            }
+            h4 {
+                @extend %h3;
+            }
             li {
                 margin-bottom: 40px;
             }
@@ -115,7 +166,13 @@
             color: theme-color('secondary');
             left: calc(var(--col) * 2);
             top: -100px;
-            &:after {
+            @include media-breakpoint-down(lg) {
+                left: calc(var(--col) * 7);
+            }
+            @include media-breakpoint-down(md) {
+                top: -150px;
+            }
+            &::after {
                 background: theme-color('secondary');
                 bottom: 100%;
                 height: 150px;
@@ -127,7 +184,13 @@
     }
     &__testimonials {
         margin-top: 250px;
-        ul:before {
+        @include media-breakpoint-down(lg) {
+            margin-top: 150px;
+        }
+        h3 {
+            @extend %h6;
+        }
+        ul::before {
             @include fontSize(600px);
             color: theme-color('secondary');
             content: '"';
@@ -135,9 +198,10 @@
             right: calc(100% + 20px);
             line-height: 0;
             position: absolute;
-            top: 175px;
+            top: 165px;
         }
         blockquote {
+            padding-top: 10px;
             p {
                 @extend %h4;
             }
@@ -158,7 +222,7 @@
             @extend %title-underline;
             color: theme-color('secondary');
             margin-bottom: 50px;
-            &:after {
+            &::after {
                 background: theme-color('secondary');
             }
         }

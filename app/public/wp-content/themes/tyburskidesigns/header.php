@@ -14,33 +14,32 @@
             <span class="position-absolute nav-fullscreen--trigger__icon" aria-hidden="true"></span>
         </div>
 
-        <div id="nav-fullscreen" class="position-fixed nav-fullscreen">
+        <div id="nav-fullscreen" class="position-fixed text-center text-xl-left nav-fullscreen">
             <div class="nav-fullscreen__content">
                 <div class="container-fluid p-0 h-100 d-flex flex-column">
 
                     <section class="row no-gutters position-absolute navbar">
-                        <nav class="col-lg-6 d-flex align-items-start">
+                        <nav class="col-xl-6 d-flex align-items-start">
                             <?php layout_get_component('logo'); ?>
                         </nav>
                     </section>
 
                     <section class="row no-gutters flex-grow-1 align-items-end">
 
-                        <div class="col-lg-1">
-                            <?php if (have_rows('social_media', 'option')) : ?>
-                                <ul class="text-center p-0 nav-fullscreen__social">
-                                    <?php while (have_rows('social_media', 'option')) : the_row(); ?>
-                                        <li>
-                                            <a href="<?php the_sub_field('link'); ?>" rel="nofollow noopener" target="_blank">
-                                                <i class="fab fa-<?php the_sub_field('platform'); ?>"></i>
-                                            </a>
-                                        </li>
-                                    <?php endwhile; ?>
-                                </ul>
-                            <?php endif; ?>
+                    <div class="order-xl-3 offset-1 offset-xl-0 col-10 h-lg-100">
+                        <?php
+                                wp_nav_menu([
+                                    'menu'            => 'Projects',
+                                    'theme_location'  => 'Projects',
+                                    'container_class' => 'nav-fullscreen__projects',
+                                    'menu_class'      => 'navbar-nav',
+                                    'fallback_cb'     => 'bs4navwalker::fallback',
+                                    'walker'          => new bs4navwalker()
+                                ]);
+                            ?>
                         </div>
 
-                        <div class="col-lg-1">
+                        <div class="order-xl-2 offset-1 offset-xl-0 col-10 col-xl-1">
                             <?php
                                 wp_nav_menu([
                                     'menu'            => 'Primary',
@@ -54,17 +53,20 @@
                             ?>
                         </div>
 
-                        <div class="col-lg-10 h-100">
-                        <?php
-                                wp_nav_menu([
-                                    'menu'            => 'Projects',
-                                    'theme_location'  => 'Projects',
-                                    'container_class' => 'nav-fullscreen__projects',
-                                    'menu_class'      => 'navbar-nav infinite',
-                                    'fallback_cb'     => 'bs4navwalker::fallback',
-                                    'walker'          => new bs4navwalker()
-                                ]);
-                            ?>
+                        <div class="order-lg-1 offset-1 offset-xl-0 col-10 col-xl-1">
+                            <?php if (have_rows('social_media', 'option')) : ?>
+                                <ul class="text-center p-0 nav-fullscreen__social">
+
+                                    <?php while (have_rows('social_media', 'option')) : the_row(); ?>
+                                        <li>
+                                            <a href="<?php the_sub_field('link'); ?>" rel="nofollow noopener" target="_blank">
+                                                <i class="fab fa-<?php the_sub_field('platform'); ?>"></i>
+                                            </a>
+                                        </li>
+                                    <?php endwhile; ?>
+                                    
+                                </ul>
+                            <?php endif; ?>
                         </div>
 
                     </section>

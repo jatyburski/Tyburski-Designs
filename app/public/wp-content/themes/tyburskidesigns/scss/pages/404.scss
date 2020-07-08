@@ -2,6 +2,9 @@
     @extend %container;
     &__content {
         @extend %bg-tint;
+        @include media-breakpoint-down(md) {
+            padding: 0 calc(var(--col) * 1.5) !important;
+        }
         h1 {
             color: theme-color('secondary');
         }

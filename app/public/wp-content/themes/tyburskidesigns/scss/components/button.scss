@@ -3,24 +3,28 @@
     background-size: 1px 1em;
     box-shadow: 0 -0.15em inset;
     margin-top: 50px;
-    @include media-breakpoint-down(lg) {
-        margin: 40px 0 0 var(--col);
-    }
     &__icon {
         @extend %h3;
         --tt-key: header;
         color: theme-color('secondary');
         margin-top: 10px;
+        white-space: nowrap;
+        @include media-breakpoint-down(lg) {
+            display: none;
+        }
         i {
             margin-right: 30px;
         }
     }
-    &__lg {
+    &--lg {
         @extend %h2;
         background: rgba(theme-color('white'), .03);
         height: 350px;
         margin: 300px 0 250px;
         padding: 50px var(--col);
+        @include media-breakpoint-between(lg, lg) {
+            height: 275px;
+        }
         span {
             @extend %p;
             font-weight: 400;
@@ -31,18 +35,18 @@
             @include fontSize(90px);
             line-height: 0;
             right: var(--col);
+            top: calc(50% + 23px); 
         }
     }
     &__arrow {
         color: theme-color('white');
-        left: 50%;
+        left: calc(50% - 5px);
         top: 50px;
-        transform: translateX(-50%);
         span:last-of-type {
             color: theme-color('secondary');
             margin-top: 60px;
             position: relative;
-            &:before {
+            &::before {
                 @include width-height(70px);
                 background: rgba(theme-color('white'), .03);
                 content: '';

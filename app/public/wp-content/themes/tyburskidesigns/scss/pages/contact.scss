@@ -7,6 +7,10 @@
             position: relative;
             z-index: 2;
         }
+        h1 {
+            @extend %h3;
+            margin-bottom: 20px;
+        }
         p {
             @extend %h3;
         }
@@ -16,6 +20,12 @@
             color: theme-color('primary');
             min-width: calc(var(--col) * 8);
             padding: 30px;
+            @include media-breakpoint-between(lg, lg) {
+                padding: 20px;
+            }
+            @include media-breakpoint-down(lg) {
+                min-width: 100vw;
+            }
         }
     }
     &__image {
@@ -23,6 +33,9 @@
         bottom: 0;
         opacity: .75;
         right: 0;
+        @include media-breakpoint-down(lg) {
+            @include width-height(100%, 50%);
+        }
         img {
             @include object-fit(cover, center);
             @include width-height(100%);

@@ -3,29 +3,67 @@
     &__image {
         @extend %bg-tint;
         mix-blend-mode: exclusion;
+        @include media-breakpoint-down(lg) {
+            background: transparent;
+            bottom: 0;
+            height: 95% !important;
+            right: 0;
+            opacity: 0.5;
+            position: absolute !important;
+            transform: translateX(35%);
+            z-index: 1;
+        }
+        @include media-breakpoint-down(md) {
+            left: 0;
+            transform: none;
+        }
         img {
             @include object-fit(cover, top right);
             @include width-height(100%);
+            @include media-breakpoint-down(lg) {
+                @include width-height(auto, 100%);
+            }
         }
     }
     &__content {
         @extend %bg-tint;
-        --tt-key: front-page;
-        --tt-min: 1366;
-        --tt-max: 1600;
+        padding: 6vw 0;
+        @include media-breakpoint-down(lg) {
+            padding: 15vw var(--col) 0 !important;
+            position: relative;
+            z-index: 2;
+        }
+        @include media-breakpoint-down(md) {
+            padding-top: 20vw !important;
+        }
         h1 {
             @extend %h2;
-            margin-bottom: 50px;
-            padding-right: var(--col) / 2;
-            // @include media-breakpoint-down(xl) {
-            //     margin-bottom: 40px;
-            // }
+            margin-bottom: 40px;
+            @include media-breakpoint-between(lg, lg) {
+                padding-right: calc(var(--col) * 2);
+            }
         }
         p {
             padding: 0 var(--col);
+            @include media-breakpoint-down(lg) {
+                padding: 0;
+                width: calc(var(--col) * 5);
+            }
+            @include media-breakpoint-down(md) {
+                width: calc(var(--col) * 7);
+            }
+            @include media-breakpoint-down(sm) {
+                width: 100%;
+            }
         }
         .btn {
-            margin: 50px 0 0 var(--col);
+            margin: 40px 0 0 var(--col);
+            @include media-breakpoint-down(lg) {
+                margin: 40px 0 0 var(--col);
+            }
+            @include media-breakpoint-down(lg) {
+                margin: 40px 0 0;
+            }
         }
     }
     &__pattern {
@@ -34,15 +72,5 @@
         left: 50%;
         top: 0;
         transform: translate(-50%, -6px);
-    }
-}
-
-@keyframes front-page {
-    0%,
-    85% {
-        padding: 60px 0 70px;
-    }
-    100% {
-        padding: 60px 0 100px;
     }
 }

@@ -3,6 +3,10 @@
     padding: 0 80px;
     position: relative;
     z-index: 10;
+    @include media-breakpoint-down(lg) {
+        height: 60px;
+        padding: 18px 30px;
+    }
     p {
         --tt-key: footer;
         font-weight: 500;
@@ -13,9 +17,15 @@
         i {
             @include fontSize(15px);
             margin: 0 3px;
+            @include media-breakpoint-down(lg) {
+                @include fontSize(11px);
+            }
         }
     }
     &__social {
+        @include media-breakpoint-down(lg) {
+            display: none;
+        }
         a:not(:last-child) {
             margin-right: 30px;
         }
@@ -24,7 +34,10 @@
         @extend %bar;
         bottom: 0;
         left: 50%;
-        &:before {
+        @include media-breakpoint-down(lg) {
+            bottom: -18px;
+        }
+        &::before {
             @include fontSize(250px);
             color: theme-color('white');
             content: '+';
@@ -40,6 +53,10 @@
 
 @keyframes footer {
     0%,
+    74% {
+        @include fontSize(9px);
+    }
+    75%,
     100% {
         @include fontSize(11px);
     }
