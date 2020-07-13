@@ -1,3 +1,7 @@
+// -----------------------
+// Projects Page
+// -----------------------
+
 .projects {
     display: grid;
     gap: 40px 35px;
@@ -15,8 +19,10 @@
         grid-template-columns: 1fr;
         padding: 0 var(--col) 25px;
     }
+    @include media('>=phone', '<tablet', 'landscape') {
+        padding-left: calc(var(--col) * 2);
+    }
     &__card {
-        $this: &;
         &:nth-child(even) {
             transform: translateY(50%);
             @include media-breakpoint-down(sm) {
@@ -40,7 +46,7 @@
             @include media-breakpoint-down(sm) {
                 grid-column: 1;
             }
-            + #{$this} {
+            + .projects__card {
                 grid-column-start: 1;
                 @include media-breakpoint-down(sm) {
                     grid-column-start: initial;
@@ -109,16 +115,24 @@
     }
 }
 
+
+// -----------------------
+// Single Project
+// -----------------------
+
 .project {
     &__title {
         margin-bottom: 58px;
         @include media-breakpoint-between(lg, lg) {
             margin-bottom: 38px;
         }
+        @include media-breakpoint-down(sm) {
+            margin: 50px 0 0px;
+        }
         &::after {
             @extend %bg-tint;
             @include width-height(100%, 100px);
-            bottom: -58px;
+            bottom: -88px;
             content: '';
             left: 0;
             position: absolute;
@@ -129,10 +143,17 @@
             @include media-breakpoint-down(md) {
                 @include width-height(100%, 80px);
             }
+            @include media-breakpoint-down(sm) {
+                bottom: -43px;
+                height: 57px;
+            }
         }
     }
     &__categories {
-        margin: 100px 0 0px;
+        margin: 100px 0 15px;
+        @include media-breakpoint-down(sm) {
+            display: none;
+        }
         li {
             @extend %bullet;
             @extend %p;
@@ -149,8 +170,11 @@
     }
     &__content {
         margin: var(--col) 0;
-        .col-lg-6 {
+        .col-lg-8 {
             margin-bottom: 100px;
+            @include media('>=phone', '<tablet', 'landscape') {
+                padding-left: var(--col);
+            }
             &:last-child {
                 margin-bottom: 0;
             }
@@ -174,6 +198,9 @@
         margin-top: 70px;
         li:not(:first-child) {
             margin-left: calc(var(--col) / 2);
+            @include media-breakpoint-down(sm) {
+                margin-left: 0;
+            }
         }
         dt {
             @extend %h6;

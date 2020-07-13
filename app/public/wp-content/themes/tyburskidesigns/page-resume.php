@@ -53,9 +53,9 @@
                         <?php $positions = $job['position']; ?>
                         <?php if ($positions) : ?>
 
-                            <ul class="m-0 p-0">
+                            <ul class="m-0 p-0 resume__exp__section-positions">
                                 <?php foreach ($positions as $position) : ?>
-                                    <li data-aos="fade-up" data-aos-delay="700" class="m-0">
+                                    <li data-aos="fade-up" data-aos-delay="700">
                                         <p>
                                             <strong><?php echo $position['title']; ?></strong>
                                             <span><?php echo $position['duration']; ?></span>
@@ -77,7 +77,7 @@
 
             <?php $skills = get_field('skills'); ?>
             <?php if ($skills) : ?>
-                <ul class="m-0 p-0 row no-gutters align-items-start justify-content-between">
+                <ul class="m-0 p-0 row no-gutters align-items-start justify-content-between flex-column flex-md-row">
 
                     <?php foreach ($skills as $skill) : ?>
 
@@ -186,7 +186,7 @@
                             <?php endif; ?>
                         </li>
                     <?php endforeach; ?>
-                    
+
                 </ul>
             <?php endif; ?>
 

@@ -3,6 +3,9 @@
     background-size: 1px 1em;
     box-shadow: 0 -0.15em inset;
     margin-top: 50px;
+    @include media-breakpoint-down(sm) {
+        @include fontSize(10px);
+    }
     &__icon {
         @extend %h3;
         --tt-key: header;
@@ -25,17 +28,31 @@
         @include media-breakpoint-between(lg, lg) {
             height: 275px;
         }
+        @include media-breakpoint-down(sm) {
+            height: auto;
+            margin-bottom: 10px;
+            padding: 50px var(--col);
+        }
+        @include media('>=phone', '<tablet', 'landscape') {
+            padding-left: calc(var(--col) * 2);
+        }
         span {
             @extend %p;
             font-weight: 400;
             letter-spacing: 0;
             text-transform: none;
+            @include media-breakpoint-down(sm) {
+                margin-bottom: 10px;
+            }
         }
         i {
             @include fontSize(90px);
             line-height: 0;
             right: var(--col);
             top: calc(50% + 23px); 
+            @include media-breakpoint-down(sm) {
+                display: none;
+            }
         }
     }
     &__arrow {

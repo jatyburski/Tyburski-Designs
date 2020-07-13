@@ -7,6 +7,13 @@
         height: 60px;
         padding: 18px 30px;
     }
+    @include media-breakpoint-down(sm) {
+        margin-bottom: 130px;
+    }
+    @include media('>=phone', '<tablet', 'landscape') {
+        margin-bottom: 0;
+        padding-left: calc(var(--col) * 2) !important;
+    }
     p {
         --tt-key: footer;
         font-weight: 500;
@@ -14,9 +21,16 @@
         * {
             color: theme-color('secondary');
         }
+        a:hover {
+            box-shadow: none;
+            i {
+                transform: scale(1.75);
+            }
+        }
         i {
             @include fontSize(15px);
             margin: 0 3px;
+            transition: all .15s ease-in-out;
             @include media-breakpoint-down(lg) {
                 @include fontSize(11px);
             }
@@ -47,6 +61,10 @@
             position: absolute;
             top: 0;
             transform: translate(-50%, -50%);
+            @media speech {
+                display: none;
+                visibility: hidden;
+            }
         }
     }
 }

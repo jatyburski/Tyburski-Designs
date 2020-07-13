@@ -12,6 +12,9 @@
 // Bootstrap
 @import 'components/bs4-partials';
 
+// Include Media
+@import 'node_modules/include-media/dist/include-media';
+
 // Components
 @import 'components/mixins';
 @import 'components/globals';
@@ -29,8 +32,6 @@
 @import 'pages/front-page';
 @import 'pages/projects';
 @import 'pages/resume';
-
-// Posts
 
 // Animation
 @import 'node_modules/aos/dist/aos';

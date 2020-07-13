@@ -1,3 +1,6 @@
+// -----------------------
+// Site Content Container
+// -----------------------
 
 .site-container {
     background: theme-color('primary');
@@ -9,6 +12,10 @@
     }
 }
   
+// -----------------------
+// Desktop & Tablet Nav
+// -----------------------
+
 .nav-fullscreen {
     @include width-height(100%);
     background: theme-color('secondary');
@@ -27,12 +34,12 @@
         height: 100vh;
         overflow-y: auto;
         transform: translateX(-50%);
-        transition: transform 0.7s cubic-bezier(.86,.01,.77,.78);
+        transition: transform 0.7s cubic-bezier(.86, .01, .77, .78);
         -webkit-overflow-scrolling: touch;
         will-change: transform;
         @at-root .nav-is-open & {
             transform: translateX(0);
-            transition: transform 0.5s cubic-bezier(.82,.01,.77,.78);
+            transition: transform 0.5s cubic-bezier(.82, .01, .77, .78);
         }
         .navbar {
             left: 0;
@@ -63,6 +70,12 @@
         }
         a {
             color: theme-color('primary');
+            i {
+                transition: all .15s ease-in-out;
+            }
+            &:hover i {
+                transform: scale(1.75);
+            }
         }
     }
     &__nav {
@@ -168,12 +181,13 @@
         }
     }
     &--trigger {
-        $i: &;
+        $this: &;
         @include width-height(70px, 80px);
         background: theme-color-level('secondary', -2);
         cursor: pointer;
         left: 0;
         mix-blend-mode: difference;
+        outline: none;
         top: 140px;
         z-index: 100;
         @include media-breakpoint-down(lg) {
@@ -184,12 +198,14 @@
             @include width-height(var(--col), 70px);
             top: 140px;
         }
-        @include media-breakpoint-down(sm) {
-            left: initial;
-            right: 0;
+        @include media('>=phone', '<tablet', 'landscape') {
+            @include width-height(70px);
             top: 40px;
         }
-        &:hover #{$i}__icon {
+        @include media('>=phone', '<tablet', 'portrait') {
+            display: none;
+        }
+        &:hover #{$this}__icon {
             &::before {
                 transform: translateY(-8px);
                 @at-root .nav-is-open & {
@@ -208,7 +224,7 @@
             background: theme-color('primary');
             left: calc(50% - 12px);
             top: calc(50% - 1px);
-            transition: transform 0.3s;
+            transition: transform 0.3s cubic-bezier(.1, .7, .9, .72);
             @at-root .nav-is-open & {
                 transform: rotate(180deg);
             }
@@ -243,5 +259,139 @@
     }
     75% {
         @include fontSize(60px);
+    }
+}
+
+// -----------------------
+// Mobile Nav
+// -----------------------
+
+.tabs {
+    // Credit: Lucas Bebber
+
+    $menu-items: 4 + 1;
+    $pi: 3.14;
+    $open-distance: 105px;
+    $opening-angle: $pi * 2;
+
+    &__container {
+        background: theme-color-level('primary', 3);
+        bottom: 0;
+        height: 115px;
+        height: calc(var(--vh, 1px) * 115);
+        position: fixed;
+        width: 100%;
+        z-index: 100;
+        @include media('>=phone', '<tablet', 'landscape') {
+            display: none;
+        }
+    }
+    &__circle {
+        $this: &;
+        @include width-height(89px);
+        background: rgba(theme-color-level('primary', 3), .8);
+        border-radius: 100%;
+        margin: 0 -15px;
+        transform: translateY(-20px);
+        z-index: 1;
+        &--gooey {
+            filter: url('#goo');
+            // position: absolute;  
+        }
+        &--inner {
+            @include width-height(64px);
+            background: theme-color('secondary');
+            border-radius: 100%;
+            cursor: pointer;
+            transform: scale(1, 1) translate3d(13px, 13px, 0);
+            transition-duration: 400ms;
+            transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+            z-index: 2;
+            &:hover {
+                transform: scale(1, 1) translate3d(13px, 13px, 0);
+            }
+        }
+        &--open {
+            display: none;
+            &:checked {
+                + #{$this}__hamburger {
+                    transform:translate3d(0, 0, 0) rotate(45deg);
+                    &:before {
+                        transform:translate3d(0, 0, 0) scale(0.1, 1);
+                    }
+                    &:after {
+                        transform:translate3d(0, 0, 0) rotate(-45deg);
+                    }
+                }
+                + #{$this}--inner {
+                    transform: scale(0.8, 0.8) translate3d(13px, 13px, 0);
+                    transition-duration: 200ms;
+                    transition-timing-function: linear;
+                }
+                ~ #{$this}__item {
+                    transition-timing-function: cubic-bezier(0.935, 0.000, 0.340, 1.330);
+
+                    @for $i from 1 through $menu-items {
+                        $angle:(($pi - $opening-angle) / 2) + (($opening-angle / ($menu-items - 1)) * ($i - 1));
+                        &:nth-child(#{$i + 2}) {
+                            transition-duration: 80ms + (100ms * $i);
+                            // transform: translate3d(cos($angle) * $open-distance, sin($angle) * $open-distance, 0);
+                        }
+                    }
+                }
+            }
+        }
+        &__item {
+            @include fontSize(20px);
+            @include width-height(60px);
+            background: theme-color('secondary');
+            border-radius: 100%;
+            color: theme-color('primary');
+            left: 0;
+            line-height: 60px;
+            position: absolute;
+            text-align: center;
+            transform: translate3d(25%, 25%, 0);
+            transition: transform ease-out 200ms;
+            z-index: -1;
+            
+            @for $i from 1 through $menu-items {
+                &:nth-child(#{$i + 2}) {
+                    transition-duration: 180ms;
+                }
+            }
+        }
+        &__hamburger {
+            $hamburger-spacing: 7px;
+            @extend %hamburger;
+            transform: translate3d(0, 0, 0);
+            &:before {
+                @extend %hamburger;
+                content: '';
+                transform: translate3d(0, -$hamburger-spacing, 0);
+            }
+            &:after {
+                @extend %hamburger;
+                content: '';
+                transform: translate3d(0, $hamburger-spacing, 0);
+            }
+        }
+    }
+    // end credit
+
+    &__nav {
+        height: 75px;
+        padding: 0 var(--col);
+        &-items {
+            @include fontSize(9px);
+            color: theme-color('white');
+            i {
+                @include fontSize(22px);
+                margin-bottom: 5px;
+            }
+            &--active {
+                color: theme-color('secondary');
+            }
+        }
     }
 }

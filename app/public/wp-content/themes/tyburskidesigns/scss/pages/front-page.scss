@@ -3,12 +3,14 @@
     &__image {
         @extend %bg-tint;
         mix-blend-mode: exclusion;
-        @include media-breakpoint-down(lg) {
+        @include media-breakpoint-between(md, lg) {
             background: transparent;
-            bottom: 0;
             height: 95% !important;
+        }
+        @include media-breakpoint-down(lg) {
+            bottom: 0;
             right: 0;
-            opacity: 0.5;
+            opacity: 0.4;
             position: absolute !important;
             transform: translateX(35%);
             z-index: 1;
@@ -20,8 +22,11 @@
         img {
             @include object-fit(cover, top right);
             @include width-height(100%);
-            @include media-breakpoint-down(lg) {
+            @include media-breakpoint-between(md, lg) {
                 @include width-height(auto, 100%);
+            }
+            @include media-breakpoint-down(sm) {
+                @include object-fit(cover, center);
             }
         }
     }
@@ -36,11 +41,26 @@
         @include media-breakpoint-down(md) {
             padding-top: 20vw !important;
         }
+        @include media-breakpoint-down(sm) {
+            background: transparent;
+            padding-bottom: 30px !important;
+        }
+        @include media('>=phone', '<tablet', 'landscape') {
+            padding-left: calc(var(--col) * 2) !important;
+            padding-top: 30vw !important;
+        }
+        @include media('<=phone') {
+            padding: 150px var(--col) 30px !important;
+        }
         h1 {
             @extend %h2;
+            hyphens: manual;
             margin-bottom: 40px;
             @include media-breakpoint-between(lg, lg) {
                 padding-right: calc(var(--col) * 2);
+            }
+            @include media-breakpoint-down(sm) {
+                margin-bottom: 20px;
             }
         }
         p {

@@ -4,6 +4,9 @@
     @include media-breakpoint-down(lg) {
         padding: 40px var(--col) 50px;
     }
+    @include media('>=phone', '<tablet', 'landscape') {
+        padding-left: calc(var(--col) * 2) !important;
+    }
     @at-root .home &, .page-id-19 &, .page-id-17 &, .error404 & {
         left: 0;
         position: absolute;
@@ -11,6 +14,9 @@
     }
     @at-root .page-id-23 & {
         margin-bottom: 105px;
+        @include media-breakpoint-down(sm) {
+            margin-bottom: 50px;
+        }
     }
     &-brand {
         @extend %h3;
@@ -44,6 +50,15 @@
                 display: inline-block;
                 margin: 0 15px;
                 padding: 0;
+                @media speech {
+                    display: none;
+                    visibility: hidden;
+                }
+            }
+            &--truncate:before {
+                @include media-breakpoint-down(sm) {
+                    content: '<';
+                }
             }
             a {
                 color: theme-color('white');

@@ -9,6 +9,7 @@ function add_theme_scripts() {
     wp_enqueue_script( 'typetura', 'https://cdn.jsdelivr.net/gh/scottkellum/typetura.js@master/js/typetura.min.js', array (), false, true);
     wp_enqueue_script( 'parallax', 'https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js', array (), '1.0.0', true);
     wp_enqueue_script( 'font-awesome', 'https://kit.fontawesome.com/ce83ebeb69.js', array (), false, true);
+    wp_enqueue_script( 'handle-bars', 'https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0.beta6/handlebars.min.js', array (), false, true);
     wp_enqueue_script( 'main', get_template_directory_uri() . '/js/index.js', array (), false, true);
 }
 
@@ -35,6 +36,7 @@ function add_async_attribute($tag, $handle) {
 require_once('bs4navwalker.php');
 register_nav_menu('primary', 'Primary Menu');
 register_nav_menu('projects', 'Projects Menu');
+register_nav_menu('mobile', 'Mobile Menu');
 
 
 // -----------------------
@@ -139,11 +141,11 @@ function breadcrumbs() {
                 echo '<li class="breadcrumb-item text-uppercase p-0" aria-current="page">' . get_the_title(get_option('page_for_posts', true)) . '</li>';
             }
             else {
-                echo '<li class="breadcrumb-item text-uppercase p-0"><a href="' . get_post_type_archive_link('post') . '">' . get_the_title(get_option('page_for_posts', true)) . '</a></li><li class="breadcrumb-item text-uppercase p-0" aria-current="page">' . get_the_title() . '</li>';
+                echo '<li class="breadcrumb-item breadcrumb-item--truncate text-uppercase p-0"><a href="' . get_post_type_archive_link('post') . '">' . get_the_title(get_option('page_for_posts', true)) . '</a></li><li class="breadcrumb-item d-none d-md-block text-uppercase p-0" aria-current="page">' . get_the_title() . '</li>';
             }
         }
         if (is_404()) {
-            echo '<li class="breadcrumb-item text-uppercase p-0" aria-current="page">404: Page Not Found</li>';
+            echo '<li class="breadcrumb-item text-uppercase p-0" aria-current="page">Page Not Found</li>';
         }
         elseif (is_page()) {
             echo '<li class="breadcrumb-item text-uppercase p-0" aria-current="page">' . get_the_title() . '</a></li>';

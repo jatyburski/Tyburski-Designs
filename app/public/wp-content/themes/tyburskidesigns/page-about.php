@@ -1,12 +1,12 @@
 <?php get_header(); ?>
 
     <section class="row no-gutters position-relative about">
-        <div class="col-xl-6 d-flex flex-column align-items-start justify-content-center text-nowrap about__hero">
+        <div class="col-xl-6 d-flex flex-column align-items-start justify-content-center about__hero">
             <h1 data-aos="fade-up">I am <span><?php bloginfo('name'); ?></span></h1>
 
             <?php $titles = get_field('titles'); ?>
             <?php if ($titles) : ?>
-                <ul class="m-0 p-0 d-flex align-items-start">
+                <ul class="m-0 p-0 d-flex flex-column flex-md-row align-items-start">
 
                     <?php foreach ($titles as $title) : ?>
                         <li data-aos="fade-up"><?php echo $title['title']; ?></li>
@@ -20,19 +20,19 @@
             <?php the_post_thumbnail( 'full', array( 'data-aos' => 'zoom-out', 'data-aos-delay' => '800' ) ); ?>
         </div>
 
-        <div class="position-absolute mouse">
+        <div class="position-absolute mouse" role="presentation">
             <div class="d-block mouse__scroll"></div>
         </div>
     </section>
 
     <section class="row no-gutters position-relative about__content about__content--full">
-        <i class="far fa-scroll-old position-absolute"></i>
+        <i class="far fa-telescope position-absolute" role="presentation"></i>
 
         <div class="offset-1 offset-xl-2 col-9 col-xl-8">
             <h2 data-aos="fade-up"><?php the_field('experience'); ?></h2>
         </div>
 
-        <div class="about__pattern">
+        <div class="about__pattern" role="presentation">
             <?php pattern_rectangle(32, 32); ?>
         </div>
     </section>
@@ -41,7 +41,7 @@
     <?php if ($about) : ?>
 
         <section class="row no-gutters position-relative about__content">
-            <i class="far fa-guitar position-absolute"></i>
+            <i class="far fa-planet-moon d-none d-md-block position-absolute" role="presentation"></i>
 
             <div class="col-xl-6 position-relative overflow-hidden about__image">
                 <?php $image = $about['image']; ?>
@@ -60,11 +60,11 @@
     <section class="row no-gutters">
 
         <div class="offset-1 offset-xl-2 col-10 col-xl-4 position-relative about__goals">
-            <i class="far fa-joystick position-absolute"></i>
+            <i class="far fa-guitar d-none d-md-block position-absolute" role="presentation"></i>
             <?php the_field('goals'); ?>
         </div>
 
-        <div class="offset-2 offset-xl-1 col-9 col-lg-8 col-xl-4 d-flex flex-column justify-content-center position-relative about__testimonials" id="carousel" data-ride="carousel">
+        <div class="offset-1 offset-md-2 offset-xl-1 col-10 col-md-9 col-lg-8 col-xl-4 d-flex flex-column justify-content-center position-relative about__testimonials" id="carousel" data-ride="carousel">
             <?php $slides = get_field('testimonials'); ?>
             <?php if ($slides) : ?>
 
@@ -103,7 +103,7 @@
                 </a>
             <?php endif; ?>
 
-            <div class="position-absolute about__pattern about__pattern--bottom">
+            <div class="position-absolute about__pattern about__pattern--bottom" role="presentation">
                 <?php pattern_rectangle(32, 32); ?>
             </div>
         </div>
@@ -113,7 +113,7 @@
         <div class="offset-xl-1 col-xl-10 position-relative about__image about__image--full">
             <?php $full_image = get_field('full_image'); ?>
             <?php echo wp_get_attachment_image($full_image, 'full', '', array( 'data-aos' => 'zoom-out', 'class' => 'w-100' ) ); ?>   
-            <i class="far fa-heart d-none d-lg-block position-absolute"></i> 
+            <i class="far fa-joystick d-none d-lg-block position-absolute"></i> 
         </div>
     </section>
 
@@ -122,7 +122,7 @@
         <section class="row no-gutters">
 
             <?php foreach ($awards as $award) : ?>
-                <div class="offset-2 offset-lg-3 offset-xl-4 col-8 col-lg-7 col-xl-5 about__awards">
+                <div class="offset-1 offset-md-2 offset-lg-3 offset-xl-4 col-10 col-md-8 col-lg-7 col-xl-5 about__awards">
                     <h3 data-aos="fade-in"><?php echo $award['institute']; ?></h3>
 
                     <?php $details = $award['details']; ?>

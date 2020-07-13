@@ -6,33 +6,30 @@
     --primary-font: 'origin-super-condensed', sans-serif;
     --secondary-font: 'Raleway', sans-serif;
     --col: 8.3333vw;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-variant-numeric: lining-nums;
+    .home, .page-id-19, .error404 {
+        overflow: hidden;
+        @include media-breakpoint-down(sm) {
+            overflow: visible;
+        }
+        @include media('>=phone', '<850px', 'landscape') {
+            overflow: visible;
+        }
+    }
 }
 
 $theme-colors: (
     "primary": #140F23,
     "secondary": #FFC857,
-    "white": #FFFFFF,
+    "white": #F7F7FF,
 );
 
 ::selection {
     background: theme-color('secondary');
     color: theme-color('white');
 }
-
-html,
-body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-variant-numeric: lining-nums;
-    overflow-x: hidden;
-    @at-root .home, .page-id-19, .error404 {
-        overflow: hidden;
-        @include media-breakpoint-down(sm) {
-            overflow: visible;
-        }
-    }
-}
-
 
 // -----------------------
 // Inheritances
@@ -64,6 +61,10 @@ body {
         content: '\2022';
         display: inline-block;
         margin: 0 10px 0 8px;
+        @media speech {
+            display: none;
+            visibility: hidden;
+        }
     }
 }
 
@@ -75,6 +76,29 @@ body {
         height: calc(100vh - 60px);
         padding: 0;
     }
+    @include media-breakpoint-down(sm) {
+        height: auto;
+        min-height: calc(100vh - 60px);
+        padding: 0;
+    }
+    @include media('>=phone', '<850px', 'landscape') {
+        height: auto;
+        min-height: calc(100vh - 60px);
+    }
+}
+
+%hamburger {
+    $height: 3px;
+    $width: 25px;
+    @include width-height($width, $height);
+    background: theme-color('primary');
+    display: block;
+    left: 50%;
+    margin-left: -$width / 2;
+    margin-top: -$height / 2;
+    position: absolute;
+    top: 50%;
+    transition: transform 200ms;
 }
 
 %icon-square {
@@ -112,6 +136,12 @@ body {
             color: theme-color('secondary') !important;
             letter-spacing: 0 !important;
             text-transform: none !important;
+            @include media-breakpoint-down(sm) {
+                display: block;
+                + *::before {
+                    display: none !important;
+                }
+            }
         }
         * {
             @extend %bullet;
@@ -168,6 +198,9 @@ body {
     @include media-breakpoint-down(md) {
         height: 25% !important;
         width: calc(var(--col) * 2);
+    }
+    @include media-breakpoint-down(sm) {
+        width: calc(var(--col) * 3);
     }
 }
 

@@ -1,9 +1,18 @@
 .resume {
     margin-top: 100px;
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-between(md, md) {
         margin-top: 75px;
         &:first-child {
             margin-top: 150px;
+        }
+    }
+    @include media-breakpoint-down(sm) {
+        margin-top: 50px;
+    }
+    li {
+        margin-bottom: 25px;
+        @include media-breakpoint-down(sm) {
+            margin-bottom: 15px;
         }
     }
     &__person {
@@ -14,6 +23,9 @@
             @extend %h2;
             color: theme-color('white');
             line-height: .75;
+            @include media-breakpoint-down(sm) {
+                line-height: .85;
+            }
         }
         strong {
             @extend %h4;
@@ -29,6 +41,9 @@
         span {
             @extend %small-caps;
             color: theme-color('white');
+            @include media-breakpoint-down(sm) {
+                @include fontSize(10px);
+            }
         }
         i {
             @include fontSize(17px);
@@ -45,6 +60,9 @@
         @extend %lists;
         &__section {
             margin-bottom: 60px;
+            &-positions li {
+                margin-bottom: 0;
+            }
         }
         &__list {
             margin: 30px 0 0;
@@ -65,10 +83,16 @@
         }
         h2 {
             @extend %h3;
+            @include media-breakpoint-down(sm) {
+                margin-bottom: 15px;
+            }
             &#{$i}__title {
                 @extend %h6;
                 @extend %title-underline;
                 margin: 100px 0 70px;
+                @include media-breakpoint-down(sm) {
+                    margin: 50px 0 70px;
+                }
             } 
         }
     }
@@ -100,9 +124,6 @@
         @include media-breakpoint-down(lg) {
             padding-right: 0;
         }
-    }
-    li {
-        margin-bottom: 25px;
     }
 }
 

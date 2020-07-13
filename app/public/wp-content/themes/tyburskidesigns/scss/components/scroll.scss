@@ -5,6 +5,9 @@
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
+    @include media-breakpoint-down(sm) {
+        display: none;
+    }
     &__scroll {
         @include width-height(3px);
         animation: scroll 1s infinite;

@@ -10,19 +10,20 @@ h1,
     color: theme-color('white');
     font-family: var(--primary-font);
     font-weight: 900;
-    line-height: 1;
     text-transform: uppercase;
 }
 
 @keyframes h1 {
     0%,
     20% {
-        @include fontSize(120px);
+        @include fontSize(115px);
         letter-spacing: 5px;
+        line-height: .85;
     }
     100% {
         @include fontSize(470px);
         letter-spacing: 24px;
+        line-height: .6;
     }
 }
 
@@ -40,6 +41,11 @@ h2,
 
 @keyframes h2 {
     0%,
+    13% {
+        @include fontSize(90px);
+        letter-spacing: 7px;
+    }
+    14%,
     34% {
         @include fontSize(110px);
         letter-spacing: 10px;
@@ -66,7 +72,7 @@ h3,
 @keyframes h3 {
     0%,
     20% {
-        @include fontSize(50px);
+        @include fontSize(42px);
     }
     100% {
         @include fontSize(75px);

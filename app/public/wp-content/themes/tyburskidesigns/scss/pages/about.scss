@@ -1,21 +1,38 @@
 .about {
-    $this: &;
-    @extend %container; 
+    @extend %container;
+    @include media-breakpoint-down(sm) {
+        padding: 0;
+    }
     &__hero {
         @extend %bg-tint;
         padding: 0 0 0 var(--col) !important;
+        white-space: nowrap;
         @include media-breakpoint-down(lg) {
-            + #{$this}__image {
-                background: transparent;
+            + .about__image {
                 display: flex;
                 justify-content: flex-end;
-                opacity: .5;
+                opacity: .4;
                 position: absolute;
                 z-index: -1;
+            }
+        }
+        @include media-breakpoint-between(md, lg) {
+            + .about__image {
+                background: transparent;
                 img {
                     @include width-height(auto, 100%);
                 }
             }
+        }
+        @include media-breakpoint-down(sm) {
+            background: transparent;
+            white-space: initial;
+        }
+        @include media('>=phone', '<tablet', 'landscape') {
+            padding: 200px 0 200px calc(var(--col) * 2) !important;
+        }
+        @include media('<=phone') {
+            padding: 175px var(--col) !important;
         }
         h1 {
             @extend %h2;
@@ -28,6 +45,11 @@
         li {
             @extend %h4;
             @extend %bullet;
+            @include media-breakpoint-down(sm) {
+                &:before {
+                    display: none !important;
+                }
+            }
         }
     }
     &__image {
@@ -39,14 +61,18 @@
         img {
             @include object-fit(cover, top left);
             @include width-height(100%);
-            @include media-breakpoint-down(lg) {
-                @include width-height(100%);
+            @include media-breakpoint-down(sm) {
+                @include object-fit(cover, center);
             }
         }
         &--full {
             height: 500px;
             margin-bottom: 100px;
             margin-top: 200px;
+            @include media-breakpoint-down(sm) {
+                margin-bottom: 0;
+                margin-top: 100px;
+            }
             &::before {
                 @extend %bar;
                 content: '';
@@ -76,6 +102,9 @@
         left: calc(var(--col) * 7.5);
         top: -200px;
         transform: translateX(-50%);
+        @include media-breakpoint-down(sm) {
+            left: calc(var(--col) * 9);
+        }
         &--bottom {
             bottom: 0;
             left: calc(var(--col) * 2.5);
@@ -87,10 +116,19 @@
         @include media-breakpoint-down(lg) {
             margin-bottom: 150px;
         }
+        @include media-breakpoint-down(sm) {
+            margin-bottom: 100px;
+        }
         .col-xl-4 {
             padding: 100px 0;
             @include media-breakpoint-between(lg, lg) {
                 padding: 100px 0 50px;
+            }
+            @include media-breakpoint-down(sm) {
+                padding: 50px 0 0;
+            }
+            @include media('>=phone', '<tablet', 'landscape') {
+                padding-left: var(--col);
             }
         }
         h3 {
@@ -111,6 +149,9 @@
             @include media-breakpoint-down(lg) {
                 right: calc(var(--col) * 2);
             }
+            @include media-breakpoint-down(sm) {
+                top: -300px !important;
+            }
             &::after {
                 background: theme-color('white');
                 height: 200px;
@@ -121,6 +162,12 @@
             margin-top: 300px;
             @include media-breakpoint-down(lg) {
                 margin-top: 150px;
+            }
+            @include media-breakpoint-down(sm) {
+                margin-bottom: 100px;
+            }
+            @include media('>=phone', '<tablet', 'landscape') {
+                padding-left: var(--col);
             }
             i {
                 border: 1px solid theme-color('secondary');
@@ -141,6 +188,9 @@
         }
     }
     &__goals {
+        @include media('>=phone', '<tablet', 'landscape') {
+            padding-left: var(--col) !important;
+        }
         h3 {
             @extend %h2;
             margin-bottom: 70px;
@@ -149,15 +199,22 @@
             width: calc(var(--col) * 3);
             @include media-breakpoint-down(lg) {
                 display: grid;
-                gap: 25px;
+                gap: 65px;
                 grid-template-columns: repeat(2, 1fr);
                 width: 100%;
+            }
+            @include media-breakpoint-down(sm) {
+                gap: 35px;
+                grid-template-columns: 1fr;
             }
             h4 {
                 @extend %h3;
             }
             li {
                 margin-bottom: 40px;
+                @include media-breakpoint-down(lg) {
+                    margin-bottom: 0;
+                }
             }
         }
         i {
@@ -169,7 +226,7 @@
             @include media-breakpoint-down(lg) {
                 left: calc(var(--col) * 7);
             }
-            @include media-breakpoint-down(md) {
+            @include media-breakpoint-between(md, md) {
                 top: -150px;
             }
             &::after {
@@ -187,6 +244,9 @@
         @include media-breakpoint-down(lg) {
             margin-top: 150px;
         }
+        @include media('>=phone', '<tablet', 'landscape') {
+            padding-left: var(--col) !important;
+        }
         h3 {
             @extend %h6;
         }
@@ -199,6 +259,11 @@
             line-height: 0;
             position: absolute;
             top: 165px;
+            @include media-breakpoint-down(sm) {
+                color: rgba(theme-color('white'), .03);
+                left: -50px;
+                right: initial;
+            }
         }
         blockquote {
             padding-top: 10px;
@@ -209,12 +274,21 @@
                 @extend %p;
                 font-style: normal;
                 margin-top: 100px;
+                @include media-breakpoint-down(sm) {
+                    margin-top: 75px;
+                }
             }
         }
     }
     &__awards {
         margin-top: 50px;
         padding: 0 calc(var(--col) / 2) !important;
+        @include media-breakpoint-down(sm) {
+            padding: 0 !important;
+        }
+        @include media('>=phone', '<tablet', 'landscape') {
+            padding-left: var(--col) !important;
+        }
         &:last-child {
             margin-bottom: 100px;
         }
@@ -233,6 +307,13 @@
                 @extend %bullet;
                 &:first-child {
                     color: theme-color('secondary');
+                    @include media-breakpoint-down(sm) {
+                        display: block;
+                        font-weight: 700;
+                        + *::before {
+                            display: none;
+                        }
+                    }
                 }
             }
         }

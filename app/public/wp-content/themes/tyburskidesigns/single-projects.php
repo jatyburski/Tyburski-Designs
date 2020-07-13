@@ -25,7 +25,7 @@
                 <?php the_field('intro'); ?>
 
                 <?php $appendices = get_field('appendices'); if ($appendices) : ?>
-                    <ul class="mb-0 p-0 d-flex align-items-start project__appendix">
+                    <ul class="mb-0 p-0 d-flex flex-column flex-md-row align-items-start project__appendix">
 
                         <?php foreach ($appendices as $appendix) : ?>
                             <li class="d-inline-block">
@@ -66,7 +66,7 @@
                 ];
                 wp_reset_query();
             }
-            set_query_var( 'button', $arr );
+            set_query_var('button', $arr);
             layout_get_component('button-lg'); 
         ?>
     </article>
