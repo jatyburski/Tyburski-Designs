@@ -1,0 +1,46 @@
+.about__testimonials {
+    margin-top: 250px;
+
+    @include media-breakpoint-down(lg) {
+        margin-top: 150px;
+    }
+
+    @include media('>=phone', '<tablet', 'landscape') {
+        padding-left: var(--col) !important;
+    }
+
+    h3 {
+        @extend %h6;
+    }
+    ul::before {
+        @include fontSize(600px);
+        color: theme-color('secondary');
+        content: '"';
+        font-family: var(--primary-font);
+        right: calc(100% + 20px);
+        line-height: 0;
+        position: absolute;
+        top: 165px;
+
+        @include media('<tablet') {
+            color: rgba(theme-color('white'), .03);
+            left: -50px;
+            right: initial;
+        }
+        
+    }
+    blockquote {
+        padding-top: 10px;
+        p {
+            @extend %h4;
+        }
+        cite {
+            @extend %p;
+            font-style: normal;
+            margin-top: 100px;
+            @include media('<tablet') {
+                margin-top: 75px;
+            }
+        }
+    }
+}

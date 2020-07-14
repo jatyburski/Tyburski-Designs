@@ -9,14 +9,18 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-variant-numeric: lining-nums;
+
     .home, .page-id-19, .error404 {
         overflow: hidden;
-        @include media-breakpoint-down(sm) {
+
+        @include media('<tablet') {
             overflow: visible;
         }
+
         @include media('>=phone', '<850px', 'landscape') {
             overflow: visible;
         }
+        
     }
 }
 
@@ -40,15 +44,19 @@ $theme-colors: (
     background: theme-color('secondary');
     position: absolute;
     transform: translateX(-50%);
+
     @include media-breakpoint-down(lg) {
         @include width-height(calc(var(--col) * 1.5), 140px);
     }
+
     @include media-breakpoint-down(md) {
         @include width-height(calc(var(--col) * 2), 170px);
     }
-    @include media-breakpoint-down(sm) {
+
+    @include media('<tablet') {
         display: none;
     }
+
 }
 
 %bg-tint {
@@ -61,10 +69,12 @@ $theme-colors: (
         content: '\2022';
         display: inline-block;
         margin: 0 10px 0 8px;
+
         @media speech {
             display: none;
             visibility: hidden;
         }
+
     }
 }
 
@@ -72,19 +82,23 @@ $theme-colors: (
     height: calc(100vh - 80px);
     padding: 80px var(--col) 0;
     position: relative;
+
     @include media-breakpoint-down(lg) {
         height: calc(100vh - 60px);
         padding: 0;
     }
-    @include media-breakpoint-down(sm) {
+
+    @include media('<tablet') {
         height: auto;
         min-height: calc(100vh - 60px);
         padding: 0;
     }
+
     @include media('>=phone', '<850px', 'landscape') {
         height: auto;
         min-height: calc(100vh - 60px);
     }
+
 }
 
 %hamburger {
@@ -136,12 +150,14 @@ $theme-colors: (
             color: theme-color('secondary') !important;
             letter-spacing: 0 !important;
             text-transform: none !important;
-            @include media-breakpoint-down(sm) {
+
+            @include media('<tablet') {
                 display: block;
                 + *::before {
                     display: none !important;
                 }
             }
+
         }
         * {
             @extend %bullet;
@@ -192,16 +208,20 @@ $theme-colors: (
     text-align: justify;
     user-select: none;
     width: var(--col);
+
     @include media-breakpoint-down(lg) {
         width: calc(var(--col) * 1.5);
     }
+
     @include media-breakpoint-down(md) {
         height: 25% !important;
         width: calc(var(--col) * 2);
     }
-    @include media-breakpoint-down(sm) {
+
+    @include media('<tablet') {
         width: calc(var(--col) * 3);
     }
+
 }
 
 %small-caps {

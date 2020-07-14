@@ -1,0 +1,50 @@
+.project {
+    &__content {
+        margin: var(--col) 0;
+        .col-lg-8 {
+            margin-bottom: 100px;
+
+            @include media('>=phone', '<tablet', 'landscape') {
+                padding-left: var(--col);
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+            h2 ~ p {
+                margin-top: 40px;
+            }
+        }
+        &--lg h2 {
+            @extend %h4;
+            text-transform: none;
+            + h2 {
+                margin-top: 40px;
+            }
+        }
+        &--tint {
+            @extend %bg-tint;
+            padding: var(--col) 0;
+        }
+    }
+    &__appendix {
+        margin-top: 70px;
+        li:not(:first-child) {
+            margin-left: calc(var(--col) / 2);
+
+            @include media('<tablet') {
+                margin-left: 0;
+            }
+            
+        }
+        dt {
+            @extend %h6;
+            color: theme-color('secondary');
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        dd {
+            @extend %p;
+        }
+    }
+}

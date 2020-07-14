@@ -1,0 +1,59 @@
+.about__goals {
+    @include media('>=phone', '<tablet', 'landscape') {
+        padding-left: var(--col) !important;
+    }
+
+    h3 {
+        @extend %h2;
+        margin-bottom: 70px;
+    }
+    ul {
+        width: calc(var(--col) * 3);
+
+        @include media-breakpoint-down(lg) {
+            display: grid;
+            gap: 65px;
+            grid-template-columns: repeat(2, 1fr);
+            width: 100%;
+        }
+
+        @include media('<tablet') {
+            gap: 35px;
+            grid-template-columns: 1fr;
+        }
+
+        h4 {
+            @extend %h3;
+        }
+        li {
+            margin-bottom: 40px;
+            @include media-breakpoint-down(lg) {
+                margin-bottom: 0;
+            }
+        }
+    }
+    i {
+        @extend %icon-square;
+        border: 1px solid theme-color('secondary');
+        color: theme-color('secondary');
+        left: calc(var(--col) * 2);
+        top: -100px;
+
+        @include media-breakpoint-down(lg) {
+            left: calc(var(--col) * 7);
+        }
+
+        @include media-breakpoint-between(md, md) {
+            top: -150px;
+        }
+
+        &::after {
+            background: theme-color('secondary');
+            bottom: 100%;
+            height: 150px;
+        }
+    }
+    .btn {
+        margin-top: 20px;
+    }
+}

@@ -1,0 +1,46 @@
+.resume {
+    &__person {
+        @include media-breakpoint-down(md) {
+            margin-bottom: 30px;
+        }
+        h1 {
+            @extend %h2;
+            color: theme-color('white');
+            line-height: .75;
+
+            @include media('<tablet') {
+                line-height: .85;
+            }
+
+        }
+        strong {
+            @extend %h4;
+            color: theme-color('secondary');
+        }
+    }
+    &__contact li {
+        margin-left: 40px;
+        position: relative;
+        &:not(:first-child) {
+            margin-bottom: 8px;
+        }
+        span {
+            @extend %small-caps;
+            color: theme-color('white');
+
+            @include media('<tablet') {
+                @include fontSize(10px);
+            }
+            
+        }
+        i {
+            @include fontSize(17px);
+            color: theme-color('secondary');
+            left: -40px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 15px;
+        }
+    }
+}

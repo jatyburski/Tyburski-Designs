@@ -1,0 +1,50 @@
+.about__image {
+    @extend %bg-tint;
+    mix-blend-mode: exclusion;
+
+    @include media-breakpoint-down(lg) {
+        height: 400px;
+    }
+
+    img {
+        @include object-fit(cover, top left);
+        @include width-height(100%);
+
+        @include media('<tablet') {
+            @include object-fit(cover, center);
+        }
+
+    }
+    &--full {
+        height: 500px;
+        margin-bottom: 100px;
+        margin-top: 200px;
+
+        @include media('<tablet') {
+            margin-bottom: 0;
+            margin-top: 100px;
+        }
+        
+        &::before {
+            @extend %bar;
+            content: '';
+            height: 200px;
+            left: 50%;
+            top: 0;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+        i {
+            @extend %icon-square;
+            border: 1px solid theme-color('secondary');
+            color: theme-color('secondary');
+            left: calc(var(--col) * 2);
+            bottom: -300px;
+            &::after {
+                background: theme-color('secondary');
+                bottom: 100%;
+                height: 150px;
+            }
+        }
+    }
+}

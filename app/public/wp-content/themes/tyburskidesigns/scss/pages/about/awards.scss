@@ -1,0 +1,43 @@
+.about__awards {
+    margin-top: 50px;
+    padding: 0 calc(var(--col) / 2) !important;
+
+    @include media('<tablet') {
+        padding: 0 !important;
+    }
+
+    @include media('>=phone', '<tablet', 'landscape') {
+        padding-left: var(--col) !important;
+    }
+
+    &:last-child {
+        margin-bottom: 100px;
+    }
+    h3 {
+        @extend %title-underline;
+        color: theme-color('secondary');
+        margin-bottom: 50px;
+        &::after {
+            background: theme-color('secondary');
+        }
+    }
+    li {
+        @extend %p;
+        margin-bottom: 10px;
+        * {
+            @extend %bullet;
+            &:first-child {
+                color: theme-color('secondary');
+
+                @include media('<tablet') {
+                    display: block;
+                    font-weight: 700;
+                    + *::before {
+                        display: none;
+                    }
+                }
+                
+            }
+        }
+    }
+}

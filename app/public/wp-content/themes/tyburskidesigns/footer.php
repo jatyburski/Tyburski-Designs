@@ -24,7 +24,10 @@
                 </div>
 
                 <div class="col-sm-5 d-flex align-items-end align-items-lg-center justify-content-sm-end">
-                    <p>Designed &amp; Coded with <i class="fas fa-heart"></i> and <i class="fas fa-music"></i></p>
+                    <p>Designed &amp; Coded with 
+                        <i class="fas fa-heart"><span class="sr-only">love</span></i> and 
+                        <i class="fas fa-music"><span class="sr-only">music</span></i>
+                    </p>
                 </div>
 
             </footer>

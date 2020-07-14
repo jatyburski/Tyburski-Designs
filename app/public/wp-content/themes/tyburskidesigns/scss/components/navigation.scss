@@ -80,9 +80,11 @@
     }
     &__nav {
         margin-bottom: 40px;
+
         @include media-breakpoint-down(lg) {
             margin-top: 20px;
         }
+
         .navbar-nav {
             align-items: flex-start;
         }
@@ -98,9 +100,11 @@
                 display: inline-block;
                 letter-spacing: 3px;
                 padding: 0;
+
                 @include media-breakpoint-down(lg) {
                     --tt-key: nav;
                 }
+                
                 &:hover {
                     opacity: 1;
                     &::after {
@@ -123,6 +127,7 @@
                 position: relative;
                 white-space: nowrap;
                 width: calc(var(--col) + 15px);
+
                 @include media-breakpoint-down(lg) {
                     --tt-key: nav;
                     display: inline-block;
@@ -130,13 +135,16 @@
                     margin-right: auto;
                     width: auto;
                 }
+
                 &::after {
                     content: '/';
                     display: inline-block;
                     margin-left: 15px;
+
                     @include media-breakpoint-down(lg) {
                         display: none;
                     }
+
                 }
             }
             .dropdown-menu {
@@ -146,9 +154,11 @@
                 flex-direction: column;
                 overflow-y: auto;
                 padding-top: 215px;
+
                 @include media-breakpoint-down(lg) {
                     display: none;
                 }
+
                 &:hover > a {
                     opacity: .25;
                     &:hover {
@@ -190,21 +200,26 @@
         outline: none;
         top: 140px;
         z-index: 100;
+
         @include media-breakpoint-down(lg) {
             @include width-height(70px, 65px);
             top: 130px;
         }
+
         @include media-breakpoint-down(md) {
             @include width-height(var(--col), 70px);
             top: 140px;
         }
+
         @include media('>=phone', '<tablet', 'landscape') {
             @include width-height(70px);
             top: 40px;
         }
+
         @include media('>=phone', '<tablet', 'portrait') {
             display: none;
         }
+        
         &:hover #{$this}__icon {
             &::before {
                 transform: translateY(-8px);

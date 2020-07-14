@@ -162,9 +162,6 @@ p,
     font-family: var(--secondary-font);
     line-height: 2;
     margin: 0;
-    // @include media-breakpoint-down(xl) {
-    //     @include fontSize(14px);
-    // }
     + p {
         margin-top: 20px;
     }

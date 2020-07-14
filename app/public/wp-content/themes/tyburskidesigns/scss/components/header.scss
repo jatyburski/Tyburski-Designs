@@ -1,12 +1,15 @@
 .navbar {
     padding: 40px 80px 50px;
     z-index: 10;
+
     @include media-breakpoint-down(lg) {
         padding: 40px var(--col) 50px;
     }
+
     @include media('>=phone', '<tablet', 'landscape') {
         padding-left: calc(var(--col) * 2) !important;
     }
+
     @at-root .home &, .page-id-19 &, .page-id-17 &, .error404 & {
         left: 0;
         position: absolute;
@@ -29,9 +32,11 @@
             font-weight: 700;
             letter-spacing: 1px;
             margin-top: 3px;
+
             @include media-breakpoint-down(lg) {
                 @include fontSize(10.5px);
             }
+
         }
     }
     .breadcrumb {
@@ -56,7 +61,7 @@
                 }
             }
             &--truncate:before {
-                @include media-breakpoint-down(sm) {
+                @include media('<tablet'){
                     content: '<';
                 }
             }

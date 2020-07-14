@@ -1,0 +1,57 @@
+.about__hero {
+    @extend %bg-tint;
+    padding: 0 0 0 var(--col) !important;
+    white-space: nowrap;
+
+    @include media-breakpoint-down(lg) {
+        + .about__image {
+            display: flex;
+            justify-content: flex-end;
+            opacity: .4;
+            position: absolute;
+            z-index: -1;
+        }
+    }
+
+    @include media-breakpoint-between(md, lg) {
+        + .about__image {
+            background: transparent;
+            img {
+                @include width-height(auto, 100%);
+            }
+        }
+    }
+
+    @include media('<tablet') {
+        background: transparent;
+        white-space: initial;
+    }
+
+    @include media('>=phone', '<tablet', 'landscape') {
+        padding: 200px 0 200px calc(var(--col) * 2) !important;
+    }
+
+    @include media('<=phone') {
+        padding: 175px var(--col) !important;
+    }
+
+    h1 {
+        @extend %h2;
+        color: theme-color('white');
+        margin-bottom: 30px;
+        span {
+            color: theme-color('secondary');
+        }
+    }
+    li {
+        @extend %h4;
+        @extend %bullet;
+
+        @include media('<tablet') {
+            &:before {
+                display: none !important;
+            }
+        }
+        
+    }
+}

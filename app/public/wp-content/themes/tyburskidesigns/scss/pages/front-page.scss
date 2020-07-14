@@ -3,10 +3,12 @@
     &__image {
         @extend %bg-tint;
         mix-blend-mode: exclusion;
+        
         @include media-breakpoint-between(md, lg) {
             background: transparent;
             height: 95% !important;
         }
+
         @include media-breakpoint-down(lg) {
             bottom: 0;
             right: 0;
@@ -15,16 +17,20 @@
             transform: translateX(35%);
             z-index: 1;
         }
+
         @include media-breakpoint-down(md) {
             left: 0;
             transform: none;
         }
+
         img {
             @include object-fit(cover, top right);
             @include width-height(100%);
+
             @include media-breakpoint-between(md, lg) {
                 @include width-height(auto, 100%);
             }
+
             @include media-breakpoint-down(sm) {
                 @include object-fit(cover, center);
             }
@@ -33,57 +39,73 @@
     &__content {
         @extend %bg-tint;
         padding: 6vw 0;
+
         @include media-breakpoint-down(lg) {
             padding: 15vw var(--col) 0 !important;
             position: relative;
             z-index: 2;
         }
+
         @include media-breakpoint-down(md) {
             padding-top: 20vw !important;
         }
-        @include media-breakpoint-down(sm) {
+
+        @include media('<tablet') {
             background: transparent;
             padding-bottom: 30px !important;
         }
+
         @include media('>=phone', '<tablet', 'landscape') {
             padding-left: calc(var(--col) * 2) !important;
             padding-top: 30vw !important;
         }
+
         @include media('<=phone') {
             padding: 150px var(--col) 30px !important;
         }
+
         h1 {
             @extend %h2;
             hyphens: manual;
             margin-bottom: 40px;
+
             @include media-breakpoint-between(lg, lg) {
                 padding-right: calc(var(--col) * 2);
             }
-            @include media-breakpoint-down(sm) {
+
+            @include media('<tablet') {
                 margin-bottom: 20px;
             }
+
         }
         p {
             padding: 0 var(--col);
+
             @include media-breakpoint-down(lg) {
                 padding: 0;
                 width: calc(var(--col) * 5);
             }
+
             @include media-breakpoint-down(md) {
                 width: calc(var(--col) * 7);
             }
-            @include media-breakpoint-down(sm) {
+
+            @include media('<tablet') {
                 width: 100%;
             }
+
         }
         .btn {
             margin: 40px 0 0 var(--col);
+
             @include media-breakpoint-down(lg) {
                 margin: 40px 0 0 var(--col);
             }
+
             @include media-breakpoint-down(lg) {
                 margin: 40px 0 0;
             }
+
         }
     }
     &__pattern {

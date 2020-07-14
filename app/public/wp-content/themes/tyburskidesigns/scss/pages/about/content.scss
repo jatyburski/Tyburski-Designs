@@ -1,0 +1,94 @@
+.about__content {
+    margin-bottom: 300px;
+
+    @include media-breakpoint-down(lg) {
+        margin-bottom: 150px;
+    }
+
+    @include media('<tablet') {
+        margin-bottom: 100px;
+    }
+
+    .col-xl-4 {
+        padding: 100px 0;
+
+        @include media-breakpoint-between(lg, lg) {
+            padding: 100px 0 50px;
+        }
+
+        @include media('<tablet') {
+            padding: 50px 0 0;
+        }
+
+        @include media('>=phone', '<tablet', 'landscape') {
+            padding-left: var(--col);
+        }
+
+    }
+    h3 {
+        @extend %h4;
+        letter-spacing: 0;
+        margin-bottom: 40px;
+        text-transform: unset;
+        a {
+            @extend %link;
+        }
+    }
+    i {
+        @extend %icon-square;
+        border: 1px solid theme-color('white');
+        color: theme-color('white');
+        right: calc(var(--col) * 4);
+        top: -200px;
+
+        @include media-breakpoint-down(lg) {
+            right: calc(var(--col) * 2);
+        }
+
+        @include media('<tablet') {
+            top: -300px !important;
+        }
+
+        &::after {
+            background: theme-color('white');
+            height: 200px;
+            top: 100%;
+        }
+    }
+    &--full {
+        margin-top: 300px;
+
+        @include media-breakpoint-down(lg) {
+            margin-top: 150px;
+        }
+
+        @include media('<tablet') {
+            margin-bottom: 100px;
+        }
+
+        @include media('>=phone', '<tablet', 'landscape') {
+            padding-left: var(--col);
+        }
+
+        i {
+            border: 1px solid theme-color('secondary');
+            color: theme-color('secondary');
+            left: calc(var(--col) * 2.5);
+            top: -450px;
+
+            @include media-breakpoint-down(lg) {
+                top: -300px;
+            }
+
+            &::after {
+                background: theme-color('secondary');
+                height: 350px;
+
+                @include media-breakpoint-down(lg) {
+                    height: 200px;
+                }
+                
+            }
+        }
+    }
+}

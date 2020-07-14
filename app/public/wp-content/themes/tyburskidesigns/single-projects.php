@@ -43,31 +43,37 @@
             <?php if (have_rows('section')) {
                 while (have_rows('section')) {
                     the_row();
-                    layout_get_component(get_row_layout());
+                    layout_get_component(get_row_layout(), 'projects');
                 }
             } ?>  
         </section>
 
         <?php 
             $next_post = get_adjacent_post(false, '', false);
+            
             if (!empty($next_post)) {
+
                 $arr = [
                     'kicker' => 'Next project',
                     'url' => get_permalink($next_post->ID),
                     'title' => $next_post->post_title
                 ];
+                
             } else {
                 $last_post = new WP_Query('posts_per_page=1&order=ASC&post_type=projects');
                 $last_post->the_post();
+
                 $arr = [
                     'kicker' => 'Next project',
                     'url' => get_permalink(),
                     'title' => get_the_title()
                 ];
+
                 wp_reset_query();
             }
+
             set_query_var('button', $arr);
-            layout_get_component('button-lg'); 
+            layout_get_component('button-lg', ''); 
         ?>
     </article>
 

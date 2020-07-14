@@ -1,138 +1,46 @@
+@import 'resume/masthead';
+@import 'resume/jobs';
+@import 'resume/sidebar';
+
 .resume {
     margin-top: 100px;
+
     @include media-breakpoint-between(md, md) {
         margin-top: 75px;
         &:first-child {
             margin-top: 150px;
         }
     }
-    @include media-breakpoint-down(sm) {
+
+    @include media('<tablet') {
         margin-top: 50px;
     }
+
     li {
         margin-bottom: 25px;
-        @include media-breakpoint-down(sm) {
+
+        @include media('<tablet') {
             margin-bottom: 15px;
         }
-    }
-    &__person {
-        @include media-breakpoint-down(md) {
-            margin-bottom: 30px;
-        }
-        h1 {
-            @extend %h2;
-            color: theme-color('white');
-            line-height: .75;
-            @include media-breakpoint-down(sm) {
-                line-height: .85;
-            }
-        }
-        strong {
-            @extend %h4;
-            color: theme-color('secondary');
-        }
-    }
-    &__contact li {
-        margin-left: 40px;
-        position: relative;
-        &:not(:first-child) {
-            margin-bottom: 8px;
-        }
-        span {
-            @extend %small-caps;
-            color: theme-color('white');
-            @include media-breakpoint-down(sm) {
-                @include fontSize(10px);
-            }
-        }
-        i {
-            @include fontSize(17px);
-            color: theme-color('secondary');
-            left: -40px;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 15px;
-        }
-    }
-    &__exp {
-        $i: &;
-        @extend %lists;
-        &__section {
-            margin-bottom: 60px;
-            &-positions li {
-                margin-bottom: 0;
-            }
-        }
-        &__list {
-            margin: 30px 0 0;
-            padding: 0 0 0 50px;
-            li {
-                @extend %p;
-                color: theme-color('white');
-                position: relative;
-                &::before {
-                    @include width-height(25px, 2px);
-                    background: theme-color('secondary');
-                    content: '';
-                    left: -50px;
-                    position: absolute;
-                    top: 14px;
-                }
-            }
-        }
-        h2 {
-            @extend %h3;
-            @include media-breakpoint-down(sm) {
-                margin-bottom: 15px;
-            }
-            &#{$i}__title {
-                @extend %h6;
-                @extend %title-underline;
-                margin: 100px 0 70px;
-                @include media-breakpoint-down(sm) {
-                    margin: 50px 0 70px;
-                }
-            } 
-        }
-    }
-    &__side {
-        @extend %lists;
-        h2 {
-            @extend %h6;
-            @extend %title-underline;
-            margin: 10px 0 70px;
-        }
-        h3 {
-            margin-top: 40px;
-        }
-        strong {
-            display: block;
-        }
+
     }
     .col-lg-6 {
         padding: 0 calc(var(--col) / 2);
+
         @include media-breakpoint-down(lg) {
             padding-left: 0;
         }
+
         @include media-breakpoint-down(md) {
             padding: 0;
         }
+
     }
     .col-lg-3 {
         padding-right: calc(var(--col) / 2);
+        
         @include media-breakpoint-down(lg) {
             padding-right: 0;
         }
-    }
-}
-
-@keyframes title {
-    0%,
-    20% {
-        @include fontSize(15px);
-    }
-    100% {
-        @include fontSize(35px);
     }
 }

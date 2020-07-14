@@ -3,17 +3,21 @@
     padding: 0 80px;
     position: relative;
     z-index: 10;
+
     @include media-breakpoint-down(lg) {
         height: 60px;
         padding: 18px 30px;
     }
-    @include media-breakpoint-down(sm) {
+
+    @include media('<tablet') {
         margin-bottom: 130px;
     }
+
     @include media('>=phone', '<tablet', 'landscape') {
         margin-bottom: 0;
         padding-left: calc(var(--col) * 2) !important;
     }
+
     p {
         --tt-key: footer;
         font-weight: 500;
@@ -31,15 +35,19 @@
             @include fontSize(15px);
             margin: 0 3px;
             transition: all .15s ease-in-out;
+
             @include media-breakpoint-down(lg) {
                 @include fontSize(11px);
             }
+
         }
     }
     &__social {
+
         @include media-breakpoint-down(lg) {
             display: none;
         }
+
         a:not(:last-child) {
             margin-right: 30px;
         }
@@ -48,9 +56,11 @@
         @extend %bar;
         bottom: 0;
         left: 50%;
+
         @include media-breakpoint-down(lg) {
             bottom: -18px;
         }
+
         &::before {
             @include fontSize(250px);
             color: theme-color('white');
@@ -61,10 +71,12 @@
             position: absolute;
             top: 0;
             transform: translate(-50%, -50%);
+
             @media speech {
                 display: none;
                 visibility: hidden;
             }
+            
         }
     }
 }

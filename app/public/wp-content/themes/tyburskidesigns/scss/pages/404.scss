@@ -2,12 +2,15 @@
     @extend %container;
     &__content {
         @extend %bg-tint;
+
         @include media-breakpoint-down(md) {
             padding: 0 calc(var(--col) * 1.5) !important;
         }
-        @include media-breakpoint-down(sm) {
+
+        @include media('<tablet') {
             padding: 100px calc(var(--col) * 1.5) 0 !important;
         }
+        
         h1 {
             color: theme-color('secondary');
         }

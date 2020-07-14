@@ -123,8 +123,14 @@ if (function_exists('acf_add_options_page')) {
 // Components
 // -----------------------
 
-function layout_get_component($component) {
-    return get_template_part('components/' . $component, '');
+function layout_get_component($component, $path) {
+    if (empty($path)) {
+        $path = NULL;
+    }
+    else {
+        $path = $path . '/';
+    }
+    return get_template_part( 'components/' . $path . $component, '');
 }
 
 

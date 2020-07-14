@@ -11,8 +11,9 @@
     <body <?php body_class(); ?>>
 
         <!-- DESKTOP & TABLET NAV -->    
-        <div data-aos="fade-right" data-aos-delay="100" id="#nav-fullscreen" class="position-fixed nav-fullscreen--trigger js-nav-fullscreen--trigger" tabindex="0">
+        <div data-aos="fade-right" data-aos-delay="100" id="#nav-fullscreen" class="position-fixed nav-fullscreen--trigger js-nav-fullscreen--trigger" role="button" tabindex="0">
             <span class="position-absolute nav-fullscreen--trigger__icon" aria-hidden="true"></span>
+            <span class="sr-only">Menu</span>
         </div>
 
         <div id="nav-fullscreen" class="position-fixed text-center text-xl-left nav-fullscreen">
@@ -21,7 +22,7 @@
 
                     <section class="row no-gutters position-absolute navbar">
                         <nav class="col-xl-6 d-flex align-items-start">
-                            <?php layout_get_component('logo'); ?>
+                            <?php layout_get_component('logo' , 'nav'); ?>
                         </nav>
                     </section>
 
@@ -86,10 +87,10 @@
                         'menu-items'    => $nav_items
                     ];
                     set_query_var('tab', $arr);
-                    layout_get_component('tab-menu');
+                    layout_get_component('tab-menu' , 'nav');
                 ?>
             
-                <li class="tabs__circle">
+                <li class="tabs__circle" role="button">
 
                     <div class="tabs__circle--gooey">
                         <input type="checkbox" href="#" class="tabs__circle--open" name="tabs__circle--open" id="tabs__circle--open"/>
@@ -135,7 +136,7 @@
                         'menu-items'    => $nav_items
                     ];
                     set_query_var('tab', $arr);
-                    layout_get_component('tab-menu');
+                    layout_get_component('tab-menu' , 'nav');
                 ?>
 
             </ul>
@@ -150,7 +151,7 @@
                 <section class="row no-gutters">
 
                     <nav class="col-lg-9 d-flex align-items-start">
-                        <?php layout_get_component('logo'); ?>
+                        <?php layout_get_component('logo', 'nav'); ?>
 
                         <nav class="d-flex align-items-start">
                             <?php breadcrumbs(); ?>

@@ -3,18 +3,22 @@
     background-size: 1px 1em;
     box-shadow: 0 -0.15em inset;
     margin-top: 50px;
-    @include media-breakpoint-down(sm) {
+
+    @include media('<tablet') {
         @include fontSize(10px);
     }
+
     &__icon {
         @extend %h3;
         --tt-key: header;
         color: theme-color('secondary');
         margin-top: 10px;
         white-space: nowrap;
+
         @include media-breakpoint-down(lg) {
             display: none;
         }
+
         i {
             margin-right: 30px;
         }
@@ -25,14 +29,17 @@
         height: 350px;
         margin: 300px 0 250px;
         padding: 50px var(--col);
+
         @include media-breakpoint-between(lg, lg) {
             height: 275px;
         }
-        @include media-breakpoint-down(sm) {
+
+        @include media('<tablet') {
             height: auto;
             margin-bottom: 10px;
             padding: 50px var(--col);
         }
+
         @include media('>=phone', '<tablet', 'landscape') {
             padding-left: calc(var(--col) * 2);
         }
@@ -41,18 +48,22 @@
             font-weight: 400;
             letter-spacing: 0;
             text-transform: none;
-            @include media-breakpoint-down(sm) {
+
+            @include media('<tablet') {
                 margin-bottom: 10px;
             }
+
         }
         i {
             @include fontSize(90px);
             line-height: 0;
             right: var(--col);
             top: calc(50% + 23px); 
-            @include media-breakpoint-down(sm) {
+
+            @include media('<tablet') {
                 display: none;
             }
+            
         }
     }
     &__arrow {

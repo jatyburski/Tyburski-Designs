@@ -1,0 +1,24 @@
+.resume__side {
+    @extend %lists;
+    h2 {
+        @extend %h6;
+        @extend %title-underline;
+        margin: 10px 0 70px;
+    }
+    h3 {
+        margin-top: 40px;
+    }
+    strong {
+        display: block;
+    }
+}
+
+@keyframes title {
+    0%,
+    20% {
+        @include fontSize(15px);
+    }
+    100% {
+        @include fontSize(35px);
+    }
+}
