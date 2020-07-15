@@ -6,6 +6,8 @@
     --primary-font: 'origin-super-condensed', sans-serif;
     --secondary-font: 'Raleway', sans-serif;
     --col: 8.3333vw;
+    --min-window: 600;
+    --max-window: 4000;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-variant-numeric: lining-nums;
@@ -20,7 +22,7 @@
         @include media('>=phone', '<850px', 'landscape') {
             overflow: visible;
         }
-        
+
     }
 }
 

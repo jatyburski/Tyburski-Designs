@@ -1,7 +1,7 @@
 .project {
     &__content {
         margin: var(--col) 0;
-        .col-lg-8 {
+        .col-lg-6 {
             margin-bottom: 100px;
 
             @include media('>=phone', '<tablet', 'landscape') {
@@ -15,10 +15,10 @@
                 margin-top: 40px;
             }
         }
-        &--lg h2 {
+        &--lg p {
             @extend %h4;
             text-transform: none;
-            + h2 {
+            + p {
                 margin-top: 40px;
             }
         }
@@ -35,7 +35,7 @@
             @include media('<tablet') {
                 margin-left: 0;
             }
-            
+
         }
         dt {
             @extend %h6;

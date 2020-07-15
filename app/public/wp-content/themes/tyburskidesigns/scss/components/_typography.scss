@@ -5,8 +5,8 @@
 h1,
 %h1 {
     --tt-key: h1;
-    --tt-min: 600;
-    --tt-max: 4000;
+    --tt-min: var(--min-window);
+    --tt-max: var(--max-window);
     color: theme-color('white');
     font-family: var(--primary-font);
     font-weight: 900;
@@ -30,8 +30,8 @@ h1,
 h2,
 %h2 {
     --tt-key: h2;
-    --tt-min: 600;
-    --tt-max: 4000;
+    --tt-min: var(--min-window);
+    --tt-max: var(--max-window);
     color: theme-color('secondary');
     font-family: var(--primary-font);
     font-weight: 900;
@@ -59,8 +59,8 @@ h2,
 h3,
 %h3 {
     --tt-key: h3;
-    --tt-min: 600;
-    --tt-max: 4000;
+    --tt-min: var(--min-window);
+    --tt-max: var(--max-window);
     color: theme-color('white');
     font-family: var(--primary-font);
     font-weight: 900;
@@ -82,8 +82,8 @@ h3,
 h4,
 %h4 {
     --tt-key: h4;
-    --tt-min: 600;
-    --tt-max: 4000;
+    --tt-min: var(--min-window);
+    --tt-max: var(--max-window);
     color: theme-color('white');
     font-family: var(--secondary-font);
     font-weight: 700;
@@ -104,8 +104,8 @@ h5,
 %h5 {
     @extend %small-caps;
     --tt-key: h5;
-    --tt-min: 600;
-    --tt-max: 4000;
+    --tt-min: var(--min-window);
+    --tt-max: var(--max-window);
     color: theme-color('secondary');
     font-family: var(--secondary-font);
     font-weight: 700;
@@ -126,8 +126,8 @@ h6,
 %h6 {
     @extend %small-caps;
     --tt-key: h6;
-    --tt-min: 600;
-    --tt-max: 4000;
+    --tt-min: var(--min-window);
+    --tt-max: var(--max-window);
     color: theme-color('secondary');
     font-family: var(--secondary-font);
     letter-spacing: 4px;

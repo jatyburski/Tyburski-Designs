@@ -106,9 +106,9 @@ add_theme_support('post-thumbnails', array(
 // Theme Options
 // -----------------------
 
-if (function_exists('acf_add_options_page')) {
+if ( function_exists( 'acf_add_options_page' ) ) {
 
-    acf_add_options_page(array(
+    acf_add_options_page( array(
         'page_title' => 'Theme General Settings',
         'menu_title' => 'Theme Settings',
         'menu_slug' => 'theme-general-settings',
@@ -123,14 +123,14 @@ if (function_exists('acf_add_options_page')) {
 // Components
 // -----------------------
 
-function layout_get_component($component, $path) {
-    if (empty($path)) {
+function layout_get_component( $component, $path ) {
+    if ( empty( $path ) ) {
         $path = NULL;
     }
     else {
         $path = $path . '/';
     }
-    return get_template_part( 'components/' . $path . $component, '');
+    return get_template_part( 'components/' . $path . $component, '' );
 }
 
 
@@ -140,20 +140,20 @@ function layout_get_component($component, $path) {
 
 function breadcrumbs() {
     global $wp_query;
-    if (!is_front_page()) {
+    if ( ! is_front_page() ) {
         echo '<ol class="breadcrumb p-0 m-0">';
         if (is_home() || is_single()) {
-            if (is_home()) {
-                echo '<li class="breadcrumb-item text-uppercase p-0" aria-current="page">' . get_the_title(get_option('page_for_posts', true)) . '</li>';
+            if ( is_home() ) {
+                echo '<li class="breadcrumb-item text-uppercase p-0" aria-current="page">' . get_the_title( get_option( 'page_for_posts', true ) ) . '</li>';
             }
             else {
-                echo '<li class="breadcrumb-item breadcrumb-item--truncate text-uppercase p-0"><a href="' . get_post_type_archive_link('post') . '">' . get_the_title(get_option('page_for_posts', true)) . '</a></li><li class="breadcrumb-item d-none d-md-block text-uppercase p-0" aria-current="page">' . get_the_title() . '</li>';
+                echo '<li class="breadcrumb-item breadcrumb-item--truncate text-uppercase p-0"><a href="' . get_post_type_archive_link( 'post' ) . '">' . get_the_title( get_option('page_for_posts', true ) ) . '</a></li><li class="breadcrumb-item d-none d-md-block text-uppercase p-0" aria-current="page">' . get_the_title() . '</li>';
             }
         }
-        if (is_404()) {
+        if ( is_404() ) {
             echo '<li class="breadcrumb-item text-uppercase p-0" aria-current="page">Page Not Found</li>';
         }
-        elseif (is_page()) {
+        elseif ( is_page() ) {
             echo '<li class="breadcrumb-item text-uppercase p-0" aria-current="page">' . get_the_title() . '</a></li>';
         }
         echo "</ol>";
@@ -165,10 +165,10 @@ function breadcrumbs() {
 // Pattern
 // -----------------------
 
-function pattern_rectangle($rows, $columns) { 
-    for ($horizontal = 1; $horizontal <= $rows; $horizontal++) { 
-        for ($vertical = 1; $vertical <= $columns; $vertical++) { 
-            if ($horizontal == 1 || $horizontal == $rows ||  
+function pattern_rectangle( $rows, $columns ) { 
+    for ( $horizontal = 1; $horizontal <= $rows; $horizontal++ ) { 
+        for ( $vertical = 1; $vertical <= $columns; $vertical++ ) { 
+            if ( $horizontal == 1 || $horizontal == $rows ||  
                 $vertical == 1 || $vertical == $columns)          
                 echo("+ ");          
             else

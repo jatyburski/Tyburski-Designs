@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-        <link href="<?php echo get_bloginfo('template_directory'); ?>/style.css" rel="stylesheet">
+        <link href="<?php echo get_bloginfo( 'template_directory' ); ?>/style.css" rel="stylesheet">
         <?php wp_head(); ?>
         <title></title>
     </head>
@@ -11,10 +11,10 @@
     <body <?php body_class(); ?>>
 
         <!-- DESKTOP & TABLET NAV -->    
-        <div data-aos="fade-right" data-aos-delay="100" id="#nav-fullscreen" class="position-fixed nav-fullscreen--trigger js-nav-fullscreen--trigger" role="button" tabindex="0">
+        <button data-aos="fade-right" data-aos-delay="100" id="#nav-fullscreen" class="border-0 position-fixed nav-fullscreen--trigger js-nav-fullscreen--trigger" tabindex="0">
             <span class="position-absolute nav-fullscreen--trigger__icon" aria-hidden="true"></span>
             <span class="sr-only">Menu</span>
-        </div>
+        </button>
 
         <div id="nav-fullscreen" class="position-fixed text-center text-xl-left nav-fullscreen">
             <div class="nav-fullscreen__content">
@@ -22,7 +22,7 @@
 
                     <section class="row no-gutters position-absolute navbar">
                         <nav class="col-xl-6 d-flex align-items-start">
-                            <?php layout_get_component('logo' , 'nav'); ?>
+                            <?php layout_get_component( 'logo' , 'nav' ); ?>
                         </nav>
                     </section>
 
@@ -56,13 +56,13 @@
                         </div>
 
                         <div class="order-lg-1 offset-1 offset-xl-0 col-10 col-xl-1">
-                            <?php if (have_rows('social_media', 'option')) : ?>
+                            <?php if ( have_rows( 'social_media', 'option' ) ) : ?>
                                 <ul class="text-center p-0 nav-fullscreen__social">
                                     
-                                    <?php while (have_rows('social_media', 'option')) : the_row(); ?>
+                                    <?php while ( have_rows( 'social_media', 'option' ) ) : the_row(); ?>
                                         <li>
-                                            <a href="<?php the_sub_field('link'); ?>" aria-label="<?php the_sub_field('platform'); ?>" rel="nofollow noopener" target="_blank">
-                                                <i class="fab fa-<?php the_sub_field('platform'); ?>"></i>
+                                            <a href="<?php the_sub_field( 'link' ); ?>" aria-label="<?php the_sub_field( 'platform' ); ?>" rel="nofollow noopener" target="_blank">
+                                                <i class="fab fa-<?php the_sub_field( 'platform' ); ?>"></i>
                                             </a>
                                         </li>
                                     <?php endwhile; ?>
@@ -81,13 +81,15 @@
             
             <ul class="d-flex align-items-center justify-content-between m-0 w-100 tabs__nav">
                 <?php 
-                    $nav = wp_get_nav_menu_items('Mobile');
-                    $nav_items = array_slice($nav, 0, 2);
+                    $nav = wp_get_nav_menu_items( 'Mobile' );
+                    $nav_items = array_slice( $nav, 0, 2 );
+
                     $arr = [
                         'menu-items'    => $nav_items
                     ];
-                    set_query_var('tab', $arr);
-                    layout_get_component('tab-menu' , 'nav');
+
+                    set_query_var( 'tab', $arr );
+                    layout_get_component( 'tab-menu' , 'nav' );
                 ?>
             
                 <li class="tabs__circle" role="button">
@@ -98,11 +100,11 @@
                             <span class="tabs__circle__hamburger"></span>
                         </label>
                         
-                        <?php if (have_rows('social_media', 'option')) : ?>
+                        <?php if ( have_rows( 'social_media', 'option' ) ) : ?>
 
-                            <?php while (have_rows('social_media', 'option')) : the_row(); ?>
-                                <a class="tabs__circle__item" href="<?php the_sub_field('link'); ?>" aria-label="<?php the_sub_field('platform'); ?>" rel="nofollow noopener" target="_blank">
-                                    <i class="fab fa-<?php the_sub_field('platform'); ?>"></i>
+                            <?php while ( have_rows( 'social_media', 'option' ) ) : the_row(); ?>
+                                <a class="tabs__circle__item" href="<?php the_sub_field( 'link' ); ?>" aria-label="<?php the_sub_field( 'platform' ); ?>" rel="nofollow noopener" target="_blank">
+                                    <i class="fab fa-<?php the_sub_field( 'platform' ); ?>"></i>
                                 </a>
                             <?php endwhile; ?>
 
@@ -132,9 +134,11 @@
 
                 <?php 
                     $nav_items = array_slice($nav, -2);
+
                     $arr = [
                         'menu-items'    => $nav_items
                     ];
+                    
                     set_query_var('tab', $arr);
                     layout_get_component('tab-menu' , 'nav');
                 ?>
@@ -158,10 +162,14 @@
                         </nav>
                     </nav>
 
-                    <?php if (is_page('contact') || is_page('resume')) : ?>
+                    <?php if (is_page( 'contact' ) || is_page( 'resume' )) : ?>
+
                         <div data-aos="fade-left" class="col-lg-3 d-flex justify-content-end">
-                            <a class="btn__icon" href="<?php the_field('resume', 'option'); ?>" target="_blank"><i data-aos="fade-right" data-aos-delay="600" class="fal fa-long-arrow-right"></i>Download Résumé</a>
+                            <a class="btn__icon" href="<?php the_field( 'resume', 'option' ); ?>" target="_blank">
+                                <i data-aos="fade-right" data-aos-delay="600" class="fal fa-long-arrow-right"></i>Download Résumé
+                            </a>
                         </div>
+
                     <?php endif; ?>
 
                 </section>
