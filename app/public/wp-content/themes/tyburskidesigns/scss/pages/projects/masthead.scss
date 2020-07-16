@@ -11,8 +11,8 @@
         }
 
         &::after {
-            @extend %bg-tint;
             @include width-height(100%, 100px);
+            @extend %bg-tint;
             bottom: -88px;
             content: '';
             left: 0;
@@ -46,7 +46,7 @@
             @extend %p;
             color: theme-color('white');
             &:not(:first-child)::before {
-                margin: 0 20px 0 16px;
+                margin: 0 14px 0 16px;
             }
         }
     }

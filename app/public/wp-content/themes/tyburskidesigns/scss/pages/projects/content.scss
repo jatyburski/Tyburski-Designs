@@ -1,18 +1,24 @@
 .project {
     &__content {
-        margin: var(--col) 0;
+        margin: 0 0 var(--col);
         .col-lg-6 {
-            margin-bottom: 100px;
+            margin-bottom: var(--col);
+            margin-top: var(--col);
 
             @include media('>=phone', '<tablet', 'landscape') {
                 padding-left: var(--col);
             }
-
-            &:last-child {
-                margin-bottom: 0;
+            
+            @include media('>=phone', '<tablet') {
+                margin-bottom: calc(var(--col) * 2);
+                margin-top: calc(var(--col) * 2);
             }
-            h2 ~ p {
-                margin-top: 40px;
+            
+            h2 {
+                color: theme-color('white');
+                ~ p {
+                    margin-top: 40px;
+                }
             }
         }
         &--lg p {
@@ -24,7 +30,10 @@
         }
         &--tint {
             @extend %bg-tint;
-            padding: var(--col) 0;
+            padding-top: var(--col);
+            @include media('>=phone', '<tablet') {
+                padding-top: calc(var(--col) * 2);
+            }
         }
     }
     &__appendix {

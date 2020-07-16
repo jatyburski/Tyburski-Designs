@@ -26,12 +26,15 @@
             @include object-fit(cover, center);
             @include width-height(100%);
         }
-        &-caption h3 {
-            @extend %h5;
-            color: theme-color('white');
-            margin-top: 60px;
-            letter-spacing: 0;
-            text-transform: none;
+        &-caption {
+            margin-bottom: calc(var(--col) + 60px) !important;
+            margin-top: 60px !important;
+            h3 {
+                @extend %h5;
+                color: theme-color('white');
+                letter-spacing: 0;
+                text-transform: none;
+            }
         }
     }
 }

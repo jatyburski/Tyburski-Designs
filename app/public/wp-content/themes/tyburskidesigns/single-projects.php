@@ -8,7 +8,9 @@
                     <ul class="p-0 position-relative project__categories">
 
                         <?php foreach ( $terms as $term ) : ?>
-                            <li class="d-inline-block font-weight-bold"><?php echo $term->name; ?></li>
+                            <li class="d-inline-block font-weight-bold">
+                                <?php echo $term->name; ?>
+                            </li>
                         <?php endforeach; ?>
 
                     </ul>
