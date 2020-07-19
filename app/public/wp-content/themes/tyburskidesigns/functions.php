@@ -48,11 +48,11 @@ function pattern_rectangle( $rows, $columns ) {
 
 
 // -----------------------
-// ACF
+// Components
 // -----------------------
 
-require_once('includes/acf/components.php');
-require_once('includes/acf/theme-options.php');
+require_once('includes/components/components.php');
+require_once('includes/components/theme-options.php');
 
 
 // -----------------------
