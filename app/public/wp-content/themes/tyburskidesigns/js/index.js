@@ -213,3 +213,26 @@ Math.easeInOutQuad = function (t, b, c, d) {
 // let vh = window.innerHeight * 0.01;
 // // Then we set the value in the --vh custom property to the root of the document
 // document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+
+var largeImage = document.getElementsByClassName('large-image');
+
+$(window).scroll(function () {
+  if ($(this).scrollTop() > 600) {
+
+    var hasLargeImg = false;
+
+    Array.prototype.forEach.call(largeImage, function(el) {
+        // console.log(el);
+        if (checkVisible(el)) {
+          hasLargeImg = true;
+        }
+    });
+
+    if (hasLargeImg) {
+      $(".nav-fullscreen--trigger").fadeOut('slow');
+    } else {
+      $(".nav-fullscreen--trigger").fadeIn('slow');
+    }
+  }
+});

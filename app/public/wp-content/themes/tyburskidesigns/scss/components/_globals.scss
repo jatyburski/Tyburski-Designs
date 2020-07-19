@@ -26,6 +26,15 @@
     }
 }
 
+$breakpoints: (
+    phone: 320px,
+    small: 600px,
+    tablet: 768px,
+    large: 992px,
+    x-large: 1200px,
+    desktop: 1920px
+);
+
 $theme-colors: (
     "primary": #140F23,
     "secondary": #FFC857,
@@ -47,11 +56,11 @@ $theme-colors: (
     position: absolute;
     transform: translateX(-50%);
 
-    @include media-breakpoint-down(lg) {
+    @include media('<x-large') {
         @include width-height(calc(var(--col) * 1.5), 140px);
     }
 
-    @include media-breakpoint-down(md) {
+    @include media('<large') {
         @include width-height(calc(var(--col) * 2), 170px);
     }
 
@@ -85,7 +94,7 @@ $theme-colors: (
     padding: 80px var(--col) 0;
     position: relative;
 
-    @include media-breakpoint-down(lg) {
+    @include media('<x-large') {
         height: calc(100vh - 60px);
         padding: 0;
     }

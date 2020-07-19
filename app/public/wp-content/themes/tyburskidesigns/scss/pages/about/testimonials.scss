@@ -1,7 +1,7 @@
 .about__testimonials {
     margin-top: 250px;
 
-    @include media-breakpoint-down(lg) {
+    @include media('<x-large') {
         margin-top: 150px;
     }
 

@@ -3,17 +3,17 @@
     padding: 0 0 0 var(--col) !important;
     white-space: nowrap;
 
-    @include media-breakpoint-down(lg) {
+    @include media('<x-large') {
         + .about__image {
             display: flex;
             justify-content: flex-end;
-            opacity: .4;
+            opacity: .3;
             position: absolute;
             z-index: -1;
         }
     }
 
-    @include media-breakpoint-between(md, lg) {
+    @include media('>=large', '<x-large') {
         + .about__image {
             background: transparent;
             img {
@@ -52,6 +52,6 @@
                 display: none !important;
             }
         }
-        
+
     }
 }

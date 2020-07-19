@@ -1,7 +1,7 @@
 <?php $arr = get_query_var( 'button' ); ?>
 
 <?php if ( $arr ) : ?>
-    <section class="row no-gutters position-relative">
+    <div class="row no-gutters position-relative">
         <div data-aos="fade-down" class="d-flex flex-column position-absolute btn__arrow">
             <?php echo str_repeat( '<span>+</span>', 4 ); ?>
         </div>
@@ -25,5 +25,5 @@
                 ?>
             </a>
         </div>
-    </section>
+    </div>
 <?php endif; ?>

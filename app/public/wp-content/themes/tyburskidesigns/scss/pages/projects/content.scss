@@ -39,7 +39,7 @@
     &__appendix {
         margin-top: 70px;
         li:not(:first-child) {
-            margin-left: calc(var(--col) / 2);
+            margin-left: var(--col);
 
             @include media('<tablet') {
                 margin-left: 0;

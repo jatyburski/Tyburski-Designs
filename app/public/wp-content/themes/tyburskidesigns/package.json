@@ -6,7 +6,11 @@
   "scripts": {
     "build:sass": "node-sass --output-style=expanded scss/_partials.scss ../tyburskidesigns/style.css",
     "prefix": "npm run build:sass && autoprefixer-cli -o style.css style.css",
-    "start": "onchange \"scss/**/*.scss\" -- npm run prefix"
+    "start": "wpackio-scripts start",
+    "bootstrap": "wpackio-scripts bootstrap",
+    "build": "wpackio-scripts build",
+    "start-backup": "onchange \"scss/**/*.scss\" -- npm run prefix",
+    "archive": "wpackio-scripts pack"
   },
   "author": "Joseph Tyburski j.tyburski@yahoo.com tyburskidesigns.com",
   "license": "ISC",
@@ -15,15 +19,16 @@
     "url": "git://github.com/jatyburski/Portfolio.git"
   },
   "dependencies": {
+    "@wpackio/entrypoint": "^4.4.1",
     "aos": "^2.3.4",
     "bootstrap": "^4.5.0",
     "include-media": "^1.4.9",
     "jquery": "^3.5.1",
-    "lightbox2": "^2.11.1",
     "object-fit-images": "^3.2.4",
     "popper.js": "^1.16.1"
   },
   "devDependencies": {
+    "@wpackio/scripts": "^4.4.1",
     "autoprefixer": "^9.8.0",
     "autoprefixer-cli": "^1.0.0",
     "node-sass": "^4.14.1",

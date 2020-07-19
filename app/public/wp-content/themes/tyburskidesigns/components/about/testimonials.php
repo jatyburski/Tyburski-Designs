@@ -1,12 +1,6 @@
 <div class="offset-1 offset-md-2 offset-xl-1 col-10 col-md-9 col-lg-8 col-xl-4 d-flex flex-column justify-content-center position-relative about__testimonials" id="carousel" data-ride="carousel">
     <?php $slides = get_field( 'testimonials' ); ?>
     <?php if ( $slides ) : ?>
-
-        <ol>
-            <?php foreach ( $slides as $slide ) : $counter = 0; ?>
-                <li data-target="#carousel" data-slide-to="<?php echo $counter++; ?>"></li>
-            <?php endforeach; ?>
-        </ol>
         
         <h3>Clients Say...</h3>
         <ul class="m-0 p-0 position-relative">
@@ -16,8 +10,8 @@
                     <blockquote>
                         <?php echo $slide[ 'quote' ]; ?>
 
-                        <?php $cite = $slide[ 'cite' ]; ?>
                         <cite class="d-block font-weight-bold">
+                            <?php $cite = $slide[ 'cite' ]; ?>
                             <?php echo $cite[ 'name' ]; ?> 
                             <span class="d-block font-weight-normal"><?php echo $cite[ 'title' ]; ?></span>
                         </cite>

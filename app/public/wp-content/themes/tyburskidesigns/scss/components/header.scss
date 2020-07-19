@@ -2,7 +2,7 @@
     padding: 40px 80px 50px;
     z-index: 10;
 
-    @include media-breakpoint-down(lg) {
+    @include media('<x-large') {
         padding: 40px var(--col) 50px;
     }
 

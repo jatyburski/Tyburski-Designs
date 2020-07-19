@@ -22,7 +22,7 @@
                 <?php endif; ?>
 
                 <p data-aos="fade-up" data-aos-delay="700">
-                    <time><?php echo $edu[ 'year' ]; ?></time>
+                    <span><?php echo $edu[ 'year' ]; ?></span>
                     <span><?php echo $edu[ 'major'] ; ?></span>
                 </p>
             </li>

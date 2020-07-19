@@ -13,7 +13,7 @@
                     <span><i class="far fa-map-marker-alt"></i><?php echo $contact[ 'location' ]; ?></span>
                 </li>
                 <li data-aos="fade-up" data-aos-delay="600">
-                    <a class="d-inline-block position-relative btn m-0" href="tel:<?php echo preg_replace( '/[^0-9 ]/i', '', $contact[ 'phone' ] ); ?>">
+                    <a class="d-inline-block position-relative btn m-0" href="tel:<?php echo preg_replace( '/[^\dxX]/', '', $contact[ 'phone' ] ); ?>">
                         <i class="far fa-phone"></i>
                         <?php echo $contact[ 'phone' ]; ?>
                     </a>

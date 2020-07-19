@@ -9,7 +9,7 @@
                 <ul class="col-12 m-0 position-relative project__img">
 
                     <?php foreach( $shots as $shot ) : ?>
-                        <li><?php echo wp_get_attachment_image( $shot, 'full' ); ?> </li>
+                        <li class="large-image"><?php echo wp_get_attachment_image( $shot, 'full' ); ?> </li>
                     <?php endforeach; ?>
 
                 </ul>

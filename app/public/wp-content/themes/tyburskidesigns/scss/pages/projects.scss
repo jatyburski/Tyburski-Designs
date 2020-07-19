@@ -9,7 +9,7 @@
     grid-template-columns: repeat(3, 1fr);
     padding: 0 var(--col) 350px;
 
-    @include media-breakpoint-down(lg) {
+    @include media('<x-large') {
         gap: 25px;
         grid-auto-rows: minmax(225px, auto);
         padding: 0 var(--col) 225px;
@@ -73,7 +73,7 @@
         overflow: hidden;
         perspective: 1000px;
 
-        @include media-breakpoint-down(md) {
+        @include media('<large') {
             margin: 0;
         }
         

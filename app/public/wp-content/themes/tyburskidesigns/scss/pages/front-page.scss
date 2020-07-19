@@ -3,22 +3,22 @@
     &__image {
         @extend %bg-tint;
         mix-blend-mode: exclusion;
-        
-        @include media-breakpoint-between(md, lg) {
+
+        @include media('>tablet', '<x-large') {
             background: transparent;
             height: 95% !important;
         }
 
-        @include media-breakpoint-down(lg) {
+        @include media('<x-large') {
             bottom: 0;
             right: 0;
-            opacity: 0.4;
+            opacity: 0.3;
             position: absolute !important;
             transform: translateX(35%);
             z-index: 1;
         }
 
-        @include media-breakpoint-down(md) {
+        @include media('<large') {
             left: 0;
             transform: none;
         }
@@ -27,11 +27,11 @@
             @include object-fit(cover, top right);
             @include width-height(100%);
 
-            @include media-breakpoint-between(md, lg) {
+            @include media('>tablet', '<x-large') {
                 @include width-height(auto, 100%);
             }
 
-            @include media-breakpoint-down(sm) {
+            @include media('<small') {
                 @include object-fit(cover, center);
             }
         }
@@ -40,13 +40,13 @@
         @extend %bg-tint;
         padding: 6vw 0;
 
-        @include media-breakpoint-down(lg) {
+        @include media('<x-large') {
             padding: 15vw var(--col) 0 !important;
             position: relative;
             z-index: 2;
         }
 
-        @include media-breakpoint-down(md) {
+        @include media('<large') {
             padding-top: 20vw !important;
         }
 
@@ -81,12 +81,12 @@
         p {
             padding: 0 var(--col);
 
-            @include media-breakpoint-down(lg) {
+            @include media('<x-large') {
                 padding: 0;
                 width: calc(var(--col) * 5);
             }
 
-            @include media-breakpoint-down(md) {
+            @include media('<large') {
                 width: calc(var(--col) * 7);
             }
 
@@ -98,12 +98,8 @@
         .btn {
             margin: 40px 0 0 var(--col);
 
-            @include media-breakpoint-down(lg) {
+            @include media('<x-large') {
                 margin: 40px 0 0 var(--col);
-            }
-
-            @include media-breakpoint-down(lg) {
-                margin: 40px 0 0;
             }
 
         }

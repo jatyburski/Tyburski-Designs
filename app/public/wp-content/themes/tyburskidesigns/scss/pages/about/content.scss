@@ -1,7 +1,7 @@
 .about__content {
     margin-bottom: 300px;
 
-    @include media-breakpoint-down(lg) {
+    @include media('<x-large') {
         margin-bottom: 150px;
     }
 
@@ -41,7 +41,7 @@
         right: calc(var(--col) * 4);
         top: -200px;
 
-        @include media-breakpoint-down(lg) {
+        @include media('<x-large') {
             right: calc(var(--col) * 2);
         }
 
@@ -58,7 +58,7 @@
     &--full {
         margin-top: 300px;
 
-        @include media-breakpoint-down(lg) {
+        @include media('<x-large') {
             margin-top: 150px;
         }
 
@@ -76,7 +76,7 @@
             left: calc(var(--col) * 2.5);
             top: -450px;
 
-            @include media-breakpoint-down(lg) {
+            @include media('<x-large') {
                 top: -300px;
             }
 
@@ -84,10 +84,10 @@
                 background: theme-color('secondary');
                 height: 350px;
 
-                @include media-breakpoint-down(lg) {
+                @include media('<x-large') {
                     height: 200px;
                 }
-                
+
             }
         }
     }

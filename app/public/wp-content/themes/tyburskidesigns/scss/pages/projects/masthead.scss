@@ -2,7 +2,7 @@
     &__title {
         margin-bottom: 58px;
 
-        @include media-breakpoint-between(lg, lg) {
+        @include media('>=large', '<x-large') {
             margin-bottom: 38px;
         }
 
@@ -35,7 +35,7 @@
         }
     }
     &__categories {
-        margin: 100px 0 15px;
+        margin: 100px 0 35px;
 
         @include media('<tablet') {
             display: none;

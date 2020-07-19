@@ -5,12 +5,13 @@
 
     h3 {
         @extend %h2;
+        hyphens: manual;
         margin-bottom: 70px;
     }
     ul {
         width: calc(var(--col) * 3);
 
-        @include media-breakpoint-down(lg) {
+        @include media('<x-large') {
             display: grid;
             gap: 65px;
             grid-template-columns: repeat(2, 1fr);
@@ -27,7 +28,8 @@
         }
         li {
             margin-bottom: 40px;
-            @include media-breakpoint-down(lg) {
+
+            @include media('<x-large') {
                 margin-bottom: 0;
             }
         }
@@ -39,11 +41,11 @@
         left: calc(var(--col) * 2);
         top: -100px;
 
-        @include media-breakpoint-down(lg) {
+        @include media('<x-large') {
             left: calc(var(--col) * 7);
         }
 
-        @include media-breakpoint-between(md, md) {
+        @include media('>tablet', '<large') {
             top: -150px;
         }
 

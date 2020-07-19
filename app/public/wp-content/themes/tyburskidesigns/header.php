@@ -11,25 +11,53 @@
     <body <?php body_class(); ?>>
 
         <!-- DESKTOP & TABLET NAV -->    
-        <button data-aos="fade-right" data-aos-delay="100" id="#nav-fullscreen" class="border-0 position-fixed nav-fullscreen--trigger js-nav-fullscreen--trigger" tabindex="0">
+        <button data-aos="fade-right" data-aos-delay="100" id="#nav-fullscreen" class="border-0 position-fixed nav-fullscreen--trigger js-nav-fullscreen--trigger">
             <span class="position-absolute nav-fullscreen--trigger__icon" aria-hidden="true"></span>
             <span class="sr-only">Menu</span>
         </button>
+        
+        <?php 
+            // $request = wp_remote_get( get_permalink() );
+
+            // $dom = new DOMDocument;
+            // @$dom->loadHTML($request);
+
+            // $sections = $dom->getElementsByTagName( 'section' );
+            // $extracted_links = array();
+        ?>
+
+
+        <ul class="position-fixed scrollspy">
+
+            <?php foreach ( $sections as $section ) : ?>
+
+                <?php $link = $section->getAttribute('id'); ?>
+
+                <li>
+                    <a class="d-block text-center tabs__nav-items" href="<?php echo $link; ?>">
+                        <?php echo $link; ?>
+                    </a>
+                </li>
+                
+            <?php endforeach; ?>
+
+        </ul>
+
 
         <div id="nav-fullscreen" class="position-fixed text-center text-xl-left nav-fullscreen">
             <div class="nav-fullscreen__content">
                 <div class="container-fluid p-0 h-100 d-flex flex-column">
 
-                    <section class="row no-gutters position-absolute navbar">
+                    <div class="row no-gutters position-absolute navbar">
                         <nav class="col-xl-6 d-flex align-items-start">
                             <?php layout_get_component( 'logo' , 'nav' ); ?>
                         </nav>
-                    </section>
+                    </div>
 
-                    <section class="row no-gutters flex-grow-1 align-items-end">
+                    <div class="row no-gutters flex-grow-1 align-items-end">
 
-                    <div class="order-xl-3 offset-1 offset-xl-0 col-10 h-lg-100">
-                        <?php
+                        <div class="order-xl-3 offset-1 offset-xl-0 col-10 h-lg-100">
+                            <?php
                                 wp_nav_menu([
                                     'menu'            => 'Projects',
                                     'theme_location'  => 'Projects',
@@ -66,11 +94,12 @@
                                             </a>
                                         </li>
                                     <?php endwhile; ?>
+
                                 </ul>
                             <?php endif; ?>
                         </div>
 
-                    </section>
+                    </div>
                 </div>
             </div>
         </div>
@@ -92,10 +121,10 @@
                     layout_get_component( 'tab-menu' , 'nav' );
                 ?>
             
-                <li class="tabs__circle" role="button">
+                <li class="tabs__circle">
 
                     <div class="tabs__circle--gooey">
-                        <input type="checkbox" href="#" class="tabs__circle--open" name="tabs__circle--open" id="tabs__circle--open"/>
+                        <input type="checkbox" class="tabs__circle--open" name="tabs__circle--open" id="tabs__circle--open"/>
                         <label class="m-0 tabs__circle--inner" for="tabs__circle--open">
                             <span class="tabs__circle__hamburger"></span>
                         </label>
@@ -112,16 +141,16 @@
                                 <defs>
                                 <filter id="shadowed-goo">
                                     <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
-                                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                                    <feColorMatrix in="blur" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
                                     <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
-                                    <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
+                                    <feColorMatrix in="shadow" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
                                     <feOffset in="shadow" dx="1" dy="1" result="shadow" />
                                     <feComposite in2="shadow" in="goo" result="goo" />
                                     <feComposite in2="goo" in="SourceGraphic" result="mix" />
                                 </filter>
                                 <filter id="goo">
                                     <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
-                                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                                    <feColorMatrix in="blur" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
                                     <feComposite in2="goo" in="SourceGraphic" result="mix" />
                                 </filter>
                                 </defs>
@@ -152,7 +181,7 @@
         <div class="position-relative overflow-hidden site-container">
 
             <header class="container-fluid navbar d-block">
-                <section class="row no-gutters">
+                <div class="row no-gutters">
 
                     <nav class="col-lg-9 d-flex align-items-start">
                         <?php layout_get_component('logo', 'nav'); ?>
@@ -172,7 +201,7 @@
 
                     <?php endif; ?>
 
-                </section>
+                    </div>
             </header>
 
             <main class="container-fluid p-0">

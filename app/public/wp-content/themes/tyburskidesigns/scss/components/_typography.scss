@@ -160,7 +160,7 @@ p,
     --tt-max: 1920;
     color: theme-color('white');
     font-family: var(--secondary-font);
-    line-height: 2;
+    line-height: 2.15;
     margin: 0;
     + p {
         margin-top: 20px;
@@ -176,7 +176,7 @@ p,
         @include fontSize(14px);
     }
     100% {
-        @include fontSize(15px);
+        @include fontSize(16px);
     }
 }
 
