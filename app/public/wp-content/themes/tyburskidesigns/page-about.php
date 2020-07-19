@@ -21,7 +21,7 @@
     ];
 
     set_query_var( 'button', $arr );
-    layout_get_component( 'button-lg', '' ); 
+    layout_get_component( 'button-lg' ); 
 
     get_footer(); 
 ?>

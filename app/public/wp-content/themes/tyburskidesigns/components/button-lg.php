@@ -8,11 +8,11 @@
 
         <div class="offset-xl-1 col-xl-10">
             <?php 
-                if ($arr[ 'kicker' ]) {
+                if ( ! $arr[ 'kicker' ] ) {
+                    $align = 'center';
+                } else {
                     $align = 'start';
                     $icon = '<i class="far fa-long-arrow-right position-absolute"></i>';
-                } else {
-                    $align = 'center';
                 } 
             ?>
             <a class="d-flex flex-column align-items-<?php echo $align; ?> justify-content-center position-relative btn--lg" href="<?php echo $arr[ 'url' ]; ?>">

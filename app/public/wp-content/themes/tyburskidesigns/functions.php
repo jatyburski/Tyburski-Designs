@@ -30,138 +30,6 @@ function add_async_attribute($tag, $handle) {
 
 
 // -----------------------
-// Navigation
-// -----------------------
-
-require_once('bs4navwalker.php');
-register_nav_menu('primary', 'Primary Menu');
-register_nav_menu('projects', 'Projects Menu');
-register_nav_menu('mobile', 'Mobile Menu');
-
-
-// -----------------------
-// Custom Post Type
-// -----------------------
-
-function create_posttype() {
- 
-    register_post_type( 'projects',
-        array(
-            'labels' => array(
-                'name' => __( 'Projects' ),
-                'singular_name' => __( 'Project' )
-            ),
-            'supports' => array(
-                'title', 
-                'editor', 
-                'excerpt', 
-                'thumbnail', 
-                'custom-fields',
-                'page-attributes'
-            ),
-            'menu_name'         => 'Projects',
-            'menu_icon'         => 'dashicons-images-alt2',
-            'public'            => true,
-            'has_archive'       => false,
-            'rewrite'           => array('slug' => 'projects'),
-            'show_ui'           => true,
-            'show_in_menu'      => true,
-            'show_in_nav_menus' => true,
-            'menu_position'     => 4,
-            'show_in_rest'      => true,
-            'taxonomies'  => array( 
-                'category',
-                'post_tag' 
-            ),
- 
-        )
-    );
-}
-
-add_action( 'init', 'create_posttype' );
-
-
-// -----------------------
-// Removed Unused Post Type
-// -----------------------
-
-function post_remove () { 
-   remove_menu_page('edit.php');
-}
-
-add_action('admin_menu', 'post_remove');
-
-
-// -----------------------
-// Featured Image
-// -----------------------
-
-add_theme_support('post-thumbnails', array(
-    'projects',
-    'page',
-));
-
-
-// -----------------------
-// Theme Options
-// -----------------------
-
-if ( function_exists( 'acf_add_options_page' ) ) {
-
-    acf_add_options_page( array(
-        'page_title' => 'Theme General Settings',
-        'menu_title' => 'Theme Settings',
-        'menu_slug' => 'theme-general-settings',
-        'capability' => 'edit_posts',
-        'redirect' => false
-    ));
-
-}
-
-
-// -----------------------
-// Components
-// -----------------------
-
-function layout_get_component( $component, $path ) {
-    if ( empty( $path ) ) {
-        $path = NULL;
-    }
-    else {
-        $path = $path . '/';
-    }
-    return get_template_part( 'components/' . $path . $component, '' );
-}
-
-
-// -----------------------
-// Breadcrumbs
-// -----------------------
-
-function breadcrumbs() {
-    global $wp_query;
-    if ( ! is_front_page() ) {
-        echo '<ol class="breadcrumb p-0 m-0">';
-        if (is_home() || is_single()) {
-            if ( is_home() ) {
-                echo '<li class="breadcrumb-item text-uppercase p-0" aria-current="page">' . get_the_title( get_option( 'page_for_posts', true ) ) . '</li>';
-            }
-            else {
-                echo '<li class="breadcrumb-item breadcrumb-item--truncate text-uppercase p-0"><a href="' . get_post_type_archive_link( 'post' ) . '">' . get_the_title( get_option('page_for_posts', true ) ) . '</a></li><li class="breadcrumb-item d-none d-md-block text-uppercase p-0" aria-current="page">' . get_the_title() . '</li>';
-            }
-        }
-        if ( is_404() ) {
-            echo '<li class="breadcrumb-item text-uppercase p-0" aria-current="page">Page Not Found</li>';
-        }
-        elseif ( is_page() ) {
-            echo '<li class="breadcrumb-item text-uppercase p-0" aria-current="page">' . get_the_title() . '</a></li>';
-        }
-        echo "</ol>";
-    }
-}
-
-
-// -----------------------
 // Pattern
 // -----------------------
 
@@ -176,26 +44,37 @@ function pattern_rectangle( $rows, $columns ) {
         } 
         echo("\n"); 
     } 
-} 
-
-
-// -----------------------
-// Remove Default Pre Titles
-// -----------------------
-
-add_filter( 'get_the_archive_title', 'remove_pre_title' );
-
-function remove_pre_title( $title ) {
-	if ( is_category() ) {
-		$title = single_cat_title( '', false );
-	} elseif ( is_tag() ) {
-		$title = single_tag_title( '', false );
-	} elseif ( is_post_type_archive() ) {
-		$title = post_type_archive_title( '', false );
-	} elseif ( is_tax() ) {
-		$title = single_term_title( '', false );
-	} elseif ( is_home() ) {
-		$title = single_post_title( '', false );
-	}
-	return $title;
 }
+
+
+// -----------------------
+// ACF
+// -----------------------
+
+require_once('includes/acf/components.php');
+require_once('includes/acf/theme-options.php');
+
+
+// -----------------------
+// Navigation
+// -----------------------
+
+require_once('includes/nav/breadcrumbs.php');
+require_once('includes/nav/bs4navwalker.php');
+
+register_nav_menu('primary', 'Primary Menu');
+register_nav_menu('projects', 'Projects Menu');
+register_nav_menu('mobile', 'Mobile Menu');
+
+
+// -----------------------
+// Post Types
+// -----------------------
+
+require_once('includes/post-types/posts.php');
+require_once('includes/post-types/projects.php');
+
+add_theme_support('post-thumbnails', array(
+    'projects',
+    'page',
+));

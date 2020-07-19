@@ -3,6 +3,7 @@
     <?php $query = new WP_Query ( 'posts_per_page=-1&order=ASC&post_type=projects' ); ?>
 
     <?php if ( $query->have_posts() ) : ?>
+
         <section>
             <ul class="projects">
 
@@ -30,6 +31,7 @@
                 
             </ul>
         </section>
+        
     <?php wp_reset_query(); endif; ?>
 
 <?php get_footer(); ?>
