@@ -6443,11 +6443,12 @@ ul {
 }
 
 .btn--lg i {
-  font-size: 90px;
-  font-size: 5.625rem;
+  font-size: 70px;
+  font-size: 4.375rem;
   line-height: 0;
   right: var(--col);
-  top: calc(50% + 23px);
+  top: calc(50% + 20px);
+  transform: rotate(-45deg);
 }
 
 @media (max-width: 767px) {

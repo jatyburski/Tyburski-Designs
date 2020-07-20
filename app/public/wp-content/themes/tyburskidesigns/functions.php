@@ -10,7 +10,7 @@ function add_theme_scripts() {
     wp_enqueue_script( 'parallax', 'https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js', array (), '1.0.0', true);
     wp_enqueue_script( 'font-awesome', 'https://kit.fontawesome.com/ce83ebeb69.js', array (), false, true);
     wp_enqueue_script( 'handle-bars', 'https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0.beta6/handlebars.min.js', array (), false, true);
-    wp_enqueue_script( 'main', get_template_directory_uri() . '/js/index.js', array (), false, true);
+    wp_enqueue_script( 'main', get_template_directory_uri() . '/assets/js/index.js', array (), false, true);
 }
 
 add_action( 'wp_enqueue_scripts', 'add_theme_scripts' );
@@ -59,8 +59,8 @@ require_once('includes/components/theme-options.php');
 // Navigation
 // -----------------------
 
-require_once('includes/nav/breadcrumbs.php');
-require_once('includes/nav/bs4navwalker.php');
+require_once('includes/functions/nav/breadcrumbs.php');
+require_once('includes/functions/nav/bs4navwalker.php');
 
 register_nav_menu('primary', 'Primary Menu');
 register_nav_menu('projects', 'Projects Menu');
@@ -71,8 +71,8 @@ register_nav_menu('mobile', 'Mobile Menu');
 // Post Types
 // -----------------------
 
-require_once('includes/post-types/posts.php');
-require_once('includes/post-types/projects.php');
+require_once('includes/functions/post-types/posts.php');
+require_once('includes/functions/post-types/projects.php');
 
 add_theme_support('post-thumbnails', array(
     'projects',

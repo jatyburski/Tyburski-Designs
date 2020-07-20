@@ -5,7 +5,7 @@ function create_posttype() {
     register_post_type( 'projects',
         array(
             'labels' => array(
-                'name' => __( 'Projects' ),
+                'name'          => __( 'Projects' ),
                 'singular_name' => __( 'Project' )
             ),
             'supports' => array(
@@ -26,7 +26,7 @@ function create_posttype() {
             'show_in_nav_menus' => true,
             'menu_position'     => 4,
             'show_in_rest'      => true,
-            'taxonomies'  => array( 
+            'taxonomies'        => array( 
                 'category',
                 'post_tag' 
             ),

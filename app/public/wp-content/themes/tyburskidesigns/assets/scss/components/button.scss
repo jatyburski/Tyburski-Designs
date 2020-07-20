@@ -62,10 +62,11 @@
 
         }
         i {
-            @include fontSize(90px);
+            @include fontSize(70px);
             line-height: 0;
             right: var(--col);
-            top: calc(50% + 23px); 
+            top: calc(50% + 20px); 
+            transform: rotate(-45deg);
 
             @include media('<tablet') {
                 display: none;

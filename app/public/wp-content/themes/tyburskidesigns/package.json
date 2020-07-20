@@ -4,12 +4,12 @@
   "description": "Personal portfolio website of Joseph Tyburski",
   "main": "index.js",
   "scripts": {
-    "build:sass": "node-sass --output-style=expanded scss/_partials.scss ../tyburskidesigns/style.css",
+    "build:sass": "node-sass --output-style=expanded assets/scss/_partials.scss ../tyburskidesigns/style.css",
     "prefix": "npm run build:sass && autoprefixer-cli -o style.css style.css",
     "start": "wpackio-scripts start",
     "bootstrap": "wpackio-scripts bootstrap",
     "build": "wpackio-scripts build",
-    "start-backup": "onchange \"scss/**/*.scss\" -- npm run prefix",
+    "start-backup": "onchange \"assets/scss/**/*.scss\" -- npm run prefix",
     "archive": "wpackio-scripts pack"
   },
   "author": "Joseph Tyburski j.tyburski@yahoo.com tyburskidesigns.com",
@@ -24,8 +24,10 @@
     "bootstrap": "^4.5.0",
     "include-media": "^1.4.9",
     "jquery": "^3.5.1",
+    "lodash": "^4.17.19",
     "object-fit-images": "^3.2.4",
-    "popper.js": "^1.16.1"
+    "popper.js": "^1.16.1",
+    "serialize-javascript": "^4.0.0"
   },
   "devDependencies": {
     "@wpackio/scripts": "^4.4.1",

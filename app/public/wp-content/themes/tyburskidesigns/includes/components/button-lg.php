@@ -12,7 +12,7 @@
                     $align = 'center';
                 } else {
                     $align = 'start';
-                    $icon = '<i class="far fa-long-arrow-right position-absolute"></i>';
+                    $icon = '<i class="fal fa-long-arrow-right position-absolute"></i>';
                 } 
             ?>
             <a class="d-flex flex-column align-items-<?php echo $align; ?> justify-content-center position-relative btn--lg" href="<?php echo $arr[ 'url' ]; ?>">
