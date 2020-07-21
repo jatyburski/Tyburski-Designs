@@ -13,7 +13,6 @@
 
     $button_lg = get_field( 'connect' );
     $button_arr = $button_lg[ 'link' ];
-
     $arr = [
         'kicker' => $button_lg[ 'kicker' ],
         'url' => $button_arr[ 'url' ],

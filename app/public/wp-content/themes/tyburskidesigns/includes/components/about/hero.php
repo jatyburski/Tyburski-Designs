@@ -3,16 +3,17 @@
         <h1 data-aos="fade-up">I am <span><?php bloginfo('name'); ?></span>
         </h1>
 
-        <?php $titles = get_field( 'titles' ); ?>
-        <?php if ( $titles ) : ?>
             <ul class="m-0 p-0 d-flex flex-column flex-md-row align-items-start">
 
+                <?php $titles = get_field( 'titles' ); ?>
+
                 <?php foreach ( $titles as $title ) : ?>
-                    <li data-aos="fade-up"><?php echo $title[ 'title' ]; ?></li>
+                    <li data-aos="fade-up">
+                        <?php echo $title[ 'title' ]; ?>
+                    </li>
                 <?php endforeach; ?>
 
             </ul>
-        <?php endif; ?>
     </div>
 
     <div class="col-xl-6 h-100 overflow-hidden about__image">

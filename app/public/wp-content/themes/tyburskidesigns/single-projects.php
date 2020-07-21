@@ -57,12 +57,13 @@
 
                 $last_post = new WP_Query( 'posts_per_page=1&order=ASC&post_type=projects' );
                 $last_post->the_post();
-
                 $arr = [
                     'kicker' => 'Next project',
                     'url' => get_permalink(),
                     'title' => get_the_title()
                 ];
+
+                wp_reset_query();
                 
             } else {
 
@@ -72,7 +73,6 @@
                     'title' => $next_post->post_title
                 ];
 
-                wp_reset_query();
             }
 
             set_query_var( 'button', $arr );

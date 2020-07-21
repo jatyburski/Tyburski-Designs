@@ -1,32 +1,28 @@
 <h2 data-aos="fade-in" data-aos-delay="900">Education</h2>
 
-<?php $education = get_field( 'education' ); ?>
-<?php if ( $education ) : ?>
-    <ul class="m-0 p-0">
+<ul class="m-0 p-0">
 
-        <?php foreach ( $education as $edu ) : ?>
-            <li>
-                <h3 data-aos="fade-up" data-aos-delay="600"><?php echo $edu[ 'institute' ]; ?></h3>
-                
+    <?php $education = get_field( 'education' ); ?>     
+    <?php foreach ( $education as $edu ) : ?>
+        <li>
+            <h3 data-aos="fade-up" data-aos-delay="600"><?php echo $edu[ 'institute' ]; ?></h3>
+            
+            <ul class="m-0 p-0">
+
                 <?php $courses = $edu[ 'courses' ]; ?>
-                <?php if ($courses) : ?>
-                    <ul class="m-0 p-0">
+                <?php foreach ( $courses as $course ) : ?>
+                    <li data-aos="fade-up" data-aos-delay="700" class="m-0">
+                        <p><strong><?php echo $course[ 'course' ]; ?></strong></p>
+                    </li>
+                <?php endforeach; ?>
 
-                        <?php foreach ( $courses as $course ) : ?>
-                            <li data-aos="fade-up" data-aos-delay="700" class="m-0">
-                                <p><strong><?php echo $course[ 'course' ]; ?></strong></p>
-                            </li>
-                        <?php endforeach; ?>
+            </ul>
 
-                    </ul>
-                <?php endif; ?>
+            <p data-aos="fade-up" data-aos-delay="700">
+                <span><?php echo $edu[ 'year' ]; ?></span>
+                <span><?php echo $edu[ 'major'] ; ?></span>
+            </p>
+        </li>
+    <?php endforeach; ?>
 
-                <p data-aos="fade-up" data-aos-delay="700">
-                    <span><?php echo $edu[ 'year' ]; ?></span>
-                    <span><?php echo $edu[ 'major'] ; ?></span>
-                </p>
-            </li>
-        <?php endforeach; ?>
-
-    </ul>
-<?php endif; ?>
+</ul>

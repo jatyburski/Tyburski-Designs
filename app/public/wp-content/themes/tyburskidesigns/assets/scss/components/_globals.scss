@@ -208,15 +208,12 @@ $theme-colors: (
 
 %pattern {
     @include fontSize(16px);
-    color: rgba(theme-color('white'), .07);
-    font-family: var(--secondary-font);
-    font-weight: 600;
-    letter-spacing: 3px;
-    line-height: 1;
+    background: url(/wp-content/uploads/2020/07/plus-bg.png) repeat;
+    opacity: .07;
     overflow: hidden;
     pointer-events: none;
     position: absolute;
-    text-align: justify;
+
     user-select: none;
     width: var(--col);
 

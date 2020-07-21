@@ -19,9 +19,7 @@
             <?php the_post_thumbnail( 'large', array( 'data-aos' => 'zoom-out', 'data-aos-delay' => '800' ) ); ?>
         </div>
 
-        <div class="front-page__pattern" role="presentation">
-            <?php pattern_rectangle(32, 32); ?>
-        </div>
+        <div class="front-page__pattern" role="presentation"></div>
 
     </section>
 

@@ -9,9 +9,7 @@
             <?php the_field( 'content' ); ?>
         </div>
 
-        <div class="contact__pattern" role="presentation">
-            <?php pattern_rectangle(32, 32); ?>
-        </div>
+        <div class="contact__pattern" role="presentation"></div>
 
     </section>
 

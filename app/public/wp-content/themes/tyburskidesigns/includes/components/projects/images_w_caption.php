@@ -3,18 +3,18 @@
 
         <figure class="row mb-0 no-gutters project__img-container">
 
-            <?php $shots = get_sub_field( 'gallery' ); ?>
-            <?php if ( $shots ) : ?>
-
                 <ul class="col-12 m-0 position-relative project__img">
 
+                    <?php $shots = get_sub_field( 'gallery' ); ?>
+
                     <?php foreach( $shots as $shot ) : ?>
-                        <li class="large-image"><?php echo wp_get_attachment_image( $shot, 'full' ); ?> </li>
+                        <li class="large-image">
+                            <?php echo wp_get_attachment_image( $shot, 'full' ); ?>
+                        </li>
                     <?php endforeach; ?>
 
                 </ul>
 
-            <?php endif; ?>
 
             <?php $caption = get_sub_field( 'caption' ); ?>
             <?php if ($caption) : ?>

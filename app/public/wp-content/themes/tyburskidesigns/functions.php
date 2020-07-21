@@ -30,24 +30,6 @@ function add_async_attribute($tag, $handle) {
 
 
 // -----------------------
-// Pattern
-// -----------------------
-
-function pattern_rectangle( $rows, $columns ) { 
-    for ( $horizontal = 1; $horizontal <= $rows; $horizontal++ ) { 
-        for ( $vertical = 1; $vertical <= $columns; $vertical++ ) { 
-            if ( $horizontal == 1 || $horizontal == $rows ||  
-                $vertical == 1 || $vertical == $columns)          
-                echo("+ ");          
-            else
-                echo("+ ");          
-        } 
-        echo("\n"); 
-    } 
-}
-
-
-// -----------------------
 // Components
 // -----------------------
 

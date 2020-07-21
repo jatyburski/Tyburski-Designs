@@ -5,31 +5,26 @@
         <h2 data-aos="fade-up"><?php the_field( 'experience' ); ?></h2>
     </div>
 
-    <div class="about__pattern" role="presentation">
-        <?php pattern_rectangle(32, 32); ?>
-    </div>
+    <div class="about__pattern" role="presentation"></div>
 </section>
 
+<section class="row no-gutters position-relative about__content">
+    <i class="far fa-planet-moon d-none d-md-block position-absolute" role="presentation"></i>
 
-<?php $about = get_field( 'about' ); ?>
-<?php if ($about) : ?>
+    <div class="col-xl-6 position-relative overflow-hidden about__image">
+        <?php 
+            $about = get_field( 'about' );
+            $image = $about['image'];
+            echo wp_get_attachment_image( $image, 'full', '', array( 'data-aos' => 'zoom-out' ) ); 
+        ?>     
+    </div>
 
-    <section class="row no-gutters position-relative about__content">
-        <i class="far fa-planet-moon d-none d-md-block position-absolute" role="presentation"></i>
-
-        <div class="col-xl-6 position-relative overflow-hidden about__image">
-            <?php $image = $about['image']; ?>
-            <?php echo wp_get_attachment_image( $image, 'full', '', array( 'data-aos' => 'zoom-out' ) ); ?>     
-        </div>
-
-        <div data-aos="fade-up" class="offset-1 col-10 col-lg-9 col-xl-4 d-flex flex-column align-items-start justify-content-center">
-            <?php echo $about[ 'content' ]; ?>
-            
-            <?php $button_resume = $about['button']; ?>
-            <a class="d-inline-block position-relative btn" href="<?php echo $button_resume[ 'url' ]; ?>">
-                <?php echo $button_resume[ 'title' ]; ?>
-            </a>
-        </div>
-    </section>
-
-<?php endif; ?>
+    <div data-aos="fade-up" class="offset-1 col-10 col-lg-9 col-xl-4 d-flex flex-column align-items-start justify-content-center">
+        <?php echo $about[ 'content' ]; ?>
+        
+        <?php $button_resume = $about['button']; ?>
+        <a class="d-inline-block position-relative btn" href="<?php echo $button_resume[ 'url' ]; ?>">
+            <?php echo $button_resume[ 'title' ]; ?>
+        </a>
+    </div>
+</section>

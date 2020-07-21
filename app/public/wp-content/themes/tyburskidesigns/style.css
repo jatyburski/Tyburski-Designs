@@ -5972,15 +5972,11 @@ p a:hover,
 .about__pattern, .contact__pattern, .front-page__pattern {
   font-size: 16px;
   font-size: 1rem;
-  color: rgba(247, 247, 255, 0.07);
-  font-family: var(--secondary-font);
-  font-weight: 600;
-  letter-spacing: 3px;
-  line-height: 1;
+  background: url(/wp-content/uploads/2020/07/plus-bg.png) repeat;
+  opacity: .07;
   overflow: hidden;
   pointer-events: none;
   position: absolute;
-  text-align: justify;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;

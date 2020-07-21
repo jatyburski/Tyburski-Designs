@@ -10,9 +10,7 @@
             </a>
         </div>
 
-        <div class="front-page__pattern">
-            <?php pattern_rectangle(32, 32); ?>
-        </div>
+        <div class="front-page__pattern" role="presentation"></div>
 
     </section>
 
