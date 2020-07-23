@@ -58,8 +58,8 @@
                 'menu-items'    => $nav_items
             ];
             
-            set_query_var('tab', $arr);
-            layout_get_component('tab-menu' , 'nav');
+            set_query_var( 'tab', $arr );
+            layout_get_component( 'tab-menu' , 'nav' );
         ?>
 
     </ul>

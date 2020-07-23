@@ -12,6 +12,7 @@
     }
 }
   
+
 // -----------------------
 // Desktop & Tablet Nav
 // -----------------------
@@ -276,6 +277,7 @@
     }
 }
 
+
 // -----------------------
 // Mobile Nav
 // -----------------------
@@ -407,5 +409,30 @@
                 color: theme-color('secondary');
             }
         }
+    }
+}
+
+
+// -----------------------
+// Scrollspy
+// -----------------------
+
+.scrollspy {
+    max-width: 200px;
+    top: 50vh;
+    transform: translateY(-50%);
+    z-index: 1000;
+    a {
+        @extend %p;
+        --tt-key: scrollspy;
+        line-height: 1.5;
+        margin-bottom: 15px;
+    }
+}
+
+@keyframes scrollspy {
+    0%,
+    100% {
+        @include fontSize(14px);
     }
 }

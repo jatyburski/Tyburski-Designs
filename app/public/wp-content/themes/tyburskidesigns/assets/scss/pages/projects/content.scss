@@ -21,11 +21,14 @@
                 }
             }
         }
-        &--lg p {
-            @extend %h4;
-            text-transform: none;
-            + p {
-                margin-top: 40px;
+        &--lg {
+            padding-top: 150px;
+            p {
+                @extend %h4;
+                text-transform: none;
+                + p {
+                    margin-top: 40px;
+                }
             }
         }
         &--tint {

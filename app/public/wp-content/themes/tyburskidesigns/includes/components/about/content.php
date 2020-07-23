@@ -1,3 +1,5 @@
+<?php $id = get_query_var( 'id' ); ?>
+
 <section class="row no-gutters position-relative about__content about__content--full">
     <i class="far fa-telescope position-absolute" role="presentation"></i>
 
@@ -8,7 +10,7 @@
     <div class="about__pattern" role="presentation"></div>
 </section>
 
-<section class="row no-gutters position-relative about__content">
+<section id="<?php echo $id; ?>" class="row no-gutters position-relative about__content">
     <i class="far fa-planet-moon d-none d-md-block position-absolute" role="presentation"></i>
 
     <div class="col-xl-6 position-relative overflow-hidden about__image">
@@ -28,3 +30,5 @@
         </a>
     </div>
 </section>
+
+<?php set_query_var( 'content', $id ); ?>

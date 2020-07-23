@@ -5895,6 +5895,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 p a,
 .btn--lg span a,
+.scrollspy a a,
 .about__testimonials blockquote cite a,
 .about__awards li a,
 .project__categories li a,
@@ -5908,6 +5909,7 @@ p a,
 
 p a:hover,
 .btn--lg span a:hover,
+.scrollspy a a:hover,
 .about__testimonials blockquote cite a:hover,
 .about__awards li a:hover,
 .project__categories li a:hover,
@@ -6213,6 +6215,7 @@ a {
 
 p,
 .btn--lg span,
+.scrollspy a,
 .about__testimonials blockquote cite,
 .about__awards li,
 .project__categories li,
@@ -6229,6 +6232,7 @@ p,
 
 p + p,
 .btn--lg span + p,
+.scrollspy a + p,
 .about__testimonials blockquote cite + p,
 .about__awards li + p,
 .project__categories li + p,
@@ -6968,6 +6972,27 @@ ul {
 
 .tabs__nav-items--active {
   color: #FFC857;
+}
+
+.scrollspy {
+  max-width: 200px;
+  top: 50vh;
+  transform: translateY(-50%);
+  z-index: 1000;
+}
+
+.scrollspy a {
+  --tt-key: scrollspy;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+@keyframes scrollspy {
+  0%,
+  100% {
+    font-size: 14px;
+    font-size: 0.875rem;
+  }
 }
 
 .mouse {
@@ -7958,6 +7983,10 @@ ul {
 
 .project__content .col-lg-6 h2 ~ p {
   margin-top: 40px;
+}
+
+.project__content--lg {
+  padding-top: 150px;
 }
 
 .project__content--lg p {
