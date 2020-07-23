@@ -3,30 +3,6 @@
     <span class="sr-only">Menu</span>
 </button>
 
-<?php 
-    // $request = wp_remote_get( get_permalink() );
-
-    // $dom = new DOMDocument;
-    // @$dom->loadHTML($request);
-
-    // $sections = $dom->getElementsByTagName( 'section' );
-    // $extracted_links = array();
-?>
-
-<ul class="position-fixed scrollspy">
-
-    <?php foreach ( $sections as $section ) : ?>
-        <?php $link = $section->getAttribute('id'); ?>
-
-        <li>
-            <a class="d-block text-center tabs__nav-items" href="<?php echo $link; ?>">
-                <?php echo $link; ?>
-            </a>
-        </li>   
-    <?php endforeach; ?>
-
-</ul>
-
 <div id="nav-fullscreen" class="position-fixed text-center text-xl-left nav-fullscreen">
     <div class="nav-fullscreen__content">
         <div class="container-fluid p-0 h-100 d-flex flex-column">

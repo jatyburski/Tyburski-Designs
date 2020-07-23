@@ -3,13 +3,17 @@
 
     layout_get_component( 'hero', 'about' );
 
-    layout_get_component( 'content', 'about' );
+    echo '<div data-spy="scroll" data-target="scrollspy" data-offset="160">';
 
-    layout_get_component( 'goals', 'about' );
+    layout_get_component( 'content', 'about', 'overview' );
+
+    layout_get_component( 'goals', 'about', 'endeavors-&-acknowledgements' );
 
     layout_get_component( 'image-fullwidth', 'about' );
 
     layout_get_component( 'awards', 'about' );
+
+    echo '</div>';
 
     $button_lg = get_field( 'connect' );
     $button_arr = $button_lg[ 'link' ];

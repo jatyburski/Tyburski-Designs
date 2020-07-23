@@ -14,14 +14,14 @@
 
         <?php layout_get_component( 'nav-mobile' , 'header' ); ?>
 
-        <!-- SITE CONTAINER -->
+        
         <div class="position-relative overflow-hidden site-container">
 
             <header class="container-fluid navbar d-block">
                 <div class="row no-gutters">
 
                     <nav class="col-lg-9 d-flex align-items-start">
-                        <?php layout_get_component('logo', 'nav'); ?>
+                        <?php layout_get_component( 'logo', 'nav' ); ?>
 
                         <nav class="d-flex align-items-start">
                             <?php breadcrumbs(); ?>

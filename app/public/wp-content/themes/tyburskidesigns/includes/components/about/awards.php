@@ -1,6 +1,7 @@
+<?php $awards = get_field( 'awards' ); ?>
+
 <section class="row no-gutters">
 
-    <?php $awards = get_field( 'awards' ); ?>
     <?php foreach ( $awards as $award ) : ?>
         <div class="offset-1 offset-md-2 offset-lg-3 offset-xl-4 col-10 col-md-8 col-lg-7 col-xl-5 about__awards">
             <h3 data-aos="fade-in"><?php echo $award[ 'institute' ]; ?></h3>
