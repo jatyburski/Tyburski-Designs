@@ -24,7 +24,7 @@
         }
 
         img {
-            @include object-fit(cover, top right);
+            @include object-fit(cover, top center);
             @include width-height(100%);
 
             @include media('>tablet', '<x-large') {
@@ -38,7 +38,7 @@
     }
     &__content {
         @extend %bg-tint;
-        padding: 6vw 0;
+        padding: 20vh 0 10vh;
 
         @include media('<x-large') {
             padding: 15vw var(--col) 0 !important;

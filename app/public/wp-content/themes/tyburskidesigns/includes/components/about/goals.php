@@ -10,4 +10,7 @@
     <?php layout_get_component( 'testimonials', 'about' ); ?>
 </section>
 
-<?php set_query_var( 'goals', $id ); ?>
+<?php 
+    global $sections;
+    $sections[] = $id;
+?>

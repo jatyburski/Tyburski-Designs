@@ -31,4 +31,7 @@
     </div>
 </section>
 
-<?php set_query_var( 'content', $id ); ?>
+<?php 
+    global $sections;
+    $sections[] = $id;
+?>

@@ -40,31 +40,26 @@
         </div>
         <!-- end SITE CONTAINER -->
 
-        <?php 
-            $projects = get_query_var( 'id' );
-            $projects = explode( ',', $projects );
-            var_dump($projects);
-        ?>
-        <?php 
-            $ids = array (
-                get_query_var( 'content' ), 
-                get_query_var( 'goals'),
-                get_query_var( 'overview'),
-            );
-        ?>
+        <?php global $sections; ?>
 
-        <?php if ( $id ) : ?>
+        <?php if ( $sections ) : ?>
             <nav id="scrollspy" class="position-fixed scrollspy">
                 <ul>
                     
-                    <?php foreach( $ids as $id ) : ?>
+                    <?php foreach( $sections as $id ) : ?>
+ 
+                        <?php if ( ! empty( $id ) ) : ?>
 
-                        <li>
-                            <a class="d-block" href="#<?php echo $id; ?>">
-                                <?php $title = strtr( $id, '-', ' ' ); ?>
-                                <?php echo ucwords( $title ); ?>
-                            </a>
-                        </li>
+                            <li>
+                                <a class="d-block" href="#<?php echo $id; ?>">
+                                    <?php 
+                                        $title = strtr( $id, '-', ' ' );
+                                        echo ucwords( $title ); 
+                                    ?>
+                                </a>
+                            </li>
+
+                        <?php endif; ?>
 
                     <?php endforeach; ?>
 

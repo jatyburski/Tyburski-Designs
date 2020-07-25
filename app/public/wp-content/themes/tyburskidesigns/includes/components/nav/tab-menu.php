@@ -10,7 +10,7 @@
 
     <li>
         <a class="d-block text-center tabs__nav-items<?php echo $post_id == $nav_item->object_id ? ' tabs__nav-items--active' : '' ?>" href="<?php echo $nav_item->url; ?>">
-            <i class="d-block fal <?php echo $post_id == $nav_item->object_id ? ' fas' : '' ?> fa-<?php echo $icon; ?>"></i>
+            <i class="d-block <?php echo $post_id == $nav_item->object_id ? ' fas' : 'fal' ?> fa-<?php echo $icon; ?>"></i>
             <?php echo $nav_item->title; ?>
         </a>
     </li>

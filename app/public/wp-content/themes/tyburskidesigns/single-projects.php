@@ -24,7 +24,9 @@
 
         <?php 
             $id = 'overview'; 
-            set_query_var( $id, $id );
+
+            global $sections;
+            $sections[] = $id;
         ?>
 
         <div data-spy="scroll" data-target="scrollspy" data-offset="160">
@@ -32,17 +34,17 @@
                 <div class="offset-1 offset-lg-2 col-10 col-lg-8">
                     <?php the_field( 'intro' ); ?>
 
-                    <?php $appendices = get_field( 'appendices' ); if ( $appendices ) : ?>
-                        <ul class="mb-0 p-0 d-flex flex-column flex-md-row align-items-start project__appendix">
+                    <ul class="mb-0 p-0 d-flex flex-column flex-md-row align-items-start project__appendix">
 
-                            <?php foreach ( $appendices as $appendix ) : ?>
-                                <li class="d-inline-block">
-                                    <?php echo $appendix[ 'details' ]; ?>
-                                </li>
-                            <?php endforeach; ?>
+                        <?php $appendices = get_field( 'appendices' ); ?>
+                        
+                        <?php foreach ( $appendices as $appendix ) : ?>
+                            <li class="d-inline-block">
+                                <?php echo $appendix[ 'details' ]; ?>
+                            </li>
+                        <?php endforeach; ?>
 
-                        </ul>
-                    <?php endif; ?>
+                    </ul>
                     
                 </div>
             </section>
@@ -51,7 +53,7 @@
                 <?php if ( have_rows( 'section' ) ) {
                     while ( have_rows( 'section' ) ) {
                         the_row();
-                        layout_get_component( get_row_layout(), 'projects', 'section-', get_row_index() );
+                        layout_get_component( get_row_layout(), 'projects', 'section-' . get_row_index() );
                     }
                 } ?>  
             </section>

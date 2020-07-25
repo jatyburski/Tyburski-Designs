@@ -19,22 +19,19 @@
             <?php $caption = get_sub_field( 'caption' ); ?>
             <?php if ($caption) : ?>
 
-                <?php 
+                <?php
+                    global $sections;
+
                     preg_match_all( '#<h3>(.*?)</h3>#', $caption, $matches );
 
                     $title = implode( ' ', $matches[1] );
                     $lowercase = strtolower( $title );
                     $id = strtr( $lowercase, ' ', '-' );
-    
-                    set_query_var( 'id', $id );
+                    $sections[] = $id;
                 ?>
 
                 <figcaption id="<?php echo $id; ?>" class="offset-1 offset-lg-3 col-10 col-lg-6 project__img-caption">
-                    <?php 
-                        echo $caption;
-
-                        wp_reset_query();
-                    ?>
+                    <?php echo $caption; ?>
                 </figcaption>
                 
             <?php endif; ?>
