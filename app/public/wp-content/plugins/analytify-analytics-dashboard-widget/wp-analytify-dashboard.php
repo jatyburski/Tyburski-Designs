@@ -4,10 +4,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /*
- * Plugin Name: Analytify - Gooogle Analytics Dashboard widget
+ * Plugin Name: Analytify - Gooogle Analytics Dashboard Widget
  * Plugin URI: https://analytify.io/add-ons/google-analytics-dashboard-widget-wordpress/
  * Description: It is a Free Add-on for Analytify plugin to show Google Analytics widget at WordPress dashboard. This is developed on the requests of our users.
- * Version: 1.1.3
+ * Version: 1.1.4
  * License: GPLv3 or later
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  * Author: Team Analytify
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Domain Path: /languages
  */
 
-define( 'ANALYTIFY_DASHBOARD_VERSION', '1.1.3' );
+define( 'ANALYTIFY_DASHBOARD_VERSION', '1.1.4' );
 define( 'ANALYTIFY_DASHBOARD_ROOT_PATH', dirname( __FILE__ ) );
 
 add_action( 'plugins_loaded', 'wp_install_analytify_dashboard', 20 );
@@ -33,6 +33,8 @@ function wp_install_analytify_dashboard() {
 	if ( 'index.php' != $pagenow && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) { // Run only on main dashboard page.
 		return;
 	}
+
+	add_action( 'admin_enqueue_scripts', 'pa_dashboard_layout_script' );
 
 	if ( ! file_exists( WP_PLUGIN_DIR . '/wp-analytify/analytify-general.php' ) ) {
 		add_action( 'admin_notices', 'pa_install_free_dashboard' );
@@ -60,9 +62,13 @@ function pa_install_free_dashboard() {
 	$slug   = 'wp-analytify';
 	$link   = wp_nonce_url( add_query_arg( array( 'action' => $action, 'plugin' => $slug ), admin_url( 'update.php' ) ), $action . '_' . $slug );
 
-	$message = sprintf('%1$s <br /><a href="%2$s">%3$s</a>' , esc_html__( 'Google Analytics by Analytify is required to run Google Analytics dashboard widget.', 'analytify-analytics-dashboard-widget' ), $link, esc_html__( 'Click here to Install Analytify(Core)', 'analytify-analytics-dashboard-widget' ) );
+	$message = sprintf('%1$s <br /><a href="%2$s">%3$s</a>' , esc_html__( 'Analytify Core is required to run Analytify dashboard widget.', 'analytify-analytics-dashboard-widget' ), $link, esc_html__( 'Click here to Install Analytify(Core)', 'analytify-analytics-dashboard-widget' ) );
 
  	analytify_widget_notice( $message, 'wp-analytify-danger' );
+}
+
+function pa_dashboard_layout_script() {
+	wp_enqueue_script( 'analytify-dashboard-layout', plugins_url( '/assets/js/wp-analytify-dashboard-layout.js', __FILE__ ), false, ANALYTIFY_DASHBOARD_VERSION );
 }
 
 /**
@@ -76,7 +82,7 @@ function pa_activate_free_dashboard() {
 	$slug   = 'wp-analytify/wp-analytify.php';
 	$link   = wp_nonce_url( add_query_arg( array( 'action' => $action, 'plugin' => $slug ), admin_url( 'plugins.php' ) ), $action . '-plugin_' . $slug );
 
-	$message = 	sprintf( '%1$s <br /><a href="%2$s">%3$s</a>' , esc_html__( 'Google Analytics by Analytify is required to run Google Analytics dashboard widget.', 'analytify-analytics-dashboard-widget' ), $link, esc_html__( 'Click here to activate Analytify Core plugin.', 'analytify-analytics-dashboard-widget' ) );
+	$message = 	sprintf( '%1$s <br /><a href="%2$s">%3$s</a>' , esc_html__( 'Analytify Core is required to run Analytify dashboard widget.', 'analytify-analytics-dashboard-widget' ), $link, esc_html__( 'Click here to activate Analytify Core plugin.', 'analytify-analytics-dashboard-widget' ) );
 
 	analytify_widget_notice( $message, 'wp-analytify-danger' );
 
@@ -89,7 +95,16 @@ function pa_activate_free_dashboard() {
  * @since 1.0.3
  */
 function add_analytify_widget() {
+	global $wp_meta_boxes;
+
 	wp_add_dashboard_widget( 'analytify-dashboard-addon-warning', __( 'Google Analytics Dashboard By Analytify', 'analytify-analytics-dashboard-widget' ), 'wpa_general_dashboard_area', null , null );
+
+	// Place the widget at the top.
+	$normal_dashboard = $wp_meta_boxes['dashboard']['normal']['core'];		
+	$widget_instance  = array( 'analytify-dashboard-addon-warning' => $normal_dashboard[ 'analytify-dashboard-addon-warning' ] );
+	unset( $normal_dashboard[ 'analytify-dashboard-addon-warning' ] );
+	$sorted_dashboard                             = array_merge( $widget_instance, $normal_dashboard );
+	$wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
 }
 
 /**
@@ -100,13 +115,39 @@ function add_analytify_widget() {
 function wpa_general_dashboard_area( $var, $dashboard_id ) {
 
 	if ( ! file_exists( WP_PLUGIN_DIR . '/wp-analytify/analytify-general.php' ) ) {
-		pa_install_free_dashboard();
-		return;
-	}
 
-	if ( ! in_array( 'wp-analytify/wp-analytify.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
-		pa_activate_free_dashboard();
+		$action = 'install-plugin';
+		$slug   = 'wp-analytify';
+		$link  = wp_nonce_url( add_query_arg( array( 'action' => $action, 'plugin' => $slug ), admin_url( 'update.php' ) ), $action . '_' . $slug );
+
+		echo '<div class="analytify-activation-cards">
+        <div class="analytify-activation-card-header">
+            <img src="' . plugins_url( 'assets/images/analytify-logo-135x24.png', __FILE__ ) . '">
+        </div>
+        <div class="analytify-activation-card-body">
+            <p>'. __( 'Analytify core is required to use this Analytics widget.', 'analytify-analytics-dashboard-widget' ) . '</p>
+            <a href="'. $link .'" class="anaytity-active-card-button">'. __( 'Install Analytify Core', 'analytify-analytics-dashboard-widget' ) . '</a>
+        </div>
+		</div>';
+
 		return;
+
+	} else if ( ! in_array( 'wp-analytify/wp-analytify.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+
+		$action = 'activate';
+		$slug   = 'wp-analytify/wp-analytify.php';
+		$link = wp_nonce_url( add_query_arg( array( 'action' => $action, 'plugin' => $slug ), admin_url( 'plugins.php' ) ), $action . '-plugin_' . $slug );
+		
+		echo '<div class="analytify-activation-cards">
+        <div class="analytify-activation-card-header">
+            <img src="' . plugins_url( 'assets/images/analytify-logo-135x24.png', __FILE__ ) . '">
+        </div>
+        <div class="analytify-activation-card-body">
+            <p>'. __( 'Analytify core is required to use this Analytics widget.', 'analytify-analytics-dashboard-widget' ) . '</p>
+            <a href="'. $link .'" class="anaytity-active-card-button">'. __( 'Activate Analytify Core', 'analytify-analytics-dashboard-widget' ) . '</a>
+        </div>
+		</div>';
+		
 	}
 
 }

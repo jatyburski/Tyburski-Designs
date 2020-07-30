@@ -198,7 +198,7 @@ $(document).click(function (e){
 
 
     var momment                     = moment(),
-        today_date                  = momment.locale('en').format("MMM DD, YYYY"),
+        today_date                  = momment.format("MMM DD, YYYY"),
         last_7_days                 = moment().subtract(7,'day').format("MMM DD, YYYY"),
         last_14_days                = moment().subtract(14,'day').format("MMM DD, YYYY"),
         last_30_day                 = moment().subtract(1,'months').format("MMM DD, YYYY"),
@@ -207,7 +207,7 @@ $(document).click(function (e){
         last_month_start_date       = moment().subtract(1,'months').startOf('month').format("MMM DD, YYYY"),
         last_3_months_start_date    = moment().subtract(3,'months').startOf('month').format("MMM DD, YYYY"),
         last_6_months_start_date    = moment().subtract(6,'months').startOf('month').format("MMM DD, YYYY"),
-        last_year_start_date        = moment().subtract(12,'months').startOf('month').format("MMM DD, YYYY");        
+        last_year_start_date        = moment().subtract(12,'months').startOf('month').format("MMM DD, YYYY");       
 
     $('.analytify_today_date').text(today_date);
 

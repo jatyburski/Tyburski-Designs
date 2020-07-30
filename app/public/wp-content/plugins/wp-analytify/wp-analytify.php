@@ -3,12 +3,12 @@
  * Plugin Name: Analytify - Google Analytics Dashboard
  * Plugin URI: https://analytify.io/details
  * Description: Analytify brings a brand new and modern feeling Google Analytics superbly integrated with WordPress Dashboard. It presents the statistics in a beautiful way under the WordPress Posts/Pages at front end, backend and in its own Dashboard. This provides Stats from Country, Referrers, Social media, General stats, New visitors, Returning visitors, Exit pages, Browser wise and Top keywords. This plugin provides the RealTime statistics in a new UI which is easy to understand & looks good.
- * Version: 3.0.0
+ * Version: 3.1.0
  * Author: Analytify
  * Author URI: https://analytify.io
  * License: GPLv3
  * Text Domain: wp-analytify
- * Tested up to: 5.3
+ * Tested up to: 5.4
  * Domain Path: /languages
  *
  * @package WP_ANALYTIFY
@@ -141,7 +141,6 @@ if ( ! class_exists( 'WP_Analytify' ) ) {
 			require_once ANALYTIFY_LIB_PATH . 'logs/class-analytify-log-handler-file.php';
 			include_once ANALYTIFY_PLUGIN_DIR . '/classes/analytify-logs.php';
 
-
 			include_once ANALYTIFY_PLUGIN_DIR . '/inc/wpa-core-functions.php';
 
 			include_once ANALYTIFY_PLUGIN_DIR . '/inc/class-wpa-adminbar.php';
@@ -151,6 +150,8 @@ if ( ! class_exists( 'WP_Analytify' ) ) {
 			include_once ANALYTIFY_PLUGIN_DIR . '/classes/analytify-dashboard-widget.php';
 
 			include_once ANALYTIFY_PLUGIN_DIR . '/classes/user_optout.php';
+
+			include_once ANALYTIFY_PLUGIN_DIR . '/classes/analytify-email.php';
 
 			if ( $this->is_request( 'ajax' ) ) {
 				 $this->ajax_includes();
@@ -889,7 +890,7 @@ if ( ! class_exists( 'WP_Analytify' ) ) {
 		 */
 		function front_styles() {
 
-      if ( 'on' == $this->settings->get_option( 'depth_percentage', 'wp-analytify-advanced' ) && is_single() ) {
+      if ( 'on' == $this->settings->get_option( 'depth_percentage', 'wp-analytify-advanced' ) ) {
         global $post;
 
         // Remove protocol form permalink
@@ -1338,15 +1339,41 @@ if ( ! class_exists( 'WP_Analytify' ) ) {
 			/* Show notices */
 			if ( ! isset( $acces_token ) || empty( $acces_token ) || ! get_option( 'pa_google_token' ) ) {
 
-				echo sprintf( esc_html__( '%1$s %2$s %3$sNotice:%4$s %5$sConnect%6$s %4$s Analytify with your Google account. %7$s %8$s', 'wp-analytify' ), '<div class="error notice is-dismissible">', '<p>', '<b>', '</b>', '<b><a style="text-decoration:none" href=' . esc_url( menu_page_url( 'analytify-settings', false ) ) . '>', '</a>','</p>', '</div>' );
+				// echo sprintf( esc_html__( '%1$s %2$s %3$sNotice:%4$s %5$sConnect%6$s %4$s Analytify with your Google account. %7$s %8$s', 'wp-analytify' ), '<div class="error notice is-dismissible">', '<p>', '<b>', '</b>', '<b><a style="text-decoration:none" href=' . esc_url( menu_page_url( 'analytify-settings', false ) ) . '>', '</a>','</p>', '</div>' );
+
+				$class   = 'wp-analytify-danger';
+				$link    = esc_url( menu_page_url( 'analytify-settings', false ) );
+				$message = sprintf( esc_html__( '%1$sNotice:%2$s %3$sConnect%4$s %2$s Analytify with your Google account.', 'wp-analytify' ), '<b>', '</b>', '<b><a style="text-decoration:none" href=' . $link . '>', '</a>');
+				analytify_notice( $message, $class );
 			} else {
 
 				if ( ! WP_ANALYTIFY_FUNCTIONS::is_profile_selected() ) {
 
-					echo '<div class="error notice is-dismissible"><p>' . sprintf( esc_html__( 'Congratulations! Analytify is now authenticated. Please select your website profile %1$s here %2$s to get started.', 'wp-analytify' ), '<a style="text-decoration:none" href="' . esc_url( menu_page_url( 'analytify-settings', false ) ) . '#wp-analytify-profile">','</a>' ) . '</p></div>';
+					// echo '<div class="error notice is-dismissible"><p>' . sprintf( esc_html__( 'Congratulations! Analytify is now authenticated. Please select your website profile %1$s here %2$s to get started.', 'wp-analytify' ), '<a style="text-decoration:none" href="' . esc_url( menu_page_url( 'analytify-settings', false ) ) . '#wp-analytify-profile">','</a>' ) . '</p></div>';
+
+					$class   = 'wp-analytify-success';
+					$link    = esc_url( menu_page_url( 'analytify-settings', false ) );
+					$message = sprintf( esc_html__( 'Congratulations! Analytify is now authenticated. Please select your website profile %1$s here %2$s to get started.', 'wp-analytify' ), '<a style="text-decoration:none" href="' . $link . '#wp-analytify-profile">','</a>' );
+					analytify_notice( $message, $class );
 				}
 			}
 
+			// #TODO Add promo UI
+			// if ( class_exists( 'WooCommerce' ) && ! class_exists( 'WP_Analytify_Pro_Base' ) ) {
+			// 	$class   = 'wp-analytify-success';
+			// 	$link    = esc_url('https://analytify.io/add-ons/woocommerce/' );
+			// 	$message = sprintf( esc_html__( '%1$s Important Notice %2$s &mdash; Analytify %3$sEnhanced E-Commerce Tracking for WooCommerce%4$s can help you track your ecommerce stats.', 'wp-analytify' ), '<b>', '</b>', '<a style="text-decoration:none" href="' . $link . '" target="_blank">','</a>' );
+			// 	analytify_notice( $message, $class );
+			// }
+
+			// Enable UA code for ecommerce
+			if ( class_exists( 'WooCommerce' ) && class_exists( 'WP_Analytify_Pro_Base' ) && 'on' !== $this->settings->get_option( 'install_ga_code', 'wp-analytify-profile', 'off' ) ) {
+				$class   = 'wp-analytify-danger';
+				$link    = esc_url( menu_page_url( 'analytify-settings', false ) );
+				$message = sprintf( esc_html__( '%1$s Important Notice %2$s &mdash; You are using WooCommerce and have manual UA code output. Its required to use the Analytify %3$s tracking code option %4$s to correctly track your site ecommerce stats.', 'wp-analytify' ), '<b>', '</b>', '<a style="text-decoration:none" href="' . $link . '#wp-analytify-profile">','</a>' );
+				analytify_notice( $message, $class );
+			}
+			
 		}
 
 
@@ -2104,4 +2131,8 @@ function analytify_free_instance() {
 	$GLOBALS['WP_ANALYTIFY'] = load_wp_analytify_free();
 }
 
+
+
+// var_dump( get_option( 'wp-analytify-email' ) );
+// delete_option('wp-analytify-email');
 ?>

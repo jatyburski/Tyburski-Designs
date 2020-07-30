@@ -42,6 +42,9 @@ function pa_include_top_pages_stats( $current, $top_page_stats) {
 		</div>
 		<div class="analytify_status_footer">
 			<div class="wp_analytify_pagination"></div>
+			<span class="analytify_info_stats">
+				<?php  analytify_e('Top pages and posts' , 'wp-analytify')?>
+			</span>
 		</div>
 	</div>
 <?php

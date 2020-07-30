@@ -6005,7 +6005,7 @@ p a:hover,
   }
 }
 
-h5, .resume__exp p strong, .resume__side p strong, .project__img-caption h3, h6, .about__testimonials h3, .project__appendix dt, .resume__exp h2.resume__exp__title, .resume__side h2, .btn, .resume__contact li span {
+h5, .resume__exp p strong, .resume__side p strong, .project__img-caption h3, h6, .about__testimonials h3, .project__appendix dt, .resume__exp h2.resume__exp__title, .resume__side h2, .btn, .front-page__buttons li:not(:first-child)::before, .resume__contact li span {
   font-size: 11px;
   font-size: 0.6875rem;
   color: #FFC857;
@@ -7725,14 +7725,7 @@ ul {
   height: 100%;
 }
 
-@media (min-width: 769px) and (max-width: 1199px) {
-  .front-page__image img {
-    width: auto;
-    height: 100%;
-  }
-}
-
-@media (max-width: 599px) {
+@media (max-width: 599px) and (min-width: 769px) {
   .front-page__image img {
     object-fit: cover;
     object-position: center;
@@ -7820,14 +7813,24 @@ ul {
   }
 }
 
-.front-page__content .btn {
+.front-page__buttons {
   margin: 40px 0 0 var(--col);
 }
 
 @media (max-width: 1199px) {
-  .front-page__content .btn {
+  .front-page__buttons {
     margin: 40px 0 0 var(--col);
   }
+}
+
+.front-page__buttons li:not(:first-child)::before {
+  font-size: 6px;
+  font-size: 0.375rem;
+  color: #F7F7FF;
+  content: 'or';
+  display: inline;
+  margin: 0 15px 0 18px;
+  opacity: .5;
 }
 
 .front-page__pattern {

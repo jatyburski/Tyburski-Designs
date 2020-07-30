@@ -40,6 +40,9 @@ function pa_include_socialmedia_stats( $current, $top_stats ) {
 		</div>
 		<div class="analytify_status_footer">
 			<div class="wp_analytify_pagination"></div>
+			<span class="analytify_info_stats">
+				<?php  analytify_e('Number of users coming to your site from social media' , 'wp-analytify')?>
+			</span>
 		</div>
 	</div>
 <?php

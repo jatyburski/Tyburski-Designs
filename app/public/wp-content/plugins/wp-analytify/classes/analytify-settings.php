@@ -712,6 +712,10 @@ if ( ! class_exists( 'WP_Analytify_Settings' ) ) {
 		        $html .= sprintf( '<select class="select-dimension" name="%1$s[%2$s]['.$count.'][type]" id="%1$s[%2$s]">', $args['section'], $args['id'] );
 
 		        foreach ( $args['options'] as $key => $value ) {
+							if ( ( 'seo_score' === $key || 'focus_keyword' === $key ) && ! class_exists( 'WPSEO_Frontend' ) ) {
+								continue;
+							}
+							
 		          $selected = ( $key == $vals['type'] ) ? 'selected' : '';
 		          $html .= sprintf( '<option value="%s" %s>%s</option>', $key, $selected, $value['title'] );
 		        }
@@ -726,7 +730,7 @@ if ( ! class_exists( 'WP_Analytify_Settings' ) ) {
 		  }
 
 		  $html .= $this->get_field_description( $args );
-		  $html .= '</tbody></table><button class="button wp-analytify-add-dimension">Add Dimention</button><p class="dimensions-err">' . esc_html( 'Dimensions ID cant set to empty!', 'wp-analytify' ) . '</p>';
+		  $html .= '</tbody></table><button class="button wp-analytify-add-dimension">Add Dimention</button><p class="dimensions-err">' . esc_html( "Dimensions ID can't be empty!", 'wp-analytify' ) . '</p>';
 
 		  echo $html;
 		}
@@ -1085,6 +1089,38 @@ if ( ! class_exists( 'WP_Analytify_Settings' ) ) {
 			<?php
 		}
 
+		function callback_email_promo() { 
+			if ( class_exists( 'WP_Analytify_Pro_Base' ) ) {
+				$url = 'https://analytify.io/add-ons/email-notifications/?utm_source=analytify-pro&utm_medium=plugin-settings&utm_content=cta&utm_campaign=addons-upgrade';
+				$url_text = __( 'Explore Email Notifications addon', 'wp-analytify' );
+			} else {
+				$url = 'https://analytify.io/add-ons/email-notifications/?utm_source=analytify-lite&utm_medium=plugin-settings&utm_content=cta&utm_campaign=bundle-upgrade';
+				$url_text = sprintf( '%1$s + %2$s', __( 'Explore Analytify Pro', 'wp-analytify' ), __( 'Email Notifications bundle', 'wp-analytify' ) );
+			}
+			?>
+			
+			<div class="analytify-email-promo-contianer">
+				<img src="<?php echo ANALYTIFY_PLUGIN_URL . 'assets/images/email-promo.png'; ?>" alt="">
+				<div class="analytify-email-premium-overlay">
+					<div class="analytify-email-premium-popup">
+						<h3 class="analytify-email-premium-popup-heading"><?php _e( 'Unlock weekly and monthly reports', 'wp-analytify' ); ?></h3>
+						<p class="analytify-email-premium-popup-paragraph"><?php _e( 'Email notifications add-on extends the Analytify Pro, and enables more control on customizing Analytics Email reports for your websites, delivers Analytics summaries straight in your inbox weekly and monthly.', 'wp-analytify' ); ?></p>
+						<ul class="analytify-email-premium-popup-list">
+							<li><?php _e( 'Add your logo', 'wp-analytify' ); ?></li>
+							<li><?php _e( ' Choose your own metrics to display in reports', 'wp-analytify' ); ?></li>
+							<li><?php _e( 'Edit Email Subject', 'wp-analytify' ); ?></li>
+							<li><?php _e( 'Add personal note', 'wp-analytify' ); ?></li>
+							<li><?php _e( 'Schedule weekly reports', 'wp-analytify' ); ?></li>
+							<li><?php _e( 'Schedule monthly reports', 'wp-analytify' ); ?></li>
+						</ul>
+						<a href="<?php echo esc_url( $url ); ?>" class="analytify-email-premium-popup-btn" target="_blank"><?php echo $url_text; ?></a>
+					</div>
+				</div>
+			</div>
+			
+			<?php
+		}
+
 		function callback_email_form() {
 			?>
 			<form class="" action="" method="post">
@@ -1235,7 +1271,7 @@ if ( ! class_exists( 'WP_Analytify_Settings' ) ) {
 			<div class="metabox-holder">
 			<?php foreach ( $this->settings_sections as $form ) { ?>
 				<?php
-				if ( ! $is_authenticate && ( $form['id'] === 'wp-analytify-profile' || $form['id'] === 'wp-analytify-front' || $form['id'] === 'wp-analytify-admin' || $form['id'] === 'wp-analytify-dashboard' ) ) {
+				if ( ! $is_authenticate && ( $form['id'] === 'wp-analytify-profile' || $form['id'] === 'wp-analytify-front' || $form['id'] === 'wp-analytify-admin' || $form['id'] === 'wp-analytify-dashboard' || $form['id'] === 'wp-analytify-email' ) ) {
 					$class = 'analytify_not_authenticate';
 				} else {
 					$class = '';
@@ -1290,34 +1326,27 @@ if ( ! class_exists( 'WP_Analytify_Settings' ) ) {
 					<?php
 				} else {
 
-					if ( ! $is_authenticate && ( $form['id'] === 'wp-analytify-profile' || $form['id'] === 'wp-analytify-front' || $form['id'] === 'wp-analytify-admin' || $form['id'] === 'wp-analytify-dashboard' ) ) {
+					if ( ! $is_authenticate && ( $form['id'] === 'wp-analytify-profile' || $form['id'] === 'wp-analytify-front' || $form['id'] === 'wp-analytify-admin' || $form['id'] === 'wp-analytify-dashboard' || $form['id'] === 'wp-analytify-email' ) ) {
 						echo "<span class='analytify_need_authenticate_first'><a href='#'>You have to Authenticate the Google Analytics first.</a></span>";
-					}
+					} ?>
 
-					// if ( get_option( 'pa_google_token' ) ) {
-						?>
-
-						<form method="post" action="options.php">
-							<?php
-								// do_action( 'wsa_form_top_' . $form['id'], $form );
-							settings_fields( $form['id'] );
-							$this->do_settings_sections( $form['id'] );
-								// do_action( 'wsa_form_bottom_' . $form['id'], $form );
-							?>
-							<div style="padding-left: 10px">
-								<?php submit_button(); ?>
-							</div>
-						</form>
-
+					<form method="post" action="options.php">
 						<?php
+						// do_action( 'wsa_form_top_' . $form['id'], $form );
+						settings_fields( $form['id'] );
+						$this->do_settings_sections( $form['id'] );
+						// do_action( 'wsa_form_bottom_' . $form['id'], $form );
+						?>
+						<div style="padding-left: 10px">
+							<?php submit_button(); ?>
+						</div>
+					</form>
 
-						if ( $form['id'] === 'wp-analytify-email' ) {
-								$this->callback_email_form();
-						}
-
-						// }
-				}
-				?>
+					<?php
+					if ( $form['id'] === 'wp-analytify-email' ) {
+						$this->callback_email_form();
+					}
+				}	?>
 
 			</div>
 			<?php } ?>
@@ -1449,8 +1478,6 @@ if ( ! class_exists( 'WP_Analytify_Settings' ) ) {
 			wp_redirect( admin_url( 'admin.php?page=analytify-settings' ) );
 			die();
 		}
-
-
 
 	}
 

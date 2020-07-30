@@ -1,20 +1,19 @@
 <?php if ( have_rows( 'images_w_caption' ) ) :?>
     <?php while ( have_rows( 'images_w_caption' ) ) : the_row(); ?>
 
-        <figure class="row mb-0 no-gutters project__img-container">
+        <figure class="row mb-0 no-gutters w-100">
+            <ul class="col-12 m-0 position-relative project__img">
 
-                <ul class="col-12 m-0 position-relative project__img">
+                <?php $shots = get_sub_field( 'gallery' ); ?>
+                <?php foreach( $shots as $shot ) : ?>
 
-                    <?php $shots = get_sub_field( 'gallery' ); ?>
+                    <li class="large-image">
+                        <?php echo wp_get_attachment_image( $shot, 'full' ); ?>
+                    </li>
+                    
+                <?php endforeach; ?>
 
-                    <?php foreach( $shots as $shot ) : ?>
-                        <li class="large-image">
-                            <?php echo wp_get_attachment_image( $shot, 'full' ); ?>
-                        </li>
-                    <?php endforeach; ?>
-
-                </ul>
-
+            </ul>
 
             <?php $caption = get_sub_field( 'caption' ); ?>
             <?php if ($caption) : ?>
@@ -35,7 +34,6 @@
                 </figcaption>
                 
             <?php endif; ?>
-            
         </figure>
         
     <?php endwhile; ?>

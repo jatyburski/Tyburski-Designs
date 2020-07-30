@@ -10,10 +10,10 @@ if ( ! class_exists( 'Analytify_Dashboard_Addon' ) ) {
 
 			add_action( 'wp_dashboard_setup', array( $this, 'add_analytify_widget' ) );
 
+			add_action( 'admin_enqueue_scripts', array( $this, 'pa_dashboard_script' ) );
+
 
 			if ( $GLOBALS['WP_ANALYTIFY']->settings->get_option( 'profile_for_dashboard', 'wp-analytify-profile', '' ) != '' ) {
-
-				add_action( 'admin_enqueue_scripts', array( $this, 'pa_dashboard_script' ) );
 				add_action( 'wp_ajax_analytify_dashboard_addon', array( $this, 'analytify_general_stats' ) );
 
 			}
@@ -22,15 +22,23 @@ if ( ! class_exists( 'Analytify_Dashboard_Addon' ) ) {
 		function pa_dashboard_script() {
 			wp_enqueue_script( 'analytify-dashboard-addon', plugins_url( '/assets/js/wp-analytify-dashboard.js', __FILE__ ), false, ANALYTIFY_DASHBOARD_VERSION );
 			wp_localize_script( 'analytify-dashboard-addon', 'analytify_dashboard_widget', array(
-				'get_stats_nonce' => wp_create_nonce( 'analytify-dashboard-widget-get-stats' )
+				'get_stats_nonce' => wp_create_nonce( 'analytify-dashboard-widget-get-stats' ),
+				'pro_active' => class_exists( 'WP_Analytify_Pro_Base' ) ? 'active' : 'inactive'
 			) );
 		}
 
 
 		public function add_analytify_widget() {
+			global $wp_meta_boxes;
 
 			wp_add_dashboard_widget( 'analytify-dashboard-addon', __( 'Google Analytics Dashboard By Analytify', 'analytify-analytics-dashboard-widget' ), array( $this, 'wpa_general_dashboard_area' ), null , null );
 
+			// Place the widget at the top.
+			$normal_dashboard = $wp_meta_boxes['dashboard']['normal']['core'];		
+			$widget_instance  = array( 'analytify-dashboard-addon' => $normal_dashboard[ 'analytify-dashboard-addon' ] );
+			unset( $normal_dashboard[ 'analytify-dashboard-addon' ] );
+			$sorted_dashboard                             = array_merge( $widget_instance, $normal_dashboard );
+			$wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
 		}
 
 		/**
@@ -58,9 +66,12 @@ if ( ! class_exists( 'Analytify_Dashboard_Addon' ) ) {
 				if ( $GLOBALS['WP_ANALYTIFY']->settings->get_option( 'profile_for_dashboard', 'wp-analytify-profile', '' ) != '' ) {
 					?>
 					<div class="analytify_wraper">
+						<div class="analytify-activation-card-header">
+							<img src="<?php echo plugins_url( 'assets/images/analytify-logo-135x24.png', __FILE__ ); ?>">
+						</div>
 						<form id="analytify_dashboard" name="analytify_dashboard" method="POST" class="analytify-widget-form">
 							<div class="analytify_main_setting_bar">
-								<div class="analytify_pull_right analytify_setting">
+								<div class="analytify_setting">
 									<div class="analytify_select_date">
 										<form class="analytify_form_date" action="" method="post">
 											<div class="analytify_select_date_fields">
@@ -75,31 +86,65 @@ if ( ! class_exists( 'Analytify_Dashboard_Addon' ) ) {
 													'' ?>">
 												<div class="analytify_arrow_date_picker"></div>
 											</div>
-											<input type="submit" value="<?php _e( 'View Stats', 'analytify-analytics-dashboard-widget' ) ?>" name="view_data" class="analytify_submit_date_btn">
-											<select  id="analytify_dashboard_stats_type">
-												<option value="general-statistics"><?php analytify_e( 'General Statistics', 'wp-analytify' ) ?></option>
-												<option value="top-pages-by-views"><?php _e( 'Top pages', 'analytify-analytics-dashboard-widget' ) ?></option>
-												<option value="top-countries"><?php _e( 'Top Countries', 'analytify-analytics-dashboard-widget' ) ?></option>
-												<option value="top-cities"><?php _e( 'Top Cities', 'analytify-analytics-dashboard-widget' ) ?></option>
-												<option value="keywords"><?php _e( 'Keywords', 'analytify-analytics-dashboard-widget' ) ?></option>
-												<option value="social-media"><?php analytify_e( 'Social Media', 'wp-analytify' ) ?></option>
-												<option value="top-reffers"><?php analytify_e( 'Top Referrers', 'wp-analytify' ) ?></option>
+											<div class="analytify-dashboard-stats-opts">
+												<input type="submit" value="<?php _e( 'View Stats', 'analytify-analytics-dashboard-widget' ) ?>" name="view_data" class="analytify_submit_date_btn">
+												<select  id="analytify_dashboard_stats_type">
+													<option value="general-statistics"><?php analytify_e( 'General Statistics', 'wp-analytify' ) ?></option>
+													<option value="real-time-statistics"><?php analytify_e( 'Real-Time', 'wp-analytify' ) ?></option>
+													<option value="top-pages-by-views"><?php _e( 'Top pages', 'analytify-analytics-dashboard-widget' ) ?></option>
+													<option value="top-countries"><?php _e( 'Top Countries', 'analytify-analytics-dashboard-widget' ) ?></option>
+													<option value="top-cities"><?php _e( 'Top Cities', 'analytify-analytics-dashboard-widget' ) ?></option>
+													<option value="keywords"><?php _e( 'Keywords', 'analytify-analytics-dashboard-widget' ) ?></option>
+													<option value="social-media"><?php analytify_e( 'Social Media', 'wp-analytify' ) ?></option>
+													<option value="top-reffers"><?php analytify_e( 'Top Referrers', 'wp-analytify' ) ?></option>
 											</select>
+										</div>
 											<?php echo WPANALYTIFY_Utils::get_date_list() ?>
 										</form>
 									</div>
 								</div>
 							</div>
 						</form>
+						<div class="analytify-dashboard-inner"></div>
+						<?php echo $this->dashboard_footer(); ?>
 					</div>
 					<?php
-				} else {
-					echo __( 'Select the Profile', 'analytify-analytics-dashboard-widget' );
+				} else { 
+					echo $this->exception_message( 'To see your website stats, please select the profile.' );
 				}
-			} else {
-				echo __( 'Connect your Google account with Analytify', 'analytify-analytics-dashboard-widget' );
-			}
+			} else { 
+				echo $this->exception_message( 'To see your website stats, please connect Analytify to Google Analytics.' );
+		 }
 		}
+
+				/**
+				* Exception message.
+				*
+				*/
+				function exception_message( $message ) {
+					$html = '
+					<div class="analytify-activation-cards">
+						<div class="analytify-activation-card-header">
+								<img src="' . plugins_url( 'assets/images/analytify-logo-135x24.png', __FILE__ ) . '">
+						</div>
+						<div class="analytify-activation-card-body">
+								<p>'. __( 'Connect Analytify to your Google Analytics account to setup Analytics for your website.', 'analytify-analytics-dashboard-widget' ) . '</p>
+								<a href="'. menu_page_url( 'analytify-settings', false ) . '" class="anaytity-active-card-button">'. __( 'Configure Analytify', 'analytify-analytics-dashboard-widget' ) . '</a>
+						</div>
+					</div>';
+
+					// $html = '
+					// <div id="analytify_widget_connect"  style="display: block;">
+					// 	<h2 class="analytify-widget-logo"><span>'. __( 'Analytify', 'analytify-analytics-dashboard-widget' ) . '</span></h2>
+					// 	<div class="analytify-no-authed">
+					// 		<h2>'. __( 'Analytify is not Setup', 'analytify-analytics-dashboard-widget' ) . '</h2>
+					// 		<p>'. __( $message, 'analytify-analytics-dashboard-widget' ) . '</p>
+					// 		<a href="'. menu_page_url( 'analytify-settings', false ) . '" class="analytify-wgt-btn">'. __( 'Configure Analytify', 'analytify-analytics-dashboard-widget' ) . '</a>
+					// 	</div>
+					// </div>';
+
+					return $html;
+				}
 
 				/**
 				* Runs on Every Ajax.
@@ -196,6 +241,10 @@ if ( ! class_exists( 'Analytify_Dashboard_Addon' ) ) {
 										pa_include_reffers_stats( $wp_analytify, $top_reffers_stats );
 									}
 
+								} else if( class_exists( 'WP_Analytify_Pro_Base' ) && 'real-time-statistics' === $stats_type ) {
+									$wp_analytify = $GLOBALS['WP_ANALYTIFY'];
+									include ANALYTIFY_PRO_ROOT_PATH . '/views/widget/realtime-stats.php';
+									pa_include_realtime_stats( $wp_analytify );
 								}
 
 								?>
@@ -203,6 +252,27 @@ if ( ! class_exists( 'Analytify_Dashboard_Addon' ) ) {
 							<?php
 						}
 						wp_die();
+					}
+
+					function dashboard_footer() {
+						global $submenu;
+
+						$html = '<div class="analytify-dashboard-widget-footer">';
+						$dashboard_url = get_admin_url( null, 'admin.php?page=analytify-dashboard' );
+						
+						$html .= '<a href="' . esc_url( 'https://analytify.io/documentation?utm_source=analytify-lite&utm_medium=dashboard-widget&utm_content=addons&utm_campaign=awareness' ) . '" target="_blank">' . __( 'Documentation ', 'analytify-analytics-dashboard-widget' ) . ' <span class="dashicons dashicons-lightbulb"></span></a>';
+
+						if ( class_exists( 'WP_Analytify_Pro_Base' ) ) {
+							$html .= ' | <a href="' . esc_url( 'https://analytify.io/add-ons?utm_source=analytify-lite&utm_medium=dashboard-widget&utm_content=addons&utm_campaign=addons-upgrade' ) . '" target="_blank">' . __( 'Addons', 'analytify-analytics-dashboard-widget' ) . ' <span class="dashicons dashicons-networking"></span></a>';
+						} else {
+							$html .= ' | <a href="' . esc_url( 'https://analytify.io/pricing?utm_source=analytify-lite&utm_medium=dashboard-widget&utm_content=go-pro&utm_campaign=pro-upgrade' ) . '" class="analytify-dashboard-widget-go-pro" target="_blank">' . __( 'Go Pro', 'analytify-analytics-dashboard-widget' ) . ' <span class="dashicons dashicons-cart"></span></a>';
+						}
+						
+						$html .= ' | <a href="' . esc_html( $dashboard_url ) . '">' . __( 'View Dashboard', 'analytify-analytics-dashboard-widget' ) . ' <span class="dashicons dashicons-chart-bar"></span></a>';
+						
+						$html .= '</div>';
+
+						return $html;
 					}
 
 					/**

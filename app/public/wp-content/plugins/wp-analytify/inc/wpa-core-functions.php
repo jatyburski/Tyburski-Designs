@@ -300,15 +300,22 @@ function analytify_is_track_user() {
 		 if ( empty( $dashboard_profile ) ) {
 
 			 if ( $message == '' ) {
-				 echo sprintf( esc_html__( '%1$s %2$s' . $type . ' Dashboard can\'t be loaded until your select your website profile %3$s here %4$s %5$s %6$s', 'wp-analytify' ), '<div class="error notice is-dismissible">', '<p>', '<a style="text-decoration:none" href="' . menu_page_url( 'analytify-settings', false ) . '#wp-analytify-profile">', '</a>', '</p>', '</div>' ); } else {
-					 echo $message; }
+				//  echo sprintf( esc_html__( '%1$s %2$s' . $type . ' Dashboard can\'t be loaded until your select your website profile %3$s here %4$s %5$s %6$s', 'wp-analytify' ), '<div class="error notice is-dismissible">', '<p>', '<a style="text-decoration:none" href="' . menu_page_url( 'analytify-settings', false ) . '#wp-analytify-profile">', '</a>', '</p>', '</div>' ); 
 
-					 return true;
-				 } else {
-					 return false;
-				 }
+				 $class   = 'wp-analytify-danger';
+				 $link    = menu_page_url( 'analytify-settings', false ) . '#wp-analytify-profile';
+				 $notice_message = sprintf( esc_html__( $type . ' Dashboard can\'t be loaded until you select your website profile %1$s here %2$s', 'wp-analytify' ), '<a style="text-decoration:none" href="'. $link .'">', '</a>' );
+				 analytify_notice( $notice_message, $class );
+				}	else {
+					echo $message; 
+				}
+				
+				return true;
 
-			 }
+			} else {
+				return false;
+		}
+	}
 
 
 

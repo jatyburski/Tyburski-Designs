@@ -12,7 +12,7 @@
 
                 <?php $details = $skill[ 'details' ]; ?>
                 <?php foreach ( $details as $detail ) : ?>
-                    <li data-aos="fade-up">
+                    <li data-aos="fade-up" class="pr-5">
                         <p>
                             <strong>
                                 <?php echo $detail[ 'proficiency' ]; ?>

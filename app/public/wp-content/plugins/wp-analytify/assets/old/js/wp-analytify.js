@@ -4,6 +4,19 @@
 
   jQuery(document).ready(function ($) {
 
+		// Fallback method for formating dates.
+		function formatDate(date) {
+			var d = new Date(date),
+					month = '' + (d.getMonth() + 1),
+					day = '' + d.getDate(),
+					year = d.getFullYear();
+	
+			if (month.length < 2) month = '0' + month;
+			if (day.length < 2) day = '0' + day;
+	
+			return [year, month, day].join('-');
+		}
+
 	/**
 	 * [Redirect to the stats box from all posts link]
 	 */
@@ -59,8 +72,18 @@
 	 	var start_date = $("#analytify_start").val();
     start_date = moment(start_date, 'MMM DD, YYYY').format("YYYY-MM-DD");
 
+		// If invalid date due to invalid locale string use fallback method.
+		if (start_date == 'Invalid date') {
+			start_date = formatDate($("#analytify_start").val())
+		}
+
 	 	var end_date = $("#analytify_end").val();
     end_date =  moment(end_date, 'MMM DD, YYYY').format("YYYY-MM-DD");
+
+		// If invalid date due to invalid locale string use fallback method.
+		if (end_date == 'Invalid date') {
+			end_date = formatDate($("#analytify_end").val())
+		}
 
 	 	var urlpost = $("#post_ID").val();
 

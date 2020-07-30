@@ -41,6 +41,9 @@ function pa_include_reffers_stats( $current, $top_stats ) {
 		</div>
 		<div class="analytify_status_footer">
 			<div class="wp_analytify_pagination"></div>
+			<span class="analytify_info_stats">
+				<?php  analytify_e('Top referrers to your website' , 'wp-analytify')?>
+			</span>
 		</div>
 	</div>
 <?php

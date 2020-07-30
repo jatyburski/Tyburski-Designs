@@ -27,11 +27,7 @@
             @include object-fit(cover, top center);
             @include width-height(100%);
 
-            @include media('>tablet', '<x-large') {
-                @include width-height(auto, 100%);
-            }
-
-            @include media('<small') {
+            @include media('<small', '>tablet') {
                 @include object-fit(cover, center);
             }
         }
@@ -95,13 +91,22 @@
             }
 
         }
-        .btn {
+    }
+    &__buttons {
+        margin: 40px 0 0 var(--col);
+
+        @include media('<x-large') {
             margin: 40px 0 0 var(--col);
+        }
 
-            @include media('<x-large') {
-                margin: 40px 0 0 var(--col);
-            }
-
+        li:not(:first-child)::before {
+            @include fontSize(6px);
+            @extend %small-caps;
+            color: theme-color('white');
+            content: 'or';
+            display: inline;
+            margin: 0 15px 0 18px;
+            opacity: .5;
         }
     }
     &__pattern {

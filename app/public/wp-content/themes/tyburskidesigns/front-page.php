@@ -9,10 +9,18 @@
             
             <?php the_field( 'content' ); ?>
 
-            <?php $button = get_field( 'button' ); ?>
-            <a data-aos="fade-up" data-aos-delay="500" class="d-inline-block position-relative btn" href="<?php echo $button[ 'url' ]; ?>">
-                <?php echo $button[ 'title' ]; ?>
-            </a>
+            <ul class="d-flex p-0 front-page__buttons">
+                <?php $buttons = get_field( 'buttons' ); ?>
+                <?php foreach( $buttons as $button ) : ?>
+
+                    <li data-aos="fade-up" data-aos-delay="500">
+                        <a class="d-inline-block m-0 position-relative btn" href="<?php echo $button[ 'link' ][ 'url' ]; ?>">
+                            <?php echo $button[ 'link' ][ 'title' ]; ?>
+                        </a>
+                    </li>
+
+                <?php endforeach; ?>
+            </ul>
         </div>
 
         <div class="col-xl-6 h-100 position-relative order-xl-1 overflow-hidden front-page__image">

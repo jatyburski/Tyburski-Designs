@@ -4,8 +4,8 @@
   "description": "Personal portfolio website of Joseph Tyburski",
   "main": "index.js",
   "scripts": {
-    "build:sass": "node-sass --output-style=expanded assets/scss/_partials.scss ../tyburskidesigns/style.css",
-    "prefix": "npm run build:sass && autoprefixer-cli -o style.css style.css",
+    "build:sass": "node-sass --output-style=expanded assets/scss/_partials.scss ../tyburskidesigns/assets/style.css",
+    "prefix": "npm run build:sass && autoprefixer-cli -o assets/style.css assets/style.css",
     "start": "wpackio-scripts start",
     "bootstrap": "wpackio-scripts bootstrap",
     "build": "wpackio-scripts build",

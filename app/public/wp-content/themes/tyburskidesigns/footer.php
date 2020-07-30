@@ -48,18 +48,14 @@
                     
                     <?php foreach( $sections as $id ) : ?>
  
-                        <?php if ( ! empty( $id ) ) : ?>
-
-                            <li>
-                                <a class="d-block" href="#<?php echo $id; ?>">
-                                    <?php 
-                                        $title = strtr( $id, '-', ' ' );
-                                        echo ucwords( $title ); 
-                                    ?>
-                                </a>
-                            </li>
-
-                        <?php endif; ?>
+                        <li>
+                            <a class="d-block" href="#<?php echo $id; ?>">
+                                <?php 
+                                    $title = strtr( $id, '-', ' ' );
+                                    echo ucwords( $title ); 
+                                ?>
+                            </a>
+                        </li>
 
                     <?php endforeach; ?>
 
