@@ -1,38 +1,3 @@
-AOS.init({
-  delay: 400,
-  duration: 500,
-  offset: -150,
-});
-
-//import PurgeCSS from 'purgecss'
-// const purgeCSSResults = await new Purgecss().purge({
-//   content: ['**/*.html'],
-//   css: ['**/*.css']
-// })
-
-
-// Credit: https://codyhouse.co/gem/full-screen-pushing-navigation
-
-(function() {
-	var pushingNavTrigger = document.getElementsByClassName('nav-fullscreen--trigger');
-	
-	if(pushingNavTrigger.length > 0) {
-		var mainContent = document.getElementsByClassName('nav-fullscreen__content')[0],
-			navAnimating = false;
-		
-		pushingNavTrigger[0].addEventListener('click', function(event) {
-			event.preventDefault();
-			if(navAnimating) return; // already animating -> do not toggle
-			navAnimating = true;
-			Util.toggleClass(document.body, 'nav-is-open', !Util.hasClass(document.body, 'nav-is-open'));
-		});
-
-		mainContent.addEventListener('transitionend', function(){
-			navAnimating = false; // wait for the end of animation to reset the variable
-		});
-	}
-}());
-
 // Utility function
 function Util () {};
 
@@ -207,32 +172,3 @@ Math.easeInOutQuad = function (t, b, c, d) {
 	t--;
 	return -c/2 * (t*(t-2) - 1) + b;
 };
-
-
-
-// let vh = window.innerHeight * 0.01;
-// // Then we set the value in the --vh custom property to the root of the document
-// document.documentElement.style.setProperty('--vh', `${vh}px`);
-
-
-var largeImage = document.getElementsByClassName('large-image');
-
-$(window).scroll(function () {
-  if ($(this).scrollTop() > 600) {
-
-    var hasLargeImg = false;
-
-    Array.prototype.forEach.call(largeImage, function(el) {
-        // console.log(el);
-        if (checkVisible(el)) {
-          hasLargeImg = true;
-        }
-    });
-
-    if (hasLargeImg) {
-      $(".nav-fullscreen--trigger").fadeOut('slow');
-    } else {
-      $(".nav-fullscreen--trigger").fadeIn('slow');
-    }
-  }
-});

@@ -197,7 +197,7 @@
         background: theme-color-level('secondary', -2);
         left: 0;
         mix-blend-mode: difference;
-        outline: none;
+        outline: 0 !important;
         top: 140px;
         z-index: 100;
 
@@ -220,7 +220,8 @@
             display: none;
         }
 
-        &:hover #{$this}__icon {
+        &:hover #{$this}__icon,
+        &:focus #{$this}__icon {
             &::before {
                 transform: translateY(-8px);
                 @at-root .nav-is-open & {

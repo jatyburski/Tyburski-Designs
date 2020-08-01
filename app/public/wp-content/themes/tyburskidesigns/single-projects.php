@@ -2,7 +2,7 @@
 
     <article>
         <section class="row no-gutters">
-            <div class="offset-lg-1 col-lg-10 position-relative text-center project__title">
+            <div data-aos="fade-down" data-aos-delay="600" class="offset-lg-1 col-lg-10 position-relative text-center project__title">
 
                 <?php $terms = get_the_category(); if ( $terms && ! is_wp_error( $terms ) ) : ?>
                     <ul class="p-0 position-relative project__categories">
@@ -19,7 +19,7 @@
                 <?php the_title( '<h1>', '</h1>' ); ?>
             </div>
 
-            <div class="col-12 vh-100 project__hero" data-type="background" data-speed="10" style="background-image: url( <?php the_post_thumbnail_url(); ?> );"></div>
+            <div data-aos="zoom-out" class="col-12 vh-100 project__hero" data-type="background" data-speed="10" style="background-image: url( <?php the_post_thumbnail_url(); ?> );"></div>
         </section>
 
         <?php 
@@ -31,7 +31,7 @@
 
         <div data-spy="scroll" data-target="scrollspy" data-offset="160">
             <section id="<?php echo $id; ?>" class="row no-gutters project__content project__content--lg">
-                <div class="offset-1 offset-lg-2 col-10 col-lg-8">
+                <div data-aos="fade-up" class="offset-1 offset-lg-2 col-10 col-lg-8">
                     <?php the_field( 'intro' ); ?>
 
                     <ul class="mb-0 p-0 d-flex flex-column flex-md-row align-items-start project__appendix">

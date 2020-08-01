@@ -43,13 +43,13 @@
         <?php global $sections; ?>
 
         <?php if ( $sections ) : ?>
-            <nav id="scrollspy" class="position-fixed scrollspy">
-                <ul>
+            <nav id="scrollspy" class="navbar scrollspy">
+                <ul class="nav flex-column">
                     
                     <?php foreach( $sections as $id ) : ?>
  
-                        <li>
-                            <a class="d-block" href="#<?php echo $id; ?>">
+                        <li class="nav-item">
+                            <a class="d-block nav-link" href="#<?php echo $id; ?>">
                                 <?php 
                                     $title = strtr( $id, '-', ' ' );
                                     echo ucwords( $title ); 

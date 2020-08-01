@@ -1,12 +1,12 @@
-<div class="offset-1 offset-md-2 offset-xl-1 col-10 col-md-9 col-lg-8 col-xl-4 d-flex flex-column justify-content-center position-relative about__testimonials" id="carousel" data-ride="carousel">
-        
+<div class="offset-1 offset-md-2 offset-xl-1 col-10 col-md-9 col-lg-8 col-xl-4 carousel d-flex flex-column justify-content-center position-relative slide about__testimonials" id="carousel" data-ride="carousel" data-interval="7000">
+
     <h3>Clients Say...</h3>
-    <ul class="m-0 p-0 position-relative">
+    <ul class="carousel-inner m-0 p-0 position-relative">
 
         <?php $slides = get_field( 'testimonials' ); ?>
 
-        <?php foreach ( $slides as $slide ) : ?>
-            <li>
+        <?php foreach ( $slides as $index => $slide ) : ?>
+            <li class="carousel-item<?php echo $index == 0 ? ' active' : '' ?>">
                 <blockquote>
                     <?php echo $slide[ 'quote' ]; ?>
 
@@ -21,15 +21,16 @@
 
     </ul>
 
-    <a class="about__testimonial-prev" href="#carousel" role="button" data-slide="prev">
+    <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
     </a>
 
-    <a class="about__testimonial-next" href="#carousel" role="button" data-slide="next">
+    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
 
     <div class="position-absolute about__pattern about__pattern--bottom" role="presentation"></div>
+    
 </div>

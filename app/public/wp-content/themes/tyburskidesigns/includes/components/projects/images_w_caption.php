@@ -7,7 +7,8 @@
                 <?php $shots = get_sub_field( 'gallery' ); ?>
                 <?php foreach( $shots as $shot ) : ?>
 
-                    <li class="large-image">
+                    <li class="position-relative">
+                        <div data-aos="reveal-right" class="position-absolute project__img--reveal"></div>
                         <?php echo wp_get_attachment_image( $shot, 'full' ); ?>
                     </li>
                     

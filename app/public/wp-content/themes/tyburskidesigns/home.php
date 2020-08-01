@@ -8,7 +8,8 @@
             <ul class="projects">
 
                 <?php while ( $query->have_posts() ) : $query->the_post(); ?> 
-                    <li class="h-100 projects__card">
+                    <li class="h-100 position-relative projects__card">
+                        <div data-aos="reveal-right" class="position-absolute project__img--reveal"></div>
 
                         <a href="<?php the_permalink(); ?>" class="d-block h-100 position-relative projects__tilt">
                             <figure class="d-block m-0 position-relative projects__img">
@@ -25,7 +26,6 @@
                                 </svg>
                             </figure>
                         </a>
-
                     </li>
                 <?php endwhile; ?>
                 

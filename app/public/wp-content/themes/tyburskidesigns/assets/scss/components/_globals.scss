@@ -233,6 +233,14 @@ $theme-colors: (
 
 }
 
+%reveal {
+    @include width-height(100%);
+    background: theme-color-level('white', 12);
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
 %small-caps {
     @include fontSize(11px);
     color: theme-color('secondary');
@@ -257,4 +265,26 @@ $theme-colors: (
     &:not(:first-of-type) {
         margin-top: 125px;
     }
+}
+
+[data-aos="reveal-left"] {
+    transform: scaleX(1);
+    transform-origin: 0% 100%;
+    transition-property: transform;
+    transition-delay: 0.5s;
+  }
+  
+[data-aos="reveal-left"].aos-animate {
+    transform: scaleX(0);
+}
+
+[data-aos="reveal-right"] {
+    transform: scaleX(1);
+    transform-origin: 100% 0%;
+    transition-property: transform;
+    transition-delay: 0.5s;
+  }
+
+[data-aos="reveal-right"].aos-animate {
+    transform: scaleX(0);
 }

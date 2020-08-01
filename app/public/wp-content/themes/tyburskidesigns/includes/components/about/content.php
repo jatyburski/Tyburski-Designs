@@ -14,10 +14,11 @@
     <i class="far fa-planet-moon d-none d-md-block position-absolute" role="presentation"></i>
 
     <div class="col-xl-6 position-relative overflow-hidden about__image">
+        <div data-aos="reveal-right" class="position-absolute about__image--reveal"></div>
         <?php 
             $about = get_field( 'about' );
             $image = $about['image'];
-            echo wp_get_attachment_image( $image, 'full', '', array( 'data-aos' => 'zoom-out' ) ); 
+            echo wp_get_attachment_image( $image, 'full');
         ?>     
     </div>
 
