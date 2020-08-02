@@ -428,6 +428,10 @@
         --tt-key: scrollspy;
         line-height: 1.5;
         margin-bottom: 15px;
+        &.active {
+            color: theme-color('secondary');
+            font-weight: 700;
+        }
     }
 }
 

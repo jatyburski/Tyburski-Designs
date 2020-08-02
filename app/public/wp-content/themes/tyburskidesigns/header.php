@@ -8,7 +8,7 @@
         <title></title>
     </head>
 
-    <body <?php body_class(); ?>>
+    <body <?php body_class(); ?> data-spy="scroll" data-target="scrollspy" data-offset="160">
  
         <?php layout_get_component( 'nav-main' , 'header' ); ?>
 

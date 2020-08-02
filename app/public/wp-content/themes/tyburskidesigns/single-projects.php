@@ -29,35 +29,33 @@
             $sections[] = $id;
         ?>
 
-        <div data-spy="scroll" data-target="scrollspy" data-offset="160">
-            <section id="<?php echo $id; ?>" class="row no-gutters project__content project__content--lg">
-                <div data-aos="fade-up" class="offset-1 offset-lg-2 col-10 col-lg-8">
-                    <?php the_field( 'intro' ); ?>
+        <section id="<?php echo $id; ?>" class="row no-gutters project__content project__content--lg">
+            <div data-aos="fade-up" class="offset-1 offset-lg-2 col-10 col-lg-8">
+                <?php the_field( 'intro' ); ?>
 
-                    <ul class="mb-0 p-0 d-flex flex-column flex-md-row align-items-start project__appendix">
+                <ul class="mb-0 p-0 d-flex flex-column flex-md-row align-items-start project__appendix">
 
-                        <?php $appendices = get_field( 'appendices' ); ?>
-                        
-                        <?php foreach ( $appendices as $appendix ) : ?>
-                            <li class="d-inline-block">
-                                <?php echo $appendix[ 'details' ]; ?>
-                            </li>
-                        <?php endforeach; ?>
-
-                    </ul>
+                    <?php $appendices = get_field( 'appendices' ); ?>
                     
-                </div>
-            </section>
+                    <?php foreach ( $appendices as $appendix ) : ?>
+                        <li class="d-inline-block">
+                            <?php echo $appendix[ 'details' ]; ?>
+                        </li>
+                    <?php endforeach; ?>
 
-            <section class="row no-gutters project__content project__content--tint">
-                <?php if ( have_rows( 'section' ) ) {
-                    while ( have_rows( 'section' ) ) {
-                        the_row();
-                        layout_get_component( get_row_layout(), 'projects', 'section-' . get_row_index() );
-                    }
-                } ?>  
-            </section>
-        </div>
+                </ul>
+                
+            </div>
+        </section>
+
+        <section class="row no-gutters project__content project__content--tint">
+            <?php if ( have_rows( 'section' ) ) {
+                while ( have_rows( 'section' ) ) {
+                    the_row();
+                    layout_get_component( get_row_layout(), 'projects', 'section-' . get_row_index() );
+                }
+            } ?>  
+        </section>
 
         <?php 
             $next_post = get_adjacent_post( false, '', false );

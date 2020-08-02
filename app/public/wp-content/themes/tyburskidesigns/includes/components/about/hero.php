@@ -1,4 +1,4 @@
-<section class="row no-gutters position-relative about">
+<section class="row no-gutters position-relative about" id="hero">
     <div class="col-xl-6 d-flex flex-column align-items-start justify-content-center about__hero">
         <h1 data-aos="fade-up">I am <span><?php bloginfo('name'); ?></span>
         </h1>

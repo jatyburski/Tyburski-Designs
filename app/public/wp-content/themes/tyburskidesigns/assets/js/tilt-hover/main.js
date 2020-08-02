@@ -101,11 +101,11 @@
 	 */
 	TiltFx.prototype._init = function() {
 		this.DOM.animatable = {};
-		this.DOM.animatable.imgWrapper = this.DOM.el.querySelector('.tilter__figure');
-		this.DOM.animatable.lines = this.DOM.el.querySelector('.tilter__deco--lines');
-		this.DOM.animatable.caption = this.DOM.el.querySelector('.tilter__caption');
+		this.DOM.animatable.imgWrapper = this.DOM.el.querySelector('.projects__img');
+		this.DOM.animatable.lines = this.DOM.el.querySelector('.projects__deco--lines');
+		this.DOM.animatable.caption = this.DOM.el.querySelector('.projects__tilt figcaption');
 		this.DOM.animatable.overlay = this.DOM.el.querySelector('.tilter__deco--overlay');
-		this.DOM.animatable.shine = this.DOM.el.querySelector('.tilter__deco--shine > div');
+		this.DOM.animatable.shine = this.DOM.el.querySelector('.projects__deco--shine > div');
 		this._initEvents();
 	};
 

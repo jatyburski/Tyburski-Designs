@@ -6,7 +6,6 @@ const uglify = require('gulp-uglify');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
-var replace = require('gulp-replace');
 
 const files = { 
     scssPath: 'assets/scss/style.scss',
@@ -33,7 +32,9 @@ function jsTask() {
 
 function watchTask() {
     watch([files.scssPath, files.jsPath],
-        parallel(scssTask, jsTask)
+        series(
+            parallel(scssTask, jsTask)
+        )
     );
 }
 
