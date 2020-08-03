@@ -9,24 +9,21 @@
     }
 
     &::before {
+        background: theme-color('primary');
+        bottom: -5px;
         content: '';
         display: block;
-        position: absolute;
-        bottom: -5px;
+        height: 10px;
         left: 0;
         right: 0;
-        height: 10px;
-        background: theme-color('white');
-        transform: scaleX(0);
-        transition: all 0.65s cubic-bezier(0.165,0.84,0.44,1);
-        transform-origin: 0;
+        position: absolute;
+        transform: translateX(-100%);
         z-index: 2;
     }
     &:hover {
         color: theme-color('secondary');
         &::before {
-            transform: scaleX(1);
-            transform-origin: 100%;
+            animation: line .95s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
         }
     }
     &__icon {
@@ -110,5 +107,14 @@
                 transform: translateX(-50%);
             }
         }
+    }
+}
+
+@keyframes line {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(100%);
     }
 }

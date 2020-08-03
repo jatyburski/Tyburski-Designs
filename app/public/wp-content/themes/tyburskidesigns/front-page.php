@@ -13,7 +13,7 @@
                     <?php $buttons = get_field( 'buttons' ); ?>
                     <?php foreach( $buttons as $button ) : ?>
 
-                        <li>
+                        <li class="overflow-hidden">
                             <a class="d-inline-block m-0 position-relative btn" href="<?php echo $button[ 'link' ][ 'url' ]; ?>">
                                 <?php echo $button[ 'link' ][ 'title' ]; ?>
                             </a>

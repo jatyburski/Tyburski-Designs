@@ -108,6 +108,9 @@
             margin: 0 15px 0 18px;
             opacity: .5;
         }
+        .btn::before {
+            background: #1b172a;
+        }
     }
     &__pattern {
         @extend %pattern;
