@@ -22,7 +22,7 @@
         ?>     
     </div>
 
-    <div data-aos="fade-up" class="offset-1 col-10 col-lg-9 col-xl-4 d-flex flex-column align-items-start justify-content-center">
+    <div data-aos="fade-up" class="offset-1 col-10 col-lg-9 col-xl-4 d-flex flex-column align-items-start justify-content-center position-relative">
         <?php echo $about[ 'content' ]; ?>
         
         <?php $button_resume = $about['button']; ?>

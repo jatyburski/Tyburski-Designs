@@ -2,13 +2,15 @@
   "name": "tyburskidesigns",
   "version": "1.0.0",
   "description": "Personal portfolio website of Joseph Tyburski",
-  "main": "index.js",
-  "scripts": {
-    "build:sass": "node-sass --output-style=expanded assets/scss/_partials.scss ../tyburskidesigns/assets/style.css",
-    "prefix": "npm run build:sass && autoprefixer-cli -o assets/style.css assets/style.css",
-    "start-backup": "onchange \"assets/scss/**/*.scss\" -- npm run prefix"
-  },
-  "author": "Joseph Tyburski j.tyburski@yahoo.com tyburskidesigns.com",
+  "main": "app.js",
+  "authors": [
+    {
+      "name": "Joseph Tyburski",
+      "email": "j.tyburski@yahoo.com",
+      "homepage": "tyburskidesigns.com",
+      "role": "Designer & Developer"
+    }
+  ],
   "license": "ISC",
   "repository": {
     "type": "git",
@@ -25,17 +27,19 @@
     "popper.js": "^1.16.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
     "autoprefixer": "^9.8.0",
     "autoprefixer-cli": "^1.0.0",
     "cssnano": "^4.1.10",
+    "gulp-babel": "^8.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-postcss": "^8.0.0",
     "gulp-replace": "^1.0.0",
     "gulp-sass": "^4.1.0",
     "gulp-sourcemaps": "^2.6.5",
-    "gulp-uglify": "^3.0.2",
+    "gulp-terser": "^1.3.0",
     "node-sass": "^4.14.1",
-    "onchange": "^7.0.2",
     "postcss": "^7.0.32",
     "postcss-cli": "^7.1.1",
     "postcss-object-fit-images": "^1.1.2"
