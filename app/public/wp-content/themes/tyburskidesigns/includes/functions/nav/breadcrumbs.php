@@ -15,7 +15,7 @@ function breadcrumbs() {
 
         elseif ( is_home() || is_single() ) {
 
-            echo '<li class="' . $breadcrumb_classes . ' breadcrumb-item--truncate">';
+            echo '<li class="' . $breadcrumb_classes . ( is_single() ? ' breadcrumb-item--truncate' : '' ) . '">';
             
             if ( is_home() == ! $post->post_parent ) {
                 echo get_the_title( get_option( 'page_for_posts', true ) );
@@ -26,7 +26,7 @@ function breadcrumbs() {
             echo '</li>';
 
             if ( is_single() ) {
-                echo '<li class="' . $breadcrumb_classes . '">' . get_the_title() . '</li>';
+                echo '<li class="' . $breadcrumb_classes . ' d-none d-sm-block">' . get_the_title() . '</li>';
             }
 
         } elseif ( is_page() ) {

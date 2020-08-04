@@ -349,10 +349,25 @@
                     transition-timing-function: cubic-bezier(0.935, 0.000, 0.340, 1.330);
 
                     @for $i from 1 through $menu-items {
-                        $angle:(($pi - $opening-angle) / 2) + (($opening-angle / ($menu-items - 1)) * ($i - 1));
+                        --angle:(($pi - $opening-angle) / 2) + (($opening-angle / ($menu-items - 1)) * ($i - 1));
+
+                        --sin-term1: var(--angle);
+                        --sin-term2: calc((var(--angle) * var(--angle) * var(--angle)) / 6);
+                        --sin-term3: calc((var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle)) / 120);
+                        --sin-term4: calc((var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle)) / 5040);
+                        --sin-term5: calc((var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle)) / 362880);
+                        --sin: calc(var(--sin-term1) - var(--sin-term2) + var(--sin-term3) - var(--sin-term4) + var(--sin-term5));
+
+                        --cos-term1: 1;
+                        --cos-term2: calc((var(--angle) * var(--angle)) / 2);
+                        --cos-term3: calc((var(--angle) * var(--angle) * var(--angle) * var(--angle)) / 24);
+                        --cos-term4: calc((var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle)) / 720);
+                        --cos-term5: calc((var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle)) / 40320);
+                        --cos: calc(var(--cos-term1) - var(--cos-term2) + var(--cos-term3) - var(--cos-term4) + var(--cos-term5));
+
                         &:nth-child(#{$i + 2}) {
                             transition-duration: 80ms + (100ms * $i);
-                            // transform: translate3d(cos($angle) * $open-distance, sin($angle) * $open-distance, 0);
+                            // transform: translate3d(var(--cos) * $open-distance, var(--sin) * $open-distance, 0);
                         }
                     }
                 }
