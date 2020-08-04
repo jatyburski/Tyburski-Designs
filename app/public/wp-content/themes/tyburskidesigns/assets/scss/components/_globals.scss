@@ -133,13 +133,27 @@ $theme-colors: (
     @include width-height(42px, 40px);
     padding: 10px;
     text-align: center;
-    transform: translateX(-50%);
+    // transform: translateX(-50%);
     &:after {
         content: '';
         left: 50%;
         position: absolute;
-        transform: translateX(-50%);
+        transform: translateX(-50%) scaleY(0);
+        transform-origin: top;
+        transition-property: transform;
         width: 1px;
+    }
+    &.aos-animate::after {
+        animation: grow .35s linear 1s forwards;
+    }
+}
+
+@keyframes grow {
+    from {
+        transform: translateX(-50%) scaleY(0);
+    }
+    to {
+        transform: translateX(-50%) scaleY(1);
     }
 }
 

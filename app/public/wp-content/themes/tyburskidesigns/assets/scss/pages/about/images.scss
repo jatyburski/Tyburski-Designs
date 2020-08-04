@@ -40,13 +40,14 @@
         i {
             @extend %icon-square;
             border: 1px solid theme-color('secondary');
+            bottom: -300px;
             color: theme-color('secondary');
             left: calc(var(--col) * 2);
-            bottom: -300px;
             &::after {
                 background: theme-color('secondary');
                 bottom: 100%;
                 height: 150px;
+                transform-origin: bottom;
             }
         }
     }
