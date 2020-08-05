@@ -35,3 +35,16 @@ $(function(){
     });
 
 });
+
+$(document).scroll(function () {
+
+    var y = $(this).scrollTop();
+
+    if (y > window.innerHeight) {
+        $('.scrollspy').fadeIn();
+    } 
+    else {
+        $('.scrollspy').fadeOut();
+    }
+
+});

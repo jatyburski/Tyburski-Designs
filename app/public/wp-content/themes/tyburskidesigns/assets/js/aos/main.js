@@ -1,4 +1,5 @@
 AOS.init({
+  startEvent: 'load',
   delay: 400,
   duration: 500,
   offset: 0,

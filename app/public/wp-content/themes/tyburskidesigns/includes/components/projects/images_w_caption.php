@@ -9,7 +9,7 @@
 
                     <li class="position-relative">
                         <div data-aos="reveal-right" class="position-absolute project__img--reveal"></div>
-                        <?php echo wp_get_attachment_image( $shot, 'full' ); ?>
+                        <?php echo wp_get_attachment_image( $shot, 'full', '', array( 'class' => 'full-screen-img' ) ); ?>
                     </li>
                     
                 <?php endforeach; ?>

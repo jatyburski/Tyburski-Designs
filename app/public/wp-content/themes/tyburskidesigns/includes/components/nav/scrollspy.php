@@ -1,7 +1,7 @@
 <?php global $sections; ?>
 
 <?php if ( $sections ) : ?>
-    <nav id="scrollspy" class="d-none d-md-block position-fixed scrollspy">
+    <nav id="scrollspy" class="position-fixed scrollspy">
         <ul class="nav flex-column">
             
             <?php foreach( $sections as $id ) : ?>

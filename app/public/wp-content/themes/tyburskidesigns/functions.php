@@ -15,18 +15,19 @@ function add_theme_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'add_theme_scripts' );
 
-function add_async_attribute($tag, $handle) {
-    $scripts_to_async = array('jquery', 'font-awesome');
-    
-    foreach($scripts_to_async as $async_script) {
-       if ($async_script === $handle) {
-          return str_replace(' src', ' async src', $tag);
-       }
-    }
-    return $tag;
- }
+function defer_parsing_of_js( $url ) {
 
- add_filter('script_loader_tag', 'add_async_attribute', 10, 2);
+    if ( is_admin() ) return $url;
+    if ( false === strpos( $url, '.js' ) ) return $url;
+    if ( strpos( $url, 'jquery.js' ) ) return $url;
+    if ( strpos( $url, 'typetura.js' ) ) return $url;
+    if ( strpos( $url, 'smush-lazy-load.min.js' ) ) return $url;
+
+    return str_replace( ' src', ' defer src', $url );
+
+}
+
+add_filter( 'script_loader_tag', 'defer_parsing_of_js', 10 );
 
 
 // -----------------------

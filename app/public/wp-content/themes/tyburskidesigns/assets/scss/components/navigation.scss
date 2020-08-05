@@ -434,18 +434,29 @@
 // -----------------------
 
 .scrollspy {
+    display: none;
+    left: 25px;
     max-width: 200px;
-    top: 50vh;
-    transform: translateY(-50%);
+    top: 280px;
     z-index: 1000;
     a {
         @extend %p;
         --tt-key: scrollspy;
         line-height: 1.5;
-        margin-bottom: 15px;
-        &.active {
+        margin-bottom: 10px;
+        &.active,
+        &:hover {
             color: theme-color('secondary');
-            font-weight: 700;
+            position: relative;
+            &:before {
+                @include width-height(2px, 100%);
+                background: theme-color('secondary');
+                content: '';
+                left: -10px;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+            }
         }
     }
 }

@@ -15,8 +15,10 @@
             background: theme-color-level('primary', -1);
         }
         li {
+            height: 50vh;
             &:first-child:nth-last-child(odd) {
                 grid-column: auto / span 2;
+                height: 100vh;
                 @include media('>=phone', '<tablet') {
                     grid-column: auto / span 1;
                 }
