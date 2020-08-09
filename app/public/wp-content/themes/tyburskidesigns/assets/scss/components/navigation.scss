@@ -438,7 +438,17 @@
     left: 25px;
     max-width: 200px;
     top: 280px;
+    transition: transform .2s ease-out;
     z-index: 1000;
+
+    @at-root .nav-is-open & {
+        transform: translateX(-100%);
+    }
+
+    @include media('<tablet') {
+        display: none !important;
+    }
+
     a {
         @extend %p;
         --tt-key: scrollspy;

@@ -96,17 +96,27 @@
         margin: 40px 0 0 var(--col);
 
         @include media('<x-large') {
-            margin: 40px 0 0 var(--col);
+            margin: 40px 0 0;
         }
 
-        li:not(:first-child)::before {
-            @include fontSize(6px);
-            @extend %small-caps;
-            color: theme-color('white');
-            content: 'or';
-            display: inline;
-            margin: 0 15px 0 18px;
-            opacity: .5;
+        li:not(:first-child) {
+
+            @include media('<576px') {
+                margin-top: 10px;
+            }
+
+            &::before {
+                @include fontSize(6px);
+                @extend %small-caps;
+                color: theme-color('white');
+                content: 'or';
+                display: inline;
+                margin: 0 15px 0 18px;
+                opacity: .5;
+                @include media('<576px') {
+                    display: none;
+                }
+            }
         }
         .btn::before {
             background: #1b172a;

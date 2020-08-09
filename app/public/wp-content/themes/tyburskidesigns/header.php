@@ -3,12 +3,13 @@
 <html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://use.typekit.net/kfv6civ.css" rel="stylesheet">
         <link href="<?php echo get_bloginfo( 'template_directory' ); ?>/dist/style.css" rel="stylesheet">
         <?php wp_head(); ?>
         <title></title>
     </head>
 
-    <body <?php body_class(); ?> data-spy="scroll" data-target="scrollspy" data-offset="160">
+    <body <?php body_class(); ?> data-spy="scroll" data-target="#scrollspy" data-offset="100">
  
         <?php layout_get_component( 'nav-main' , 'header' ); ?>
 

@@ -43,4 +43,12 @@
             }
         }
     }
+    .carousel-control {
+        &-prev {
+            transform: translateX(-100%);
+        }
+        &-next {
+            transform: translateX(100%);
+        }
+    }
 }

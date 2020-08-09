@@ -8,7 +8,7 @@
                 
                 <?php the_field( 'content' ); ?>
 
-                <ul class="d-flex p-0 front-page__buttons">
+                <ul class="d-flex flex-column flex-sm-row p-0 front-page__buttons">
 
                     <?php $buttons = get_field( 'buttons' ); ?>
                     <?php foreach( $buttons as $button ) : ?>

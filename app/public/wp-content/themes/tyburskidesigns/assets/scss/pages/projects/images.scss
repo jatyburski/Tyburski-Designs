@@ -7,21 +7,26 @@
     &__img {
         display: grid;
         grid-template-columns: 2fr 2fr;
+
         @include media('>=phone', '<tablet') {
             grid-template-columns: 1fr;
         }
+        
         &--reveal {
             @extend %reveal;
             background: theme-color-level('primary', -1);
         }
         li {
             height: 50vh;
+            min-height: 600px;
             &:first-child:nth-last-child(odd) {
                 grid-column: auto / span 2;
                 height: 100vh;
+
                 @include media('>=phone', '<tablet') {
                     grid-column: auto / span 1;
                 }
+
             }
             &:last-child:nth-last-child(even),
             &:last-child:nth-last-child(even) ~ & {
