@@ -3,12 +3,12 @@
  * Plugin Name: Analytify - Google Analytics Dashboard
  * Plugin URI: https://analytify.io/details
  * Description: Analytify brings a brand new and modern feeling Google Analytics superbly integrated with WordPress Dashboard. It presents the statistics in a beautiful way under the WordPress Posts/Pages at front end, backend and in its own Dashboard. This provides Stats from Country, Referrers, Social media, General stats, New visitors, Returning visitors, Exit pages, Browser wise and Top keywords. This plugin provides the RealTime statistics in a new UI which is easy to understand & looks good.
- * Version: 3.1.0
+ * Version: 3.1.3
  * Author: Analytify
  * Author URI: https://analytify.io
  * License: GPLv3
  * Text Domain: wp-analytify
- * Tested up to: 5.4
+ * Tested up to: 5.5
  * Domain Path: /languages
  *
  * @package WP_ANALYTIFY
@@ -1365,14 +1365,6 @@ if ( ! class_exists( 'WP_Analytify' ) ) {
 			// 	$message = sprintf( esc_html__( '%1$s Important Notice %2$s &mdash; Analytify %3$sEnhanced E-Commerce Tracking for WooCommerce%4$s can help you track your ecommerce stats.', 'wp-analytify' ), '<b>', '</b>', '<a style="text-decoration:none" href="' . $link . '" target="_blank">','</a>' );
 			// 	analytify_notice( $message, $class );
 			// }
-
-			// Enable UA code for ecommerce
-			if ( class_exists( 'WooCommerce' ) && class_exists( 'WP_Analytify_Pro_Base' ) && 'on' !== $this->settings->get_option( 'install_ga_code', 'wp-analytify-profile', 'off' ) ) {
-				$class   = 'wp-analytify-danger';
-				$link    = esc_url( menu_page_url( 'analytify-settings', false ) );
-				$message = sprintf( esc_html__( '%1$s Important Notice %2$s &mdash; You are using WooCommerce and have manual UA code output. Its required to use the Analytify %3$s tracking code option %4$s to correctly track your site ecommerce stats.', 'wp-analytify' ), '<b>', '</b>', '<a style="text-decoration:none" href="' . $link . '#wp-analytify-profile">','</a>' );
-				analytify_notice( $message, $class );
-			}
 			
 		}
 

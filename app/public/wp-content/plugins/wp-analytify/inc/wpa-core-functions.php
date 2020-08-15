@@ -173,7 +173,7 @@ function pretty_class( $class ) {
 		return "analytify_not_set";
 	}
 
- 	return	"analytify_" . transliterateString( str_replace( array("’",' & ','-',' '), '_', strtolower( $class ) ) );
+ 	return	"analytify_" . transliterateString( str_replace( array("’","‘",' & ','-',' '), '_', strtolower( $class ) ) );
 
 }
 

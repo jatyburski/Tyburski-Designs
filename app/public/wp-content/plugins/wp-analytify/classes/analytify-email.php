@@ -2,11 +2,16 @@
 
 class Analytify_Email_Core {
 
+	private $WP_ANALYTIFY = '';
+
 	function __construct() {
 		if ( ! $this->verify_update() ) 
 			return;
+
+		$this->WP_ANALYTIFY = $GLOBALS['WP_ANALYTIFY'];
 		
 		$this->setup_constants();
+		$this->anaytify_email_check_time();
 		$this->hooks();
 
 		if ( isset( $_POST['test_email'] ) ) {
@@ -21,7 +26,6 @@ class Analytify_Email_Core {
 		add_action( 'analytify_email_cron_function', array( $this, 'callback_on_cron_time' ) );
 		add_action( 'wp_analytify_pro_setting_tabs' , array( $this, 'analytify_email_setting_tabs' ) , 20 , 1 );
 		add_filter( 'wp_analytify_pro_setting_fields', array( $this, 'analytifye_email_setting_fields' ) , 20, 1 );
-		add_action( 'init', array( $this, 'anaytify_email_check_time' ) );
 		add_action( 'after_single_view_stats_buttons', array( $this, 'single_send_email' ) );
 		add_action( 'wp_ajax_send_analytics_email', array( $this, 'send_analytics_email' ) );
 		add_action( 'analytify_settings_logs', array( $this, 'analytify_settings_logs' ) );
@@ -72,12 +76,16 @@ class Analytify_Email_Core {
 		}
 	}
 
-	function anaytify_email_check_time() {
-		// check if event scheduled before
+	function anaytify_email_check_time() {	
+		// Retrun if reports are off.
+		if ( 'on' === $this->WP_ANALYTIFY->settings->get_option( 'disable_email_reports','wp-analytify-email' ) ) {
+			return;
+		}
+
+		// Check if event is scheduled before.
 		if ( ! wp_next_scheduled( 'analytify_email_cron_function' ) ) {
 			wp_schedule_event( time() , 'daily', 'analytify_email_cron_function' );
 		}
-
 	}
 
 	function analytify_email_setting_tabs( $old_tabs ) {
@@ -113,6 +121,12 @@ class Analytify_Email_Core {
 		$email_fields = array(
 			'wp-analytify-email' => array(
 				array(
+					'name'  => 'disable_email_reports',
+					'label' => __( 'Disable Email Reporting', 'wp-analytify' ),
+					'desc'  => __( 'This will stop sending your website stats email reports.', 'wp-analytify' ),
+					'type'  => 'checkbox',
+				),
+				array(
 					'name'              => 'analytiy_from_email',
 					'label'             => __( 'From Email', 'wp-analytify' ),
 					'desc'              => __( 'Sender Email.', 'wp-analytify' ),
@@ -128,38 +142,17 @@ class Analytify_Email_Core {
 					'default'           => '',
 					'sanitize_callback' => 'sanitize_text_field',
 				),
-				array(
-					'name'              => 'analytify_email_promo',
-					'type'              => 'email_promo',
-					'label'             => '',
-					'desc'              => '',
-				),
-				// array(
-				// 	'name'    				=> 'analytif_email_cron_time',
-				// 	'label'   				=> __( 'Set Schedule', 'wp-analytify' ),
-				// 	'desc'   				=> __( 'Select days to schedule weekly emails', 'wp-analytify' ),
-				// 	'type'    				=> 'multi_select',
-				// 	'default' 				=> 'weekly',
-				// 	'options' => array(
-				// 		'main' => array(
-				// 			'week' => 'Weekly',
-				// 		),
-				// 		'value' => array(
-				// 			'week' => array(
-				// 				'false'			=> __( 'Select Day', 'wp-analytify' ),
-				// 				// 'Sunday'    => analytify__( 'Sunday', 'wp-analytify' ),
-				// 				'Monday'    => analytify__( 'Monday', 'wp-analytify' ),
-				// 				// 'Tuesday'   => analytify__( 'Tuesday', 'wp-analytify' ),
-				// 				// 'Wednesday' => analytify__( 'Wednesday', 'wp-analytify' ),
-				// 				// 'Thursday'  => analytify__( 'Thursday', 'wp-analytify' ),
-				// 				// 'Friday'    => analytify__( 'Friday', 'wp-analytify' ),
-				// 				// 'Saturday'  => analytify__( 'Saturday', 'wp-analytify' )
-				// 				),
-				// 		)
-				// 	)
-				// ),
 			),
 		);
+
+		if ( ! class_exists( 'WP_Analytify_Email' ) ) {
+			array_push( $email_fields['wp-analytify-email'], array(
+				'name'              => 'analytify_email_promo',
+				'type'              => 'email_promo',
+				'label'             => '',
+				'desc'              => '',
+				) );
+		}
 
 		return array_merge( $old_fields, $email_fields );
 	}
@@ -175,13 +168,8 @@ class Analytify_Email_Core {
 
 		$Analytify_Email = $GLOBALS['WP_ANALYTIFY'];
 		$site_url = site_url();
+		$when_to_send_report = $this->when_to_send_report();
 		
-		if ( class_exists( 'WP_Analytify_Email' ) ) {
-			$when_to_send_report = $this->when_to_send_report();
-		} else {
-			$when_to_send_report = array( 'week' );
-		}
-
 		foreach ( $when_to_send_report as $when ) {
 			if ( $when == 'week' ) {
 				$start_date_val = strtotime( '-1 week' );
@@ -405,9 +393,15 @@ class Analytify_Email_Core {
 
 	function when_to_send_report() {
 		$when_to_send_email = array();
+		
 		// Return true, if test button trigger.
 		if ( isset( $_POST['test_email'] ) ) {
-			$when_to_send_email[] = 'month';
+			if ( class_exists( 'WP_Analytify_Email' ) ) {
+				$when_to_send_email[] = 'month';
+			} else {
+				$when_to_send_email[] = 'week';
+			}
+
 			return $when_to_send_email;
 		}
 

@@ -46,13 +46,14 @@
     li {
         @extend %h4;
         @extend %bullet;
+        &:before {
+            margin: 0 10px 0 17px !important;
 
-        @include media('<tablet') {
-            &:before {
+            @include media('<tablet') {
                 display: none !important;
             }
-        }
 
+        }
     }
     + .about__image img {
         @include object-fit(cover, top center);

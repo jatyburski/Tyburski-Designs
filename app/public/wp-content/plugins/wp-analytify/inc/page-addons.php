@@ -69,8 +69,10 @@ if ( ! class_exists( 'WP_Analytify_Addons' ) ) {
 		 * @since 1.3
 		 */
 		public function check_plugin_status( $slug, $extension ) {
+			// Free addon has different filename.
+			$addon_file_name = ( 'analytify-analytics-dashboard-widget' === $slug ) ? 'wp-analytify-dashboard' : $slug;
 
-			$slug = $slug . '/'. $slug .'.php';
+			$slug = $slug . '/'. $addon_file_name .'.php';
 			if ( is_plugin_active( $slug ) ) {
 
 				echo sprintf( esc_html__( '%1$s Already Installed %2$s', 'wp-analytify' ), '<button class="button-primary">', '</button>' );

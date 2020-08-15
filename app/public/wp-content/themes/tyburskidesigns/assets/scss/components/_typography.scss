@@ -47,7 +47,7 @@ h2,
     }
     14%,
     34% {
-        @include fontSize(110px);
+        @include fontSize(120px);
         letter-spacing: 10px;
     }
     100% {
@@ -87,7 +87,7 @@ h4,
     color: theme-color('white');
     font-family: var(--secondary-font);
     font-weight: 700;
-    line-height: 1.35;
+    line-height: 1.5;
 }
 
 @keyframes h4 {
@@ -176,7 +176,7 @@ p,
         @include fontSize(14px);
     }
     100% {
-        @include fontSize(16px);
+        @include fontSize(20px);
     }
 }
 

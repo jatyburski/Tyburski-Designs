@@ -1,10 +1,18 @@
 <?php
 
-function get_compared_colors( $results, $compare_results, $date_different ) {
+function get_compared_colors( $results, $compare_results, $date_different, $stats_for = '' ) {
 	if ( $compare_results != 0 ) {
 		$compare = number_format( ( ( $results - $compare_results ) / $compare_results ) * 100, 2 ) . "%";
 	} else {
 		return;
+	}
+
+	// Invert results for bounce rate.
+	if ( ! empty( $stats_for ) && 'bounce_rate' == $stats_for ) {
+		return array(
+			$compare < 0 ? '#00c853' : '#fa5825',
+			$compare < 0 ? '#4ed98817' : '#ffffff'
+		);
 	}
 
 	return array(
@@ -13,7 +21,7 @@ function get_compared_colors( $results, $compare_results, $date_different ) {
 	);
 }
 
-function get_compare_email_stats( $results, $compare_results, $date_different ) {
+function get_compare_email_stats( $results, $compare_results, $date_different, $stats_for = '' ) {
 	if ( $compare_results != 0 ) {
 		$compare = number_format( ( ( $results - $compare_results ) / $compare_results ) * 100, 2 ) . "%";
 	} else {
@@ -22,6 +30,12 @@ function get_compare_email_stats( $results, $compare_results, $date_different ) 
 
 	$image_name = $compare > 0 ? 'analytify_green_arrow.png' : 'analytify_red_arrow.png';
 	$color      = $compare > 0 ? '#00c853' : '#fa5825';
+
+	// Invert results for bounce rate.
+	if ( ! empty( $stats_for ) && 'bounce_rate' == $stats_for ) {
+		$image_name = $compare < 0 ? 'analytify_green_arrow.png' : 'analytify_red_arrow.png';
+		$color      = $compare < 0 ? '#00c853' : '#fa5825';
+	}
 
 	echo '<tr>
 				 <td colspan="3">
@@ -132,7 +146,8 @@ function pa_email_include_general( $current, $stats, $old_stats, $date_different
 					<?php	
 					$compared_colors = get_compared_colors( $stats->totalsForAllResults['ga:bounceRate'], 
 						$old_stats->totalsForAllResults['ga:bounceRate'], 
-						$date_different 
+						$date_different ,
+						'bounce_rate'
 					); 
 					?>
 
@@ -157,7 +172,7 @@ function pa_email_include_general( $current, $stats, $old_stats, $date_different
 							</tr>
 
 							<?php if ( $old_stats ): ?>
-								<?php get_compare_email_stats( $stats->totalsForAllResults['ga:bounceRate'], $old_stats->totalsForAllResults['ga:bounceRate']  , $date_different ) ?>
+								<?php get_compare_email_stats( $stats->totalsForAllResults['ga:bounceRate'], $old_stats->totalsForAllResults['ga:bounceRate'], $date_different, 'bounce_rate' ) ?>
 							<?php endif; ?>
 
 						</table>
