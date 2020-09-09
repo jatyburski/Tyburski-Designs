@@ -12,7 +12,7 @@
             layout_get_component( 'tab-menu' , 'nav' );
         ?>
     
-        <li class="tabs__circle">
+        <!-- <li class="tabs__circle">
 
             <div class="tabs__circle--gooey">
                 <input type="checkbox" class="tabs__circle--open" name="tabs__circle--open" id="tabs__circle--open"/>
@@ -50,7 +50,7 @@
                 <?php endif; ?>
             </div>
 
-        </li>
+        </li> -->
 
         <?php 
             $nav_items = array_slice($nav, -2);

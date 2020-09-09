@@ -63,7 +63,7 @@ $theme-colors: (
     }
 
     @include media('<large') {
-        @include width-height(calc(var(--col) * 2), 170px);
+        @include width-height(calc(var(--col) * 2), 120px);
     }
 
     @include media('<tablet') {

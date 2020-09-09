@@ -22,7 +22,7 @@ h1,
     }
     100% {
         @include fontSize(470px);
-        letter-spacing: 24px;
+        letter-spacing: 20px;
         line-height: .6;
     }
 }
@@ -47,7 +47,7 @@ h2,
     }
     14%,
     34% {
-        @include fontSize(120px);
+        @include fontSize(110px);
         letter-spacing: 10px;
     }
     100% {
@@ -160,7 +160,7 @@ p,
     --tt-max: 1920;
     color: theme-color('white');
     font-family: var(--secondary-font);
-    line-height: 2.15;
+    line-height: 2;
     margin: 0;
     + p {
         margin-top: 20px;
@@ -176,7 +176,7 @@ p,
         @include fontSize(14px);
     }
     100% {
-        @include fontSize(20px);
+        @include fontSize(18px);
     }
 }
 

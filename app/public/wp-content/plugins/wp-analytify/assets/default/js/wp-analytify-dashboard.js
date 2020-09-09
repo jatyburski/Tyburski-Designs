@@ -106,11 +106,11 @@ $(document).click(function (e){
      });
    };
 
-    $(window).load(function() {
-      setTimeout( function(){
-        equalheight('.analytify_general_status_boxes');
-      }  , 5000 );
-    });
+	$(window).on('load', function() {
+		setTimeout( function(){
+			equalheight('.analytify_general_status_boxes');
+		}  , 5000 );
+	});
 
   wp_analytify_paginated = function(){
  

@@ -19,7 +19,7 @@ function defer_parsing_of_js( $url ) {
 
     if ( is_admin() ) return $url;
     if ( false === strpos( $url, '.js' ) ) return $url;
-    if ( strpos( $url, 'jquery.js' ) ) return $url;
+    // if ( strpos( $url, 'jquery.js' ) ) return $url;
     if ( strpos( $url, 'typetura.js' ) ) return $url;
     if ( strpos( $url, 'smush-lazy-load.min.js' ) ) return $url;
 

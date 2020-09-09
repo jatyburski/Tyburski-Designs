@@ -25,11 +25,11 @@ class Analytify_Rest_API {
 				array(
 					'methods'  => WP_REST_Server::READABLE, // Get Request
 					'callback' => array( $this, 'handle_request' ),
+					'permission_callback' => '__return_true',
 				),
 			)
 		);
 	}
-
 
 	/**
 	 * Handle the Request.

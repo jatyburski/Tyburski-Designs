@@ -7,9 +7,11 @@
                 <?php $shots = get_sub_field( 'gallery' ); ?>
                 <?php foreach( $shots as $shot ) : ?>
 
-                    <li class="position-relative">
+                    <?php $img_attributes = wp_get_attachment_image_src( $shot, 'full' ); ?>
+
+                    <li class="position-relative w-100" style="--aspect-ratio:<?php echo $img_attributes[2]; ?>/<?php echo $img_attributes[1]; ?>;">
                         <div data-aos="reveal-right" class="position-absolute project__img--reveal"></div>
-                        <?php echo wp_get_attachment_image( $shot, 'full', '', array( 'class' => 'full-screen-img' ) ); ?>
+                        <?php echo wp_get_attachment_image( $shot, 'full', '', array( 'class' => 'position-absolute' ) ); ?>
                     </li>
                     
                 <?php endforeach; ?>

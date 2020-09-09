@@ -13,7 +13,7 @@ RewriteRule . /index.php [L]
 </IfModule>
 
 <FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
-Header set Cache-Control "max-age=604800, public"
+Header set Cache-Control: "max-age=31536000"
 </FilesMatch>
 
 # END WordPress

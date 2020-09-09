@@ -1,11 +1,11 @@
-// a$ = jQuery.noConflict();
-
-// $(function () {
-
-//     var width = window.innerWidth;
-
-//     if (width  > 480) {
-//         $('.contact__content a[href^="mailto:"]').html('<a href="mailto:hello@tyburskidesigns.com>Email Me</a>');
-//     }
-
-// });
+function mailButton(text) {
+	if ((text.matches) && (document.getElementById("email") != null)) {
+		var str = document.getElementById("email").innerHTML;
+		var res = str.replace("hello@tyburskidesigns.com", "Email Me"); 
+		document.getElementById("email").innerHTML = res;
+	}
+}
+  
+var text = window.matchMedia("(max-width: 800px)")
+mailButton(text)
+text.addListener(mailButton)
