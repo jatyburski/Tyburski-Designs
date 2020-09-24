@@ -4,63 +4,29 @@
 
 h1,
 %h1 {
-    --tt-key: h1;
-    --tt-min: var(--min-window);
-    --tt-max: var(--max-window);
+    @include font-Size(115px, 12vw, 270px);
     color: theme-color('white');
     font-family: var(--primary-font);
     font-weight: 900;
+    letter-spacing: clamp(5px, 5vw, 10px);
+    line-height: .75;
     text-transform: uppercase;
-}
-
-@keyframes h1 {
-    0%,
-    20% {
-        @include fontSize(115px);
-        letter-spacing: 5px;
-        line-height: .85;
-    }
-    100% {
-        @include fontSize(470px);
-        letter-spacing: 20px;
-        line-height: .6;
-    }
 }
 
 h2,
 %h2 {
-    --tt-key: h2;
-    --tt-min: var(--min-window);
-    --tt-max: var(--max-window);
+    @include font-Size(120px, 7.5vw, 180px);
     color: theme-color('secondary');
     font-family: var(--primary-font);
     font-weight: 900;
+    letter-spacing: clamp(7px, .7vw, 20px);
     line-height: .875;
     text-transform: uppercase;
 }
 
-@keyframes h2 {
-    0%,
-    13% {
-        @include fontSize(90px);
-        letter-spacing: 7px;
-    }
-    14%,
-    34% {
-        @include fontSize(110px);
-        letter-spacing: 10px;
-    }
-    100% {
-        @include fontSize(285px);
-        letter-spacing: 20px;
-    }
-}
-
 h3,
 %h3 {
-    --tt-key: h3;
-    --tt-min: var(--min-window);
-    --tt-max: var(--max-window);
+    @include font-Size(42px, 3vw, 75px);
     color: theme-color('white');
     font-family: var(--primary-font);
     font-weight: 900;
@@ -69,79 +35,33 @@ h3,
     text-transform: uppercase;
 }
 
-@keyframes h3 {
-    0%,
-    20% {
-        @include fontSize(42px);
-    }
-    100% {
-        @include fontSize(75px);
-    }
-}
-
 h4,
 %h4 {
-    --tt-key: h4;
-    --tt-min: var(--min-window);
-    --tt-max: var(--max-window);
+    @include font-Size(25px, 1.5vw, 54px);
     color: theme-color('white');
     font-family: var(--secondary-font);
     font-weight: 700;
     line-height: 1.5;
 }
 
-@keyframes h4 {
-    0%,
-    20% {
-        @include fontSize(25px);
-    }
-    100% {
-        @include fontSize(54px);
-    }
-}
-
 h5,
 %h5 {
     @extend %small-caps;
-    --tt-key: h5;
-    --tt-min: var(--min-window);
-    --tt-max: var(--max-window);
+    @include font-Size(16px, 1vw, 40px);
     color: theme-color('secondary');
     font-family: var(--secondary-font);
     font-weight: 700;
     line-height: 1.25;
 }
 
-@keyframes h5 {
-    0%,
-    20% {
-        @include fontSize(16px);
-    }
-    100% {
-        @include fontSize(40px);
-    }
-}
-
 h6,
 %h6 {
     @extend %small-caps;
-    --tt-key: h6;
-    --tt-min: var(--min-window);
-    --tt-max: var(--max-window);
+    @include font-Size(10px, .75vw, 18px);
     color: theme-color('secondary');
     font-family: var(--secondary-font);
     letter-spacing: 4px;
     line-height: 1.1;
-}
-
-@keyframes h6 {
-    0%,
-    20% {
-        @include fontSize(10px);
-    }
-    100% {
-        @include fontSize(18px);
-    }
 }
 
 
@@ -155,9 +75,7 @@ a {
 
 p,
 %p {
-    --tt-key: p;
-    --tt-min: 1366;
-    --tt-max: 1920;
+    @include font-Size(14px, 1vw, 18px);
     color: theme-color('white');
     font-family: var(--secondary-font);
     line-height: 2;
@@ -167,16 +85,6 @@ p,
     }
     a {
         @extend %link;
-    }
-}
-
-@keyframes p {
-    0%,
-    75% {
-        @include fontSize(14px);
-    }
-    100% {
-        @include fontSize(18px);
     }
 }
 

@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="preload" href="https://use.typekit.net/kfv6civ.css" as="style" crossorigin="">
+        <link rel="preload" href="https://use.typekit.net/kfv6civ.css" as="style" crossorigin="anonymous">
         <link rel="preload" href="<?php echo get_bloginfo( 'template_directory' ); ?>/dist/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="<?php echo get_bloginfo( 'template_directory' ); ?>/dist/style.css"></noscript>
         <?php wp_head(); ?>

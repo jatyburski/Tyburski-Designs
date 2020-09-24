@@ -173,7 +173,7 @@ $theme-colors: (
     p {
         strong {
             @extend %h5;
-            --tt-key: title;
+            font-size: clamp(25px, 1.5vw, 54px) !important;
             color: theme-color('secondary') !important;
             letter-spacing: 0 !important;
             text-transform: none !important;

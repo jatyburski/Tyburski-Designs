@@ -34,7 +34,7 @@
             margin-bottom: calc(var(--col) + 60px) !important;
             margin-top: 60px !important;
             h3 {
-                @extend %h5;
+                @extend %h4;
                 color: theme-color('white');
                 letter-spacing: 0;
                 text-transform: none;

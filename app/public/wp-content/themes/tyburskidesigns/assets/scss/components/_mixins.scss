@@ -14,6 +14,15 @@
     }
 }
 
+// -----------------------
+// Font Size Output
+// -----------------------
+
+@mixin font-Size($min, $mid, $max) {
+    font-size: clamp($min, $mid, $max);
+    font-size: clamp(calculateRem($min), $mid, calculateRem($max));
+}
+
 
 // -----------------------
 // Font Size Output

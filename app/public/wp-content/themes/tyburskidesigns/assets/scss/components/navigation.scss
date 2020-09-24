@@ -268,16 +268,6 @@
     }
 }
 
-@keyframes nav {
-    0%,
-    50% {
-        @include fontSize(70px);
-    }
-    75% {
-        @include fontSize(60px);
-    }
-}
-
 
 // -----------------------
 // Mobile Nav
@@ -374,11 +364,11 @@
             }
         }
         &__item {
-            @include fontSize(20px);
             @include width-height(60px);
             background: theme-color('secondary');
             border-radius: 100%;
             color: theme-color('primary');
+            font-size: 20px;
             left: 0;
             line-height: 60px;
             position: absolute;
@@ -415,10 +405,10 @@
         height: 75px;
         padding: 0 var(--col);
         &-items {
-            @include fontSize(9px);
+            font-size: 9px;
             color: theme-color('white');
             i {
-                @include fontSize(22px);
+                font-size: 22px;
                 margin-bottom: 5px;
             }
             &--active {

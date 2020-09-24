@@ -12,13 +12,3 @@
         display: block;
     }
 }
-
-@keyframes title {
-    0%,
-    20% {
-        @include fontSize(15px);
-    }
-    100% {
-        @include fontSize(35px);
-    }
-}
