@@ -29,7 +29,6 @@ class Analytify_Email_Core {
 		add_action( 'after_single_view_stats_buttons', array( $this, 'single_send_email' ) );
 		add_action( 'wp_ajax_send_analytics_email', array( $this, 'send_analytics_email' ) );
 		add_action( 'analytify_settings_logs', array( $this, 'analytify_settings_logs' ) );
-		// add_action( 'admin_init', array( $this, 'backward_compatibility' ), 10 );
 	}
 
 	/**
@@ -76,12 +75,7 @@ class Analytify_Email_Core {
 		}
 	}
 
-	function anaytify_email_check_time() {	
-		// Retrun if reports are off.
-		if ( 'on' === $this->WP_ANALYTIFY->settings->get_option( 'disable_email_reports','wp-analytify-email' ) ) {
-			return;
-		}
-
+	function anaytify_email_check_time() {
 		// Check if event is scheduled before.
 		if ( ! wp_next_scheduled( 'analytify_email_cron_function' ) ) {
 			wp_schedule_event( time() , 'daily', 'analytify_email_cron_function' );
@@ -159,7 +153,14 @@ class Analytify_Email_Core {
 
 	function callback_on_cron_time() {
 		// Retrun if no profile selected.
-		if ( empty( $GLOBALS['WP_ANALYTIFY']->settings->get_option( 'profile_for_dashboard', 'wp-analytify-profile' ) ) ) {
+		$profile = $GLOBALS['WP_ANALYTIFY']->settings->get_option( 'profile_for_dashboard', 'wp-analytify-profile' );
+		if ( empty( $profile ) ) {
+			return;
+		}
+
+		// Retrun if reports are off.
+		$disable_emails = $this->WP_ANALYTIFY->settings->get_option( 'disable_email_reports', 'wp-analytify-email' );
+		if ( 'on' == $disable_emails ) {
 			return;
 		}
 
@@ -676,23 +677,6 @@ class Analytify_Email_Core {
 
 		echo "\r\n";
 	}
-
-	/**
-	 * Configure backward compatibility for options tabele.
-	 *
-	 */
-	// function backward_compatibility() {
-	// 	$_analytify_email = get_option( 'wp-analytify-email' );
-
-	// 	if ( empty( $_analytify_email ) ) {
-	// 		$default['analytify_email_user_email'] = get_bloginfo( 'admin_email' );
-	// 		$default['analytif_email_cron_time']   =  array(
-	// 			'week' => 'Monday'
-	// 		);
-
-	// 		update_option( 'wp-analytify-email', $default );
-	// 	}
-	// }
 
 	/**
 	 * Verify email addon.

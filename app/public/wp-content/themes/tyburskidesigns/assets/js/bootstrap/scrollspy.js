@@ -15,7 +15,7 @@ $(function(){
             var hash = this.hash;
 
             $('html, body').animate({
-                scrollTop: $(hash).offset().top - 70
+                scrollTop: $(hash).offset().top - 0
             }, 800, function() {
 
                 if (history.pushState) {

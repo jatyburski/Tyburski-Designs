@@ -1,9 +1,9 @@
 .project {
     &__content {
         margin: 0 0 var(--col);
-        .col-lg-6 {
+        padding-bottom: calc(var(--col) - 40px);
+        .col-lg-6:not(:first-child) {
             margin-bottom: var(--col);
-            margin-top: var(--col);
 
             @include media('>=phone', '<tablet', 'landscape') {
                 padding-left: var(--col);
@@ -16,6 +16,7 @@
             
             h2 {
                 color: theme-color('white');
+                padding-top: var(--col);
                 ~ p {
                     margin-top: 40px;
                 }
@@ -23,6 +24,11 @@
         }
         &--lg {
             padding-top: 150px;
+
+            @include media('>=phone', '<992px') {
+                margin: 0 var(--col);
+                padding: var(--col) 0;
+            }
             p {
                 @extend %h4;
                 text-transform: none;
@@ -40,14 +46,22 @@
         }
     }
     &__appendix {
-        margin-top: 70px;
-        li:not(:first-child) {
-            margin-left: var(--col);
+        li {
+            &:not(:first-child) {
+                margin-top: 30px;
 
-            @include media('<tablet') {
-                margin-left: 0;
+                @include media('>=phone', '<992px') {
+                    margin-top: 20px;
+                }
+
             }
-
+            
+            @include media('>=phone', '<992px') {
+                &:last-child {
+                    margin-bottom: 30px;
+                }
+            }
+            
         }
         dt {
             @extend %h6;
@@ -59,4 +73,8 @@
             @extend %p;
         }
     }
+}
+
+figure + .col-lg-6 {
+    margin-top: -40px;
 }

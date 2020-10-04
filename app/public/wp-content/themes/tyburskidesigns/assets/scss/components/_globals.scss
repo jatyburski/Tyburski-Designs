@@ -133,7 +133,6 @@ $theme-colors: (
     @include width-height(42px, 40px);
     padding: 10px;
     text-align: center;
-    // transform: translateX(-50%);
     &:after {
         content: '';
         left: 50%;

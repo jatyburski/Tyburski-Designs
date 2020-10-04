@@ -6,15 +6,26 @@
     }
     &__img {
         display: grid;
+        grid-gap: 40px;
         grid-template-columns: 2fr 2fr;
+        margin-bottom: 40px;
 
-        @include media('>=phone', '<tablet') {
+        @include media('>=phone', '<992px') {
+            grid-gap: 40px 0;
             grid-template-columns: 1fr;
         }
         
         &--reveal {
             @extend %reveal;
             background: theme-color-level('primary', -1);
+        }
+        &--scroll {
+            height: 39.25vw;
+            max-height: 90vh;
+            overflow-y: scroll;
+            img {
+                height: auto !important;
+            }
         }
         li {
             &:first-child:nth-last-child(odd) {
@@ -31,11 +42,11 @@
             }
         }
         &-caption {
-            margin-bottom: calc(var(--col) + 60px) !important;
-            margin-top: 60px !important;
+            margin-bottom: var(--col) !important;
             h3 {
                 @extend %h4;
                 color: theme-color('white');
+                margin-top: 40px !important;
                 letter-spacing: 0;
                 text-transform: none;
             }

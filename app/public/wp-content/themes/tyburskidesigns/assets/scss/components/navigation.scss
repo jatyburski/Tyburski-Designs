@@ -424,7 +424,7 @@
 // -----------------------
 
 .scrollspy {
-    display: none;
+    display: none !important;
     left: 25px;
     max-width: 200px;
     top: 280px;
@@ -441,7 +441,7 @@
 
     a {
         @extend %p;
-        --tt-key: scrollspy;
+        font-size: 14px;
         line-height: 1.5;
         margin-bottom: 10px;
         &.active,
@@ -458,12 +458,5 @@
                 transform: translateY(-50%);
             }
         }
-    }
-}
-
-@keyframes scrollspy {
-    0%,
-    100% {
-        @include fontSize(14px);
     }
 }

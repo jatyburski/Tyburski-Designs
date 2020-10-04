@@ -23,7 +23,7 @@
     }
     &-brand {
         @extend %h3;
-        --tt-key: header;
+        @include font-Size(50px, 2vw, 55px);
         letter-spacing: 3px;
         strong {
             @include font-Size(10.5px, 1vw, 11px);
@@ -60,7 +60,7 @@
                     visibility: hidden;
                 }
             }
-            &--truncate:before {
+            &--truncate::before {
                 @include media('<tablet'){
                     content: '<';
                 }
@@ -69,16 +69,5 @@
                 color: theme-color('white');
             }
         }
-    }
-}
-
-@keyframes header {
-    0%,
-    29% {
-        @include fontSize(50px);
-    }
-    30%,
-    100% {
-        @include fontSize(55px);
     }
 }

@@ -2,17 +2,32 @@
     <?php while ( have_rows( 'images_w_caption' ) ) : the_row(); ?>
 
         <figure class="row mb-0 no-gutters w-100">
-            <ul class="col-12 m-0 position-relative project__img">
+            <ul class="offset-lg-1 col-lg-10 position-relative project__img">
 
                 <?php $shots = get_sub_field( 'gallery' ); ?>
                 <?php foreach( $shots as $shot ) : ?>
 
-                    <?php $img_attributes = wp_get_attachment_image_src( $shot, 'full' ); ?>
+                    <?php 
+                        $set = get_sub_field( 'set_position' );
+                        $position = get_sub_field( 'img_position' );
+                        $img_attributes = wp_get_attachment_image_src( $shot, 'full' );
+                    ?>
 
-                    <li class="position-relative w-100" style="--aspect-ratio:<?php echo $img_attributes[2] . '/' . $img_attributes[1]; ?>;">
-                        <div data-aos="reveal-right" class="position-absolute project__img--reveal"></div>
-                        <?php echo wp_get_attachment_image( $shot, 'full', '', array( 'class' => 'position-absolute' ) ); ?>
-                    </li>
+                    <?php if( ( $position == 'right' ) && ( 'true' == $set ) ) : ?>
+                        <li class="d-none d-lg-block"></li>
+                    <?php endif; ?>
+
+                        <li class="position-relative w-100<?php if ( 'true' == $set ) : echo $postion ? ' project__img--left' : ' project__img--right'; endif; ?>" 
+                            style="--aspect-ratio:<?php echo $img_attributes[2] . '/' . $img_attributes[1]; ?>;">
+
+                            <div data-aos="reveal-right" class="position-absolute project__img--reveal"></div>
+                            <?php echo wp_get_attachment_image( $shot, 'full', '', array( 'class' => 'position-absolute project-img' ) ); ?>
+
+                        </li>
+
+                    <?php if( ( $position == 'left' ) && ( 'true' == $set ) ) : ?>
+                        <li class="d-none d-lg-block"></li>
+                    <?php endif; ?>
                     
                 <?php endforeach; ?>
 

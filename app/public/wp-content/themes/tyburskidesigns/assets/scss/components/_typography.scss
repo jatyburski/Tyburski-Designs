@@ -37,7 +37,7 @@ h3,
 
 h4,
 %h4 {
-    @include font-Size(25px, 1.5vw, 54px);
+    @include font-Size(25px, 1.75vw, 54px);
     color: theme-color('white');
     font-family: var(--secondary-font);
     font-weight: 700;
@@ -75,7 +75,7 @@ a {
 
 p,
 %p {
-    @include font-Size(14px, 1vw, 18px);
+    @include font-Size(14px, .9vw, 18px);
     color: theme-color('white');
     font-family: var(--secondary-font);
     line-height: 2;

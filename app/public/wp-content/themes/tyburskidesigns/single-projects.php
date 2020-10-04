@@ -30,21 +30,22 @@
         ?>
 
         <section id="<?php echo $id; ?>" class="row no-gutters project__content project__content--lg">
-            <div data-aos="fade-up" class="offset-1 offset-lg-2 col-10 col-lg-8">
-                <?php the_field( 'intro' ); ?>
+            <div data-aos="fade-up" class="offset-lg-2 col-xl-3">
+                <ul class="mb-0 p-0 d-flex flex-column align-items-start project__appendix">
 
-                <ul class="mb-0 p-0 d-flex flex-column flex-md-row align-items-start project__appendix">
+                <?php $appendices = get_field( 'appendices' ); ?>
 
-                    <?php $appendices = get_field( 'appendices' ); ?>
-                    
-                    <?php foreach ( $appendices as $appendix ) : ?>
-                        <li class="d-inline-block">
-                            <?php echo $appendix[ 'details' ]; ?>
-                        </li>
-                    <?php endforeach; ?>
+                <?php foreach ( $appendices as $appendix ) : ?>
+                    <li class="d-inline-block">
+                        <?php echo $appendix[ 'details' ]; ?>
+                    </li>
+                <?php endforeach; ?>
 
                 </ul>
-                
+            </div>
+            
+            <div data-aos="fade-up" class="col-xl-5">
+                <?php the_field( 'intro' ); ?>                
             </div>
         </section>
 
