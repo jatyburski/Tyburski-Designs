@@ -11,7 +11,7 @@
                     <?php $counter +=1; ?>
                     <?php if ($counter == 1) : ?>
 
-                        <li class="d-block projects__card">
+                        <li data-aos="fade-up" class="d-block projects__card">
 
                             <a href="<?php the_permalink(); ?>" class="d-block projects__tilt">
 
@@ -33,7 +33,7 @@
 
                     <?php elseif ($counter == 2) : ?>
                         
-                        <li class="d-block projects__card">
+                        <li data-aos="fade-up" class="d-block projects__card">
 
                             <a href="<?php the_permalink(); ?>" class="d-block projects__tilt">
 
