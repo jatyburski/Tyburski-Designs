@@ -1,4 +1,4 @@
-<nav class="d-sm-none tabs__container">
+<nav class="d-md-none tabs__container">
     
     <ul class="d-flex align-items-center justify-content-between m-0 w-100 tabs__nav">
         <?php 

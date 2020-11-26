@@ -248,7 +248,7 @@ $theme-colors: (
 }
 
 %reveal {
-    @include width-height(100%);
+    @include width-height(100.1%, 100%);
     background: theme-color-level('white', 12);
     left: 0;
     top: 0;

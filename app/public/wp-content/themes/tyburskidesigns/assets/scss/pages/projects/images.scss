@@ -3,12 +3,13 @@
         background-attachment: fixed;
         background-position: center top;
         background-size: cover;
+        mix-blend-mode: exclusion;
     }
     &__img {
         display: grid;
         grid-gap: 40px;
         grid-template-columns: 2fr 2fr;
-        margin-bottom: 40px;
+        margin-bottom: 80px;
 
         @include media('>=phone', '<992px') {
             grid-gap: 40px 0;
@@ -18,14 +19,6 @@
         &--reveal {
             @extend %reveal;
             background: theme-color-level('primary', -1);
-        }
-        &--scroll {
-            height: 39.25vw;
-            max-height: 90vh;
-            overflow-y: scroll;
-            img {
-                height: auto !important;
-            }
         }
         li {
             &:first-child:nth-last-child(odd) {

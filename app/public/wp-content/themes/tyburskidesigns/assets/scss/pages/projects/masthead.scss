@@ -11,36 +11,55 @@
         }
 
         &::after {
-            @include width-height(100%, 100px);
+            @include width-height(100%, 70px);
             @extend %bg-tint;
-            bottom: -88px;
+            bottom: -60px;
             content: '';
             left: 0;
             position: absolute;
 
             @include media-breakpoint-between(lg, lg) {
                 bottom: -38px;
-                height: 65px;
+                height: 45px;
             }
 
             @include media-breakpoint-down(md) {
-                @include width-height(100%, 80px);
+                @include width-height(100%, 67px);
             }
 
             @include media('<tablet') {
-                bottom: -43px;
+                bottom: 0;
                 height: 57px;
+            }
+
+        }
+
+        h2 {
+            @extend %h1;
+
+            @include media('<tablet') {
+                margin-bottom: 57px;
             }
 
         }
     }
     &__categories {
-        margin: 100px 0 35px;
+        margin: 100px 0 45px;
 
         @include media('<tablet') {
             display: none;
         }
-        
+
+        &::after {
+            background: theme-color('secondary');
+            bottom: -15px;
+            content: '';
+            height: 3px;
+            left: 50%;
+            position: absolute;
+            transform: translateX(-50%);
+            width: 25px;
+        }
         li {
             @extend %bullet;
             @extend %p;

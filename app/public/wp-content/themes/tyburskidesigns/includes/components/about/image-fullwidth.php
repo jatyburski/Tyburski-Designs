@@ -5,6 +5,6 @@
         <?php $full_image = get_field( 'full_image' ); ?>
         <?php echo wp_get_attachment_image( $full_image, 'full', '', array( 'class' => 'w-100' ) ); ?>  
 
-        <i class="far fa-joystick d-none d-lg-block position-absolute" data-aos="zoom-in"></i> 
+        <i class="far fa-gamepad-alt d-none d-lg-block position-absolute" data-aos="zoom-in"></i> 
     </div>
 </div>

@@ -16,7 +16,7 @@
                     </ul>
                 <?php endif;?>
 
-                <?php the_title( '<h1>', '</h1>' ); ?>
+                <?php the_title( '<h2>', '</h2>' ); ?>
             </div>
 
             <div data-aos="zoom-out" class="col-12 vh-100 project__hero" data-type="background" data-speed="10" style="background-image: url( <?php the_post_thumbnail_url(); ?> );"></div>

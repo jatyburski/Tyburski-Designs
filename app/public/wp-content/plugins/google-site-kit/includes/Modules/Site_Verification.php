@@ -260,7 +260,7 @@ final class Site_Verification extends Module implements Module_With_Scopes {
 				return $this->get_siteverification_service()->webResource->listWebResource();
 		}
 
-		throw new Invalid_Datapoint_Exception();
+		return parent::create_data_request( $data );
 	}
 
 	/**
@@ -331,7 +331,7 @@ final class Site_Verification extends Module implements Module_With_Scopes {
 				return $data;
 		}
 
-		return $response;
+		return parent::parse_data_response( $data, $response );
 	}
 
 	/**
@@ -344,7 +344,7 @@ final class Site_Verification extends Module implements Module_With_Scopes {
 	protected function setup_info() {
 		return array(
 			'slug'         => 'site-verification',
-			'name'         => __( 'Site Verification', 'google-site-kit' ),
+			'name'         => _x( 'Site Verification', 'Service name', 'google-site-kit' ),
 			'description'  => __( 'Google Site Verification allows you to manage ownership of your site.', 'google-site-kit' ),
 			'cta'          => __( 'Verify ownership with Google Site Verification.', 'google-site-kit' ),
 			'order'        => 0,

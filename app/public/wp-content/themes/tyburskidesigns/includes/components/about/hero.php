@@ -1,7 +1,7 @@
 <section class="row no-gutters position-relative about" id="hero">
     <div class="col-xl-6 d-flex flex-column align-items-start justify-content-center about__hero">
-        <h1 data-aos="fade-up">I am <span><?php bloginfo('name'); ?></span>
-        </h1>
+        <h2 data-aos="fade-up">I'm <span><?php bloginfo('name'); ?></span>
+        </h2>
 
             <ul class="m-0 p-0 d-flex flex-column flex-md-row align-items-start">
 

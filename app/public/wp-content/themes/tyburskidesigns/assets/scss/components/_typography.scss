@@ -4,18 +4,18 @@
 
 h1,
 %h1 {
-    @include font-Size(115px, 12vw, 270px);
+    @include font-Size(115px, 13vw, 270px);
     color: theme-color('white');
     font-family: var(--primary-font);
     font-weight: 900;
-    letter-spacing: clamp(5px, 5vw, 10px);
+    letter-spacing: clamp(5px, .5vw, 10px);
     line-height: .75;
     text-transform: uppercase;
 }
 
 h2,
 %h2 {
-    @include font-Size(120px, 7.5vw, 180px);
+    @include font-Size(120px, 7.25vw, 180px);
     color: theme-color('secondary');
     font-family: var(--primary-font);
     font-weight: 900;
@@ -75,7 +75,7 @@ a {
 
 p,
 %p {
-    @include font-Size(14px, .9vw, 18px);
+    @include font-Size(14px, .75vw, 18px);
     color: theme-color('white');
     font-family: var(--secondary-font);
     line-height: 2;

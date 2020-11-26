@@ -17,11 +17,11 @@
                         <li class="d-none d-lg-block"></li>
                     <?php endif; ?>
 
-                        <li class="position-relative w-100<?php if ( 'true' == $set ) : echo $postion ? ' project__img--left' : ' project__img--right'; endif; ?>" 
+                        <li class="h-auto position-relative w-100<?php if ( 'true' == $set ) : echo $postion ? ' project__img--left' : ' project__img--right'; endif; ?>" 
                             style="--aspect-ratio:<?php echo $img_attributes[2] . '/' . $img_attributes[1]; ?>;">
 
                             <div data-aos="reveal-right" class="position-absolute project__img--reveal"></div>
-                            <?php echo wp_get_attachment_image( $shot, 'full', '', array( 'class' => 'position-absolute project-img' ) ); ?>
+                            <?php echo wp_get_attachment_image( $shot, 'full', '', array( 'class' => 'h-auto position-absolute project-img' ) ); ?>
 
                         </li>
 

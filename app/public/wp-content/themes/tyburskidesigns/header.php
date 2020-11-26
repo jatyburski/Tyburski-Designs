@@ -17,6 +17,12 @@
 
         <?php layout_get_component( 'nav-mobile' , 'header' ); ?>
 
+        <?php if (is_single()) : ?>
+            <div class="position-fixed progress__container">
+                <div class="progress__bar" id="indicator"></div>
+            </div> 
+        <?php endif; ?>
+
         <div class="position-relative overflow-hidden site-container">
 
             <header class="container-fluid navbar d-block">

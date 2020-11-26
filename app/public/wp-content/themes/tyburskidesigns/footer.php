@@ -4,9 +4,8 @@
                 
                 <div class="col-sm-5 d-flex align-items-end align-items-lg-center justify-content-between">
                     <p>
-                        &copy; <?php echo date( 'Y' ); ?> 
-                        <span><?php bloginfo( 'name' ); ?></span>. 
-                        All Rights Reserved.
+                        c — <?php echo date( 'Y' ); ?>. 
+                        <span>All Rights Reserved.</span>
                     </p>
                     <div class="footer__social">
                         <?php if (have_rows( 'social_media', 'option' )) : ?>

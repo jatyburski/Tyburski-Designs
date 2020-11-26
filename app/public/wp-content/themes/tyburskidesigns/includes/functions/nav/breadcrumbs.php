@@ -18,7 +18,7 @@ function breadcrumbs() {
             echo '<li class="' . $breadcrumb_classes . ( is_single() ? ' breadcrumb-item--truncate' : '' ) . '">';
             
             if ( is_home() == ! $post->post_parent ) {
-                echo get_the_title( get_option( 'page_for_posts', true ) );
+                echo '<h1>' . get_the_title( get_option( 'page_for_posts', true ) ) . '</h1>';
             } else {
                 echo '<a href="' . get_post_type_archive_link( 'post' ) . '">' . get_the_title( get_option( 'page_for_posts', true ) ) . '</a>';
             }
@@ -26,11 +26,11 @@ function breadcrumbs() {
             echo '</li>';
 
             if ( is_single() ) {
-                echo '<li class="' . $breadcrumb_classes . ' d-none d-sm-block">' . get_the_title() . '</li>';
+                echo '<li class="' . $breadcrumb_classes . ' d-none d-sm-block"><h1>' . get_the_title() . '</h1></li>';
             }
 
         } elseif ( is_page() ) {
-            echo '<li class="' . $breadcrumb_classes . '">' . get_the_title() . '</li>';
+            echo '<li class="' . $breadcrumb_classes . '"><h1>' . get_the_title() . '</h1></li>';
         }
 
         echo "</ol>";

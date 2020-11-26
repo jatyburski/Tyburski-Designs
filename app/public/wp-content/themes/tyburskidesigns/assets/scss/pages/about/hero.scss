@@ -1,26 +1,9 @@
 .about__hero {
     @extend %bg-tint;
     padding: 0 0 0 var(--col) !important;
+    position: relative;
     white-space: nowrap;
-
-    @include media('<x-large') {
-        + .about__image {
-            display: flex;
-            justify-content: flex-end;
-            opacity: .3;
-            position: absolute;
-            z-index: -1;
-        }
-    }
-
-    @include media('>=large', '<x-large') {
-        + .about__image {
-            background: transparent;
-            img {
-                @include width-height(auto, 100%);
-            }
-        }
-    }
+    z-index: 2;
 
     @include media('<tablet') {
         background: transparent;
@@ -35,8 +18,7 @@
         padding: 175px var(--col) !important;
     }
 
-    h1 {
-        @extend %h2;
+    h2 {
         color: theme-color('white');
         margin-bottom: 30px;
         span {
@@ -55,7 +37,31 @@
 
         }
     }
-    + .about__image img {
-        @include object-fit(cover, top center);
+    + .about__image {
+        position: relative;
+        z-index: 1;
+
+        @include media('<x-large') {
+            display: flex;
+            justify-content: flex-end;
+            opacity: .3;
+            position: absolute;
+            z-index: -1;
+        }
+
+        @include media('>=large', '<x-large') {
+            background: transparent;
+        }
+
+        img {
+            @include object-fit(cover, top center);
+
+            @include media('>=large', '<x-large') {
+                img {
+                    @include width-height(auto, 100%);
+                }
+            }
+            
+        }
     }
 }

@@ -1,6 +1,6 @@
 <section class="row no-gutters resume">
     <div class="offset-1 col-lg-6 resume__person">
-        <h1 data-aos="fade-up"><?php bloginfo( 'name' ); ?></h1>
+        <h2 data-aos="fade-up"><?php bloginfo( 'name' ); ?></h2>
         <p data-aos="fade-up" data-aos-delay="600"><strong><?php the_field( 'title' ); ?></strong></p>
     </div>
 

@@ -2,7 +2,7 @@
 
 <section id="<?php echo $id; ?>" class="row no-gutters">
     <div class="offset-1 offset-xl-2 col-10 col-xl-4 position-relative about__goals">
-        <i class="far fa-guitar d-none d-md-block position-absolute" data-aos="zoom-in" role="presentation"></i>
+        <i class="far fa-music d-none d-md-block position-absolute" data-aos="zoom-in" role="presentation"></i>
 
         <?php the_field( 'goals' ); ?>
     </div>

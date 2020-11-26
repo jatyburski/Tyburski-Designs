@@ -23,8 +23,11 @@
     }
     &-brand {
         @extend %h3;
-        @include font-Size(50px, 2vw, 55px);
+        @include font-Size(50px, 3.5vw, 55px);
         letter-spacing: 3px;
+        &:hover {
+            color: theme-color('white');
+        }
         strong {
             @include font-Size(10.5px, 1vw, 11px);
             color: theme-color('secondary');
@@ -60,6 +63,12 @@
                     visibility: hidden;
                 }
             }
+            h1 {
+                @include fontSize(35px);
+                display: inline-block;
+                letter-spacing: 3px;
+                line-height: 1;
+            }
             &--truncate::before {
                 @include media('<tablet'){
                     content: '<';
@@ -69,5 +78,17 @@
                 color: theme-color('white');
             }
         }
+    }
+}
+
+.progress {
+    &__container {
+        @include width-height(100%, 8px);
+        top: 0;
+        z-index: 100;
+    }
+    &__bar {
+        @include width-height(0%, 8px);
+        background: theme-color('secondary');
     }
 }
