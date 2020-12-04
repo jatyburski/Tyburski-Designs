@@ -4,10 +4,12 @@
                 
                 <div class="col-sm-5 d-flex align-items-end align-items-lg-center justify-content-between">
                     <p>
-                        c — <?php echo date( 'Y' ); ?>. 
+                        c &#8212; <?php echo date( 'Y' ); ?>. 
                         <span>All Rights Reserved.</span>
                     </p>
+                    
                     <div class="footer__social">
+
                         <?php if (have_rows( 'social_media', 'option' )) : ?>
                             <p>
 
@@ -19,6 +21,7 @@
 
                             </p>
                         <?php endif; ?>
+
                     </div>
                 </div>
 
@@ -39,7 +42,7 @@
         </div>
         <!-- end SITE CONTAINER -->
 
-        <?php layout_get_component( 'scrollspy', 'nav' ); ?>
+        <?php //layout_get_component( 'scrollspy', 'nav' ); ?>
 
         <?php wp_footer(); ?>
 

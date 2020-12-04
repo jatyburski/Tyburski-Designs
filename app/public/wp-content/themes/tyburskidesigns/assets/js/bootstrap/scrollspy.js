@@ -1,48 +1,48 @@
-$ = jQuery.noConflict();
+// $ = jQuery.noConflict();
 
-$(function(){
+// $(function(){
 
-    $('body').scrollspy({ target: '#scrollspy' })
-    $('a[href*="#"]')
+//     $('body').scrollspy({ target: '#scrollspy' })
+//     $('a[href*="#"]')
 
-    .not('[href="#"]')
-    .not('[href="#0"]')
+//     .not('[href="#"]')
+//     .not('[href="#0"]')
     
-    .on('click', function(event) {   
+//     .on('click', function(event) {   
 
-        if (this.hash !== "") {
+//         if (this.hash !== "") {
 
-            var hash = this.hash;
+//             var hash = this.hash;
 
-            $('html, body').animate({
-                scrollTop: $(hash).offset().top - 0
-            }, 800, function() {
+//             $('html, body').animate({
+//                 scrollTop: $(hash).offset().top - 0
+//             }, 800, function() {
 
-                if (history.pushState) {
-                    history.pushState(null, null, hash); 
-                } else {
-                    window.location.hash = hash;
-                } 
+//                 if (history.pushState) {
+//                     history.pushState(null, null, hash); 
+//                 } else {
+//                     window.location.hash = hash;
+//                 } 
 
-            });
+//             });
 
-            return false; 
+//             return false; 
 
-        }
+//         }
 
-    });
+//     });
 
-});
+// });
 
-$(document).scroll(function () {
+// $(document).scroll(function () {
 
-    var fold = $(this).scrollTop();
+//     var fold = $(this).scrollTop();
 
-    if (fold > window.innerHeight) {
-        $('.scrollspy').fadeIn();
-    } 
-    else {
-        $('.scrollspy').fadeOut();
-    }
+//     if (fold > window.innerHeight) {
+//         $('.scrollspy').fadeIn();
+//     } 
+//     else {
+//         $('.scrollspy').fadeOut();
+//     }
 
-});
+// });

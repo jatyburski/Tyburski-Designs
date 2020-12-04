@@ -3,7 +3,6 @@
 <html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="preload" href="https://use.typekit.net/kfv6civ.css" as="style" crossorigin="anonymous">
         <link rel="preload" href="<?php echo get_bloginfo( 'template_directory' ); ?>/dist/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="<?php echo get_bloginfo( 'template_directory' ); ?>/dist/style.css"></noscript>
         <?php wp_head(); ?>
@@ -17,7 +16,7 @@
 
         <?php layout_get_component( 'nav-mobile' , 'header' ); ?>
 
-        <?php if (is_single()) : ?>
+        <?php if ( is_singular( 'projects' ) ) : ?>
             <div class="position-fixed progress__container">
                 <div class="progress__bar" id="indicator"></div>
             </div> 
@@ -36,7 +35,7 @@
                         </div>
                     </nav>
 
-                    <?php if (is_page( 'contact' ) || is_page( 'resume' )) : ?>
+                    <?php if ( is_page( 'contact' ) || is_page( 'resume' ) ) : ?>
 
                         <div data-aos="fade-left" class="col-lg-3 d-flex justify-content-end">
                             <a class="btn__icon" href="<?php the_field( 'resume', 'option' ); ?>" target="_blank">

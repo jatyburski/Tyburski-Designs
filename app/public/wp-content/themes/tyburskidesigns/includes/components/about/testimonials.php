@@ -1,4 +1,4 @@
-<div class="offset-1 offset-md-2 offset-xl-1 col-10 col-md-9 col-lg-8 col-xl-4 carousel d-flex flex-column justify-content-center position-relative slide about__testimonials" id="carousel" data-aos="fade-up" data-aos-delay="600" data-ride="carousel" data-interval="7000">
+<div class="offset-1 offset-md-2 offset-xl-1 col-10 col-md-9 col-lg-8 col-xl-4 carousel d-flex flex-column position-relative slide about__testimonials" id="carousel" data-aos="fade-up" data-aos-delay="600" data-ride="carousel" data-interval="7000">
 
     <h3>Clients Say...</h3>
     <ul class="carousel-inner m-0 p-0 position-relative">
