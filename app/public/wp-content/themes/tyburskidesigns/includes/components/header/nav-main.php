@@ -5,7 +5,7 @@
 
 <div id="nav-fullscreen" class="position-fixed text-center text-xl-left nav-fullscreen">
     <div class="nav-fullscreen__content">
-        <div class="container-fluid p-0 h-100 d-flex flex-column">
+        <div class="container-fluid p-0 d-flex flex-column">
 
             <div class="row no-gutters position-absolute navbar">
                 <nav class="col-xl-6 d-flex align-items-start">

@@ -55,6 +55,11 @@
     }
     &__social {
         margin-bottom: 45px;
+
+        @include media('<=tablet') {
+            margin-top: 50px;
+        }
+
         li {
             margin-bottom: 30px;
             &:last-child {
@@ -135,6 +140,10 @@
                     margin-left: auto;
                     margin-right: auto;
                     width: auto;
+                }
+
+                @include media('<=tablet') {
+                    margin-top: 30vh;
                 }
 
                 &::after {
