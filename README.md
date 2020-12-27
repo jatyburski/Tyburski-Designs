@@ -2,5 +2,5 @@
 
 ## Technologies
 - [Gulp](https://gulpjs.com/)
-- [Bootstrap](https://getbootstrap.com/)
+- [Bootstrap 4](https://getbootstrap.com/)
 - [WordPress](https://wordpress.com/)
