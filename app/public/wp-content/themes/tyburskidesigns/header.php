@@ -13,7 +13,6 @@
     <body <?php body_class(); ?> data-spy="scroll" data-target="#scrollspy" data-offset="100">
  
         <?php layout_get_component( 'nav-main' , 'header' ); ?>
-
         <?php layout_get_component( 'nav-mobile' , 'header' ); ?>
 
         <?php if ( is_singular( 'projects' ) ) : ?>

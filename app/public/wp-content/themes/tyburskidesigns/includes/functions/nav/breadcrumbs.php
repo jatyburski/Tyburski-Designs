@@ -19,7 +19,8 @@ function breadcrumbs() {
             
             if ( is_home() == ! $post->post_parent ) {
                 echo '<h1>' . get_the_title( get_option( 'page_for_posts', true ) ) . '</h1>';
-            } else {
+            } 
+            else {
                 echo '<a href="' . get_post_type_archive_link( 'post' ) . '">' . get_the_title( get_option( 'page_for_posts', true ) ) . '</a>';
             }
             
