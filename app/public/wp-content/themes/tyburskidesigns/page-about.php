@@ -2,13 +2,9 @@
     get_header();
 
     layout_get_component( 'hero', 'about' );
-
     layout_get_component( 'content', 'about', 'overview' );
-
     layout_get_component( 'goals', 'about', 'endeavors-and-acknowledgements' );
-
     layout_get_component( 'image-fullwidth', 'about' );
-
     layout_get_component( 'awards', 'about' );
 
     $button_lg = get_field( 'connect' );

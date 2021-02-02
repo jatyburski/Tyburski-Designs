@@ -14,7 +14,7 @@ function add_theme_scripts() {
     // wp_enqueue_script( 'tweenmax', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js', array (), false, true);
     // wp_enqueue_script( 'scrollmagic', 'https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js', array (), false, true);
     // wp_enqueue_script( 'scrollmagicanimation', 'https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js', array (), false, true);
-    wp_enqueue_script( 'main', get_template_directory_uri() . '/dist/app.js', array (), false, true);
+    wp_enqueue_script( 'main', get_template_directory_uri() . '/app.js', array (), false, true);
 
     if ( is_singular( 'projects' ) ) {
         wp_register_script('indicator', get_template_directory_uri() . '/includes/scroll-indicator/indicator.js', '', '1.0', true);

@@ -19,7 +19,7 @@ function scssTask() {
         .pipe(sass())
         .pipe(postcss([ autoprefixer(), cssnano() ]))
         .pipe(sourcemaps.write('.'))
-        .pipe(dest('dist')
+        .pipe(dest('./')
     );
 }
 
@@ -30,7 +30,7 @@ function jsTask() {
         }))
         .pipe(concat('app.js'))
         .pipe(terser())
-        .pipe(dest('dist')
+        .pipe(dest('./')
     );
 }
 

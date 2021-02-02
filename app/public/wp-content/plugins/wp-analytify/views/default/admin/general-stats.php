@@ -269,7 +269,7 @@ function get_compare_stats( $results, $compare_results, $date_different, $name='
 	$compare = number_format( ( ( $results - $compare_results ) / $compare_results ) * 100, 2 );
 
 	if ( 'bounce_rate' === $name ) {
-		$class   = $compare < 0 ? 'analytify_green' : 'analytify_red';
+		$class   = $compare < 0 ? 'analytify_green_inverted' : 'analytify_red_inverted';
 	} else {
 		$class   = $compare > 0 ? 'analytify_green' : 'analytify_red';
 	}

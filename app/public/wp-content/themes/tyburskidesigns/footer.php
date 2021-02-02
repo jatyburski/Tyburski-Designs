@@ -4,7 +4,7 @@
                 
                 <div class="col-sm-5 d-flex align-items-end align-items-lg-center justify-content-between">
                     <p>
-                        c &#8212; <?php echo date( 'Y' ); ?>. 
+                        c<span class="sr-only">Copyright</span> &#8212; <?php echo date( 'Y' ); ?>. 
                         <span>All Rights Reserved.</span>
                     </p>
                     

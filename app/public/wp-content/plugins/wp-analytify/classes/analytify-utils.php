@@ -291,7 +291,7 @@ class WPANALYTIFY_Utils {
 
 				<li><?php _e( 'Last 30 days', 'wp-analytify' )?> <span data-date-diff="last_30_days" data-start="" data-end=""><span class="analytify_start_date_data analytify_last_30_day"></span> – <span class="analytify_end_date_data analytify_today_date"></span></span></li>
 
-				<li><?php _e( 'This month', 'wp-analytify' )?> <span data-date-diff="this_month" data-start="" data-end=""><span class="analytify_start_date_data analytify_this_month_start_date"></span> – <span class="analytify_end_date_data analytify_today_date"></span></li>
+				<li><?php _e( 'This month', 'wp-analytify' )?> <span data-date-diff="this_month" data-start="" data-end=""><span class="analytify_start_date_data analytify_this_month_start_date"></span> – <span class="analytify_end_date_data analytify_today_date"></span></span></li>
 
 				<li><?php _e( 'Last month', 'wp-analytify' )?> <span data-date-diff="last_month" data-start="" data-end=""><span class="analytify_start_date_data analytify_last_month_start_date"></span> – <span class="analytify_end_date_data analytify_last_month_end_date"></span></span></li>
 
@@ -308,7 +308,6 @@ class WPANALYTIFY_Utils {
 		echo $content;
 	}
 
-
 	/**
 	 * Remove WordPress plugin directory.
 	 *
@@ -320,8 +319,41 @@ class WPANALYTIFY_Utils {
 		return substr( $plugin, 1 );
 	}
 
-}
+	/**
+	 * Renders date form.
+	 * This form is used in the dashboard pages.
+	 *
+	 * @param string $start_date Start date value.
+	 * @param string $end_date End date value.
+	 */
+	public static function date_form( $start_date, $end_date ) { ?>
+	
+		<form class="analytify_form_date" action="" method="post">
+			<div class="analytify_select_date_fields">
+				<input type="hidden" name="st_date" id="analytify_start_val">
+				<input type="hidden" name="ed_date" id="analytify_end_val">
+				<input type="hidden" name="analytify_date_diff" id="analytify_date_diff">
 
+				<input type="hidden" name="analytify_date_start" id="analytify_date_start" value="<?php echo isset( $start_date ) ? $start_date : '' ?>">
+				<input type="hidden" name="analytify_date_end" id="analytify_date_end" value="<?php echo isset( $end_date ) ? $end_date : '' ?>">
+
+				<label for="analytify_start"><?php _e( 'From:', 'wp-analytify' )?></label>
+				<input type="text" required id="analytify_start" value="">
+				<label for="analytify_end"><?php _e( 'To:', 'wp-analytify' )?></label>
+				<input type="text" required id="analytify_end" value="">
+
+				<div class="analytify_arrow_date_picker"></div>
+			</div>
+			<input type="submit" value="<?php _e( 'View Stats', 'wp-analytify' ) ?>" name="view_data" class="analytify_submit_date_btn">
+
+			<?php echo self::get_date_list(); ?>
+
+		</form>
+
+	<?php 
+	}
+
+}
 
 /**
  * Remove assets of other plugin/theme.

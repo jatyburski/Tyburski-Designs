@@ -34,7 +34,7 @@
     }
     &__content {
         @extend %bg-tint;
-        padding: 10vh 0 40px;
+        padding: 12vh 0 40px;
 
         @include media('<x-large') {
             padding: 15vw var(--col) 0 !important;
@@ -93,7 +93,7 @@
         }
     }
     &__buttons {
-        margin: 50px 0 0 var(--col);
+        margin: 40px 0 0 var(--col);
 
         @include media('<x-large') {
             margin: 50px 0 0;

@@ -3,12 +3,15 @@
  * Class Google\Site_Kit\Plugin
  *
  * @package   Google\Site_Kit
- * @copyright 2019 Google LLC
+ * @copyright 2021 Google LLC
  * @license   https://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
  * @link      https://sitekit.withgoogle.com
  */
 
 namespace Google\Site_Kit;
+
+use Google\Site_Kit\Core\Util\Feature_Flags;
+use Google\Site_Kit\Core\Util\JSON_File;
 
 /**
  * Main class for the plugin.
@@ -211,8 +214,11 @@ final class Plugin {
 
 		// WP CLI Commands.
 		if ( defined( 'WP_CLI' ) && WP_CLI ) {
-			( new \Google\Site_Kit\Core\CLI\CLI_Commands( $this->context ) )->register();
+			( new Core\CLI\CLI_Commands( $this->context ) )->register();
 		}
+
+		// Add Plugin Row Meta.
+		( new Core\Admin\Plugin_Row_Meta() )->register();
 	}
 
 	/**
@@ -238,6 +244,10 @@ final class Plugin {
 		if ( null !== static::$instance ) {
 			return false;
 		}
+
+		$config = new JSON_File( GOOGLESITEKIT_PLUGIN_DIR_PATH . 'dist/config.json' );
+		Feature_Flags::set_mode( $config['flagMode'] );
+		Feature_Flags::set_features( (array) $config['features'] );
 
 		static::$instance = new static( $main_file );
 		static::$instance->register();

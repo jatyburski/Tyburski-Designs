@@ -8,7 +8,7 @@ function get_compared_colors( $results, $compare_results, $date_different, $stat
 	}
 
 	// Invert results for bounce rate.
-	if ( ! empty( $stats_for ) && 'bounce_rate' == $stats_for ) {
+	if ( ! empty( $stats_for ) && 'bounce_rate' === $stats_for ) {
 		return array(
 			$compare < 0 ? '#00c853' : '#fa5825',
 			$compare < 0 ? '#4ed98817' : '#ffffff'
@@ -32,8 +32,8 @@ function get_compare_email_stats( $results, $compare_results, $date_different, $
 	$color      = $compare > 0 ? '#00c853' : '#fa5825';
 
 	// Invert results for bounce rate.
-	if ( ! empty( $stats_for ) && 'bounce_rate' == $stats_for ) {
-		$image_name = $compare < 0 ? 'analytify_green_arrow.png' : 'analytify_red_arrow.png';
+	if ( ! empty( $stats_for ) && 'bounce_rate' === $stats_for ) {
+		$image_name = $compare < 0 ? 'analytify_green_arrow_down.png' : 'analytify_red_arrow_up.png';
 		$color      = $compare < 0 ? '#00c853' : '#fa5825';
 	}
 

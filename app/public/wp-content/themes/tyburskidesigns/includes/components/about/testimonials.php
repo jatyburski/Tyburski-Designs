@@ -4,8 +4,8 @@
     <ul class="carousel-inner m-0 p-0 position-relative">
 
         <?php $slides = get_field( 'testimonials' ); ?>
-
         <?php foreach ( $slides as $index => $slide ) : ?>
+
             <li class="carousel-item<?php echo $index == 0 ? ' active' : '' ?>">
                 <blockquote>
                     <?php echo $slide[ 'quote' ]; ?>
@@ -17,6 +17,7 @@
                     </cite>
                 </blockquote>
             </li>
+            
         <?php endforeach; ?>
 
     </ul>

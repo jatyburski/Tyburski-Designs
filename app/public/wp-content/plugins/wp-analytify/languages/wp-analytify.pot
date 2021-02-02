@@ -1882,7 +1882,7 @@ msgid "November"
 msgstr ""
 
 #: wp-analytify.php:735
-msgid "December1"
+msgid "December"
 msgstr ""
 
 #: wp-analytify.php:738

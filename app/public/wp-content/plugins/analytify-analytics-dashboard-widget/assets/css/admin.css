@@ -129,9 +129,9 @@
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-#analytify_widget_connect .toggle-indicator {
+/* #analytify_widget_connect .toggle-indicator {
   display: none;
-}
+} */
 #analytify_widget_connect .analytify-widget-logo {
   font-size: 16px;
   color: #000000d1;
@@ -333,18 +333,18 @@ transition: all 1s ease;
 }
 
 #analytify-dashboard-addon .ui-sortable-handle{
-	position: absolute;
+	/* position: relative;
 	top: 0;
 	left: 0;
 	height: 60px;
 	width: 100%;
 	z-index: 99;
 	opacity:0;
-	box-sizing: border-box;
+	box-sizing: border-box; */
 }
-#analytify-dashboard-addon .handlediv{
+/* #analytify-dashboard-addon .handlediv{
 	display: none;
-}
+} */
 #analytify-dashboard-addon {
 	position: relative;
 }

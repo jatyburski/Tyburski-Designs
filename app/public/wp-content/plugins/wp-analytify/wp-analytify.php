@@ -3,12 +3,12 @@
  * Plugin Name: Analytify - Google Analytics Dashboard
  * Plugin URI: https://analytify.io/details
  * Description: Analytify brings a brand new and modern feeling Google Analytics superbly integrated with WordPress Dashboard. It presents the statistics in a beautiful way under the WordPress Posts/Pages at front end, backend and in its own Dashboard. This provides Stats from Country, Referrers, Social media, General stats, New visitors, Returning visitors, Exit pages, Browser wise and Top keywords. This plugin provides the RealTime statistics in a new UI which is easy to understand & looks good.
- * Version: 3.1.5
+ * Version: 3.1.6
  * Author: Analytify
  * Author URI: https://analytify.io
  * License: GPLv3
  * Text Domain: wp-analytify
- * Tested up to: 5.5
+ * Tested up to: 5.6
  * Domain Path: /languages
  *
  * @package WP_ANALYTIFY
@@ -389,29 +389,11 @@ if ( ! class_exists( 'WP_Analytify' ) ) {
 
 			if ( $this->pa_check_roles( $is_access_level ) ) {  ?>
 
-
 				<div class="analytify_setting">
 					<div class="analytify_select_date analytify_select_date_single_page">
-						<form class="analytify_form_date" action="" method="post">
-							<div class="analytify_select_date_fields">
-								<input type="hidden" name="start_date" id="analytify_start_val">
-								<input type="hidden" name="end_date" id="analytify_end_val">
+						
+						<?php WPANALYTIFY_Utils::date_form( $start_date, $end_date ); ?>
 
-								<label for="analytify_start"><?php _e( 'From:', 'wp-analytify' )?></label>
-								<input type="text" id="analytify_start" value="<?php echo isset(  $start_date ) ?  $start_date :
-																		'' ?>">
-								<label for="analytify_end"><?php _e( 'To:', 'wp-analytify' )?></label>
-								<input type="text" id="analytify_end" value="<?php echo isset( $end_date ) ? $end_date :
-																		'' ?>">
-								<input type="hidden" name="urlpost" id="urlpost" value="<?php echo  esc_url( $url_post['path'] ); ?>">
-
-								<div class="analytify_arrow_date_picker"></div>
-							</div>
-							<input type="submit" value="<?php _e( 'View Stats', 'wp-analytify' )?>" name="view_data" class="analytify_submit_date_btn"  id="view_analytics">
-
-							<?php do_action( 'after_single_view_stats_buttons' ) ?>
-							<?php echo WPANALYTIFY_Utils::get_date_list() ?>
-						</form>
 					</div>
 				</div>
 
@@ -797,7 +779,7 @@ if ( ! class_exists( 'WP_Analytify' ) ) {
 								__( 'September', 'wp-analytify' ),
 								__( 'October', 'wp-analytify' ),
 								__( 'November', 'wp-analytify' ),
-								__( 'December1', 'wp-analytify' ),
+								__( 'December', 'wp-analytify' ),
 							),
 							'weekdays'      => array(
 								__( 'Sunday', 'wp-analytify' ),
