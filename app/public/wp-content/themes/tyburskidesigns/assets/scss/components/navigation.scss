@@ -186,6 +186,7 @@
                     display: inline-block;
                     line-height: .75;
                     transition: all 0.2s ease-in;
+                    white-space: nowrap;
                     &:not(:last-child) {
                         margin-bottom: 30px;
                     }
@@ -416,6 +417,9 @@
         &-items {
             font-size: 9px;
             color: theme-color('white');
+            &:hover {
+                color: theme-color('secondary');
+            }
             i {
                 font-size: 22px;
                 margin-bottom: 5px;

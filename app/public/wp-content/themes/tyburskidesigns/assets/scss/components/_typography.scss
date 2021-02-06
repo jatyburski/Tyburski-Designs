@@ -4,7 +4,7 @@
 
 h1,
 %h1 {
-    @include font-Size(115px, 13vw, 270px);
+    @include font-Size(85px, 13vw, 270px);
     color: theme-color('white');
     font-family: var(--primary-font);
     font-weight: 900;
@@ -15,7 +15,7 @@ h1,
 
 h2,
 %h2 {
-    @include font-Size(120px, 7.25vw, 180px);
+    @include font-Size(85px, 7.25vw, 180px);
     color: theme-color('secondary');
     font-family: var(--primary-font);
     font-weight: 900;

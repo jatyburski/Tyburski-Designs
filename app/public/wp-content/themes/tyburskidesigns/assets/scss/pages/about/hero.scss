@@ -21,6 +21,11 @@
     h2 {
         color: theme-color('white');
         margin-bottom: 30px;
+
+        @include media('<tablet') {
+            margin-top: 200px;
+        }
+        
         span {
             color: theme-color('secondary');
         }

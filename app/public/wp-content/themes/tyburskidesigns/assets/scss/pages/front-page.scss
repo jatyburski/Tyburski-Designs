@@ -2,6 +2,7 @@
     @extend %container;
     &__image {
         @extend %bg-tint;
+        height: 100%;
         mix-blend-mode: exclusion;
 
         @include media('>tablet', '<x-large') {
@@ -21,6 +22,12 @@
         @include media('<large') {
             left: 0;
             transform: none;
+        }
+
+        @include media('<tablet') {
+            bottom: initial;
+            height: auto;
+            top: 70px;
         }
 
         img {
@@ -43,7 +50,7 @@
         }
 
         @include media('<large') {
-            padding-top: 20vw !important;
+            padding-top: 300px !important;
         }
 
         @include media('<tablet') {
@@ -57,7 +64,7 @@
         }
 
         @include media('<=phone') {
-            padding: 150px var(--col) 30px !important;
+            padding: 300px var(--col) 30px !important;
         }
 
         h1 {

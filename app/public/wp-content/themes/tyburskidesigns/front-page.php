@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        <div class="col-xl-6 h-100 position-relative order-xl-1 overflow-hidden front-page__image">
+        <div class="col-xl-6 position-relative order-xl-1 overflow-hidden front-page__image">
             <?php the_post_thumbnail( 'large', array( 'data-aos' => 'zoom-out', 'data-aos-delay' => '800' ) ); ?>
         </div>
 

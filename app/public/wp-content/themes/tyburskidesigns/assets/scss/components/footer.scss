@@ -11,10 +11,14 @@
 
     @include media('<992px') {
         margin-top: 150px;
+        @at-root .home & {
+            margin-top: 50px;
+        }
     }
 
     @include media('<tablet') {
         margin-bottom: 130px;
+        margin-top: 50px;
     }
 
     @include media('>=phone', '<tablet', 'landscape') {

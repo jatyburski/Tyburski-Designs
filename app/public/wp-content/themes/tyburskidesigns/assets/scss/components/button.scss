@@ -2,7 +2,9 @@
     @extend %small-caps;
     background-size: 1px 1em;
     box-shadow: 0 -0.15em inset;
+    line-height: 1;
     margin-top: 50px;
+    padding: 5px 0;
 
     @include media('<tablet') {
         @include fontSize(10px);
