@@ -1,4 +1,4 @@
-<h2 data-aos="fade-in" class="resume__exp__title">Skills</h2>
+<h2 data-aos="fade-in" class="resume__exp__title">Software</h2>
 
 <ul class="m-0 p-0 row no-gutters align-items-start justify-content-between flex-column flex-md-row">
 

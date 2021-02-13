@@ -3,7 +3,6 @@
     &__image {
         @extend %bg-tint;
         height: 100%;
-        mix-blend-mode: exclusion;
 
         @include media('>tablet', '<x-large') {
             background: transparent;
@@ -33,6 +32,8 @@
         img {
             @include object-fit(cover, top center);
             @include width-height(100%);
+
+            mix-blend-mode: color;
 
             @include media('<small', '>tablet') {
                 @include object-fit(cover, center);
