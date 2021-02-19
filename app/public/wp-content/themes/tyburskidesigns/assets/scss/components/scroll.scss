@@ -1,7 +1,5 @@
 .mouse {
     @include width-height(25px, 42px);
-    border: 2px solid theme-color('secondary');
-    border-radius: 15px;
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
@@ -12,10 +10,11 @@
     
     &__scroll {
         @include width-height(3px);
-        animation: scroll 1s infinite;
+        animation: scroll 2s infinite;
         background: theme-color('secondary');
         border-radius: 4px;
         margin: 6px auto;
+        z-index: 100;
     } 
 } 
 
@@ -23,8 +22,11 @@
     0% {
         opacity: 1;
     }
+    60% {
+        @include width-height(3px, 50px);
+        opacity: 0;
+    }
     100% {
         opacity: 0;
-        transform: translateY(20px);
     }
 }

@@ -1,6 +1,6 @@
 <?php $id = get_query_var( 'id' ); ?>
 
-<section class="row no-gutters position-relative about__content about__content--full">
+<section id="content" class="row no-gutters position-relative about__content about__content--full">
     <i class="far fa-camera-retro position-absolute" data-aos="zoom-in" role="presentation"></i>
 
     <div class="offset-1 offset-xl-2 col-9 col-xl-8">

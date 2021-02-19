@@ -20,7 +20,7 @@
         <?php the_post_thumbnail( 'large', array( 'data-aos' => 'zoom-out', 'data-aos-delay' => '800' ) ); ?>
     </div>
 
-    <div class="position-absolute mouse" role="presentation">
+    <a class="position-absolute mouse" href="#content">
         <div class="d-block mouse__scroll"></div>
-    </div>
+    </a>
 </section>
