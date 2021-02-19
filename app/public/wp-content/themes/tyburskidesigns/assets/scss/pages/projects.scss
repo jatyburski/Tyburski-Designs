@@ -90,7 +90,7 @@
 
             }
             p {
-                @include fontSize(13px);
+                @include font-Size(11px, 1vw, 13px);
                 bottom: 0;
                 left: calc(100% - (var(--col) - 25px));
                 letter-spacing: 1px;

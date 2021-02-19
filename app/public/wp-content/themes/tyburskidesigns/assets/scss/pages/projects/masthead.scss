@@ -28,8 +28,7 @@
             }
 
             @include media('<tablet') {
-                bottom: 0;
-                height: 57px;
+                display: none;
             }
 
         }
@@ -38,7 +37,9 @@
             @extend %h1;
 
             @include media('<tablet') {
-                margin-bottom: 57px;
+                line-height: .9;
+                margin-bottom: 15px;
+                padding: 0 var(--col);
             }
 
         }

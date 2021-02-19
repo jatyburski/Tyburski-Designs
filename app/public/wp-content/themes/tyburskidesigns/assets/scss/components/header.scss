@@ -58,6 +58,9 @@
                 display: inline-block;
                 margin: 0 15px;
                 padding: 0;
+                @include media('<tablet') {
+                    margin: 0 10px;
+                }
                 @media speech {
                     display: none;
                     visibility: hidden;

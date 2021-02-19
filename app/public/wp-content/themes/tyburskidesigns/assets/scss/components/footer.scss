@@ -27,9 +27,14 @@
     }
 
     p {
-        @include font-Size(9px, .75vw, 11px);
+        @include fontSize(11px);
         font-weight: 500;
         line-height: 1;
+
+        @include media('<tablet') {
+            line-height: 2;
+        }
+        
         * {
             color: theme-color('secondary');
         }
@@ -40,14 +45,9 @@
             }
         }
         i {
-            @include fontSize(15px);
+            @include fontSize(14px);
             margin: 0 3px;
             transition: all .15s ease-in-out;
-
-            @include media-breakpoint-down(lg) {
-                @include fontSize(11px);
-            }
-
         }
     }
     &__social {

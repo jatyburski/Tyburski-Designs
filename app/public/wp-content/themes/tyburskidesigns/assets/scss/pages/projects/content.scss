@@ -27,7 +27,11 @@
 
             @include media('>=phone', '<992px') {
                 margin: 0 var(--col);
-                padding: var(--col) 0;
+                padding: 70px 0;
+
+                .col-xl-3 {
+                    margin-bottom: 30px;
+                }
             }
             p {
                 @extend %h4;

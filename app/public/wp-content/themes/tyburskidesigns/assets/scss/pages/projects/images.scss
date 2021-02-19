@@ -12,8 +12,9 @@
         margin-bottom: 80px;
 
         @include media('>=phone', '<992px') {
-            grid-gap: 40px 0;
+            grid-gap: 10px 0;
             grid-template-columns: 1fr;
+            margin-bottom: 10px;
         }
         
         &--reveal {

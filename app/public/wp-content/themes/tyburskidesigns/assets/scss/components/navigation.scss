@@ -415,7 +415,7 @@
         height: 75px;
         padding: 0 var(--col);
         &-items {
-            font-size: 9px;
+            font-size: 11px;
             color: theme-color('white');
             &:hover {
                 color: theme-color('secondary');
@@ -436,40 +436,40 @@
 // Scrollspy
 // -----------------------
 
-.scrollspy {
-    display: none !important;
-    left: 25px;
-    max-width: 200px;
-    top: 280px;
-    transition: transform .2s ease-out;
-    z-index: 1000;
+// .scrollspy {
+//     display: none !important;
+//     left: 25px;
+//     max-width: 200px;
+//     top: 280px;
+//     transition: transform .2s ease-out;
+//     z-index: 1000;
 
-    @at-root .nav-is-open & {
-        transform: translateX(-100%);
-    }
+//     @at-root .nav-is-open & {
+//         transform: translateX(-100%);
+//     }
 
-    @include media('<tablet') {
-        display: none !important;
-    }
+//     @include media('<tablet') {
+//         display: none !important;
+//     }
 
-    a {
-        @extend %p;
-        font-size: 14px;
-        line-height: 1.5;
-        margin-bottom: 10px;
-        &.active,
-        &:hover {
-            color: theme-color('secondary');
-            position: relative;
-            &:before {
-                @include width-height(2px, 100%);
-                background: theme-color('secondary');
-                content: '';
-                left: -10px;
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-            }
-        }
-    }
-}
+//     a {
+//         @extend %p;
+//         font-size: 14px;
+//         line-height: 1.5;
+//         margin-bottom: 10px;
+//         &.active,
+//         &:hover {
+//             color: theme-color('secondary');
+//             position: relative;
+//             &:before {
+//                 @include width-height(2px, 100%);
+//                 background: theme-color('secondary');
+//                 content: '';
+//                 left: -10px;
+//                 position: absolute;
+//                 top: 50%;
+//                 transform: translateY(-50%);
+//             }
+//         }
+//     }
+// }

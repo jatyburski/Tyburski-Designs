@@ -8,8 +8,12 @@
             padding: 175px 0 100px !important;
         } 
 
-        @include media('<=phone') {
+        @include media('<tablet') {
             padding: 150px 0 75px;
+        }
+
+        @include media('<=phone') {
+            padding: 220px 0 75px;
         }
 
         *:not(.contact__image):not(img) {
@@ -20,7 +24,7 @@
             @extend %h3;
             margin-bottom: 20px;
             @include media('<tablet') {
-                padding: 0 calc(var(--col) * 2);
+                padding: 0 var(--col);
             }
         }
         a[href^="mailto:"] {

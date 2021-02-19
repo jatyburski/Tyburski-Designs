@@ -66,6 +66,10 @@
             padding: 50px var(--col);
         }
 
+        @include media ('<tablet') {
+            padding: 50px calc(var(--col) * 1.5);
+        }
+
         @include media('>=phone', '<tablet', 'landscape') {
             padding-left: calc(var(--col) * 2);
         }
