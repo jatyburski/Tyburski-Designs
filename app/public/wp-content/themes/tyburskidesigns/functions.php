@@ -70,3 +70,10 @@ add_theme_support('post-thumbnails', array(
     'projects',
     'page',
 ));
+
+
+// -----------------------
+// Dashboard 
+// -----------------------
+
+require_once('includes/functions/dashboard/dashboard.php');
